@@ -1,0 +1,6 @@
+baseURL: 'http://example.org/'
+title: Reorx's blog
+
+theme: PaperMod
+params:
+  ShowToc: true
