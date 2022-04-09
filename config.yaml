@@ -4,3 +4,5 @@ title: Reorx's blog
 theme: PaperMod
 params:
   ShowToc: true
+  TocOpen: true
+  TocSide: true
