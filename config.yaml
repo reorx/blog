@@ -1,8 +1,55 @@
 baseURL: 'http://example.org/'
 title: Reorx's blog
 
+languages:
+  en:
+    languageName: "English"
+    homeInfoParams:
+      Title: Hi There
+      Content: Site under construction 🚧
+    menu:
+      main:
+        - name: Archives
+          url: archives
+        - name: Tags
+          url: tags/
+  zh:
+    languageName: "Chinese"
+    homeInfoParams:
+      Title: 你好！
+      Content: 网站建设中🚧
+    menu:
+      main:
+        - name: 归档
+          url: archives
+        - name: 标签
+          url: tags/
+
 theme: PaperMod
 params:
   ShowToc: true
   TocOpen: true
   TocSide: true
+  # DisableSmoothScroll: true
+  EnableInstantPage: true
+  ShowShareButtons: true
+  ShareButtons:
+    - twitter
+    - telegram
+  ShowReadingTime: true
+  ShowCodeCopyButtons: true
+
+
+  socialIcons:
+    - name: github-simple
+      url: "https://github.com/reorx"
+    - name: twitter-simple
+      url: "https://twitter.com/novoreorx"
+    - name: telegram-simple
+      url: "https://t.me/reorx"
+    - name: pinboard-simple
+      url: "https://pinboard.in/reorx"
+    - name: steam
+      url: "https://steamcommunity.com/id/novoreorx"
+    - name: rss-simple
+      url: "index.xml"
