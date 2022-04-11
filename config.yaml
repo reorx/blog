@@ -48,7 +48,7 @@ params:
     - name: telegram-simple
       url: "https://t.me/reorx"
     - name: pinboard-simple
-      url: "https://pinboard.in/reorx"
+      url: "https://pinboard.in/u:reorx"
     - name: steam
       url: "https://steamcommunity.com/id/novoreorx"
     - name: rss-simple
