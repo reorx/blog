@@ -5,6 +5,8 @@ params:
   # basic
   description: Reorx's blog
   author: Reorx
+  images:
+    - cover.png
 
   # theme params
   ShowToc: true
