@@ -1,5 +1,37 @@
 baseURL: 'https://reorx.com/'
-title: Reorx's blog
+theme: PaperMod
+params:
+  # basic
+  title: Reorx's blog
+  description: Reorx's blog
+  author: Reorx
+
+  # theme params
+  ShowToc: true
+  TocOpen: true
+  TocSide: true
+  # DisableSmoothScroll: true
+  EnableInstantClick: true
+  ShowShareButtons: true
+  ShareButtons:
+    - twitter
+    - telegram
+  ShowReadingTime: true
+  ShowCodeCopyButtons: true
+
+  socialIcons:
+    - name: github-simple
+      url: "https://github.com/reorx"
+    - name: twitter-simple
+      url: "https://twitter.com/novoreorx"
+    - name: telegram-simple
+      url: "https://t.me/reorx"
+    - name: pinboard-simple
+      url: "https://pinboard.in/u:reorx"
+    - name: steam
+      url: "https://steamcommunity.com/id/novoreorx"
+    - name: rss-simple
+      url: "index.xml"
 
 languages:
   en:
@@ -24,32 +56,3 @@ languages:
           url: archives
         - name: 标签
           url: tags/
-
-theme: PaperMod
-params:
-  ShowToc: true
-  TocOpen: true
-  TocSide: true
-  # DisableSmoothScroll: true
-  EnableInstantClick: true
-  ShowShareButtons: true
-  ShareButtons:
-    - twitter
-    - telegram
-  ShowReadingTime: true
-  ShowCodeCopyButtons: true
-
-
-  socialIcons:
-    - name: github-simple
-      url: "https://github.com/reorx"
-    - name: twitter-simple
-      url: "https://twitter.com/novoreorx"
-    - name: telegram-simple
-      url: "https://t.me/reorx"
-    - name: pinboard-simple
-      url: "https://pinboard.in/u:reorx"
-    - name: steam
-      url: "https://steamcommunity.com/id/novoreorx"
-    - name: rss-simple
-      url: "index.xml"
