@@ -7,6 +7,9 @@ params:
   author: Reorx
   images:
     - cover.png
+    - thumbnail.png
+  assets:
+    favicon: favicon.ico
 
   # theme params
   ShowToc: true
