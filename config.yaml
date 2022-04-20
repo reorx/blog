@@ -14,8 +14,7 @@ params:
   # theme params
   ShowToc: true
   TocOpen: true
-  TocSide: true
-  # DisableSmoothScroll: true
+  TocSide: right
   EnableInstantClick: true
   ShowShareButtons: true
   ShareButtons:

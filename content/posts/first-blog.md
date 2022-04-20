@@ -7,4 +7,4 @@ tags:
   - essay
 ---
 
-Hello
+Hello ![](/cover.png)
