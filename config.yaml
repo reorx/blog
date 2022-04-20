@@ -1,6 +1,6 @@
 title: Reorx's blog
 baseURL: 'https://reorx.com/'
-theme: PaperMod
+theme: PaperModX
 params:
   # basic
   description: Reorx's blog
