@@ -8,7 +8,7 @@
 <meta name=description content="Reorx's blog">
 <meta name=author content="Reorx">
 <link rel=canonical href=https://reorx.com/zh/categories/>
-<link crossorigin=anonymous href=/assets/css/stylesheet.min.0a2e779a81c436294866340cafe0de578d8ad335a6e758ee8350988f3f5fbcad.css integrity="sha256-Ci53moHENilIZjQMr+DeV42K0zWm51jug1CYjz9fvK0=" rel="preload stylesheet" as=style>
+<link crossorigin=anonymous href=/assets/css/stylesheet.min.6a68a32452711b90e378168c2fbe4585ffb28d495301adfca2f118c2809e6a82.css integrity="sha256-amijJFJxG5DjeBaML75Fhf+yjUlTAa38ovEYwoCeaoI=" rel="preload stylesheet" as=style>
 <link rel=icon href=https://reorx.com/favicon.ico>
 <link rel=icon type=image/png sizes=16x16 href=https://reorx.com/favicon-16x16.png>
 <link rel=icon type=image/png sizes=32x32 href=https://reorx.com/favicon-32x32.png>
@@ -29,7 +29,7 @@
 <meta name=twitter:description content="Reorx's blog">
 <noscript>
 <style>#theme-toggle,.top-link{display:none}</style>
-<style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--hljs-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51)}.list{background:var(--theme)}.list:not(.dark)::-webkit-scrollbar-track{background:0 0}.list:not(.dark)::-webkit-scrollbar-thumb{border-color:var(--theme)}}</style>
+<style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51)}.list{background:var(--theme)}.list:not(.dark)::-webkit-scrollbar-track{background:0 0}.list:not(.dark)::-webkit-scrollbar-thumb{border-color:var(--theme)}}</style>
 </noscript>
 </head>
 <body class=list id=top>
@@ -50,13 +50,11 @@
 </div>
 <ul id=menu>
 <li>
-<a href=https://reorx.com/zh/archives title=归档>
-<span>归档</span>
+<a href=https://reorx.com/zh/archives title=归档>归档
 </a>
 </li>
 <li>
-<a href=https://reorx.com/zh/tags/ title=标签>
-<span>标签</span>
+<a href=https://reorx.com/zh/tags/ title=标签>标签
 </a>
 </li>
 </ul>
@@ -71,9 +69,12 @@
 </main>
 <footer class=footer>
 <span>&copy; 2022 <a href=https://reorx.com/zh/>Reorx's blog</a></span><span style=display:inline-block;margin-left:1em>
+<a href=https://creativecommons.org/licenses/by-sa/4.0/>CC BY-SA</a>
+</span>
+<span style=display:inline-block;margin-left:1em>
 Powered by
 <a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
-        <a href=https://github.com/reorx/hugo-PaperMod rel=noopener target=_blank>PaperMod</a>
+        <a href=https://github.com/reorx/hugo-PaperModX rel=noopener target=_blank>PaperModX</a>
 </span>
 </footer>
 <a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentcolor"><path d="M12 6H0l6-6z"/></svg>
@@ -81,6 +82,7 @@ Powered by
 <script>(function(){let a=document.getElementById('menu');a&&(a.scrollLeft=localStorage.getItem("menu-scroll-position"),a.onscroll=function(){localStorage.setItem("menu-scroll-position",a.scrollLeft)});const b=''=='1',c='1'=='1';if(window.matchMedia('(prefers-reduced-motion: reduce)').matches||b||c)return;document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener("click",function(b){b.preventDefault();var a=this.getAttribute("href").substr(1);document.querySelector(`[id='${decodeURIComponent(a)}']`).scrollIntoView({behavior:"smooth"}),a==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${a}`)})})})()</script>
 <script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script>
 <script>document.getElementById("theme-toggle").addEventListener("click",()=>{document.body.className.includes("dark")?(document.body.classList.remove('dark'),localStorage.setItem("pref-theme",'light')):(document.body.classList.add('dark'),localStorage.setItem("pref-theme",'dark'))})</script>
+<script>(function(){const i=''=='1';let a=window.scrollListeners;if(a===void 0&&(a=[],window.scrollListeners=a),!i||!document.querySelector('.toc')){for(const b of a)window.removeEventListener('scroll',b);window.scrollListeners=[];return}const d=document.querySelectorAll('h1[id],h2[id],h3[id],h4[id],h5[id]'),e='active';let b=d[0];f(b).classList.add(e);const h=()=>{const a=[];for(const b of d)if(j(b)<5)a.push(b);else break;a.length>0?newActiveHeading=a[a.length-1]:newActiveHeading=d[0],b!=newActiveHeading&&(f(b).classList.remove(e),b=newActiveHeading,f(b).classList.add(e))};let c=null;const g=()=>{c!==null&&clearTimeout(c),c=setTimeout(h,50)};window.addEventListener('scroll',g,!1),a.push(g);function f(a){const b=encodeURI(a.getAttribute('id')).toLowerCase();return document.querySelector(`.toc ul li a[href="#${b}"]`)}function j(a){if(!a.getClientRects().length)return 0;let b=a.getBoundingClientRect();return b.top}})()</script>
 <script src=/assets/js/instantclick.min.js data-no-instant></script>
 <script data-no-instant>InstantClick.init()</script>
 </body>
