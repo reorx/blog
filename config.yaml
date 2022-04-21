@@ -85,6 +85,7 @@ languages:
         - name: 标签
           url: tags/
 googleAnalytics: G-6STBHZSBCD
+disqusShortname: reorx
 
 markup:
     goldmark:
