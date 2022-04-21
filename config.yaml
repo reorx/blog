@@ -12,6 +12,7 @@ params:
     favicon: favicon.ico
   label:
     icon: forge-60x60.png
+  DateFormat: "2006-02-01"
 
   # theme params
   ShowToc: true
