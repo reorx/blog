@@ -8,7 +8,7 @@
 <meta name=description content="Reorx's Forge">
 <meta name=author content="Reorx">
 <link rel=canonical href=https://reorx.com/zh/categories/>
-<link crossorigin=anonymous href=/assets/css/stylesheet.min.2049470ea3c2ef4f4088886c33b1cff137681bafc715cea40da6f719d7b732d0.css integrity="sha256-IElHDqPC709AiIhsM7HP8TdoG6/HFc6kDab3Gde3MtA=" rel="preload stylesheet" as=style>
+<link crossorigin=anonymous href=/assets/css/stylesheet.min.b10565b624acce9868b0d29ae68fc1aaaa7fb5cf1df647767ed8b284ad5e0be6.css integrity="sha256-sQVltiSszphosNKa5o/Bqqp/tc8d9kd2ftiyhK1eC+Y=" rel="preload stylesheet" as=style>
 <link rel=icon href=https://reorx.com/favicon.ico>
 <link rel=icon type=image/png sizes=16x16 href=https://reorx.com/favicon-16x16.png>
 <link rel=icon type=image/png sizes=32x32 href=https://reorx.com/favicon-32x32.png>
@@ -87,7 +87,9 @@ Powered by
 <script>document.getElementById("theme-toggle").addEventListener("click",()=>{document.body.className.includes("dark")?(document.body.classList.remove('dark'),localStorage.setItem("pref-theme",'light')):(document.body.classList.add('dark'),localStorage.setItem("pref-theme",'dark'))})</script>
 <script>(function(){const i=''=='1';let a=window.scrollListeners;if(a===void 0&&(a=[],window.scrollListeners=a),!i||!document.querySelector('.toc')){for(const b of a)window.removeEventListener('scroll',b);window.scrollListeners=[];return}const d=document.querySelectorAll('h1[id],h2[id],h3[id],h4[id],h5[id]'),e='active';let b=d[0];f(b).classList.add(e);const h=()=>{const a=[];for(const b of d)if(j(b)<5)a.push(b);else break;a.length>0?newActiveHeading=a[a.length-1]:newActiveHeading=d[0],b!=newActiveHeading&&(f(b).classList.remove(e),b=newActiveHeading,f(b).classList.add(e))};let c=null;const g=()=>{c!==null&&clearTimeout(c),c=setTimeout(h,50)};window.addEventListener('scroll',g,!1),a.push(g);function f(a){const b=encodeURI(a.getAttribute('id')).toLowerCase();return document.querySelector(`.toc ul li a[href="#${b}"]`)}function j(a){if(!a.getClientRects().length)return 0;let b=a.getBoundingClientRect();return b.top}})()</script>
 <script>document.querySelectorAll('.masked-email').forEach(a=>{a.innerText=atob(a.innerText),a.classList.remove('masked-email')})</script>
-<script src=/assets/js/instantclick.min.js data-no-instant></script>
+<script src=/js/medium-zoom.min.js data-no-instant></script>
+<script>mediumZoom('.post-content img')</script>
+<script src=/js/instantclick.js data-no-instant></script>
 <script data-no-instant>InstantClick.init()</script>
 </body>
 </html>
