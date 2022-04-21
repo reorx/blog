@@ -15,16 +15,18 @@ params:
   DateFormat: "2006-02-01"
 
   # theme params
-  ShowToc: true
   TocOpen: true
   TocSide: left
   EnableInstantClick: true
+  EnableImageZoom: true
   ShowShareButtons: true
   ShareButtons:
     - twitter
     - telegram
   ShowReadingTime: true
+  ShowWordCount: true
   ShowCodeCopyButtons: true
+  ShowPostNavLinks: true
   MaskedEmail: novoreorx@gmail.com
 
   socialIcons:

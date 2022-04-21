@@ -2,3 +2,7 @@
   text-decoration: underline;
   text-decoration-style: wavy;
 }
+
+.dark .logo img {
+  filter: invert(90%);
+}
