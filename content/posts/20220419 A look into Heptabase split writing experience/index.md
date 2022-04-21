@@ -2,11 +2,12 @@
 title: A look into Heptabase's split writing experience
 slug: heptabase-split-writing
 date: 2022-04-19
-description: The amazing UX Heptabase creates to view and compose notes
+description: The amazing UX Heptabase creates to help reading, thinking, and writing with heavy context efficiently
 tags:
 - heptabase 
 - note-taking
 - ux
+ShowToc: false
 ---
 
 Yesterday I found Heptabase's new introduction video: [The 3-step knowledge workflow in Heptabase](https://www.youtube.com/watch?v=oVXQx9sz_Wk).
@@ -15,7 +16,7 @@ Heptabase is the most promising note-taking app for me in recent years. The idea
 
 Traditional note-taking tools are keen on providing more than enough ways for dumping your thoughts into notes, but lack methodologies on how to retrieve and use notes. The way Heptabase organizes and interacts with the data is what really empowers the user to think and write more efficiently.
 
-Back to the video at the beginning, after watching it I noticed a very interesting feature. I can't stop thinking of it and really wish to have something similar in Obsidian (yeah, I'm an Obsidian fan).
+Back to the video at the beginning, after watching it I noticed a very interesting feature. I can't stop thinking of it and really wish to have something similar in other note-taking or PMK tools like Obsidian (yeah, I'm an Obsidian fan).
 
 ## The feature
 
@@ -34,4 +35,4 @@ Even if I managed to build up a tidy workspace, it's still very frustrating to s
 
 It's a shock to me how easy and intuitive it could be in Heptabase to create a workspace and focus on writing. I believe anybody with note-taking experience could learn something from Heptabase's design.
 
-Obsidian is still the best PKM tool to me, I will create a plugin to achieve a similar workflow in Obsidian, possibly by creating a special pane that can add and show notes in an accordion. Stay tuned for the updates.
+Obsidian is still the best PKM tool for me. I'm going to create a plugin to achieve a similar workflow in Obsidian, possibly by creating a special pane that can add and show notes in an accordion. Stay tuned for the updates.
