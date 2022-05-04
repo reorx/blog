@@ -12,11 +12,12 @@ params:
     favicon: favicon.ico
   label:
     icon: forge-60x60.png
-  DateFormat: "2006-02-01"
+  DateFormat: "2006-01-02"
 
   # theme params
+  DisableLanguageSwitch: true
   TocOpen: true
-  TocSide: left
+  TocSide: right
   EnableInstantClick: true
   EnableImageZoom: true
   ShowShareButtons: true

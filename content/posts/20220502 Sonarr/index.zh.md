@@ -4,7 +4,6 @@ slug: sonarr-anime-shows-download-automation
 date: 2022-05-02
 description: A complete guide to deploy and configure Sonarr + Jackett + FlareSolverr
   + qBittorrent for anime shows download automation.
-draft: true
 tags:
   - sonarr
   - qnap
@@ -16,7 +15,7 @@ cover:
 ShowToc: true
 ---
 
-作为一个懒人，我很少折腾 self hosted 系统，对于追番这种娱乐化的需求，更是有什么用什么将就度日。所以许多年来一直是用 Bilibili 观看新番，中途也尝试过 ebb.io 这类小众服务，但最后都因为连接不畅或数据滞后等原因放弃了。
+作为一个懒人，我很少折腾 self-hosted 服务，对于追番这种娱乐化的需求，更是有什么用什么将就度日。所以许多年来一直是用 Bilibili 观看新番，中途也尝试过 ebb.io 这类小众服务，但最后都因为连接不畅或数据滞后等原因放弃了。
 
 去年为了实现 Home Assistant 家电自动化 ([tweet](https://twitter.com/novoreorx/status/1450334462177263618))，我购买了一台 QNAP NAS，使家里有了 24 小时常驻的 Linux server 和 Docker host。年初由于 Bilibili 迟迟不上架《鬼滅之刃遊郭篇》，我又在 NAS 上安装了 Plex，将从 [dmhy](https://share.dmhy.org/) 手动下载的影片串流到电视上观看。最近又逢 4 月新番播出，想到家里的基础设施逐渐完备，便动起了搭建自动追番系统的心思。以下便是对这次尝试的记录和总结，希望能帮助有同样需求的人解决问题、节省时间。
 
