@@ -46,6 +46,13 @@ params:
     - name: gmail
       url: email
 
+menu:
+  main:
+    - name: Archives
+      url: archives
+    - name: Tags
+      url: tags
+
 languages:
   en:
     languageName: "English"
@@ -70,23 +77,7 @@ languages:
             I'm now working full-time as the co-founder of a SaaS product that refines the way to collect and ingest information. It's the first product I designed and built upon my own will. I'm excited to make it alive in the next 1 or 2 months.
 
         You can find me at the links below.
-    menu:
-      main:
-        - name: Archives
-          url: archives
-        - name: Tags
-          url: tags/
-  zh:
-    languageName: "Chinese"
-    homeInfoParams:
-      Title: 你好！
-      Content: 网站建设中🚧
-    menu:
-      main:
-        - name: 归档
-          url: archives
-        - name: 标签
-          url: tags/
+
 googleAnalytics: G-6STBHZSBCD
 disqusShortname: reorx
 

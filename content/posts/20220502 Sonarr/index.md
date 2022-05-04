@@ -13,6 +13,7 @@ cover:
   image: images/sonarr-diagram.png
   caption: Sonarr 和它的朋友们之间的系统关系图
 ShowToc: true
+language: zh
 ---
 
 作为一个懒人，我很少折腾 self-hosted 服务，对于追番这种娱乐化的需求，更是有什么用什么将就度日。所以许多年来一直是用 Bilibili 观看新番，中途也尝试过 ebb.io 这类小众服务，但最后都因为连接不畅或数据滞后等原因放弃了。
