@@ -12,10 +12,10 @@
     <lastBuildDate>Mon, 02 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://reorx.com/blog/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>使用 Sonarr 搭建自动化追番系统</title>
-      <link>https://reorx.com/blog/sonarr-anime-shows-download-automation/</link>
+      <link>https://reorx.com/blog/sonarr-anime-shows-download-automation-1/</link>
       <pubDate>Mon, 02 May 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://reorx.com/blog/sonarr-anime-shows-download-automation/</guid>
+      <guid>https://reorx.com/blog/sonarr-anime-shows-download-automation-1/</guid>
       <description>A complete guide to deploy and configure Sonarr &#43; Jackett &#43; FlareSolverr &#43; qBittorrent for anime shows download automation.</description>
     </item>
     
