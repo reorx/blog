@@ -14,7 +14,9 @@ cover:
 ShowToc: true
 language: zh
 socialLinks:
-  twitter: https://twitter.com/novoreorx/status/1522098490184454145?s=20&t=n-bemJ6_Mo4gf4OC8rxETg
+  twitter:
+    user: novoreorx
+    id: 1522098490184454145
 ---
 
 作为一个懒人，我很少折腾 self-hosted 服务，对于追番这种娱乐化的需求，更是有什么用什么将就度日。所以许多年来一直是用 Bilibili 观看新番，中途也尝试过 ebb.io 这类小众服务，但最后都因为连接不畅或数据滞后等原因放弃了。
@@ -381,11 +383,12 @@ docker compose up -d
 
 [LunaSea](https://www.lunasea.app/) 是一个 Sonarr 和 Usenet 生态圈的远程控制器，能让你在手机上查看 Sonarr / Radarr / Lidarr 的资源和放送时间表。
 
+{{<image-size-control height="600px" >}}
 ![](images/lunasea.jpeg)
-
+{{</image-size-control>}}
 ### Seedbox.io
 
-在得知我最近的折腾经过后，我的好朋友 [wzyboy](https://wzyboy.im/) 向我科普了一种名为 [Seedbox]([Seedbox - Wikipedia](https://en.wikipedia.org/wiki/Seedbox)) 的 hosted service，提供开箱即用的 BT 下载和家庭媒体服务器，并能带来以下几点好处：
+在得知我最近的折腾经过后，我的好朋友 [wzyboy](https://wzyboy.im/) 向我科普了一种名为 [Seedbox](https://en.wikipedia.org/wiki/Seedbox) 的 hosted service，提供开箱即用的 BT 下载和家庭媒体服务器，并能带来以下几点好处：
 
 - 免于折腾和维护诸多服务/服务器
 - 发扬 BT 分享精神的同时无需损耗自己的硬盘
