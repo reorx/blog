@@ -13,6 +13,8 @@ cover:
   caption: Sonarr 和它的朋友们之间的系统关系图
 ShowToc: true
 language: zh
+socialLinks:
+  twitter: https://twitter.com/novoreorx/status/1522098490184454145?s=20&t=n-bemJ6_Mo4gf4OC8rxETg
 ---
 
 作为一个懒人，我很少折腾 self-hosted 服务，对于追番这种娱乐化的需求，更是有什么用什么将就度日。所以许多年来一直是用 Bilibili 观看新番，中途也尝试过 ebb.io 这类小众服务，但最后都因为连接不畅或数据滞后等原因放弃了。
@@ -23,7 +25,7 @@ language: zh
 
 本着尽量不增加新的系统来解决问题的思想，我首先研究了 QNAP 的下载器 Download Station，发现它自带 RSS 订阅功能，在进行一些手动配置后，即可完成自动追番和下载。
 
-如果这一章节不感兴趣，你也可以直接跳到 [使用 Sonarr 和它的朋友们](#使用-sonarr-和它的朋友们)。
+如果对这一章节不感兴趣，你也可以直接跳到 [使用 Sonarr 和它的朋友们](#使用-sonarr-和它的朋友们)。
 
 ### 1. 找到番剧的 RSS URL
 
@@ -280,14 +282,14 @@ docker compose up -d
 打开 Tools » Options，将 Default Save Path 修改为 `/data/downloads`。这样做的目的是为了使 qBittorrnet 所记录的文件路径与 Sonarr 保持一致，以便不需要额外配置就能使 Sonarr 的重命名功能正常工作。若你不希望修改下载路径，或使用的是其他下载器，可以参考 [Remote Path Mappings](https://trash-guides.info/Sonarr/Sonarr-remote-path-mapping/) 来解决路径不一致的问题。
 ![](images/qbittorrent.png)
 
-在 Options 中切换到 BitTorrent 选项卡，将 Seeding Limits 下的 "then" 修改为 "Pause torrent"，这是为了避免 Sonarr 在删除种子时产生冲突。"When ratio reaches" 代表做种分享资源的比率。BT 协议提倡共享精神，既然从别人那里获取到自己想要的资源，理应做出回馈。如果你担心硬盘过度损耗，可以将比率降低。(*也可以修改为 0 关闭做种功能，如果克服了道德感的约束*)
+在 Options 中切换到 BitTorrent 选项卡，将 Seeding Limits 下的 "then" 修改为 "Pause torrent"，这是为了避免 Sonarr 在删除种子时产生冲突。"When ratio reaches" 代表做种分享资源的比率。BT 协议提倡共享精神，既然从别人那里获取到自己想要的资源，理应做出回馈。推荐将分享率设置为 2.0，即上传量为下载量的两倍之后停止分享。如果你担心硬盘过度损耗，可以将比率降低。(*也可以修改为 0 关闭做种功能，如果克服了道德感的约束*)
 ![](images/qbittorrent-3.png)
 
 #### Sonarr
 
 终于到了追番大计最核心的组件——Sonarr，但先不要急，在添加番剧前，还有一些设置要做。
 
-- Indexers
+1. Indexers
     - 将先前在 Jackett 中添加的 indexers 逐个对接到 Sonarr，使用 Torznab 协议。
         ![](images/sonarr-1.png)
     - Bangumi.moe 的配置展示，URL 和 API Key 都是从 Jackett 中复制过来。需要注意的是， Categories 是影视剧的分类，应该留空，而在 Anime Categories 中勾选所有与番剧相关的分类项。
@@ -296,18 +298,23 @@ docker compose up -d
             ![](images/jackett-2.png)
     - rarbg 的配置展示，由于 rarbg 是影视剧 indexer，我们需要在 Categories 中勾选分类项而将 Anime Categories 留空
         ![](images/sonarr-3.png)
-- Download Clients
+2. Download Clients
     - qBittorrent 配置展示。Host 最好填写 IP，使用 hostname 可能会失败。
         ![](images/sonarr-qbittorrent.png)
-- Media Management
+3. Profiles
+  
+    默认只有 English，需要添加一个中文的 Profile 以在添加番剧时设定语言。![](images/sonarr-profile.png)
+4. Media Management
+  
    这个设置关系到下载的文件能否被 Plex 或其他 media server 识别，但别被眼花缭乱的设置项吓到， 我们只需要关心下图红框圈起的部分。
     ![](images/sonarr-mediamanagement.png)
     - 首先打开 Rename Episodes 功能
     - 然后配置 Anime Episode Format 和 Season Folder Format，这代表番剧被重命名后的文件名格式和上级目录格式。你不用关心源文件的名称如何被 Sonarr 解析，你只用知道它自信并出色地完成了这项脏活，让我们可以使用变量定义想要的文件和目录名称。这里我使用的是 Plex 的 [TV Show Files](https://support.plex.tv/articles/naming-and-organizing-your-tv-show-files/) 格式，实现的结果如下: ![](images/finder.png)
     - 最后配置 Root Folders，它们在添加番剧的时候会用到，作为放置番剧的目录。你可以根据自己的需求设置多个，一般来说设置两个将影视剧和动画番剧分开存放即可。还记得我们在 `docker-compose.yaml` 中配置的目录映射吗？这里的目录 `/data/media/anime tv` 在 NAS 中对应的是 `AppData/sonarr/data/media/anime tv`，在 Plex 添加媒体库时不要忘了如何找到它。
-- Profiles
-    默认只有 English，需要添加一个中文的 Profile 以在添加番剧时设定语言。![](images/sonarr-profile.png)
-- Connect
+    - Optional: 文件重命名时，Sonarr 默认采取移动策略，这样会导致 BT 下载器无法继续对资源做种，为了避免这种情况，在 Media Management 页面打开 Advanced Settings，找到并打开 "Use Hardlinks instead of Copy"，这样既保留了下载资源的原始路径，又不会额外占用硬盘空间。
+
+5. Connect
+  
     实现自动化追剧的目的是为了不需要人工检查剧集的更新情况，因此通知是必不可少的。Connect 可以连接许多通知服务，让你第一时间知道剧集何时上线，资源何时发布，何时完成下载、可以观看。下面说明如何对接 Telegram 获取通知信息。
     - 在 Telegram 搜索机器人 `@BotFather`，按照提示创建一个新的机器人，获取 API Token。我的机器人名为 `@reorx_notify_bot`。 ![](images/sonarr-telegram-2.png)
     - 创建一个群组，将 bot 加入到群组中，请求接口 `https://api.telegram.org/bot<TOKEN>/getUpdates`, 取出返回结果中的 `result[0].channel_post.chat.id` 作为 chat id
@@ -378,7 +385,13 @@ docker compose up -d
 
 ### Seedbox.io
 
-在得知我最近的折腾后，我的好朋友 [wzyboy](https://wzyboy.im/) 向我推荐了 [seedbox.io](https://seedbox.io/), 它是一个专业的 BT 资源下载和家庭媒体服务器提供商。如果你不想自己花费功夫搭建这套设施，并且可以顺畅地访问位于荷兰的服务器，可以考虑购买 seedbox 的服务器，获得开箱即用的全套服务。
+在得知我最近的折腾经过后，我的好朋友 [wzyboy](https://wzyboy.im/) 向我科普了一种名为 [Seedbox]([Seedbox - Wikipedia](https://en.wikipedia.org/wiki/Seedbox)) 的 hosted service，提供开箱即用的 BT 下载和家庭媒体服务器，并能带来以下几点好处：
+
+- 免于折腾和维护诸多服务/服务器
+- 发扬 BT 分享精神的同时无需损耗自己的硬盘
+- 规避 P2P 下载资源的版权问题
+
+其中有一家服务商叫 seedbox.io, 它们的服务器包含本篇介绍的所有组件。如果你有兴趣的话，可以通过这个 [affiliate link]( https://panel.seedbox.io/aff.php?aff=1061) 注册和购买他们的服务。
 
 ![](images/seedbox-apps.png)
 
