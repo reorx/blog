@@ -1,6 +1,6 @@
 ---
 title: 使用 Sonarr 搭建自动化追番系统
-slug: sonarr-anime-shows-download-automation
+slug: sonarr-anime-shows-download-automation-1
 date: 2022-05-02
 description: A complete guide to deploy and configure Sonarr + Jackett + FlareSolverr
   + qBittorrent for anime shows download automation.
@@ -63,7 +63,7 @@ Download Station RSS 虽然解决了基本的温饱问题，但与真正的自�
 ### Sonarr
 
  > Sonarr is a PVR (Personal Video Recorder) for Usenet and BitTorrent users. It can monitor multiple RSS feeds for new episodes of your favorite shows and will grab, sort and rename them.
- 
+
 [Sonarr](https://wiki.servarr.com/sonarr) 是一个 PVR 系统，它可以监控多种信息源的剧集发布信息，对剧集进行自动下载、刮削和重命名。
 
 Sonarr 是 Sick Beard 的继任者，Sick Beard 基于 Python 开发，曾经是最著名的 PVR 系统，但后来逐渐式微，后续虽然有 Sick Gear 等 fork，但最终都没能满足人们日益增长的看片需求，最后被一群 C# 爱好者们开发出 Sonarr 给替代了。经过多年发展，Sonarr 的软件质量趋于成熟和稳定，成为构架自动化的家庭多媒体中心不可缺少的组件。
@@ -144,7 +144,7 @@ harrogath *         moby
 - [linuxserver/qbittorrent - Docker Image | Docker Hub](https://hub.docker.com/r/linuxserver/qbittorrent)
 - [flaresolverr/flaresolverr - Docker Image | Docker Hub](https://hub.docker.com/r/flaresolverr/flaresolverr)
 
-#### Hierarchy 
+#### Hierarchy
 
 Sonarr 和它的朋友们需要对 NAS 的存储进行读写，因此在运行服务之前，首先要理解并设计一个好用的目录结构。
 
