@@ -1,9 +1,9 @@
-title: Reorx's Forge
+title: Reorx’s Forge
 baseURL: 'https://reorx.com/'
 theme: PaperModX
 params:
   # basic
-  description: Reorx's Forge
+  description: Reorx’s Forge
   author: Reorx
   images:
     - cover.png
