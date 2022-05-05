@@ -1,6 +1,6 @@
 ---
 title: 使用 Sonarr 搭建自动化追番系统
-slug: sonarr-anime-shows-download-automation-1
+slug: sonarr-anime-shows-download-automation-2
 date: 2022-05-02
 description: A complete guide to deploy and configure Sonarr + Jackett + FlareSolverr
   + qBittorrent for anime shows download automation.
