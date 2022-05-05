@@ -5,10 +5,9 @@ date: 2022-05-02
 description: A complete guide to deploy and configure Sonarr + Jackett + FlareSolverr
   + qBittorrent for anime shows download automation.
 tags:
+  - digital-life
+  - nas
   - sonarr
-  - qnap
-  - docker
-  - plex
 cover:
   image: images/sonarr-diagram.png
   caption: Sonarr 和它的朋友们之间的系统关系图
