@@ -1,1 +1,86 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Tags on Reorx's Forge</title><link>https://reorx.com/tags/</link><description>Recent content in Tags on Reorx's Forge</description><image><url>https://reorx.com/cover.png</url><link>https://reorx.com/cover.png</link></image><generator>Hugo -- gohugo.io</generator><lastBuildDate>Mon, 02 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://reorx.com/tags/index.xml" rel="self" type="application/rss+xml"/><item><title>digital-life</title><link>https://reorx.com/tags/digital-life/</link><pubDate>Mon, 02 May 2022 00:00:00 +0000</pubDate><guid>https://reorx.com/tags/digital-life/</guid><description/></item><item><title>nas</title><link>https://reorx.com/tags/nas/</link><pubDate>Mon, 02 May 2022 00:00:00 +0000</pubDate><guid>https://reorx.com/tags/nas/</guid><description/></item><item><title>sonarr</title><link>https://reorx.com/tags/sonarr/</link><pubDate>Mon, 02 May 2022 00:00:00 +0000</pubDate><guid>https://reorx.com/tags/sonarr/</guid><description/></item><item><title>obsidian</title><link>https://reorx.com/tags/obsidian/</link><pubDate>Thu, 21 Apr 2022 00:00:00 +0000</pubDate><guid>https://reorx.com/tags/obsidian/</guid><description/></item><item><title>productivity</title><link>https://reorx.com/tags/productivity/</link><pubDate>Thu, 21 Apr 2022 00:00:00 +0000</pubDate><guid>https://reorx.com/tags/productivity/</guid><description/></item><item><title>heptabase</title><link>https://reorx.com/tags/heptabase/</link><pubDate>Tue, 19 Apr 2022 00:00:00 +0000</pubDate><guid>https://reorx.com/tags/heptabase/</guid><description/></item><item><title>note-taking</title><link>https://reorx.com/tags/note-taking/</link><pubDate>Tue, 19 Apr 2022 00:00:00 +0000</pubDate><guid>https://reorx.com/tags/note-taking/</guid><description/></item><item><title>ux</title><link>https://reorx.com/tags/ux/</link><pubDate>Tue, 19 Apr 2022 00:00:00 +0000</pubDate><guid>https://reorx.com/tags/ux/</guid><description/></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Tags on Reorx&#39;s Forge</title>
+    <link>https://reorx.com/tags/</link>
+    <description>Recent content in Tags on Reorx&#39;s Forge</description>
+    <image>
+      <url>https://reorx.com/cover.png</url>
+      <link>https://reorx.com/cover.png</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Mon, 02 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://reorx.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>digital-life</title>
+      <link>https://reorx.com/tags/digital-life/</link>
+      <pubDate>Mon, 02 May 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://reorx.com/tags/digital-life/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>nas</title>
+      <link>https://reorx.com/tags/nas/</link>
+      <pubDate>Mon, 02 May 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://reorx.com/tags/nas/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>sonarr</title>
+      <link>https://reorx.com/tags/sonarr/</link>
+      <pubDate>Mon, 02 May 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://reorx.com/tags/sonarr/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>obsidian</title>
+      <link>https://reorx.com/tags/obsidian/</link>
+      <pubDate>Thu, 21 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://reorx.com/tags/obsidian/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>productivity</title>
+      <link>https://reorx.com/tags/productivity/</link>
+      <pubDate>Thu, 21 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://reorx.com/tags/productivity/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>heptabase</title>
+      <link>https://reorx.com/tags/heptabase/</link>
+      <pubDate>Tue, 19 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://reorx.com/tags/heptabase/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>note-taking</title>
+      <link>https://reorx.com/tags/note-taking/</link>
+      <pubDate>Tue, 19 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://reorx.com/tags/note-taking/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ux</title>
+      <link>https://reorx.com/tags/ux/</link>
+      <pubDate>Tue, 19 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://reorx.com/tags/ux/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,1 +1,42 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Reorx's Forge</title><link>https://reorx.com/</link><description>Recent content on Reorx's Forge</description><image><url>https://reorx.com/cover.png</url><link>https://reorx.com/cover.png</link></image><generator>Hugo -- gohugo.io</generator><lastBuildDate>Mon, 02 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://reorx.com/index.xml" rel="self" type="application/rss+xml"/><item><title>使用 Sonarr 搭建自动化追番系统</title><link>https://reorx.com/blog/sonarr-anime-shows-download-automation/</link><pubDate>Mon, 02 May 2022 00:00:00 +0000</pubDate><guid>https://reorx.com/blog/sonarr-anime-shows-download-automation/</guid><description>A complete guide to deploy and configure Sonarr + Jackett + FlareSolverr + qBittorrent for anime shows download automation.</description></item><item><title>Switch open files quickly in Obsidian</title><link>https://reorx.com/blog/20220420-switch-open-files-quickly-in-obsidian/</link><pubDate>Thu, 21 Apr 2022 00:00:00 +0000</pubDate><guid>https://reorx.com/blog/20220420-switch-open-files-quickly-in-obsidian/</guid><description>Imagine a quick switcher with open files at the top.</description></item><item><title>A look into Heptabase's split writing experience</title><link>https://reorx.com/blog/heptabase-split-writing/</link><pubDate>Tue, 19 Apr 2022 00:00:00 +0000</pubDate><guid>https://reorx.com/blog/heptabase-split-writing/</guid><description>The amazing UX Heptabase creates to help reading, thinking, and writing with heavy context efficiently</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Reorx&#39;s Forge</title>
+    <link>https://reorx.com/</link>
+    <description>Recent content on Reorx&#39;s Forge</description>
+    <image>
+      <url>https://reorx.com/cover.png</url>
+      <link>https://reorx.com/cover.png</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Mon, 02 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://reorx.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>使用 Sonarr 搭建自动化追番系统</title>
+      <link>https://reorx.com/blog/sonarr-anime-shows-download-automation/</link>
+      <pubDate>Mon, 02 May 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://reorx.com/blog/sonarr-anime-shows-download-automation/</guid>
+      <description>A complete guide to deploy and configure Sonarr &#43; Jackett &#43; FlareSolverr &#43; qBittorrent for anime shows download automation.</description>
+    </item>
+    
+    <item>
+      <title>Switch open files quickly in Obsidian</title>
+      <link>https://reorx.com/blog/20220420-switch-open-files-quickly-in-obsidian/</link>
+      <pubDate>Thu, 21 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://reorx.com/blog/20220420-switch-open-files-quickly-in-obsidian/</guid>
+      <description>Imagine a quick switcher with open files at the top.</description>
+    </item>
+    
+    <item>
+      <title>A look into Heptabase&#39;s split writing experience</title>
+      <link>https://reorx.com/blog/heptabase-split-writing/</link>
+      <pubDate>Tue, 19 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://reorx.com/blog/heptabase-split-writing/</guid>
+      <description>The amazing UX Heptabase creates to help reading, thinking, and writing with heavy context efficiently</description>
+    </item>
+    
+    
+  </channel>
+</rss>
