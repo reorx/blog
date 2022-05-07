@@ -8,9 +8,8 @@ params:
   images:
     - cover.png
     - thumbnail.png
-  assets:
-    favicon: favicon.ico
-  label:
+  favicon: favicon.ico
+  logo:
     icon: forge-60x60.png
   DateFormat: "2006-01-02"
 
@@ -42,9 +41,16 @@ params:
     - name: steam
       url: "https://steamcommunity.com/id/novoreorx"
     - name: rss-simple
-      url: "index.xml"
+      url: "feed.xml"
     - name: gmail
       url: email
+
+
+# prefer feed.xml rather than index.xml
+outputFormats:
+  RSS:
+    mediatype: "application/rss"
+    baseName: "feed"
 
 menu:
   main:
