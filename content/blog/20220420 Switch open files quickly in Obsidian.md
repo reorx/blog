@@ -1,11 +1,12 @@
 ---
 title: Switch open files quickly in Obsidian
+slug: obsidian-switching-open-files-quickly
 date: 2022-04-21
 description: Imagine a quick switcher with open files at the top.
 tags:
-- obsidian
-- productivity
-comments: true
+  - obsidian
+  - productivity
+  - ux
 ---
 
 ## The problem

@@ -2,11 +2,12 @@
 title: A look into Heptabase's split writing experience
 slug: heptabase-split-writing
 date: 2022-04-19
-description: The amazing UX Heptabase creates to help reading, thinking, and writing with heavy context efficiently
+description: The amazing UX Heptabase creates to help reading, thinking, and writing
+  with heavy context efficiently
 tags:
-- heptabase 
-- note-taking
-- ux
+  - heptabase
+  - productivity
+  - ux
 ShowToc: false
 ---
 
