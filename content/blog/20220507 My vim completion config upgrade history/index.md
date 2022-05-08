@@ -8,6 +8,10 @@ tags:
 cover:
   image: images/vim-completion-2022@2.png
 ShowToc: true
+socialLinks:
+  twitter:
+    user: novoreorx
+    id: 1523250937405784066
 ---
 
 Vim 是我系统学习的第一个终端编辑器，从学生时代至今，我几乎每天都会使用到它（长时间写前端代码时除外）。
