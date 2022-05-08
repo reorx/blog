@@ -1,6 +1,7 @@
 title: Reorx’s Forge
 baseURL: 'https://reorx.com/'
 theme: PaperModX
+hasCJKLanguage: true
 params:
   # basic
   description: Reorx’s Forge
