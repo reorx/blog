@@ -98,7 +98,7 @@ Commit: [7a1442c2334673ac17162c101663e220ef43a3c8](https://github.com/reorx/dotf
 
 说回 ncm2，其实它也有许多瑕疵，印象中配置过程比 deoplete 还要痛苦，但当时已经是让 nvim 用上 LSP 的最好插件了。之后我对 JetBrains 和 VSCode 的使用频率变高，疏于对 nvim 插件的持续跟进，ncm2 于是一直服役到 2021 年。
 
-ncm2 出现后没过多久，[coc](https://github.com/neoclide/coc.nvim) 也诞生了，在 2019 年成为最受人关注的 vim 补全插件，国内也看到很多文章（似乎作者就是国内开发者）。当时我简单了解后因为它是 nodejs 实现的，就放弃了尝试的念头。开玩笑，jedi 这么一大坨 Python 就慢成这样，nodejs 岂不是更糟糕吗。没想到 coc 一直流行到现在，这似乎再次证明了一个论点，即易用和功能全面才是软件流行的第一因素，无论它的实现有多么不优雅、效率有多么低，只要是能用的、可接受的就行，用户在使用体验上得到满足后，对于小问题的容忍度是相当高的。
+ncm2 出现后没过多久，[coc](https://github.com/neoclide/coc.nvim) 也诞生了，在 2019 年成为最受人关注的 vim 补全插件，国内也看到很多文章（似乎作者就是国内开发者）。由于长期受 Webpack 和 Nodejs 技术栈的折磨，当我了解到 coc 是 Nodejs 实现的，就放弃了尝试的念头 [^2]。一想到 jedi 的缓慢，我实在没办法对同样大而全的 coc 抱有足够的信心。没想到 coc 一直流行到现在，这似乎再次证明了一个论点，即易用和功能全面才是软件流行的第一因素，无论它的实现有多么不优雅、效率有多么低，只要是能用的、可接受的就行，用户在使用体验上得到满足后，对于小问题的容忍度是相当高的。
 
 P.S. 从当年的笔记中找到了所参考的项目和文章：
 
@@ -109,7 +109,7 @@ P.S. 从当年的笔记中找到了所参考的项目和文章：
 - https://github.com/palantir/python-language-server
 
 [^1]: https://github.com/Shougo/deoplete.nvim/wiki/Completion-Sources
-
+[^2]: 其实 Nodejs 在服务端的性能不差，但 Webpack 和 Electron 给我造成的印象已经根深蒂固，使我看到 Nodejs 就会立刻联想到 slow and bloated.
 ## 2021
 
 2021 年的某一天，因为 ncm2 长期存在的一个小问题（现在已经忘了），我一气之下再次打开了 deoplete 的项目页面，惊喜地发现它已经完善了对 LSP 的支持，于是立刻就开始迁移，换回了我更欣赏且代码品质更胜一筹的 deoplete。
@@ -133,7 +133,7 @@ Commit: [cd044fcda603ad5b9ee16bd4d7d7873c9ade9a31](https://github.com/reorx/dotf
 这次变更除了换回 deoplete ，还去掉了陪伴多年的 supertab，在抄了一段看不懂的配置后，实现了我更为习惯的 tab 键触发补全的方式。
 ## 2022
 
-在咖啡馆结束了一天的主要工作后，看着好友 [@iwendellsun](https://github.com/xwjdsh) 流畅的 vim 操作，我问起了它的 nvim 自动补全配置，果然有许多我从未听过的东西。于是趁此机会赶紧向他请教，在他的指导下完成了 2022 年的配置升级。
+在咖啡馆结束了一天的主要工作后，看着好友 [@iwendellsun](https://github.com/xwjdsh) 流畅的 vim 操作，我问起了他的 nvim 自动补全配置，果然有许多我从未听过的东西。于是趁此机会赶紧向他请教，在他的指导下完成了 2022 年的配置升级。
 
 Commit: [3de43d030ca40b498911c6752a7396af38202fe6](https://github.com/reorx/dotfiles/commit/3de43d030ca40b498911c6752a7396af38202fe6)
 > **nvim: use nvim-cmp for completion**
@@ -163,7 +163,7 @@ Commit: [3de43d030ca40b498911c6752a7396af38202fe6](https://github.com/reorx/dotf
 3. 去掉了 ale 和 vim-lsp-ale。nvim-cmp 可以将 LSP client 返回的错误提示直接在行内显示，不需要再依赖 ALE 这个 linter 框架了。
 4. Last but not least, 这些插件的配置语法几乎都是用 Lua 写的，这让用了 10 年 Vimscript 的我感到极度陌生和恐慌。
 
-相比之前的变更，这是唯一一次生搬硬套而非全部理解的，我主要是想快速上车，免得被社区发展抛在了后面，现在实在没有太多精力可以悠闲地慢慢尝试。虽然有人指导免去了初次上手的痛苦，但可以预见的是，想要让这套插件和我的编程习惯完美契合，还有许多坑等着我去折腾呢。
+相比之前的变更，这是唯一一次生搬硬套而非全部理解的，我想快速上车，免得被社区发展抛在了后面，现在实在没有太多精力可以悠闲地慢慢尝试。虽然有人指导免去了初次上手的痛苦，但可以预见的是，想要让这套插件和我的编程习惯完美契合，还有许多坑等着我去折腾呢。
 
 **参考链接**:
 - [Setup | nvim-cmp](https://github.com/hrsh7th/nvim-cmp#setup)
