@@ -1,5 +1,6 @@
 ---
 title: 我的 Vim 自动补全配置变迁史
+url: the-history-of-my-vim-completion-config
 date: 2022-05-07
 description: 记录了从 2017 年至今，我的 Vim 自动补全配置的每次变更，从中窥见 Vim 生态发展的一角，也纪念这些曾经给我带来过便利，最终在技术发展中被轮替的插件
 tags:
