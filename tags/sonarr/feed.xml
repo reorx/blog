@@ -1,0 +1,469 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>sonarr on Reorx’s Forge</title><link>https://reorx.com/tags/sonarr/</link><description>Recent content in sonarr on Reorx’s Forge</description><image><url>https://reorx.com/forge-60x60.png</url><link>https://reorx.com/forge-60x60.png</link></image><generator>Hugo -- gohugo.io</generator><lastBuildDate>Mon, 02 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://reorx.com/tags/sonarr/feed.xml" rel="self" type="application/rss+xml"/><item><title>使用 Sonarr 搭建自动化追番系统</title><link>https://reorx.com/blog/track-and-download-shows-automatically-with-sonarr/</link><pubDate>Mon, 02 May 2022 00:00:00 +0000</pubDate><guid>https://reorx.com/blog/track-and-download-shows-automatically-with-sonarr/</guid><description>A complete guide to deploy and configure Sonarr + Jackett + FlareSolverr + qBittorrent to track and download anime shows automatically.</description><content:encoded><![CDATA[<p>作为一个懒人，我很少折腾 self-hosted 服务，对于追番这种娱乐化的需求，更是有什么用什么将就度日。所以许多年来一直是用 Bilibili 观看新番，中途也尝试过 ebb.io 这类小众服务，但最后都因为连接不畅或数据滞后等原因放弃了。</p>
+<p>去年为了实现 Home Assistant 家电自动化 (<a href="https://twitter.com/novoreorx/status/1450334462177263618">tweet</a>)，我购买了一台 QNAP NAS，使家里有了 24 小时常驻的 Linux server 和 Docker host。年初由于 Bilibili 迟迟不上架《鬼滅之刃遊郭篇》，我又在 NAS 上安装了 Plex，将从 <a href="https://share.dmhy.org/">dmhy</a> 手动下载的影片串流到电视上观看。最近又逢 4 月新番播出，想到家里的基础设施逐渐完备，便动起了搭建自动追番系统的心思。以下便是对这次尝试的记录和总结，希望能帮助有同样需求的人解决问题、节省时间。</p>
+<h2 id="使用-qnap-download-station">使用 QNAP Download Station</h2>
+<p>本着尽量不增加新的系统来解决问题的思想，我首先研究了 QNAP 的下载器 Download Station，发现它自带 RSS 订阅功能，在进行一些手动配置后，即可完成自动追番和下载。</p>
+<p>如果对这一章节不感兴趣，你也可以直接跳到 <a href="#%E4%BD%BF%E7%94%A8-sonarr-%E5%92%8C%E5%AE%83%E7%9A%84%E6%9C%8B%E5%8F%8B%E4%BB%AC">使用 Sonarr 和它的朋友们</a>。</p>
+<h3 id="1-找到番剧的-rss-url">1. 找到番剧的 RSS URL</h3>
+<p><a href="https://bangumi.moe/">Bangume Moe</a> 是我经常使用的资源站，它提供基于 tag 的 RSS 搜索功能，可以非常精确地定位到番剧在特定字幕组、语言、分辨率瞎的视频发布链接。</p>
+<ul>
+<li>首先在右上角的搜索框中输入想看的番剧名称，这里我使用「夏日重现」作为例子，可以看到下方自动匹配了 <code>Summertime Render</code> 这个 tag。
+<img loading="lazy" src="images/qnap-rss-anime-2.png" alt=""  />
+</li>
+<li>点击这个 tag，搜索结果中会出现许多不同字幕组发布的资源，我们选择其中一个字幕组「喵萌奶茶屋」的资源，在 Torrent Details 中，可以看到其标注的 tags，有 <code>喵萌奶茶屋</code>, <code>720p</code>, <code>chs-jpn</code> 等，妥善使用这些 tags 能够帮助我们缩小搜索结果范围
+<img loading="lazy" src="images/qnap-rss-anime-1.png" alt=""  />
+</li>
+<li>将 <code>喵萌奶茶屋</code>, <code>chs-jpn</code> 添加到 Selected tags 中，现在我们一共有 3 个 tags，搜索结果缩短到了 2 条，已经非常清晰了，点击右上角的 RSS 图标即可得到用于订阅的链接。（美中不足的是，喵萌奶茶屋将 1080p 的资源错标为了 <code>720p</code>，不过这点我们可以在后面的下载管理器中解决）
+<img loading="lazy" src="images/qnap-rss-anime.png" alt=""  />
+</li>
+</ul>
+<h3 id="2-将-rss-url-添加到下载器">2. 将 RSS URL 添加到下载器</h3>
+<p>RSS 订阅是许多下载管理器的通用功能，如 Synology、qBittorrent 也都具有，使用方式与 Download Station 大同小异。</p>
+<ul>
+<li>打开 RSS Download Manager，将上一步得到的订阅链接复制到 Feed URL 中。Label 填写番剧名称，两个 Location 根据自己 NAS 的目录结构选择。点击 Apply 添加。
+<img loading="lazy" src="images/qnap-rss-anime-filter.png" alt=""  />
+</li>
+<li>添加完成后，打开 Filter Settings，它可以用于进一步过滤 RSS 返回的结果，避免下载不需要的资源。之前在进行资源搜索时，我们没能通过 tag 过滤掉 720p 的结果，在 Filter Settings 中，我们选择 1080p，这样 720p 就被忽略了。
+<img loading="lazy" src="images/qnap-rss-anime-filter-1.png" alt=""  />
+</li>
+<li>回到主界面，刷新添加的 RSS，可以看到两条结果中只有 1080p 被加入到下载列表。Status 为 Finished 代表下载完成，New 代表新添加到 RSS，但不在下载列表中。</li>
+</ul>
+<h3 id="小结">小结</h3>
+<p><strong>Pros</strong></p>
+<ul>
+<li>无需配置和增加新系统</li>
+<li>操作过程透明清晰，可控性强</li>
+</ul>
+<p><strong>Cons</strong></p>
+<ul>
+<li>步骤较为繁琐，需要在多个服务之间切换</li>
+<li>下载的文件因为不符合 Plex 的格式需求，需要手动重命名才能在 Plex 上观看。但如果你使用 DLNA 这类基于文件系统定位视频的方式，倒是可以忽略这个缺点。</li>
+</ul>
+<h2 id="使用-sonarr-和它的朋友们">使用 Sonarr 和它的朋友们</h2>
+<p>Download Station RSS 虽然解决了基本的温饱问题，但与真正的自动化之间显然还有很大差距，如果你想充分利用 NAS 的功能，在家庭多媒体设施上更进一步，请继续向下阅读，走进 Sonarr 和它的朋友们的世界。</p>
+<h3 id="sonarr">Sonarr</h3>
+<blockquote>
+<p>Sonarr is a PVR (Personal Video Recorder) for Usenet and BitTorrent users. It can monitor multiple RSS feeds for new episodes of your favorite shows and will grab, sort and rename them.</p>
+</blockquote>
+<p><a href="https://wiki.servarr.com/sonarr">Sonarr</a> 是一个 PVR 系统，它可以监控多种信息源的剧集发布信息，对剧集进行自动下载、刮削和重命名。</p>
+<p>Sonarr 是 Sick Beard 的继任者，Sick Beard 基于 Python 开发，曾经是最著名的 PVR 系统，但后来逐渐式微，后续虽然有 Sick Gear 等 fork，但最终都没能满足人们日益增长的看片需求，最后被一群 C# 爱好者们开发出 Sonarr 给替代了。经过多年发展，Sonarr 的软件质量趋于成熟和稳定，成为构架自动化的家庭多媒体中心不可缺少的组件。</p>
+<p>Sonarr 一开始就以多系统低耦合的方式进行设计，这大大降低了代码的复杂度，使其更易于维护，也为其繁盛的社区发展提供了基石。为了满足不同的用户需求，Sonarr 的作者们开发一系列以 <code>rr</code> 或其他双字母结尾的工具，以至于这种命名方式成为了 Sonarr 生态圈的一个标识和事实标准。</p>
+<h3 id="jackett">Jackett</h3>
+<blockquote>
+<p>Jackett works as a proxy server: it translates queries from apps into tracker-site-specific http queries, parses the html or json response, and then sends results back to the requesting software.</p>
+</blockquote>
+<p><a href="https://github.com/Jackett/Jackett">Jackett</a> 是一个代理，用于将 Sonarr 等系统对剧集信息的查询请求转译成各种 torrent tracker/indexer （即资源发布站）所支持的请求。Jackett 的产生是 Sonarr 社区架构合理性的一个体现，它接管了适配不同 indexer 接口的脏活累活，使 Sonarr 可以专注在任务调度和剧集管理上。</p>
+<p>Jackett 既然被用作资源查询的网关，实现缓存功能就顺理成章了，这样一方面可以应对 Sonarr 频繁的查询需求，另一方面也减少了 indexer 站点的负载量，实现了双赢。因此虽然它不是一个必须的组件，但我强烈建议每个使用 Sonarr 的用户都安装它。</p>
+<h3 id="flaresolverr">FlareSolverr</h3>
+<blockquote>
+<p>FlareSolverr is a proxy server to bypass Cloudflare and DDoS-GUARD protection.</p>
+</blockquote>
+<p><a href="https://github.com/FlareSolverr/FlareSolverr">FlareSolverr</a> 也是一个代理，它帮助 Jackett 解决向 indexer 的请求能否成功的问题。一些 indexer 为了保护自己免于 DDoS 攻击或减少爬虫请求，会使用 Cloudflare 或一些其他的安全防护服务，如果不做处理，直接请求很可能因触发人机验证而失败。FlareSolverr 就是为解决这类问题诞生的。</p>
+<p>在 Jackett 中添加新的 indexer 时，会根据站点情况提示是否需要接入 FlareSolverr 以绕过站点的保护措施。</p>
+<h3 id="qbittorrent">qBittorrent</h3>
+<p>大部分影视资源都使用 BT 协议进行点对点传输，因此我们也需要一个 BT 下载器，qBittorrent 就是一个很好的选择，它的功能非常全面，且与 Sonarr 有很好的接入支持。如果你已经运行了其他下载器如 Aria2，甚至 QNAP/Synology 自带的 Download Station，那么你也可以参考 <a href="https://wiki.servarr.com/sonarr/supported#downloadclient">Sonarr 支持的下载器列表</a>，尝试进行配置。（我并没有成功使 Sonarr 和 QNAP Download Station 协同工作起来）</p>
+<h3 id="部署说明">部署说明</h3>
+<p>各个组件介绍完毕，现在让我们进入正题，了解如何配置和部署整个 Sonarr 服务组。</p>
+<p>Sonarr 现代化地提供 Docker 镜像的部署方式，因此这个章节将会围绕 Docker 相关的技术进行说明。虽然 <a href="https://www.qnapclub.eu/en/qpkg/652">Qnapclub</a> 也有 Sonarr 的安装包，但经过一番糟心的尝试，最终我只得出一个结论，那就是以后部署任何服务，能 Docker 就尽量 Docker 吧。</p>
+<p><details >
+  <summary markdown="span">A failed attempt to install Sonarr by qpkg</summary>
+  <ul>
+<li>error after install: <code>MediaInfo Library could not be loaded libmediainfo.so.0 assembly:&lt;unknown assembly&gt; type:&lt;unknown type&gt; member:(null)</code></li>
+<li>dependencies
+<ul>
+<li><a href="https://www.qnapclub.eu/en/qpkg/193">Qmono</a>: the package is crazily 3GB in size</li>
+<li><a href="https://www.qnapclub.eu/en/qpkg/712">MediaInfoCLI</a>
+<ul>
+<li><a href="https://forum.qnap.com/viewtopic.php?t=147702">https://forum.qnap.com/viewtopic.php?t=147702</a></li>
+<li>this is not useful at all</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+</details></p>
+
+<p>我们的部署方案的基本原理是在自己的电脑上通过 Docker 和 Docker compose CLI 对远端 NAS 上的 Docker host 进行操作。这要求读者具备基础的 Docker 相关的知识。</p>
+<p>QNAP/Synology 等 NAS 系统提供的 Docker host 与标准实现基本没有差异，因此我们可以直接使用 Docker 官方软件包提供的命令行工具。你也可以使用 NAS 提供的图形化界面，但一则那样在部署多个服务时非常不便，二则如果你了解了如何使用 Docker compose 部署，自然也可以反推到图形化界面的操作方式上。</p>
+<h4 id="docker-context">Docker context</h4>
+<p>为了与本地的 Docker host 区分开，我们要为 NAS 上的 Docker host 创建一个新的 <a href="https://docs.docker.com/engine/context/working-with-contexts/">context</a>。</p>
+<blockquote>
+<p><code>harrogath</code> 是我的 NAS 的 hostname，可以使用 IP 代替</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># 创建 context</span>
+docker context create harrogath
+
+<span class="c1"># 更新 context 的配置信息</span>
+docker context update harrogath --docker <span class="s2">&#34;host=tcp://harrogath:2376,ca=</span><span class="nv">$HOME</span><span class="s2">/.docker/ca.pem,cert=</span><span class="nv">$HOME</span><span class="s2">/.docker/cert.pem,key=</span><span class="nv">$HOME</span><span class="s2">/.docker/key.pem&#34;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>QNAP 的 Docker 需要通过证书来访问，因此要在 Container Station 的设置中下载证书。
+<img loading="lazy" src="images/qnap-docker-certs.png" alt=""  />
+</p>
+<p>完成 context 创建后，通过 <code>use</code> 命令切换到 context，之后所有的 Docker 命令都是与 NAS Docker 进行通讯</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="l">docker context use harrogath</span><span class="w">
+</span><span class="w"></span><span class="l">docker context ls</span><span class="w">
+</span><span class="w"></span><span class="l">NAME                TYPE                DESCRIPTION                               DOCKER ENDPOINT                               KUBERNETES ENDPOINT   ORCHESTRATOR</span><span class="w">
+</span><span class="w"></span><span class="l">default             moby                Current DOCKER_HOST based configuration   unix:///var/run/docker.sock                                         swarm</span><span class="w">
+</span><span class="w"></span><span class="l">harrogath *         moby</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><h4 id="images">Images</h4>
+<p>目前主要有两个组织在维护 Sonarr 及相关服务的 Docker 镜像，<a href="https://www.linuxserver.io/">linuxserver.io</a> 和 <a href="https://hotio.dev/">hotio.dev</a>, 我选择前者作为本次部署的镜像源。下面是使用到的镜像列表，可以在其页面上查看镜像的使用说明。</p>
+<ul>
+<li><a href="https://hub.docker.com/r/linuxserver/sonarr">linuxserver/sonarr - Docker Image | Docker Hub</a></li>
+<li><a href="https://hub.docker.com/r/linuxserver/jackett">linuxserver/jackett - Docker Image | Docker Hub</a></li>
+<li><a href="https://hub.docker.com/r/linuxserver/qbittorrent">linuxserver/qbittorrent - Docker Image | Docker Hub</a></li>
+<li><a href="https://hub.docker.com/r/flaresolverr/flaresolverr">flaresolverr/flaresolverr - Docker Image | Docker Hub</a></li>
+</ul>
+<h4 id="hierarchy">Hierarchy</h4>
+<p>Sonarr 和它的朋友们需要对 NAS 的存储进行读写，因此在运行服务之前，首先要理解并设计一个好用的目录结构。</p>
+<p>我们需要在 NAS 上创建一个 AppData 目录，作为容纳所有服务产生的文件的根目录。AppData 所在的 Volume 建议选择适合存放大量媒体数据的精简卷 (Thin Volume)。</p>
+<pre tabindex="0"><code>AppData
+├── jackett
+│   ├── config
+│   └── downloads
+├── qbittorrent
+│   └── config
+└── sonarr
+    ├── config
+    ├── downloads
+    ├── media
+    ├── torrents
+    └── usenet
+</code></pre><p>在 AppData 之下，依次为 sonarr, jackett, qbittorrent 创建目录，每个目录下必须有 <code>config</code> 子目录，用于存放配置文件。flaresolverr 由于是纯网络代理服务不需要对应目录存在。</p>
+<p>下面对各个服务的 NAS 目录与容器内目录的映射关系进行说明</p>
+<blockquote>
+<p>表示为 <code>NAS Directory -&gt; Container Directory</code></p>
+</blockquote>
+<ul>
+<li><strong>sonarr</strong>
+<ul>
+<li><code>sonarr/config -&gt; /config</code>: 配置文件</li>
+<li><code>sonarr -&gt; /data</code>: 数据文件，可在 Sonarr 管理界面向下创建子目录</li>
+</ul>
+</li>
+<li><strong>qbittorrent</strong>
+<ul>
+<li><code>qbittorrent/config -&gt; /config</code>: 配置文件</li>
+<li><code>sonarr -&gt; /data</code>: 数据文件，与 sonarr 保持一致，以便 sonarr 在重命名或移动文件时可以直接使用 qbittorrent 返回的文件路径</li>
+</ul>
+</li>
+<li><strong>jackett</strong>
+<ul>
+<li><code>jackett/config -&gt; /config</code>: 配置文件</li>
+<li><code>jackett/downloads -&gt; /downloads</code>: 默认种子文件下载路径</li>
+</ul>
+</li>
+</ul>
+<h4 id="compose-file">Compose file</h4>
+<p>以我正在使用的 <code>docker-compose.yml</code> 文件作为示例，你可以复制下来修改自己的版本，只需要将 <code>/share/CACHEDEV2_DATA/Misc/AppData</code> 替换为自己在 NAS 上创建的 <code>AppData</code> 路径即可。</p>
+<p>端口的配置需要额外注意，这份配置中我尽量保持各服务默认配置端口不变，若与已有服务冲突，修改到未被占用的端口即可。例如 QNAP 自带的 Download Station 已占用 6881 端口，因此我将 qbittorrent 修改到了 16881 端口。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;3&#39;</span><span class="w">
+</span><span class="w"></span><span class="nt">services</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">sonarr</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">linuxserver/sonarr</span><span class="w">
+</span><span class="w">    </span><span class="nt">ports</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span>- <span class="m">8989</span><span class="p">:</span><span class="m">8989</span><span class="w">
+</span><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span>- <span class="l">/share/CACHEDEV2_DATA/Misc/AppData/sonarr/config:/config</span><span class="w">
+</span><span class="w">      </span>- <span class="l">/share/CACHEDEV2_DATA/Misc/AppData/sonarr:/data</span><span class="w">
+</span><span class="w">      </span>- <span class="l">/etc/localtime:/etc/localtime:ro</span><span class="w">
+</span><span class="w">    </span><span class="nt">environment</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span>- <span class="l">PUID=1000</span><span class="w">
+</span><span class="w">      </span>- <span class="l">PGID=1000</span><span class="w">
+</span><span class="w">      </span>- <span class="l">TZ=Asia/Shanghai</span><span class="w">
+</span><span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l">unless-stopped</span><span class="w">
+</span><span class="w">  </span><span class="nt">jackett</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">linuxserver/jackett</span><span class="w">
+</span><span class="w">    </span><span class="nt">ports</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span>- <span class="m">9117</span><span class="p">:</span><span class="m">9117</span><span class="w">
+</span><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span>- <span class="l">/share/CACHEDEV2_DATA/Misc/AppData/jackett/config:/config</span><span class="w">
+</span><span class="w">      </span>- <span class="l">/share/CACHEDEV2_DATA/Misc/AppData/jackett/downloads:/downloads</span><span class="w">
+</span><span class="w">    </span><span class="nt">environment</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span>- <span class="l">PUID=1000</span><span class="w">
+</span><span class="w">      </span>- <span class="l">PGID=1000</span><span class="w">
+</span><span class="w">      </span>- <span class="l">TZ=Asia/Shanghai</span><span class="w">
+</span><span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l">unless-stopped</span><span class="w">
+</span><span class="w">  </span><span class="nt">qbittorrent</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">linuxserver/qbittorrent</span><span class="w">
+</span><span class="w">    </span><span class="nt">environment</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span>- <span class="l">PUID=1000</span><span class="w">
+</span><span class="w">      </span>- <span class="l">PGID=1000</span><span class="w">
+</span><span class="w">      </span>- <span class="l">TZ=Asia/Shanghai</span><span class="w">
+</span><span class="w">      </span>- <span class="l">WEBUI_PORT=8080</span><span class="w">
+</span><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span>- <span class="l">/share/CACHEDEV2_DATA/Misc/AppData/qbittorrent/config:/config</span><span class="w">
+</span><span class="w">      </span>- <span class="l">/share/CACHEDEV2_DATA/Misc/AppData/sonarr:/data</span><span class="w">
+</span><span class="w">    </span><span class="nt">ports</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span>- <span class="m">8080</span><span class="p">:</span><span class="m">8080</span><span class="w">
+</span><span class="w">      </span>- <span class="m">16881</span><span class="p">:</span><span class="m">6881</span><span class="w">
+</span><span class="w">      </span>- <span class="m">16881</span><span class="p">:</span><span class="m">6881</span><span class="l">/udp</span><span class="w">
+</span><span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l">unless-stopped</span><span class="w">
+</span><span class="w">  </span><span class="nt">flaresolverr</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">flaresolverr/flaresolverr</span><span class="w">
+</span><span class="w">    </span><span class="nt">environment</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span>- <span class="l">LOG_LEVEL=info</span><span class="w">
+</span><span class="w">      </span>- <span class="l">LOG_HTML=false</span><span class="w">
+</span><span class="w">      </span>- <span class="l">CAPTCHA_SOLVER=${CAPTCHA_SOLVER:-none}</span><span class="w">
+</span><span class="w">      </span>- <span class="l">TZ=Asia/Shanghai</span><span class="w">
+</span><span class="w">    </span><span class="nt">ports</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span>- <span class="m">8191</span><span class="p">:</span><span class="m">8191</span><span class="w">
+</span><span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l">unless-stopped</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><h4 id="run">Run</h4>
+<p>一切准备就绪，执行以下命令:</p>
+<pre tabindex="0"><code>docker compose up
+</code></pre><p>这会启动所有服务并 attach 到终端输出日志，方便查看服务的运行日志。等确认所有服务稳定运行后，加上 <code>-d</code> 参数使其运行在后台。</p>
+<pre tabindex="0"><code>docker compose up -d
+</code></pre><h3 id="使用说明">使用说明</h3>
+<p>下面对各个服务的 Web UI 的使用方法进行说明，以我的 NAS hostname  <code>harrogath</code> 为例展示服务的访问地址。</p>
+<h4 id="jackett-1">Jackett</h4>
+<p>打开 <code>http://harrogath:9117</code>, Jackett 的界面展示如下:</p>
+<p><img loading="lazy" src="images/jackett.png" alt=""  />
+</p>
+<p>使用方式非常简单，Jackett 已经将这个世界上绝大部分 indexer 都内置了，只需要点击 Add indexer 搜索并添加即可。除了部分有访问限制的 indexer 需要配置外，基本上都可以一路点击确认完成添加。之后在 Sonarr 中对接时，需要复制订阅 URL 和 API key，参照截图中所示即可。</p>
+<p>我目前使用了 4 个 indexer，其中 Bangumi Moe 和 dmhy 用于下载动画番剧，EZTV 和 RARBG 用于下载美剧。</p>
+<p>为了使 FlareSolverr 发挥作用，我们还需要将它的 URL 填在最下方的配置中，然后点击 Apply server settings 保存生效。
+<img loading="lazy" src="images/jackett-1.png" alt=""  />
+</p>
+<h4 id="qbittorrent-1">qBittorrent</h4>
+<p>打开 <code>http://harrogath:8080</code>，使用默认用户名密码 <code>admin:adminadmin</code> 登录。</p>
+<p>打开 Tools » Options，将 Default Save Path 修改为 <code>/data/downloads</code>。这样做的目的是为了使 qBittorrnet 所记录的文件路径与 Sonarr 保持一致，以便不需要额外配置就能使 Sonarr 的重命名功能正常工作。若你不希望修改下载路径，或使用的是其他下载器，可以参考 <a href="https://trash-guides.info/Sonarr/Sonarr-remote-path-mapping/">Remote Path Mappings</a> 来解决路径不一致的问题。
+<img loading="lazy" src="images/qbittorrent.png" alt=""  />
+</p>
+<p>在 Options 中切换到 BitTorrent 选项卡，将 Seeding Limits 下的 &ldquo;then&rdquo; 修改为 &ldquo;Pause torrent&rdquo;，这是为了避免 Sonarr 在删除种子时产生冲突。&ldquo;When ratio reaches&rdquo; 代表做种分享资源的比率。BT 协议提倡共享精神，既然从别人那里获取到自己想要的资源，理应做出回馈。推荐将分享率设置为 2.0，即上传量为下载量的两倍之后停止分享。如果你担心硬盘过度损耗，可以将比率降低。(<em>也可以修改为 0 关闭做种功能，如果克服了道德感的约束</em>)
+<img loading="lazy" src="images/qbittorrent-3.png" alt=""  />
+</p>
+<h4 id="sonarr-1">Sonarr</h4>
+<p>终于到了追番大计最核心的组件——Sonarr，但先不要急，在添加番剧前，还有一些设置要做。</p>
+<ol>
+<li>
+<p>Indexers</p>
+<ul>
+<li>将先前在 Jackett 中添加的 indexers 逐个对接到 Sonarr，使用 Torznab 协议。
+<img loading="lazy" src="images/sonarr-1.png" alt=""  />
+</li>
+<li>Bangumi.moe 的配置展示，URL 和 API Key 都是从 Jackett 中复制过来。需要注意的是， Categories 是影视剧的分类，应该留空，而在 Anime Categories 中勾选所有与番剧相关的分类项。
+<img loading="lazy" src="images/sonarr-2.png" alt=""  />
+
+<ul>
+<li>若不确定自己要搜索在资源属于哪个分类项，可在 Jackett 中使用 Manual Search 来确认
+<img loading="lazy" src="images/jackett-2.png" alt=""  />
+</li>
+</ul>
+</li>
+<li>rarbg 的配置展示，由于 rarbg 是影视剧 indexer，我们需要在 Categories 中勾选分类项而将 Anime Categories 留空
+<img loading="lazy" src="images/sonarr-3.png" alt=""  />
+</li>
+</ul>
+</li>
+<li>
+<p>Download Clients</p>
+<ul>
+<li>qBittorrent 配置展示。Host 最好填写 IP，使用 hostname 可能会失败。
+<img loading="lazy" src="images/sonarr-qbittorrent.png" alt=""  />
+</li>
+</ul>
+</li>
+<li>
+<p>Profiles</p>
+<p>默认只有 English，需要添加一个中文的 Profile 以在添加番剧时设定语言。<img loading="lazy" src="images/sonarr-profile.png" alt=""  />
+</p>
+</li>
+<li>
+<p>Media Management</p>
+<p>这个设置关系到下载的文件能否被 Plex 或其他 media server 识别，但别被眼花缭乱的设置项吓到， 我们只需要关心下图红框圈起的部分。
+<img loading="lazy" src="images/sonarr-mediamanagement.png" alt=""  />
+</p>
+<ul>
+<li>首先打开 Rename Episodes 功能</li>
+<li>然后配置 Anime Episode Format 和 Season Folder Format，这代表番剧被重命名后的文件名格式和上级目录格式。你不用关心源文件的名称如何被 Sonarr 解析，你只用知道它自信并出色地完成了这项脏活，让我们可以使用变量定义想要的文件和目录名称。这里我使用的是 Plex 的 <a href="https://support.plex.tv/articles/naming-and-organizing-your-tv-show-files/">TV Show Files</a> 格式，实现的结果如下: <img loading="lazy" src="images/finder.png" alt=""  />
+</li>
+<li>最后配置 Root Folders，它们在添加番剧的时候会用到，作为放置番剧的目录。你可以根据自己的需求设置多个，一般来说设置两个将影视剧和动画番剧分开存放即可。还记得我们在 <code>docker-compose.yaml</code> 中配置的目录映射吗？这里的目录 <code>/data/media/anime tv</code> 在 NAS 中对应的是 <code>AppData/sonarr/data/media/anime tv</code>，在 Plex 添加媒体库时不要忘了如何找到它。</li>
+<li>Optional: 文件重命名时，Sonarr 默认采取移动策略，这样会导致 BT 下载器无法继续对资源做种，为了避免这种情况，在 Media Management 页面打开 Advanced Settings，找到并打开 &ldquo;Use Hardlinks instead of Copy&rdquo;，这样既保留了下载资源的原始路径，又不会额外占用硬盘空间。</li>
+</ul>
+</li>
+<li>
+<p>Connect</p>
+<p>实现自动化追剧的目的是为了不需要人工检查剧集的更新情况，因此通知是必不可少的。Connect 可以连接许多通知服务，让你第一时间知道剧集何时上线，资源何时发布，何时完成下载、可以观看。下面说明如何对接 Telegram 获取通知信息。</p>
+<ul>
+<li>
+<p>在 Telegram 搜索机器人 <code>@BotFather</code>，按照提示创建一个新的机器人，获取 API Token。我的机器人名为 <code>@reorx_notify_bot</code>。 <img loading="lazy" src="images/sonarr-telegram-2.png" alt=""  />
+</p>
+</li>
+<li>
+<p>创建一个群组，将 bot 加入到群组中，请求接口 <code>https://api.telegram.org/bot&lt;TOKEN&gt;/getUpdates</code>, 取出返回结果中的 <code>result[0].channel_post.chat.id</code> 作为 chat id</p>
+<blockquote>
+<p>方法来自 <a href="https://stackoverflow.com/a/61215414/596206">How to obtain Telegram chat_id for a specific user?</a></p>
+</blockquote>
+</li>
+<li>
+<p>在 Sonarr 中添加 Telegram connection，勾选自己关心的通知类型，一般至少会选择 On Download，代表新剧集下载完成的时间。
+<img loading="lazy" src="images/sonarr-telegram.png" alt=""  />
+</p>
+</li>
+<li>
+<p>配置好后，就可以通过 Telegram 第一时间掌握番剧的更新情况了。 <img loading="lazy" src="images/sonarr-telegram-1.png" alt=""  />
+</p>
+</li>
+</ul>
+</li>
+</ol>
+<h4 id="开始追剧">开始追剧</h4>
+<p>配置完成，现在可以开始追剧了。下面以「盾之勇者成名录 第二季」为例说明在 Sonarr 添加番剧的过程。</p>
+<p>打开 <a href="https://thetvdb.com/">TheTVDB.com</a>, 搜索到你想要追踪的番剧的页面 <a href="https://thetvdb.com/series/the-rising-of-the-shield-hero">The Rising of the Shield Hero</a>，获取 URL 中的最后一段 <code>the-rising-of-the-shield-hero</code> 作为在 Sonarr 搜索关键词。</p>
+<p>打开 Sonarr，在左上角的 Search 框中输入 <code>the-rising-of-the-shield-hero</code>，点击搜索结果，进入添加番剧的界面。</p>
+<p><img loading="lazy" src="images/sonarr-6.png" alt=""  />
+</p>
+<ol>
+<li>Root Folder: 选择先前在 Media Management 中设置的 <code>anime tv</code></li>
+<li>Monitor: 由于我们只想看最近的第二季，因此选择 Only Latest Season</li>
+<li>Quality Profile: 选择 HD-1080p 或其他你需要的格式/分辨率</li>
+<li>Language Profile: 选择 Chinese</li>
+<li>Series Type: 选择 Anime，这里对应的是添加 Indexer 时的 Anime Categories 选项，告诉 Sonarr 从 Indexer 的 Anime Categories 中搜索资源。如果使用默认的 Standard（对应 Indexer 的 Categories），将会导致无法搜索到资源。</li>
+<li>Season Folder: 勾选，为了对应 Plex 要求的目录结构</li>
+<li>Start search for missing episodes: 勾选，这会使 Sonarr 在添加番剧后立刻根据 Monitor 所设置的条件开始搜索资源。也可以在添加完成后在详情页手动点击触发。</li>
+</ol>
+<p>完成添加后，点击番剧进入详情页。</p>
+<p><img loading="lazy" src="images/sonarr-7.png" alt=""  />
+</p>
+<ol>
+<li>点击放大镜图标对其所在的 Season 进行剧集搜索。</li>
+<li>Status 列的图标说明
+<ul>
+<li>🕓: 尚未播出，不会进行监控</li>
+<li>⚠️: 已播出，硬盘中还没有资源，正在进行监控</li>
+<li>☁️ 或进度条: 已开始下载</li>
+</ul>
+</li>
+<li>书签符号有填充代表该季处于正在监控状态，无填充代表未监控，可以点击手动设置为监控</li>
+</ol>
+<p>在 Sonarr 首页可以看到各个番剧的追踪状态，蓝色代表标记追踪的剧集都已下载完成，红色代表有缺失，正在持续监控中。
+<img loading="lazy" src="images/sonarr-5.png" alt=""  />
+</p>
+<p>下载了一些资源后，我们打开 Plex，将 <code>anime tv</code> 对应的路径添加到「动画」Library 中，Plex 就会开始自动扫描文件、刮削元数据、下载中文字幕了。</p>
+<p><img loading="lazy" src="images/plex.png" alt=""  />
+</p>
+<p>大功告成，在 Plex 上愉快看番吧☺️。</p>
+<p><img loading="lazy" src="images/plex-1.png" alt=""  />
+</p>
+<h2 id="番外">番外</h2>
+<h3 id="sonarr-的其他朋友们">Sonarr 的其他朋友们</h3>
+<ul>
+<li><a href="https://radarr.video/">Radarr</a>
+Radarr 是 Sonarr 的兄弟项目，Sonarr 专精于追剧，Radarr 专精于追踪电影</li>
+<li><a href="https://www.bazarr.media/">Bazarr</a>
+Bazarr 用于自动下载字幕文件，由于 Plex 本身具有这个功能，以及大部分动漫资源都有内置字幕，因此不是特别有必要部署</li>
+<li><a href="https://lidarr.audio/">Lidarr</a>
+Lidarr 是音乐专辑的追踪和下载器，适用于喜欢收藏本地音乐文件的用户</li>
+<li><a href="https://readarr.com/">Readarr</a>
+Readarr 是电子书的追踪和下载器。我看书不多，偶尔需要看的书一般从 zlibrary 下载，Calibre 足够满足我的管理需求。</li>
+</ul>
+<h3 id="lunasea">LunaSea</h3>
+<p><a href="https://www.lunasea.app/">LunaSea</a> 是一个 Sonarr 和 Usenet 生态圈的远程控制器，能让你在手机上查看 Sonarr / Radarr / Lidarr 的资源和放送时间表。</p>
+<div class="image-size-control" style="height: 600px;">
+  <img src="images/lunasea.jpeg" alt="">
+</div>
+
+<h3 id="seedboxio">Seedbox.io</h3>
+<p>在得知我最近的折腾经过后，我的好朋友 <a href="https://wzyboy.im/">wzyboy</a> 向我科普了一种名为 <a href="https://en.wikipedia.org/wiki/Seedbox">Seedbox</a> 的 hosted service，提供开箱即用的 BT 下载和家庭媒体服务器，并能带来以下几点好处：</p>
+<ul>
+<li>免于折腾和维护诸多服务/服务器</li>
+<li>发扬 BT 分享精神的同时无需损耗自己的硬盘</li>
+<li>规避 P2P 下载资源的版权问题</li>
+</ul>
+<p>其中有一家服务商叫 seedbox.io, 它们的服务器包含本篇介绍的所有组件。如果你有兴趣的话，可以通过这个 <a href="https://panel.seedbox.io/aff.php?aff=1061">affiliate link</a> 注册和购买他们的服务。</p>
+<p><img loading="lazy" src="images/seedbox-apps.png" alt=""  />
+</p>
+<h2 id="结语">结语</h2>
+<p>Sonarr 和它的朋友们还有许多功能，本篇旨在引导用户完成最基本的自动化追番配置，就不一一介绍了，有兴趣的读者可以自行探索，欢迎在评论区留言分享。</p>
+<p>近两年来，在家办公越来越融入到我们的生活，家庭网络和服务的搭建也逐渐从以往对 Geek 的刻板印象，变成或许没被意识到，但人人都有的需求。照片存储、数据备份、远程控制、环境监控、智能家居、多媒体娱乐…这些无一不是我们的日常所需。往后我会写更多这方面的文章，将我使用 NAS 改变生活方式的过程记录下来。The digital life has just begun.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://wiki.servarr.com/">WikiArr</a></li>
+<li><a href="https://trash-guides.info/">TRaSH Guides</a></li>
+</ul>
+<h2 id="revision">Revision</h2>
+<ul>
+<li>2022-04-19: created with &ldquo;使用 QNAP Download Station&rdquo;</li>
+<li>2022-05-02: added &ldquo;使用 Sonarr 和它的朋友们&rdquo;, finished &ldquo;部署说明&rdquo;</li>
+<li>2022-05-04: finished &ldquo;使用说明&rdquo; and the whole article</li>
+</ul>
+]]></content:encoded></item></channel></rss>
