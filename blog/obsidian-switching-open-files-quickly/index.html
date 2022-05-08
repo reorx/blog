@@ -4,10 +4,10 @@
 <meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
 <meta name=robots content="index, follow">
 <title>Switch open files quickly in Obsidian | Reorx’s Forge</title>
-<meta name=keywords content="obsidian,productivity">
+<meta name=keywords content="obsidian,productivity,ux">
 <meta name=description content="Imagine a quick switcher with open files at the top.">
 <meta name=author content="Reorx">
-<link rel=canonical href=https://reorx.com/blog/20220420-switch-open-files-quickly-in-obsidian/>
+<link rel=canonical href=https://reorx.com/blog/obsidian-switching-open-files-quickly/>
 <link crossorigin=anonymous href=/assets/css/stylesheet.min.02a7f91d4ca6bced13bbacf06dc2c6a9d1bc6794c18af6a85526cc8f9c66456c.css integrity="sha256-Aqf5HUymvO0Tu6zwbcLGqdG8Z5TBivaoVSbMj5xmRWw=" rel="preload stylesheet" as=style>
 <link rel=icon href=https://reorx.com/favicon.ico>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-6STBHZSBCD"></script>
@@ -20,11 +20,11 @@
 <meta property="og:title" content="Switch open files quickly in Obsidian | Reorx’s Forge">
 <meta property="og:description" content="Imagine a quick switcher with open files at the top.">
 <meta property="og:type" content="article">
-<meta property="og:url" content="https://reorx.com/blog/20220420-switch-open-files-quickly-in-obsidian/"><meta property="og:image" content="https://reorx.com/cover.png"><meta property="article:section" content="blog">
+<meta property="og:url" content="https://reorx.com/blog/obsidian-switching-open-files-quickly/"><meta property="og:image" content="https://reorx.com/cover.png"><meta property="article:section" content="blog">
 <meta property="article:published_time" content="2022-04-21T00:00:00+00:00">
 <meta property="article:modified_time" content="2022-04-21T00:00:00+00:00">
-<script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Blogs","item":"https://reorx.com/blog/"},{"@type":"ListItem","position":2,"name":"Switch open files quickly in Obsidian","item":"https://reorx.com/blog/20220420-switch-open-files-quickly-in-obsidian/"}]}</script>
-<script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"Switch open files quickly in Obsidian | Reorx’s Forge","name":"Switch open files quickly in Obsidian","description":"Imagine a quick switcher with open files at the top.","keywords":["obsidian","productivity"],"wordCount":"297","inLanguage":"en","datePublished":"2022-04-21T00:00:00Z","dateModified":"2022-04-21T00:00:00Z","author":{"@type":"Person","name":"Reorx"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://reorx.com/blog/20220420-switch-open-files-quickly-in-obsidian/"},"publisher":{"@type":"Organization","name":"Reorx’s Forge","logo":{"@type":"ImageObject","url":"https://reorx.com/favicon.ico"}}}</script>
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Blogs","item":"https://reorx.com/blog/"},{"@type":"ListItem","position":2,"name":"Switch open files quickly in Obsidian","item":"https://reorx.com/blog/obsidian-switching-open-files-quickly/"}]}</script>
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"Switch open files quickly in Obsidian | Reorx’s Forge","name":"Switch open files quickly in Obsidian","description":"Imagine a quick switcher with open files at the top.","keywords":["obsidian","productivity","ux"],"wordCount":"297","inLanguage":"en","datePublished":"2022-04-21T00:00:00Z","dateModified":"2022-04-21T00:00:00Z","author":{"@type":"Person","name":"Reorx"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://reorx.com/blog/obsidian-switching-open-files-quickly/"},"publisher":{"@type":"Organization","name":"Reorx’s Forge","logo":{"@type":"ImageObject","url":"https://reorx.com/favicon.ico"}}}</script>
 <noscript>
 <style>#theme-toggle,.top-link{display:none}</style>
 <style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary-bg:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51)}.list{background:var(--theme)}.list:not(.dark)::-webkit-scrollbar-track{background:0 0}.list:not(.dark)::-webkit-scrollbar-thumb{border-color:var(--theme)}}</style>
@@ -65,7 +65,7 @@ Imagine a quick switcher with open files at the top.
 </div>
 <div class=post-meta><span class=meta-item><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar" style="user-select:text"><rect x="3" y="4" width="18" height="18" rx="2" ry="2" style="user-select:text"/><line x1="16" y1="2" x2="16" y2="6" style="user-select:text"/><line x1="8" y1="2" x2="8" y2="6" style="user-select:text"/><line x1="3" y1="10" x2="21" y2="10" style="user-select:text"/></svg>
 <span>2022-04-21</span></span><span class=meta-item><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon" style="user-select:text"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83.0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z" style="user-select:text"/><line x1="7" y1="7" x2="7" y2="7" style="user-select:text"/></svg>
-<span class=post-tags><a href=https://reorx.com/tags/obsidian/>obsidian</a><a href=https://reorx.com/tags/productivity/>productivity</a></span></span><span class=meta-item><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text" style="user-select:text"><path d="M14 2H6A2 2 0 004 4v16a2 2 0 002 2h12a2 2 0 002-2V8z" style="user-select:text"/><polyline points="14 2 14 8 20 8" style="user-select:text"/><line x1="16" y1="13" x2="8" y2="13" style="user-select:text"/><line x1="16" y1="17" x2="8" y2="17" style="user-select:text"/><polyline points="10 9 9 9 8 9" style="user-select:text"/></svg>
+<span class=post-tags><a href=https://reorx.com/tags/obsidian/>obsidian</a><a href=https://reorx.com/tags/productivity/>productivity</a><a href=https://reorx.com/tags/ux/>ux</a></span></span><span class=meta-item><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text" style="user-select:text"><path d="M14 2H6A2 2 0 004 4v16a2 2 0 002 2h12a2 2 0 002-2V8z" style="user-select:text"/><polyline points="14 2 14 8 20 8" style="user-select:text"/><line x1="16" y1="13" x2="8" y2="13" style="user-select:text"/><line x1="16" y1="17" x2="8" y2="17" style="user-select:text"/><polyline points="10 9 9 9 8 9" style="user-select:text"/></svg>
 <span>297 words</span></span><span class=meta-item><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke="currentcolor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
 <span>2 min</span></span>
 </div>
@@ -124,7 +124,7 @@ Powered by
 <script>document.querySelectorAll('.masked-email').forEach(a=>{a.innerText=atob(a.innerText),a.classList.remove('masked-email')})</script>
 <script src=/js/medium-zoom.min.js data-no-instant></script>
 <script>mediumZoom('.entry-cover img'),mediumZoom('.post-content img')</script>
-<script type=text/javascript>var disqus_config=function(){this.page.url='https://reorx.com/blog/20220420-switch-open-files-quickly-in-obsidian/',this.page.identifier='20220420-switch-open-files-quickly-in-obsidian'};(function(){let c=window.disqusEmbedLoaded;if(c)DISQUS.reset({reload:!0,config:disqus_config});else{var b=document,a=b.createElement('script');a.src='//reorx.disqus.com/embed.js',a.setAttribute('data-timestamp',+new Date),a.setAttribute('data-no-instant',''),b.head.appendChild(a),window.disqusEmbedLoaded=!0}})()</script>
+<script type=text/javascript>var disqus_config=function(){this.page.url='https://reorx.com/blog/obsidian-switching-open-files-quickly/',this.page.identifier='obsidian-switching-open-files-quickly'};(function(){let c=window.disqusEmbedLoaded;if(c)DISQUS.reset({reload:!0,config:disqus_config});else{var b=document,a=b.createElement('script');a.src='//reorx.disqus.com/embed.js',a.setAttribute('data-timestamp',+new Date),a.setAttribute('data-no-instant',''),b.head.appendChild(a),window.disqusEmbedLoaded=!0}})()</script>
 <script src=/js/instantclick.js data-no-instant></script>
 <script data-no-instant>InstantClick.init()</script>
 </body>
