@@ -7,7 +7,7 @@ params:
   description: Reorx’s Forge
   author: Reorx
   images:
-    - cover.png
+    - forge-60x60.png
     - thumbnail.png
   favicon: favicon.ico
   logo:
