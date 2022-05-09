@@ -26,6 +26,7 @@ Vim 是我系统学习的第一个终端编辑器，从学生时代至今，我�
 
 我对 jedi-vim 的了解最早可以追溯到 2012 年，那时还没有 LSP 的概念。开发者们针对自己的需求，编写如语法增强、文档查看、自动补全等各类插件，非常零散。jedi-vim 对这些插件的功能进行了重构和集成，提供了开箱即用的统一解决方案，一经推出便广受好评，成为使用 Vim 进行 Python 开发的标配。在后来的十年里，它的初心始终不变，得到持续的维护并沿用至今。
 
+jedi-vim 的流行和长寿或许可以说明一个观点，即易用和功能全面才是软件流行的第一因素，无论它的实现有多么不优雅、效率有多么低，只要是能用的、可接受的就行，用户在使用体验上得到满足后，对于小问题的容忍度是相当高的。
 ## 2017
 
 还是 2017 年，在切换到 nvim 后不久，我发现了 [deoplete](https://github.com/Shougo/deoplete.nvim) 插件，经过一番尝试将 jedi-vim 替换成了 deoplete + deoplete-jedi。
@@ -49,7 +50,7 @@ deoplete 的目标是提供一个通用的异步自动补全框架，这在设�
 
 deoplete 的第二个问题是，它只专注在 completion，缺少对于 go to definition 和显示 function siguature 等功能的支持，这对于从 jedi-vim 的 all-in-one 体验切换过来的我，显然是个巨大的落差。好在我找到了其他插件来解决这些问题。
 
-对于 “go to definition”，通过装回 jedi-vim 并打开无补全模式可以解决。这样既可以使用 jedi 提供的 go to definition 等辅助功能，也不会与 deoplete 的补全产生冲突。
+对于 “go to definition”，通过装回 jedi-vim 并打开无补全模式可以解决。这样既可以使用 jedi-vim 提供的 go to definition 等辅助功能，也不会与 deoplete 的补全产生冲突。
 
 ```vim
 Plug 'davidhalter/jedi-vim', { 'for': 'python' }
@@ -98,7 +99,7 @@ Commit: [7a1442c2334673ac17162c101663e220ef43a3c8](https://github.com/reorx/dotf
 
 说回 ncm2，其实它也有许多瑕疵，印象中配置过程比 deoplete 还要痛苦，但当时已经是让 nvim 用上 LSP 的最好插件了。之后我对 JetBrains 和 VSCode 的使用频率变高，疏于对 nvim 插件的持续跟进，ncm2 于是一直服役到 2021 年。
 
-ncm2 出现后没过多久，[coc](https://github.com/neoclide/coc.nvim) 也诞生了，在 2019 年成为最受人关注的 vim 补全插件，国内也看到很多文章（似乎作者就是国内开发者）。由于长期受 Webpack 和 Nodejs 技术栈的折磨，当我了解到 coc 是 Nodejs 实现的，就放弃了尝试的念头 [^2]。一想到 jedi 的缓慢，我实在没办法对同样大而全的 coc 抱有足够的信心。没想到 coc 一直流行到现在，这似乎再次证明了一个论点，即易用和功能全面才是软件流行的第一因素，无论它的实现有多么不优雅、效率有多么低，只要是能用的、可接受的就行，用户在使用体验上得到满足后，对于小问题的容忍度是相当高的。
+ncm2 出现后没过多久，[coc](https://github.com/neoclide/coc.nvim) 也诞生了，在 2019 年成为最受人关注的 vim 补全插件，国内也看到很多文章（似乎作者就是国内开发者）。由于长期受 Webpack 和 Nodejs 技术栈的折磨，当我了解到 coc 是 Nodejs 实现的，就放弃了尝试的念头 [^2]。一想到 jedi-vim 的缓慢，我实在没办法对同样大而全的 coc 抱有足够的信心[^3]。
 
 P.S. 从当年的笔记中找到了所参考的项目和文章：
 
@@ -110,6 +111,7 @@ P.S. 从当年的笔记中找到了所参考的项目和文章：
 
 [^1]: https://github.com/Shougo/deoplete.nvim/wiki/Completion-Sources
 [^2]: 其实 Nodejs 在服务端的性能不差，但 Webpack 和 Electron 给我造成的印象已经根深蒂固，使我看到 Nodejs 就会立刻联想到 slow and bloated.
+[^3]: 2022-05-09: 本文发布后，许多朋友向我推荐了 coc，并告知它的速度很快，修正了我在没有使用过的情况下产生的偏见认知。
 ## 2021
 
 2021 年的某一天，因为 ncm2 长期存在的一个小问题（现在已经忘了），我一气之下再次打开了 deoplete 的项目页面，惊喜地发现它已经完善了对 LSP 的支持，于是立刻就开始迁移，换回了我更欣赏且代码品质更胜一筹的 deoplete。
