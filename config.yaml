@@ -46,6 +46,18 @@ params:
     - name: gmail
       url: email
 
+  links:
+    - name: wzyboy’s blog
+      url: https://wzyboy.im/
+      domain: wzyboy.im
+    - name: Shyrism
+      url: https://shyrz.me/
+      description: Smile in cry, write in bytes.
+      domain: shyrz.me
+    - name: My Life @wsdjeg
+      url: https://wsdjeg.spacevim.org/
+      domain: wsdjeg.spacevim.org
+
 
 # prefer feed.xml rather than index.xml
 outputFormats:
@@ -57,8 +69,12 @@ menu:
   main:
     - name: Archives
       url: archives
+      weight: 1
     - name: Tags
       url: tags
+      weight: 2
+    - name: Links
+      url: links
 
 languages:
   en:
