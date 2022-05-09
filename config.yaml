@@ -49,14 +49,15 @@ params:
   links:
     - name: wzyboy’s blog
       url: https://wzyboy.im/
-      domain: wzyboy.im
     - name: Shyrism
       url: https://shyrz.me/
       description: Smile in cry, write in bytes.
-      domain: shyrz.me
     - name: My Life @wsdjeg
       url: https://wsdjeg.spacevim.org/
-      domain: wsdjeg.spacevim.org
+    - name: 程序员的喵
+      description: Coding and writing, don't Panic
+      url: https://catcoding.me/
+      favicon: https://catcoding.me//css/images/favicon.ico
 
 
 # prefer feed.xml rather than index.xml
