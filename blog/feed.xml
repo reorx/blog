@@ -4,6 +4,7 @@
 <p>2017 年我从 Vim 切换到 <a href="https://neovim.io/">Neovim</a>（下文简称 nvim），除了增加 nvim 特殊的 <code>init.vim</code>，基本沿用了以往的配置和插件。</p>
 <p>彼时我使用的语言以 Python 为主，自动补全插件为 <a href="https://github.com/davidhalter/jedi-vim">jedi-vim</a>。</p>
 <p>我对 jedi-vim 的了解最早可以追溯到 2012 年，那时还没有 LSP 的概念。开发者们针对自己的需求，编写如语法增强、文档查看、自动补全等各类插件，非常零散。jedi-vim 对这些插件的功能进行了重构和集成，提供了开箱即用的统一解决方案，一经推出便广受好评，成为使用 Vim 进行 Python 开发的标配。在后来的十年里，它的初心始终不变，得到持续的维护并沿用至今。</p>
+<p>jedi-vim 的流行和长寿或许可以说明一个观点，即易用和功能全面才是软件流行的第一因素，无论它的实现有多么不优雅、效率有多么低，只要是能用的、可接受的就行，用户在使用体验上得到满足后，对于小问题的容忍度是相当高的。</p>
 <h2 id="2017">2017</h2>
 <p>还是 2017 年，在切换到 nvim 后不久，我发现了 <a href="https://github.com/Shougo/deoplete.nvim">deoplete</a> 插件，经过一番尝试将 jedi-vim 替换成了 deoplete + deoplete-jedi。</p>
 <p>Commit: <a href="https://github.com/reorx/dotfiles/commit/0760ba6f7d11526e38e15b36a0d1db8709834825">0760ba6f7d11526e38e15b36a0d1db8709834825</a></p>
@@ -29,7 +30,7 @@
 <p>当时我却没有料到，配置复杂的问题在 LSP 时代不仅没能得到解决，反而变本加厉，直到本文完成时也依旧是使用者的巨大痛点</p>
 </blockquote>
 <p>deoplete 的第二个问题是，它只专注在 completion，缺少对于 go to definition 和显示 function siguature 等功能的支持，这对于从 jedi-vim 的 all-in-one 体验切换过来的我，显然是个巨大的落差。好在我找到了其他插件来解决这些问题。</p>
-<p>对于 “go to definition”，通过装回 jedi-vim 并打开无补全模式可以解决。这样既可以使用 jedi 提供的 go to definition 等辅助功能，也不会与 deoplete 的补全产生冲突。</p>
+<p>对于 “go to definition”，通过装回 jedi-vim 并打开无补全模式可以解决。这样既可以使用 jedi-vim 提供的 go to definition 等辅助功能，也不会与 deoplete 的补全产生冲突。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -96,7 +97,7 @@
 </div><p>从设计理念上看，ncm2 与 deoplete 并无差别，都是通用的异步自动补全框架，唯有与<a href="https://en.wikipedia.org/wiki/Static_program_analysis">静态分析</a>器的集成方式不同，deoplete 是自己的私有协议，ncm2 则拥抱了更加通用的业界标准 LSP。</p>
 <p>我为 deoplete 的作者感到惋惜，他在 LSP 还不够成熟的时期，自己设计了与静态分析器的集成协议，构建了一个完整的补全插件生态<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>。还写了很多小巧实用的插件，代码也非常优美，让人感到赏心悦目。但因为 LSP 的发展和新一代更加 LSP native 的补全插件的涌现，它已不再是当下的第一选择，势必因为历史包袱而逐渐被淘汰。</p>
 <p>说回 ncm2，其实它也有许多瑕疵，印象中配置过程比 deoplete 还要痛苦，但当时已经是让 nvim 用上 LSP 的最好插件了。之后我对 JetBrains 和 VSCode 的使用频率变高，疏于对 nvim 插件的持续跟进，ncm2 于是一直服役到 2021 年。</p>
-<p>ncm2 出现后没过多久，<a href="https://github.com/neoclide/coc.nvim">coc</a> 也诞生了，在 2019 年成为最受人关注的 vim 补全插件，国内也看到很多文章（似乎作者就是国内开发者）。由于长期受 Webpack 和 Nodejs 技术栈的折磨，当我了解到 coc 是 Nodejs 实现的，就放弃了尝试的念头 <sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>。一想到 jedi 的缓慢，我实在没办法对同样大而全的 coc 抱有足够的信心。没想到 coc 一直流行到现在，这似乎再次证明了一个论点，即易用和功能全面才是软件流行的第一因素，无论它的实现有多么不优雅、效率有多么低，只要是能用的、可接受的就行，用户在使用体验上得到满足后，对于小问题的容忍度是相当高的。</p>
+<p>ncm2 出现后没过多久，<a href="https://github.com/neoclide/coc.nvim">coc</a> 也诞生了，在 2019 年成为最受人关注的 vim 补全插件，国内也看到很多文章（似乎作者就是国内开发者）。由于长期受 Webpack 和 Nodejs 技术栈的折磨，当我了解到 coc 是 Nodejs 实现的，就放弃了尝试的念头 <sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>。一想到 jedi-vim 的缓慢，我实在没办法对同样大而全的 coc 抱有足够的信心<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>。</p>
 <p>P.S. 从当年的笔记中找到了所参考的项目和文章：</p>
 <ul>
 <li><a href="https://www.reddit.com/r/neovim/comments/8ejfg0/state_of_lsp_servers/">https://www.reddit.com/r/neovim/comments/8ejfg0/state_of_lsp_servers/</a></li>
@@ -215,6 +216,9 @@
 </li>
 <li id="fn:2" role="doc-endnote">
 <p>其实 Nodejs 在服务端的性能不差，但 Webpack 和 Electron 给我造成的印象已经根深蒂固，使我看到 Nodejs 就会立刻联想到 slow and bloated.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3" role="doc-endnote">
+<p>2022-05-09: 本文发布后，许多朋友向我推荐了 coc，并告知它的速度很快，修正了我在没有使用过的情况下产生的偏见认知。&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
 </section>
