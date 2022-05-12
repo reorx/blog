@@ -11,7 +11,7 @@ cover:
 socialLinks:
   twitter:
     user: novoreorx
-    id: null
+    id: 1524672918894297089
 ---
 
 ## 不算成功的开端
