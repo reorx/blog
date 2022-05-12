@@ -5,13 +5,13 @@
 <h2 id="the-feature">The feature</h2>
 <p>Here&rsquo;s the walk though of that amazing feature:</p>
 <ul>
-<li>On a whiteboard, select several cards you would like to refer to <img loading="lazy" src="images/The%203-step%20knowledge%20workflow%20in%20Heptabase%202-36%20screenshot.png" alt=""  />
+<li>On a whiteboard, select several cards you would like to refer to <img loading="lazy" src="./images/The%203-step%20knowledge%20workflow%20in%20Heptabase%202-36%20screenshot.png" alt=""  />
 </li>
-<li>Right-click on them and choose &ldquo;Open in new tab&rdquo;, a new page with a left-right split layout appears. The first card selected shows on the left; others show on the right as a folded list. <img loading="lazy" src="images/The%203-step%20knowledge%20workflow%20in%20Heptabase%202-39%20screenshot.png" alt=""  />
+<li>Right-click on them and choose &ldquo;Open in new tab&rdquo;, a new page with a left-right split layout appears. The first card selected shows on the left; others show on the right as a folded list. <img loading="lazy" src="./images/The%203-step%20knowledge%20workflow%20in%20Heptabase%202-39%20screenshot.png" alt=""  />
 </li>
-<li>Click on the <code>+</code> sign button on the top menu bar; a new card is created on the left side, and the card that previously shows on the left is automatically moved to the card list on the right.  <img loading="lazy" src="images/The%203-step%20knowledge%20workflow%20in%20Heptabase%202-53%20screenshot.png" alt=""  />
+<li>Click on the <code>+</code> sign button on the top menu bar; a new card is created on the left side, and the card that previously shows on the left is automatically moved to the card list on the right.  <img loading="lazy" src="./images/The%203-step%20knowledge%20workflow%20in%20Heptabase%202-53%20screenshot.png" alt=""  />
 </li>
-<li>You can fold/unfold notes while browsing the right side, and drag&rsquo;n drop blocks to copy them to the left side. <img loading="lazy" src="images/The%203-step%20knowledge%20workflow%20in%20Heptabase%203-6%20screenshot.png" alt=""  />
+<li>You can fold/unfold notes while browsing the right side, and drag&rsquo;n drop blocks to copy them to the left side. <img loading="lazy" src="./images/The%203-step%20knowledge%20workflow%20in%20Heptabase%203-6%20screenshot.png" alt=""  />
 </li>
 </ul>
 <p>This is the best way I&rsquo;ve ever seen to think and write a note while referring to many other notes. In other note-taking tools, take Obsidian for example, I can split the panes, but it is not convenient to organize the workspace well for more than 3 notes. As new panes are growing, it will become more and more interruptive to switch back and forth.</p>
