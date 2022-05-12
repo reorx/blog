@@ -42,7 +42,7 @@ V2EX 有着丰富的 RSS 支持，在 [V2EX  ›  提醒系统](https://v2ex.c
 
 很快，我锁定了完美满足这三点的 [NetNewsWire](https://github.com/Ranchero-Software/NetNewsWire)
 
-![](images/netnewswire-1.png)
+![](./images/netnewswire-1.png)
 
 NetNewsWire 发布于 20 年前，是 macOS 上历史最悠久的 RSS 阅读器。我虽然很早就知道它，却一直没有尝试，使用的是更受追捧的 Reeder，但 Reeder 最近的几次付费更新有些令人失望，没有什么有趣的变更，我也厌倦了它那软绵绵的 UI 风格。
 
@@ -54,15 +54,19 @@ Minimal and no distraction, 这是我对 NetNewsWire 的整体印象。我很快
 
 - V2EX
     - 节点
+
         我只对一些特定的节点有逐条浏览的兴趣，V2EX 每个节点都可以输出 RSS，只需要将 `https://v2ex.com/feed/{node}.xml` 的 `{node}` 替换为节点的英文名即可。
         - [分享创造](https://v2ex.com/feed/create.xml)
         - [分享发现](https://v2ex.com/feed/share.xml)
         - [程序员](https://v2ex.com/feed/programmer.xml)
     - [Top Topics](https://rsshub.app/v2ex/topics/hot)
+
         V2EX 本身没有最热话题的 RSS，幸运的是，RSSHub 提供了一个公开的源。
 - [Hacker News](https://rsshub.app/telegram/channel/hacker_news_feed)
+
     Hackers News 的信息量太大，不适合直接订阅，好在 [hacker_news_feed](https://t.me/hacker_news_feed) 这个 Telegram 频道对内容进行了筛选，只推送分数大于 100 的条目。同样要感谢 RSSHub，用它将 Telegram 频道转换成了 RSS feed。
 - Obsidian
+
     作为 Obsidian 重度使用者和插件维护者，我非常关注社区的动向。Obsidian 社区信息主要来自于[官方 Discourse 论坛](https://forum.obsidian.md/)和 [subreddit](https://www.reddit.com/r/ObsidianMD/)。两者都是通过在 URL 后面加上 `.rss` 即可获得订阅源（如 [Showcase](https://forum.obsidian.md/c/share-showcase/9.rss) 和 [ObsidianMD](https://www.reddit.com/r/ObsidianMD.rss)）
 - 提醒
     - V2EX
@@ -105,7 +109,7 @@ RSS 的用法因人而异，这篇文章主要目的是分享我个人的探索�
 
 前几天 [涛叔](https://taoshu.in/) 向我推荐了他的 [WebFeed](https://taoshu.in/webfeed/web-feed.html) 插件 (for Firefox)，它把浏览器变成 RSS 阅读器，并能自动发现网站的 RSS 源。
 
-![](images/webfeed.png)
+![](./images/webfeed.png)
 
 我很喜欢它的 Web 与 RSS 一体的使用体验，这让我开始思考一个问题，为何近些年来 RSS 逐渐式微，主流浏览器厂商没有做任何相关的支持[^3]，只有少部分开源爱好者还在坚持使用并为 RSS 社区做出贡献。
 
