@@ -1,9 +1,8 @@
 ---
 title: Tips that may save you from the hell of PyYAML
-slug: null
+slug: python-yaml-tips
 date: 2022-05-15
 description: Try to make our life with PyYAML easier.
-draft: true
 tags:
   - yaml
   - python
