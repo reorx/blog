@@ -133,7 +133,7 @@ Here I want to share some tips and snippets that can make your life with PyYAML 
 It might be harmful to your application to simply <code>yaml.load</code> a document from an untrusted source such as the Internet and user input.</p>
 <p>See from <a href="https://pyyaml.org/wiki/PyYAMLDocumentation#loading-yaml">PyYAML official documentation</a>:</p>
 <blockquote>
-<p><strong>Warning: It is not safe to call <code>yaml.load</code> with any data received from an untrusted source! <code>yaml.load</code> is as powerful as <code>pickle.load</code> and so may call any Python function.</strong></p>
+<p><strong>Warning</strong>: It is not safe to call <code>yaml.load</code> with any data received from an untrusted source! <code>yaml.load</code> is as powerful as <code>pickle.load</code> and so may call any Python function.</p>
 </blockquote>
 <p>In short, you should always use <code>yaml.safe_load</code> and <code>yaml.safe_dump</code> as the standard I/O methods for YAML.</p>
 <h2 id="keep-keys-in-order-loaddump">Keep keys in order (load/dump)</h2>
