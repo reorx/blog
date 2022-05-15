@@ -90,43 +90,21 @@
 <blockquote>
 <p><code>harrogath</code> 是我的 NAS 的 hostname，可以使用 IP 代替</p>
 </blockquote>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># 创建 context</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># 创建 context</span>
 docker context create harrogath
 
 <span class="c1"># 更新 context 的配置信息</span>
 docker context update harrogath --docker <span class="s2">&#34;host=tcp://harrogath:2376,ca=</span><span class="nv">$HOME</span><span class="s2">/.docker/ca.pem,cert=</span><span class="nv">$HOME</span><span class="s2">/.docker/cert.pem,key=</span><span class="nv">$HOME</span><span class="s2">/.docker/key.pem&#34;</span>
-</code></pre></td></tr></table>
-</div>
-</div><p>QNAP 的 Docker 需要通过证书来访问，因此要在 Container Station 的设置中下载证书。
+</code></pre></div><p>QNAP 的 Docker 需要通过证书来访问，因此要在 Container Station 的设置中下载证书。
 <img loading="lazy" src="./images/qnap-docker-certs.png" alt=""  />
 </p>
 <p>完成 context 创建后，通过 <code>use</code> 命令切换到 context，之后所有的 Docker 命令都是与 NAS Docker 进行通讯</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="l">docker context use harrogath</span><span class="w">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="l">docker context use harrogath</span><span class="w">
 </span><span class="w"></span><span class="l">docker context ls</span><span class="w">
 </span><span class="w"></span><span class="l">NAME                TYPE                DESCRIPTION                               DOCKER ENDPOINT                               KUBERNETES ENDPOINT   ORCHESTRATOR</span><span class="w">
 </span><span class="w"></span><span class="l">default             moby                Current DOCKER_HOST based configuration   unix:///var/run/docker.sock                                         swarm</span><span class="w">
 </span><span class="w"></span><span class="l">harrogath *         moby</span><span class="w">
-</span></code></pre></td></tr></table>
-</div>
-</div><h4 id="images">Images</h4>
+</span></code></pre></div><h4 id="images">Images</h4>
 <p>目前主要有两个组织在维护 Sonarr 及相关服务的 Docker 镜像，<a href="https://www.linuxserver.io/">linuxserver.io</a> 和 <a href="https://hotio.dev/">hotio.dev</a>, 我选择前者作为本次部署的镜像源。下面是使用到的镜像列表，可以在其页面上查看镜像的使用说明。</p>
 <ul>
 <li><a href="https://hub.docker.com/r/linuxserver/sonarr">linuxserver/sonarr - Docker Image | Docker Hub</a></li>
@@ -177,63 +155,7 @@ docker context update harrogath --docker <span class="s2">&#34;host=tcp://harrog
 <h4 id="compose-file">Compose file</h4>
 <p>以我正在使用的 <code>docker-compose.yml</code> 文件作为示例，你可以复制下来修改自己的版本，只需要将 <code>/share/CACHEDEV2_DATA/Misc/AppData</code> 替换为自己在 NAS 上创建的 <code>AppData</code> 路径即可。</p>
 <p>端口的配置需要额外注意，这份配置中我尽量保持各服务默认配置端口不变，若与已有服务冲突，修改到未被占用的端口即可。例如 QNAP 自带的 Download Station 已占用 6881 端口，因此我将 qbittorrent 修改到了 16881 端口。</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span><span class="lnt">26
-</span><span class="lnt">27
-</span><span class="lnt">28
-</span><span class="lnt">29
-</span><span class="lnt">30
-</span><span class="lnt">31
-</span><span class="lnt">32
-</span><span class="lnt">33
-</span><span class="lnt">34
-</span><span class="lnt">35
-</span><span class="lnt">36
-</span><span class="lnt">37
-</span><span class="lnt">38
-</span><span class="lnt">39
-</span><span class="lnt">40
-</span><span class="lnt">41
-</span><span class="lnt">42
-</span><span class="lnt">43
-</span><span class="lnt">44
-</span><span class="lnt">45
-</span><span class="lnt">46
-</span><span class="lnt">47
-</span><span class="lnt">48
-</span><span class="lnt">49
-</span><span class="lnt">50
-</span><span class="lnt">51
-</span><span class="lnt">52
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;3&#39;</span><span class="w">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;3&#39;</span><span class="w">
 </span><span class="w"></span><span class="nt">services</span><span class="p">:</span><span class="w">
 </span><span class="w">  </span><span class="nt">sonarr</span><span class="p">:</span><span class="w">
 </span><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">linuxserver/sonarr</span><span class="w">
@@ -285,9 +207,7 @@ docker context update harrogath --docker <span class="s2">&#34;host=tcp://harrog
 </span><span class="w">    </span><span class="nt">ports</span><span class="p">:</span><span class="w">
 </span><span class="w">      </span>- <span class="m">8191</span><span class="p">:</span><span class="m">8191</span><span class="w">
 </span><span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l">unless-stopped</span><span class="w">
-</span></code></pre></td></tr></table>
-</div>
-</div><h4 id="run">Run</h4>
+</span></code></pre></div><h4 id="run">Run</h4>
 <p>一切准备就绪，执行以下命令:</p>
 <pre tabindex="0"><code>docker compose up
 </code></pre><p>这会启动所有服务并 attach 到终端输出日志，方便查看服务的运行日志。等确认所有服务稳定运行后，加上 <code>-d</code> 参数使其运行在后台。</p>

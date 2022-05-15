@@ -26,7 +26,7 @@
 <meta property="article:published_time" content="2022-05-02T00:00:00+00:00">
 <meta property="article:modified_time" content="2022-05-02T00:00:00+00:00">
 <script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Blogs","item":"https://reorx.com/blog/"},{"@type":"ListItem","position":2,"name":"使用 Sonarr 搭建自动化追番系统","item":"https://reorx.com/blog/track-and-download-shows-automatically-with-sonarr/"}]}</script>
-<script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"使用 Sonarr 搭建自动化追番系统 | Reorx’s Forge","name":"使用 Sonarr 搭建自动化追番系统","description":"A complete guide to deploy and configure Sonarr + Jackett + FlareSolverr + qBittorrent to track and download anime shows automatically.","keywords":["digital-life","nas","sonarr"],"wordCount":"6412","inLanguage":"en","image":"https://reorx.com/blog/track-and-download-shows-automatically-with-sonarr/images/sonarr-diagram.png","datePublished":"2022-05-02T00:00:00Z","dateModified":"2022-05-02T00:00:00Z","author":{"@type":"Person","name":"Reorx"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://reorx.com/blog/track-and-download-shows-automatically-with-sonarr/"},"publisher":{"@type":"Organization","name":"Reorx’s Forge","logo":{"@type":"ImageObject","url":"https://reorx.com/favicon.ico"}}}</script>
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"使用 Sonarr 搭建自动化追番系统 | Reorx’s Forge","name":"使用 Sonarr 搭建自动化追番系统","description":"A complete guide to deploy and configure Sonarr + Jackett + FlareSolverr + qBittorrent to track and download anime shows automatically.","keywords":["digital-life","nas","sonarr"],"wordCount":"6348","inLanguage":"en","image":"https://reorx.com/blog/track-and-download-shows-automatically-with-sonarr/images/sonarr-diagram.png","datePublished":"2022-05-02T00:00:00Z","dateModified":"2022-05-02T00:00:00Z","author":{"@type":"Person","name":"Reorx"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://reorx.com/blog/track-and-download-shows-automatically-with-sonarr/"},"publisher":{"@type":"Organization","name":"Reorx’s Forge","logo":{"@type":"ImageObject","url":"https://reorx.com/favicon.ico"}}}</script>
 <noscript>
 <style>#theme-toggle,.top-link{display:none}</style>
 <style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary-bg:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51)}.list{background:var(--theme)}.list:not(.dark)::-webkit-scrollbar-track{background:0 0}.list:not(.dark)::-webkit-scrollbar-thumb{border-color:var(--theme)}}</style>
@@ -72,7 +72,7 @@ A complete guide to deploy and configure Sonarr + Jackett + FlareSolverr + qBitt
 <div class=post-meta><span class=meta-item><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar" style="user-select:text"><rect x="3" y="4" width="18" height="18" rx="2" ry="2" style="user-select:text"/><line x1="16" y1="2" x2="16" y2="6" style="user-select:text"/><line x1="8" y1="2" x2="8" y2="6" style="user-select:text"/><line x1="3" y1="10" x2="21" y2="10" style="user-select:text"/></svg>
 <span>2022-05-02</span></span><span class=meta-item><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon" style="user-select:text"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83.0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z" style="user-select:text"/><line x1="7" y1="7" x2="7" y2="7" style="user-select:text"/></svg>
 <span class=post-tags><a href=https://reorx.com/tags/digital-life/>digital-life</a><a href=https://reorx.com/tags/nas/>nas</a><a href=https://reorx.com/tags/sonarr/>sonarr</a></span></span><span class=meta-item><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text" style="user-select:text"><path d="M14 2H6A2 2 0 004 4v16a2 2 0 002 2h12a2 2 0 002-2V8z" style="user-select:text"/><polyline points="14 2 14 8 20 8" style="user-select:text"/><line x1="16" y1="13" x2="8" y2="13" style="user-select:text"/><line x1="16" y1="17" x2="8" y2="17" style="user-select:text"/><polyline points="10 9 9 9 8 9" style="user-select:text"/></svg>
-<span>6412 words</span></span><span class=meta-item><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke="currentcolor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
+<span>6348 words</span></span><span class=meta-item><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke="currentcolor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
 <span>13 min</span></span>
 </div>
 </header>
@@ -239,43 +239,21 @@ A complete guide to deploy and configure Sonarr + Jackett + FlareSolverr + qBitt
 <blockquote>
 <p><code>harrogath</code> 是我的 NAS 的 hostname，可以使用 IP 代替</p>
 </blockquote>
-<div class=highlight><div class=chroma>
-<table class=lntable><tr><td class=lntd>
-<pre tabindex=0 class=chroma><code><span class=lnt>1
-</span><span class=lnt>2
-</span><span class=lnt>3
-</span><span class=lnt>4
-</span><span class=lnt>5
-</span></code></pre></td>
-<td class=lntd>
-<pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=c1># 创建 context</span>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=c1># 创建 context</span>
 docker context create harrogath
 
 <span class=c1># 更新 context 的配置信息</span>
 docker context update harrogath --docker <span class=s2>&#34;host=tcp://harrogath:2376,ca=</span><span class=nv>$HOME</span><span class=s2>/.docker/ca.pem,cert=</span><span class=nv>$HOME</span><span class=s2>/.docker/cert.pem,key=</span><span class=nv>$HOME</span><span class=s2>/.docker/key.pem&#34;</span>
-</code></pre></td></tr></table>
-</div>
-</div><p>QNAP 的 Docker 需要通过证书来访问，因此要在 Container Station 的设置中下载证书。
+</code></pre></div><p>QNAP 的 Docker 需要通过证书来访问，因此要在 Container Station 的设置中下载证书。
 <img loading=lazy src=./images/qnap-docker-certs.png alt>
 </p>
 <p>完成 context 创建后，通过 <code>use</code> 命令切换到 context，之后所有的 Docker 命令都是与 NAS Docker 进行通讯</p>
-<div class=highlight><div class=chroma>
-<table class=lntable><tr><td class=lntd>
-<pre tabindex=0 class=chroma><code><span class=lnt>1
-</span><span class=lnt>2
-</span><span class=lnt>3
-</span><span class=lnt>4
-</span><span class=lnt>5
-</span></code></pre></td>
-<td class=lntd>
-<pre tabindex=0 class=chroma><code class=language-yaml data-lang=yaml><span class=l>docker context use harrogath</span><span class=w>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-yaml data-lang=yaml><span class=l>docker context use harrogath</span><span class=w>
 </span><span class=w></span><span class=l>docker context ls</span><span class=w>
 </span><span class=w></span><span class=l>NAME                TYPE                DESCRIPTION                               DOCKER ENDPOINT                               KUBERNETES ENDPOINT   ORCHESTRATOR</span><span class=w>
 </span><span class=w></span><span class=l>default             moby                Current DOCKER_HOST based configuration   unix:///var/run/docker.sock                                         swarm</span><span class=w>
 </span><span class=w></span><span class=l>harrogath *         moby</span><span class=w>
-</span></code></pre></td></tr></table>
-</div>
-</div><h4 id=images>Images<a hidden class=anchor aria-hidden=true href=#images>¶</a></h4>
+</span></code></pre></div><h4 id=images>Images<a hidden class=anchor aria-hidden=true href=#images>¶</a></h4>
 <p>目前主要有两个组织在维护 Sonarr 及相关服务的 Docker 镜像，<a href=https://www.linuxserver.io/>linuxserver.io</a> 和 <a href=https://hotio.dev/>hotio.dev</a>, 我选择前者作为本次部署的镜像源。下面是使用到的镜像列表，可以在其页面上查看镜像的使用说明。</p>
 <ul>
 <li><a href=https://hub.docker.com/r/linuxserver/sonarr>linuxserver/sonarr - Docker Image | Docker Hub</a></li>
@@ -326,63 +304,7 @@ docker context update harrogath --docker <span class=s2>&#34;host=tcp://harrogat
 <h4 id=compose-file>Compose file<a hidden class=anchor aria-hidden=true href=#compose-file>¶</a></h4>
 <p>以我正在使用的 <code>docker-compose.yml</code> 文件作为示例，你可以复制下来修改自己的版本，只需要将 <code>/share/CACHEDEV2_DATA/Misc/AppData</code> 替换为自己在 NAS 上创建的 <code>AppData</code> 路径即可。</p>
 <p>端口的配置需要额外注意，这份配置中我尽量保持各服务默认配置端口不变，若与已有服务冲突，修改到未被占用的端口即可。例如 QNAP 自带的 Download Station 已占用 6881 端口，因此我将 qbittorrent 修改到了 16881 端口。</p>
-<div class=highlight><div class=chroma>
-<table class=lntable><tr><td class=lntd>
-<pre tabindex=0 class=chroma><code><span class=lnt> 1
-</span><span class=lnt> 2
-</span><span class=lnt> 3
-</span><span class=lnt> 4
-</span><span class=lnt> 5
-</span><span class=lnt> 6
-</span><span class=lnt> 7
-</span><span class=lnt> 8
-</span><span class=lnt> 9
-</span><span class=lnt>10
-</span><span class=lnt>11
-</span><span class=lnt>12
-</span><span class=lnt>13
-</span><span class=lnt>14
-</span><span class=lnt>15
-</span><span class=lnt>16
-</span><span class=lnt>17
-</span><span class=lnt>18
-</span><span class=lnt>19
-</span><span class=lnt>20
-</span><span class=lnt>21
-</span><span class=lnt>22
-</span><span class=lnt>23
-</span><span class=lnt>24
-</span><span class=lnt>25
-</span><span class=lnt>26
-</span><span class=lnt>27
-</span><span class=lnt>28
-</span><span class=lnt>29
-</span><span class=lnt>30
-</span><span class=lnt>31
-</span><span class=lnt>32
-</span><span class=lnt>33
-</span><span class=lnt>34
-</span><span class=lnt>35
-</span><span class=lnt>36
-</span><span class=lnt>37
-</span><span class=lnt>38
-</span><span class=lnt>39
-</span><span class=lnt>40
-</span><span class=lnt>41
-</span><span class=lnt>42
-</span><span class=lnt>43
-</span><span class=lnt>44
-</span><span class=lnt>45
-</span><span class=lnt>46
-</span><span class=lnt>47
-</span><span class=lnt>48
-</span><span class=lnt>49
-</span><span class=lnt>50
-</span><span class=lnt>51
-</span><span class=lnt>52
-</span></code></pre></td>
-<td class=lntd>
-<pre tabindex=0 class=chroma><code class=language-yaml data-lang=yaml><span class=nt>version</span><span class=p>:</span><span class=w> </span><span class=s1>&#39;3&#39;</span><span class=w>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-yaml data-lang=yaml><span class=nt>version</span><span class=p>:</span><span class=w> </span><span class=s1>&#39;3&#39;</span><span class=w>
 </span><span class=w></span><span class=nt>services</span><span class=p>:</span><span class=w>
 </span><span class=w>  </span><span class=nt>sonarr</span><span class=p>:</span><span class=w>
 </span><span class=w>    </span><span class=nt>image</span><span class=p>:</span><span class=w> </span><span class=l>linuxserver/sonarr</span><span class=w>
@@ -434,9 +356,7 @@ docker context update harrogath --docker <span class=s2>&#34;host=tcp://harrogat
 </span><span class=w>    </span><span class=nt>ports</span><span class=p>:</span><span class=w>
 </span><span class=w>      </span>- <span class=m>8191</span><span class=p>:</span><span class=m>8191</span><span class=w>
 </span><span class=w>    </span><span class=nt>restart</span><span class=p>:</span><span class=w> </span><span class=l>unless-stopped</span><span class=w>
-</span></code></pre></td></tr></table>
-</div>
-</div><h4 id=run>Run<a hidden class=anchor aria-hidden=true href=#run>¶</a></h4>
+</span></code></pre></div><h4 id=run>Run<a hidden class=anchor aria-hidden=true href=#run>¶</a></h4>
 <p>一切准备就绪，执行以下命令:</p>
 <pre tabindex=0><code>docker compose up
 </code></pre><p>这会启动所有服务并 attach 到终端输出日志，方便查看服务的运行日志。等确认所有服务稳定运行后，加上 <code>-d</code> 参数使其运行在后台。</p>
