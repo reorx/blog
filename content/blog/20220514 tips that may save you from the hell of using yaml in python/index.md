@@ -12,7 +12,7 @@ cover:
 socialLinks:
   twitter:
     user: novoreorx
-    id: null
+    id: 1525777955406114817
 ---
 
 YAML is a data-serialization language that is widely used.
@@ -123,7 +123,7 @@ a:
 ## Output readable UTF-8 (dump)
 
 By default, PyYAML assumes the user only wants ASCII code in the output,
-so it converts UTF-8 characters to Python's unicode representation.
+so it converts UTF-8 characters to Python's Unicode representation.
 
 ```python
 >>> d = {'a': '你好'}
@@ -133,7 +133,7 @@ a: "\u4F60\u597D"
 
 This makes the output hard to read for humans.
 
-In modern world, UTF-8 is widely supported, it's safe to write UTF-8 in the output.
+In the modern world, UTF-8 is widely supported, it's safe to write UTF-8 in the output.
 Pass `allow_unicode=True` to `yaml.safe_dump` to enable that.
 
 ```python
