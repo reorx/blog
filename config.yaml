@@ -106,10 +106,10 @@ googleAnalytics: G-6STBHZSBCD
 disqusShortname: reorx
 
 markup:
-    goldmark:
-        renderer:
-            unsafe: true
-    highlight:
-        style: dracula
-        lineNos: true
-        noClasses: false
+  goldmark:
+    renderer:
+      unsafe: true
+  highlight:
+    style: dracula
+    lineNos: false
+    noClasses: false
