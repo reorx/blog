@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>python on Reorx’s Forge</title><link>https://reorx.com/tags/python/</link><description>Recent content in python on Reorx’s Forge</description><image><url>https://reorx.com/forge-60x60.png</url><link>https://reorx.com/forge-60x60.png</link></image><generator>Hugo -- gohugo.io</generator><lastBuildDate>Sun, 15 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://reorx.com/tags/python/feed.xml" rel="self" type="application/rss+xml"/><item><title>Tips that may save you from the hell of PyYAML</title><link>https://reorx.com/blog/python-yaml-tips/</link><pubDate>Sun, 15 May 2022 00:00:00 +0000</pubDate><guid>https://reorx.com/blog/python-yaml-tips/</guid><description>Try to make our life with PyYAML easier.</description><content:encoded><![CDATA[<p>YAML is a data-serialization language that is widely used.
+As a developer, I&rsquo;m always dealing with YAML from time to time.
+But processing YAML, especially using PyYAML in Python is painful and full of traps.
+Here I want to share some tips and snippets that can make your life with PyYAML easier.</p>
+<blockquote>
+<p>Code in this article is only guaranteed to work in Python 3</p>
+</blockquote>
+<h2 id="always-use-safe_loadsafe_dump">Always use safe_load/safe_dump</h2>
+<p>YAML&rsquo;s ability to construct an arbitrary Python object makes it dangerous to use blindly.
+It might be harmful to your application to simply <code>yaml.load</code> a document from an untrusted source such as the Internet and user input.</p>
+<p>See from <a href="https://pyyaml.org/wiki/PyYAMLDocumentation#loading-yaml">PyYAML official documentation</a>:</p>
+<blockquote>
+<p><strong>Warning: It is not safe to call <code>yaml.load</code> with any data received from an untrusted source! <code>yaml.load</code> is as powerful as <code>pickle.load</code> and so may call any Python function.</strong></p>
+</blockquote>
+<p>In short, you should always use <code>yaml.safe_load</code> and <code>yaml.safe_dump</code> as the standard I/O methods for YAML.</p>
+<h2 id="keep-keys-in-order-loaddump">Keep keys in order (load/dump)</h2>
+<p>In Python 3.7+, the order of dict keys is naturally preserved <sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>, thus the dict you get from <code>yaml.safe_load</code> has the same order of keys as the original file.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">yaml</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">text</span> <span class="o">=</span> <span class="s2">&#34;&#34;&#34;---
+</span><span class="s2">... c: 1
+</span><span class="s2">... b: 1
+</span><span class="s2">... d: 1
+</span><span class="s2">... a: 1
+</span><span class="s2">... &#34;&#34;&#34;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span> <span class="o">=</span> <span class="n">yaml</span><span class="o">.</span><span class="n">safe_load</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span>
+<span class="p">{</span><span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">list</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+<span class="p">[</span><span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">]</span>
+</code></pre></div><p>When dumping dict into a YAML string, make sure to add keyword argument <code>sort_keys=False</code> to preserve the order of keys.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">yaml</span><span class="o">.</span><span class="n">safe_dump</span><span class="p">(</span><span class="n">d</span><span class="p">))</span>
+<span class="n">a</span><span class="p">:</span> <span class="mi">1</span>
+<span class="n">b</span><span class="p">:</span> <span class="mi">1</span>
+<span class="n">c</span><span class="p">:</span> <span class="mi">1</span>
+<span class="n">d</span><span class="p">:</span> <span class="mi">1</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;e&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">yaml</span><span class="o">.</span><span class="n">safe_dump</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">sort_keys</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+<span class="n">c</span><span class="p">:</span> <span class="mi">1</span>
+<span class="n">b</span><span class="p">:</span> <span class="mi">1</span>
+<span class="n">d</span><span class="p">:</span> <span class="mi">1</span>
+<span class="n">a</span><span class="p">:</span> <span class="mi">1</span>
+<span class="n">e</span><span class="p">:</span> <span class="mi">1</span>
+</code></pre></div><p>If your Python version is lower, or you want to make sure the keys order preserving always works, you can use this library called <a href="https://github.com/wimglenn/oyaml">oyaml</a> as a drop-in replacement for <code>pyyaml</code>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">oyaml</span> <span class="k">as</span> <span class="nn">yaml</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span> <span class="o">=</span> <span class="n">yaml</span><span class="o">.</span><span class="n">safe_load</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span>
+<span class="n">OrderedDict</span><span class="p">([(</span><span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)])</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;e&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">yaml</span><span class="o">.</span><span class="n">safe_dump</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">sort_keys</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+<span class="n">c</span><span class="p">:</span> <span class="mi">1</span>
+<span class="n">b</span><span class="p">:</span> <span class="mi">1</span>
+<span class="n">d</span><span class="p">:</span> <span class="mi">1</span>
+<span class="n">a</span><span class="p">:</span> <span class="mi">1</span>
+<span class="n">e</span><span class="p">:</span> <span class="mi">1</span>
+</code></pre></div><h2 id="enhance-list-indentation-dump">Enhance list indentation (dump)</h2>
+<p>By default, PyYAML indent list items on the same level as their parent.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]}</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">yaml</span><span class="o">.</span><span class="n">safe_dump</span><span class="p">(</span><span class="n">d</span><span class="p">))</span>
+<span class="n">a</span><span class="p">:</span>
+<span class="o">-</span> <span class="mi">1</span>
+<span class="o">-</span> <span class="mi">2</span>
+<span class="o">-</span> <span class="mi">3</span>
+</code></pre></div><p>This is not a good format according to style guides like
+<a href="https://docs.ansible.com/ansible/latest/reference_appendices/YAMLSyntax.html">Ansible</a>
+and <a href="https://developers.home-assistant.io/docs/documenting/yaml-style-guide/#block-style-sequences">HomeAssistant</a>.
+It is also not recognized by code editors like VSCode, making the list items unfoldable in the editor.</p>
+<p>To solve this problem, you can use the snippet below to define an <code>IndentDumper</code> class:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="k">class</span> <span class="nc">IndentDumper</span><span class="p">(</span><span class="n">yaml</span><span class="o">.</span><span class="n">Dumper</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">increase_indent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">flow</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">indentless</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">IndentDumper</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">increase_indent</span><span class="p">(</span><span class="n">flow</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+</code></pre></div><p>Then pass it to the <code>Dumper</code> keyword argument in <code>yaml.dump</code> function.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">yaml</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">Dumper</span><span class="o">=</span><span class="n">IndentDumper</span><span class="p">))</span>
+<span class="n">a</span><span class="p">:</span>
+  <span class="o">-</span> <span class="mi">1</span>
+  <span class="o">-</span> <span class="mi">2</span>
+  <span class="o">-</span> <span class="mi">3</span>
+</code></pre></div><blockquote>
+<p>Note that <code>Dumper</code> cannot be passed to <code>yaml.safe_dump</code> which has its owner dumper class defined.</p>
+</blockquote>
+<h2 id="output-readable-utf-8-dump">Output readable UTF-8 (dump)</h2>
+<p>By default, PyYAML assumes the user only wants ASCII code in the output,
+so it converts UTF-8 characters to Python&rsquo;s unicode representation.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="s1">&#39;你好&#39;</span><span class="p">}</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">yaml</span><span class="o">.</span><span class="n">safe_dump</span><span class="p">(</span><span class="n">d</span><span class="p">))</span>
+<span class="n">a</span><span class="p">:</span> <span class="s2">&#34;</span><span class="se">\u4F60\u597D</span><span class="s2">&#34;</span>
+</code></pre></div><p>This makes the output hard to read for humans.</p>
+<p>In modern world, UTF-8 is widely supported, it&rsquo;s safe to write UTF-8 in the output.
+Pass <code>allow_unicode=True</code> to <code>yaml.safe_dump</code> to enable that.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">yaml</span><span class="o">.</span><span class="n">safe_dump</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">allow_unicode</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+<span class="n">a</span><span class="p">:</span> <span class="n">你好</span>
+</code></pre></div><h2 id="no-default_flow_style-needed-dump">No <code>default_flow_style</code> needed (dump)</h2>
+<p>Most of the time we don&rsquo;t want <a href="https://yaml.org/spec/1.2.2/#chapter-7-flow-style-productions">flow style productions</a> in the output (i.e. no JSON in YAML).
+According to <a href="https://pyyaml.org/wiki/PyYAMLDocumentation#dictionaries-without-nested-collections-are-not-dumped-correctly">PyYAML documentation</a>, <code>default_flow_style=False</code> should be passed to <code>yaml.safe_dump</code> to achieve that.</p>
+<p>After digging into the source code of the latest PyYaml (6.0), I find it is not needed anymore.
+You should remove this keyword argument to keep the code cleaner and less confusing.</p>
+<p><img loading="lazy" src="./images/yaml-dump-all.png" alt=""  />
+</p>
+<h2 id="libraries">Libraries</h2>
+<h3 id="oyaml">oyaml</h3>
+<p>Link: <a href="https://github.com/wimglenn/oyaml">https://github.com/wimglenn/oyaml</a></p>
+<p>As mentioned above, oyaml is a drop-in replacement for PyYAML which preserves dict ordering.</p>
+<p>I suggest using oyaml if you already use PyYAML in your code.</p>
+<p>It&rsquo;s worth mentioning that oyaml is a single-file library with only <a href="https://github.com/wimglenn/oyaml/blob/d0195070d26bd982f1e4e604bded5510dd035cd7/oyaml.py">53 lines of code</a>.
+This makes it very flexible to use, you can just copy the code to your library and customize it according to your need.</p>
+<h3 id="strictyaml">strictyaml</h3>
+<p>Link: <a href="https://github.com/crdoconnor/strictyaml">https://github.com/crdoconnor/strictyaml</a></p>
+<p>Some people say YAML is too complex and flexible to be a good configuration language,
+but I think this is not the problem of YAML, but the problem of how we use it.
+If we restrict our usage to only a subset of its features, it will be as good as it should be.</p>
+<p>This is where StrictYAML came up. It is a type-safe YAML parser that parses and validates a <a href="https://hitchdev.com/strictyaml/features-removed">restricted subset</a> of the YAML specification.</p>
+<p>I suggest using StrictYAML if you have strong security concerns for your application.</p>
+<p>There are tons of great articles on the <a href="https://hitchdev.com/strictyaml/">documentation site</a> of strictyaml, definitely worth having a look at if you have thought about YAML and other configuration languages.</p>
+<h3 id="ruamel-yaml">ruamel. yaml</h3>
+<p>Link: <a href="https://yaml.readthedocs.io/en/latest/overview.html">https://yaml.readthedocs.io/en/latest/overview.html</a></p>
+<p>ruamel.yaml is a fork of PyYAML, it was released in 2009 and continuously maintained in the past decade.</p>
+<p>The differences with PyYAML are listed <a href="https://yaml.readthedocs.io/en/latest/pyyaml.html#yaml-1-2-support">here</a>. Generally, ruamel.yaml focuses on <a href="https://yaml.org/spec/1.2.2/">YAML 1.2</a>  with some opinionated enhancements for the syntax.</p>
+<p>What interests me most is the ability to round-trip in the loading/dumping process. It works like black magic. Here&rsquo;s the explanation from ruamel.yaml documentation:</p>
+<blockquote>
+<p>A round-trip is a YAML load-modify-save sequence and ruamel.yaml tries to preserve, among others:</p>
+<ul>
+<li>comments</li>
+<li>block style and key ordering are kept, so you can diff the round-tripped source</li>
+<li>flow style sequences ( ‘a: b, c, d’) (based on request and test by Anthony Sottile)</li>
+<li>anchor names that are hand-crafted (i.e. not of the form<code>idNNN</code>)</li>
+<li>merges in dictionaries are preserved</li>
+</ul>
+</blockquote>
+<p>I suggest using ruamel.yaml if you have the requirement to preserve the original content as much as possible.</p>
+<blockquote>
+<p>One thing I notice is that ruamel.yaml&rsquo;s <code>safe_load</code> method (<code>YAML(typ='safe').load</code>) cannot parse flow style collection (<code>a: {&quot;foo&quot;: &quot;bar&quot;}</code>), this is a undocumented difference with PyYAML.</p>
+</blockquote>
+<h2 id="summary">Summary</h2>
+<p>YAML has its good and bad. It&rsquo;s easy to read, the learning curve is mild at the beginning,
+but the specification is complex, which not only causes chaos in practice, but also makes implementations in different languages inconsistent with each other in many trivial aspects.</p>
+<p>Despite these quirks, YAML is still the best configuration language for me, and as long as we can use it properly, problems will be avoided and the experience will be much better.</p>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p>See <a href="https://docs.python.org/3/whatsnew/3.7.html#:~:text=the%20insertion%2Dorder%20preservation%20nature%20of%20dict%20objects%20has%20been%20declared%20to%20be%20an%20official%20part%20of%20the%20Python%20language%20spec.">What’s New In Python 3.7</a>&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
+]]></content:encoded></item></channel></rss>

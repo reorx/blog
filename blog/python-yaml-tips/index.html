@@ -1,0 +1,295 @@
+<!doctype html><html lang=en dir=auto>
+<head><meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
+<meta name=robots content="index, follow">
+<title>Tips that may save you from the hell of PyYAML | Reorx’s Forge</title>
+<meta name=keywords content="yaml,python">
+<meta name=description content="Try to make our life with PyYAML easier.">
+<meta name=author content="Reorx">
+<link rel=canonical href=https://reorx.com/blog/python-yaml-tips/>
+<link crossorigin=anonymous href=/assets/css/stylesheet.min.461aea67e60191f4f253c24ae7e7d218bf1c155e1c68199e4581681ca3112964.css integrity="sha256-RhrqZ+YBkfTyU8JK5+fSGL8cFV4caBmeRYFoHKMRKWQ=" rel="preload stylesheet" as=style>
+<link rel=icon href=https://reorx.com/favicon.ico>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6STBHZSBCD"></script>
+<script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date),gtag('config','G-6STBHZSBCD',{anonymize_ip:!1})}</script>
+<meta name=twitter:image content="https://reorx.com/forge-60x60.png">
+<meta name=twitter:card property="twitter:card" content="summary">
+<meta name=twitter:title content="Tips that may save you from the hell of PyYAML | Reorx’s Forge">
+<meta name=twitter:description content="Try to make our life with PyYAML easier.">
+<meta name=twitter:site content="@novoreorx">
+<meta name=twitter:creator content="@novoreorx">
+<meta property="og:title" content="Tips that may save you from the hell of PyYAML | Reorx’s Forge">
+<meta property="og:description" content="Try to make our life with PyYAML easier.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://reorx.com/blog/python-yaml-tips/">
+<meta property="og:image" content="https://reorx.com/forge-60x60.png">
+<meta property="og:image" content="https://reorx.com/thumbnail.png">
+<meta property="article:section" content="blog">
+<meta property="article:published_time" content="2022-05-15T00:00:00+00:00">
+<meta property="article:modified_time" content="2022-05-15T00:00:00+00:00">
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Blogs","item":"https://reorx.com/blog/"},{"@type":"ListItem","position":2,"name":"Tips that may save you from the hell of PyYAML","item":"https://reorx.com/blog/python-yaml-tips/"}]}</script>
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"Tips that may save you from the hell of PyYAML | Reorx’s Forge","name":"Tips that may save you from the hell of PyYAML","description":"Try to make our life with PyYAML easier.","keywords":["yaml","python"],"wordCount":"1071","inLanguage":"en","datePublished":"2022-05-15T00:00:00Z","dateModified":"2022-05-15T00:00:00Z","author":{"@type":"Person","name":"Reorx"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://reorx.com/blog/python-yaml-tips/"},"publisher":{"@type":"Organization","name":"Reorx’s Forge","logo":{"@type":"ImageObject","url":"https://reorx.com/favicon.ico"}}}</script>
+<noscript>
+<style>#theme-toggle,.top-link{display:none}</style>
+<style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary-bg:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51)}.list{background:var(--theme)}.list:not(.dark)::-webkit-scrollbar-track{background:0 0}.list:not(.dark)::-webkit-scrollbar-thumb{border-color:var(--theme)}}</style>
+</noscript>
+</head>
+<body id=top>
+<script>localStorage.getItem("pref-theme")==="dark"?document.body.classList.add('dark'):localStorage.getItem("pref-theme")==="light"?document.body.classList.remove('dark'):window.matchMedia('(prefers-color-scheme: dark)').matches&&document.body.classList.add('dark')</script>
+<header class=header>
+<nav class=nav>
+<div class=logo>
+<a href=https://reorx.com/ accesskey=h title="Reorx’s Forge (Alt + H)">
+<img src=https://reorx.com/forge-60x60.png alt=logo aria-label=logo height=30>Reorx’s Forge</a>
+<span class=logo-switches>
+<button id=theme-toggle accesskey=t title="(Alt + T)"><svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg><svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+</button>
+</span>
+</div>
+<ul id=menu>
+<li>
+<a href=https://reorx.com/archives title=Archives>Archives
+</a>
+</li>
+<li>
+<a href=https://reorx.com/tags title=Tags>Tags
+</a>
+</li>
+<li>
+<a href=https://reorx.com/links title=Links>Links
+</a>
+</li>
+</ul>
+</nav>
+</header>
+<main class="main post">
+<article class=post-single>
+<header class=post-header>
+<h1 class=post-title>
+Tips that may save you from the hell of PyYAML
+</h1>
+<div class=post-description>
+Try to make our life with PyYAML easier.
+</div>
+<div class=post-meta><span class=meta-item><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar" style="user-select:text"><rect x="3" y="4" width="18" height="18" rx="2" ry="2" style="user-select:text"/><line x1="16" y1="2" x2="16" y2="6" style="user-select:text"/><line x1="8" y1="2" x2="8" y2="6" style="user-select:text"/><line x1="3" y1="10" x2="21" y2="10" style="user-select:text"/></svg>
+<span>2022-05-15</span></span><span class=meta-item><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon" style="user-select:text"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83.0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z" style="user-select:text"/><line x1="7" y1="7" x2="7" y2="7" style="user-select:text"/></svg>
+<span class=post-tags><a href=https://reorx.com/tags/yaml/>yaml</a><a href=https://reorx.com/tags/python/>python</a></span></span><span class=meta-item><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text" style="user-select:text"><path d="M14 2H6A2 2 0 004 4v16a2 2 0 002 2h12a2 2 0 002-2V8z" style="user-select:text"/><polyline points="14 2 14 8 20 8" style="user-select:text"/><line x1="16" y1="13" x2="8" y2="13" style="user-select:text"/><line x1="16" y1="17" x2="8" y2="17" style="user-select:text"/><polyline points="10 9 9 9 8 9" style="user-select:text"/></svg>
+<span>1071 words</span></span><span class=meta-item><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke="currentcolor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
+<span>3 min</span></span>
+</div>
+</header> <div class="toc side right">
+<details open>
+<summary accesskey=c title="(Alt + C)">
+<span class=details>Table of Contents</span>
+</summary>
+<div class=inner><ul>
+<li>
+<a href=#always-use-safe_loadsafe_dump aria-label="Always use safe_load/safe_dump">Always use safe_load/safe_dump</a></li>
+<li>
+<a href=#keep-keys-in-order-loaddump aria-label="Keep keys in order (load/dump)">Keep keys in order (load/dump)</a></li>
+<li>
+<a href=#enhance-list-indentation-dump aria-label="Enhance list indentation (dump)">Enhance list indentation (dump)</a></li>
+<li>
+<a href=#output-readable-utf-8-dump aria-label="Output readable UTF-8 (dump)">Output readable UTF-8 (dump)</a></li>
+<li>
+<a href=#no-default_flow_style-needed-dump aria-label="No default_flow_style needed (dump)">No <code>default_flow_style</code> needed (dump)</a></li>
+<li>
+<a href=#libraries aria-label=Libraries>Libraries</a><ul>
+<li>
+<a href=#oyaml aria-label=oyaml>oyaml</a></li>
+<li>
+<a href=#strictyaml aria-label=strictyaml>strictyaml</a></li>
+<li>
+<a href=#ruamel-yaml aria-label="ruamel. yaml">ruamel. yaml</a></li></ul>
+</li>
+<li>
+<a href=#summary aria-label=Summary>Summary</a>
+</li>
+</ul>
+</div>
+</details>
+</div>
+<div class=post-content><p>YAML is a data-serialization language that is widely used.
+As a developer, I&rsquo;m always dealing with YAML from time to time.
+But processing YAML, especially using PyYAML in Python is painful and full of traps.
+Here I want to share some tips and snippets that can make your life with PyYAML easier.</p>
+<blockquote>
+<p>Code in this article is only guaranteed to work in Python 3</p>
+</blockquote>
+<h2 id=always-use-safe_loadsafe_dump>Always use safe_load/safe_dump<a hidden class=anchor aria-hidden=true href=#always-use-safe_loadsafe_dump>¶</a></h2>
+<p>YAML&rsquo;s ability to construct an arbitrary Python object makes it dangerous to use blindly.
+It might be harmful to your application to simply <code>yaml.load</code> a document from an untrusted source such as the Internet and user input.</p>
+<p>See from <a href=https://pyyaml.org/wiki/PyYAMLDocumentation#loading-yaml>PyYAML official documentation</a>:</p>
+<blockquote>
+<p><strong>Warning: It is not safe to call <code>yaml.load</code> with any data received from an untrusted source! <code>yaml.load</code> is as powerful as <code>pickle.load</code> and so may call any Python function.</strong></p>
+</blockquote>
+<p>In short, you should always use <code>yaml.safe_load</code> and <code>yaml.safe_dump</code> as the standard I/O methods for YAML.</p>
+<h2 id=keep-keys-in-order-loaddump>Keep keys in order (load/dump)<a hidden class=anchor aria-hidden=true href=#keep-keys-in-order-loaddump>¶</a></h2>
+<p>In Python 3.7+, the order of dict keys is naturally preserved <sup id=fnref:1><a href=#fn:1 class=footnote-ref role=doc-noteref>1</a></sup>, thus the dict you get from <code>yaml.safe_load</code> has the same order of keys as the original file.</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=o>&gt;&gt;&gt;</span> <span class=kn>import</span> <span class=nn>yaml</span>
+<span class=o>&gt;&gt;&gt;</span> <span class=n>text</span> <span class=o>=</span> <span class=s2>&#34;&#34;&#34;---
+</span><span class=s2>... c: 1
+</span><span class=s2>... b: 1
+</span><span class=s2>... d: 1
+</span><span class=s2>... a: 1
+</span><span class=s2>... &#34;&#34;&#34;</span>
+<span class=o>&gt;&gt;&gt;</span> <span class=n>d</span> <span class=o>=</span> <span class=n>yaml</span><span class=o>.</span><span class=n>safe_load</span><span class=p>(</span><span class=n>text</span><span class=p>)</span>
+<span class=o>&gt;&gt;&gt;</span> <span class=n>d</span>
+<span class=p>{</span><span class=s1>&#39;c&#39;</span><span class=p>:</span> <span class=mi>1</span><span class=p>,</span> <span class=s1>&#39;b&#39;</span><span class=p>:</span> <span class=mi>1</span><span class=p>,</span> <span class=s1>&#39;d&#39;</span><span class=p>:</span> <span class=mi>1</span><span class=p>,</span> <span class=s1>&#39;a&#39;</span><span class=p>:</span> <span class=mi>1</span><span class=p>}</span>
+<span class=o>&gt;&gt;&gt;</span> <span class=nb>list</span><span class=p>(</span><span class=n>d</span><span class=p>)</span>
+<span class=p>[</span><span class=s1>&#39;c&#39;</span><span class=p>,</span> <span class=s1>&#39;b&#39;</span><span class=p>,</span> <span class=s1>&#39;d&#39;</span><span class=p>,</span> <span class=s1>&#39;a&#39;</span><span class=p>]</span>
+</code></pre></div><p>When dumping dict into a YAML string, make sure to add keyword argument <code>sort_keys=False</code> to preserve the order of keys.</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=o>&gt;&gt;&gt;</span> <span class=nb>print</span><span class=p>(</span><span class=n>yaml</span><span class=o>.</span><span class=n>safe_dump</span><span class=p>(</span><span class=n>d</span><span class=p>))</span>
+<span class=n>a</span><span class=p>:</span> <span class=mi>1</span>
+<span class=n>b</span><span class=p>:</span> <span class=mi>1</span>
+<span class=n>c</span><span class=p>:</span> <span class=mi>1</span>
+<span class=n>d</span><span class=p>:</span> <span class=mi>1</span>
+<span class=o>&gt;&gt;&gt;</span> <span class=n>d</span><span class=p>[</span><span class=s1>&#39;e&#39;</span><span class=p>]</span> <span class=o>=</span> <span class=mi>1</span>
+<span class=o>&gt;&gt;&gt;</span> <span class=nb>print</span><span class=p>(</span><span class=n>yaml</span><span class=o>.</span><span class=n>safe_dump</span><span class=p>(</span><span class=n>d</span><span class=p>,</span> <span class=n>sort_keys</span><span class=o>=</span><span class=kc>False</span><span class=p>))</span>
+<span class=n>c</span><span class=p>:</span> <span class=mi>1</span>
+<span class=n>b</span><span class=p>:</span> <span class=mi>1</span>
+<span class=n>d</span><span class=p>:</span> <span class=mi>1</span>
+<span class=n>a</span><span class=p>:</span> <span class=mi>1</span>
+<span class=n>e</span><span class=p>:</span> <span class=mi>1</span>
+</code></pre></div><p>If your Python version is lower, or you want to make sure the keys order preserving always works, you can use this library called <a href=https://github.com/wimglenn/oyaml>oyaml</a> as a drop-in replacement for <code>pyyaml</code>.</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=o>&gt;&gt;&gt;</span> <span class=kn>import</span> <span class=nn>oyaml</span> <span class=k>as</span> <span class=nn>yaml</span>
+<span class=o>&gt;&gt;&gt;</span> <span class=n>d</span> <span class=o>=</span> <span class=n>yaml</span><span class=o>.</span><span class=n>safe_load</span><span class=p>(</span><span class=n>text</span><span class=p>)</span>
+<span class=o>&gt;&gt;&gt;</span> <span class=n>d</span>
+<span class=n>OrderedDict</span><span class=p>([(</span><span class=s1>&#39;c&#39;</span><span class=p>,</span> <span class=mi>1</span><span class=p>),</span> <span class=p>(</span><span class=s1>&#39;b&#39;</span><span class=p>,</span> <span class=mi>1</span><span class=p>),</span> <span class=p>(</span><span class=s1>&#39;d&#39;</span><span class=p>,</span> <span class=mi>1</span><span class=p>),</span> <span class=p>(</span><span class=s1>&#39;a&#39;</span><span class=p>,</span> <span class=mi>1</span><span class=p>)])</span>
+<span class=o>&gt;&gt;&gt;</span> <span class=n>d</span><span class=p>[</span><span class=s1>&#39;e&#39;</span><span class=p>]</span> <span class=o>=</span> <span class=mi>1</span>
+<span class=o>&gt;&gt;&gt;</span> <span class=nb>print</span><span class=p>(</span><span class=n>yaml</span><span class=o>.</span><span class=n>safe_dump</span><span class=p>(</span><span class=n>d</span><span class=p>,</span> <span class=n>sort_keys</span><span class=o>=</span><span class=kc>False</span><span class=p>))</span>
+<span class=n>c</span><span class=p>:</span> <span class=mi>1</span>
+<span class=n>b</span><span class=p>:</span> <span class=mi>1</span>
+<span class=n>d</span><span class=p>:</span> <span class=mi>1</span>
+<span class=n>a</span><span class=p>:</span> <span class=mi>1</span>
+<span class=n>e</span><span class=p>:</span> <span class=mi>1</span>
+</code></pre></div><h2 id=enhance-list-indentation-dump>Enhance list indentation (dump)<a hidden class=anchor aria-hidden=true href=#enhance-list-indentation-dump>¶</a></h2>
+<p>By default, PyYAML indent list items on the same level as their parent.</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=o>&gt;&gt;&gt;</span> <span class=n>d</span> <span class=o>=</span> <span class=p>{</span><span class=s1>&#39;a&#39;</span><span class=p>:</span> <span class=p>[</span><span class=mi>1</span><span class=p>,</span> <span class=mi>2</span><span class=p>,</span> <span class=mi>3</span><span class=p>]}</span>
+<span class=o>&gt;&gt;&gt;</span> <span class=nb>print</span><span class=p>(</span><span class=n>yaml</span><span class=o>.</span><span class=n>safe_dump</span><span class=p>(</span><span class=n>d</span><span class=p>))</span>
+<span class=n>a</span><span class=p>:</span>
+<span class=o>-</span> <span class=mi>1</span>
+<span class=o>-</span> <span class=mi>2</span>
+<span class=o>-</span> <span class=mi>3</span>
+</code></pre></div><p>This is not a good format according to style guides like
+<a href=https://docs.ansible.com/ansible/latest/reference_appendices/YAMLSyntax.html>Ansible</a>
+and <a href=https://developers.home-assistant.io/docs/documenting/yaml-style-guide/#block-style-sequences>HomeAssistant</a>.
+It is also not recognized by code editors like VSCode, making the list items unfoldable in the editor.</p>
+<p>To solve this problem, you can use the snippet below to define an <code>IndentDumper</code> class:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=k>class</span> <span class=nc>IndentDumper</span><span class=p>(</span><span class=n>yaml</span><span class=o>.</span><span class=n>Dumper</span><span class=p>):</span>
+    <span class=k>def</span> <span class=nf>increase_indent</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>flow</span><span class=o>=</span><span class=kc>False</span><span class=p>,</span> <span class=n>indentless</span><span class=o>=</span><span class=kc>False</span><span class=p>):</span>
+        <span class=k>return</span> <span class=nb>super</span><span class=p>(</span><span class=n>IndentDumper</span><span class=p>,</span> <span class=bp>self</span><span class=p>)</span><span class=o>.</span><span class=n>increase_indent</span><span class=p>(</span><span class=n>flow</span><span class=p>,</span> <span class=kc>False</span><span class=p>)</span>
+</code></pre></div><p>Then pass it to the <code>Dumper</code> keyword argument in <code>yaml.dump</code> function.</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=o>&gt;&gt;&gt;</span> <span class=nb>print</span><span class=p>(</span><span class=n>yaml</span><span class=o>.</span><span class=n>dump</span><span class=p>(</span><span class=n>d</span><span class=p>,</span> <span class=n>Dumper</span><span class=o>=</span><span class=n>IndentDumper</span><span class=p>))</span>
+<span class=n>a</span><span class=p>:</span>
+  <span class=o>-</span> <span class=mi>1</span>
+  <span class=o>-</span> <span class=mi>2</span>
+  <span class=o>-</span> <span class=mi>3</span>
+</code></pre></div><blockquote>
+<p>Note that <code>Dumper</code> cannot be passed to <code>yaml.safe_dump</code> which has its owner dumper class defined.</p>
+</blockquote>
+<h2 id=output-readable-utf-8-dump>Output readable UTF-8 (dump)<a hidden class=anchor aria-hidden=true href=#output-readable-utf-8-dump>¶</a></h2>
+<p>By default, PyYAML assumes the user only wants ASCII code in the output,
+so it converts UTF-8 characters to Python&rsquo;s unicode representation.</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=o>&gt;&gt;&gt;</span> <span class=n>d</span> <span class=o>=</span> <span class=p>{</span><span class=s1>&#39;a&#39;</span><span class=p>:</span> <span class=s1>&#39;你好&#39;</span><span class=p>}</span>
+<span class=o>&gt;&gt;&gt;</span> <span class=nb>print</span><span class=p>(</span><span class=n>yaml</span><span class=o>.</span><span class=n>safe_dump</span><span class=p>(</span><span class=n>d</span><span class=p>))</span>
+<span class=n>a</span><span class=p>:</span> <span class=s2>&#34;</span><span class=se>\u4F60\u597D</span><span class=s2>&#34;</span>
+</code></pre></div><p>This makes the output hard to read for humans.</p>
+<p>In modern world, UTF-8 is widely supported, it&rsquo;s safe to write UTF-8 in the output.
+Pass <code>allow_unicode=True</code> to <code>yaml.safe_dump</code> to enable that.</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=o>&gt;&gt;&gt;</span> <span class=nb>print</span><span class=p>(</span><span class=n>yaml</span><span class=o>.</span><span class=n>safe_dump</span><span class=p>(</span><span class=n>d</span><span class=p>,</span> <span class=n>allow_unicode</span><span class=o>=</span><span class=kc>True</span><span class=p>))</span>
+<span class=n>a</span><span class=p>:</span> <span class=n>你好</span>
+</code></pre></div><h2 id=no-default_flow_style-needed-dump>No <code>default_flow_style</code> needed (dump)<a hidden class=anchor aria-hidden=true href=#no-default_flow_style-needed-dump>¶</a></h2>
+<p>Most of the time we don&rsquo;t want <a href=https://yaml.org/spec/1.2.2/#chapter-7-flow-style-productions>flow style productions</a> in the output (i.e. no JSON in YAML).
+According to <a href=https://pyyaml.org/wiki/PyYAMLDocumentation#dictionaries-without-nested-collections-are-not-dumped-correctly>PyYAML documentation</a>, <code>default_flow_style=False</code> should be passed to <code>yaml.safe_dump</code> to achieve that.</p>
+<p>After digging into the source code of the latest PyYaml (6.0), I find it is not needed anymore.
+You should remove this keyword argument to keep the code cleaner and less confusing.</p>
+<p><img loading=lazy src=./images/yaml-dump-all.png alt>
+</p>
+<h2 id=libraries>Libraries<a hidden class=anchor aria-hidden=true href=#libraries>¶</a></h2>
+<h3 id=oyaml>oyaml<a hidden class=anchor aria-hidden=true href=#oyaml>¶</a></h3>
+<p>Link: <a href=https://github.com/wimglenn/oyaml>https://github.com/wimglenn/oyaml</a></p>
+<p>As mentioned above, oyaml is a drop-in replacement for PyYAML which preserves dict ordering.</p>
+<p>I suggest using oyaml if you already use PyYAML in your code.</p>
+<p>It&rsquo;s worth mentioning that oyaml is a single-file library with only <a href=https://github.com/wimglenn/oyaml/blob/d0195070d26bd982f1e4e604bded5510dd035cd7/oyaml.py>53 lines of code</a>.
+This makes it very flexible to use, you can just copy the code to your library and customize it according to your need.</p>
+<h3 id=strictyaml>strictyaml<a hidden class=anchor aria-hidden=true href=#strictyaml>¶</a></h3>
+<p>Link: <a href=https://github.com/crdoconnor/strictyaml>https://github.com/crdoconnor/strictyaml</a></p>
+<p>Some people say YAML is too complex and flexible to be a good configuration language,
+but I think this is not the problem of YAML, but the problem of how we use it.
+If we restrict our usage to only a subset of its features, it will be as good as it should be.</p>
+<p>This is where StrictYAML came up. It is a type-safe YAML parser that parses and validates a <a href=https://hitchdev.com/strictyaml/features-removed>restricted subset</a> of the YAML specification.</p>
+<p>I suggest using StrictYAML if you have strong security concerns for your application.</p>
+<p>There are tons of great articles on the <a href=https://hitchdev.com/strictyaml/>documentation site</a> of strictyaml, definitely worth having a look at if you have thought about YAML and other configuration languages.</p>
+<h3 id=ruamel-yaml>ruamel. yaml<a hidden class=anchor aria-hidden=true href=#ruamel-yaml>¶</a></h3>
+<p>Link: <a href=https://yaml.readthedocs.io/en/latest/overview.html>https://yaml.readthedocs.io/en/latest/overview.html</a></p>
+<p>ruamel.yaml is a fork of PyYAML, it was released in 2009 and continuously maintained in the past decade.</p>
+<p>The differences with PyYAML are listed <a href=https://yaml.readthedocs.io/en/latest/pyyaml.html#yaml-1-2-support>here</a>. Generally, ruamel.yaml focuses on <a href=https://yaml.org/spec/1.2.2/>YAML 1.2</a> with some opinionated enhancements for the syntax.</p>
+<p>What interests me most is the ability to round-trip in the loading/dumping process. It works like black magic. Here&rsquo;s the explanation from ruamel.yaml documentation:</p>
+<blockquote>
+<p>A round-trip is a YAML load-modify-save sequence and ruamel.yaml tries to preserve, among others:</p>
+<ul>
+<li>comments</li>
+<li>block style and key ordering are kept, so you can diff the round-tripped source</li>
+<li>flow style sequences ( ‘a: b, c, d’) (based on request and test by Anthony Sottile)</li>
+<li>anchor names that are hand-crafted (i.e. not of the form<code>idNNN</code>)</li>
+<li>merges in dictionaries are preserved</li>
+</ul>
+</blockquote>
+<p>I suggest using ruamel.yaml if you have the requirement to preserve the original content as much as possible.</p>
+<blockquote>
+<p>One thing I notice is that ruamel.yaml&rsquo;s <code>safe_load</code> method (<code>YAML(typ='safe').load</code>) cannot parse flow style collection (<code>a: {"foo": "bar"}</code>), this is a undocumented difference with PyYAML.</p>
+</blockquote>
+<h2 id=summary>Summary<a hidden class=anchor aria-hidden=true href=#summary>¶</a></h2>
+<p>YAML has its good and bad. It&rsquo;s easy to read, the learning curve is mild at the beginning,
+but the specification is complex, which not only causes chaos in practice, but also makes implementations in different languages inconsistent with each other in many trivial aspects.</p>
+<p>Despite these quirks, YAML is still the best configuration language for me, and as long as we can use it properly, problems will be avoided and the experience will be much better.</p>
+<section class=footnotes role=doc-endnotes>
+<hr>
+<ol>
+<li id=fn:1 role=doc-endnote>
+<p>See <a href="https://docs.python.org/3/whatsnew/3.7.html#:~:text=the%20insertion%2Dorder%20preservation%20nature%20of%20dict%20objects%20has%20been%20declared%20to%20be%20an%20official%20part%20of%20the%20Python%20language%20spec.">What’s New In Python 3.7</a>&#160;<a href=#fnref:1 class=footnote-backref role=doc-backlink>&#8617;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
+</div>
+<footer class=post-footer><div class=social-links>
+</div>
+<nav class=paginav>
+<a class=next href=https://reorx.com/blog/reinitiate-rss-reader/>
+<span class=title>Next Page&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right" style="user-select:text"><line x1="5" y1="12" x2="19" y2="12" style="user-select:text"/><polyline points="12 5 19 12 12 19" style="user-select:text"/></svg>
+</span>
+<br>
+<span>重新开始使用 RSS 阅读器</span>
+</a>
+</nav>
+</footer><div class=disqus-container>
+<div id=disqus_thread></div>
+</div>
+</article>
+</main>
+<footer class=footer>
+<span>&copy; 2022 <a href=https://reorx.com/>Reorx’s Forge</a></span><span style=display:inline-block;margin-left:1em>
+<a href=https://creativecommons.org/licenses/by-sa/4.0/>CC BY-SA</a>
+</span>
+<span style=display:inline-block;margin-left:1em>
+Powered by
+<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
+        <a href=https://github.com/reorx/hugo-PaperModX rel=noopener target=_blank>PaperModX</a>
+</span>
+</footer>
+<a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentcolor"><path d="M12 6H0l6-6z"/></svg>
+</a>
+<script>(function(){let a=document.getElementById('menu');a&&(a.scrollLeft=localStorage.getItem("menu-scroll-position"),a.onscroll=function(){localStorage.setItem("menu-scroll-position",a.scrollLeft)});const b=''=='1',c='1'=='1';if(window.matchMedia('(prefers-reduced-motion: reduce)').matches||b||c)return;document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener("click",function(b){b.preventDefault();var a=this.getAttribute("href").substr(1);document.querySelector(`[id='${decodeURIComponent(a)}']`).scrollIntoView({behavior:"smooth"}),a==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${a}`)})})})()</script>
+<script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script>
+<script>document.getElementById("theme-toggle").addEventListener("click",()=>{document.body.className.includes("dark")?(document.body.classList.remove('dark'),localStorage.setItem("pref-theme",'light')):(document.body.classList.add('dark'),localStorage.setItem("pref-theme",'dark'))})</script>
+<script>document.querySelectorAll('pre > code').forEach(b=>{const c=b.parentNode.parentNode,a=document.createElement('button');a.classList.add('copy-code'),a.innerText='copy';function d(){a.innerText='copied!',setTimeout(()=>{a.innerText='copy'},2e3)}a.addEventListener('click',e=>{if('clipboard'in navigator){navigator.clipboard.writeText(b.textContent),d();return}const a=document.createRange();a.selectNodeContents(b);const c=window.getSelection();c.removeAllRanges(),c.addRange(a);try{document.execCommand('copy'),d()}catch(a){}c.removeRange(a)}),c.classList.contains("highlight")?c.appendChild(a):c.parentNode.firstChild==c||(b.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName=="TABLE"?b.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(a):b.parentNode.appendChild(a))})</script>
+<script>(function(){const i='1'=='1';let a=window.scrollListeners;if(a===void 0&&(a=[],window.scrollListeners=a),!i||!document.querySelector('.toc')){for(const b of a)window.removeEventListener('scroll',b);window.scrollListeners=[];return}const d=document.querySelectorAll('h1[id],h2[id],h3[id],h4[id],h5[id]'),e='active';let b=d[0];f(b).classList.add(e);const h=()=>{const a=[];for(const b of d)if(j(b)<5)a.push(b);else break;a.length>0?newActiveHeading=a[a.length-1]:newActiveHeading=d[0],b!=newActiveHeading&&(f(b).classList.remove(e),b=newActiveHeading,f(b).classList.add(e))};let c=null;const g=()=>{c!==null&&clearTimeout(c),c=setTimeout(h,50)};window.addEventListener('scroll',g,!1),a.push(g);function f(a){const b=encodeURI(a.getAttribute('id')).toLowerCase();return document.querySelector(`.toc ul li a[href="#${b}"]`)}function j(a){if(!a.getClientRects().length)return 0;let b=a.getBoundingClientRect();return b.top}})()</script>
+<script>document.querySelectorAll('.masked-email').forEach(a=>{a.innerText=atob(a.innerText),a.classList.remove('masked-email')})</script>
+<script src=/js/medium-zoom.min.js data-no-instant></script>
+<script>mediumZoom('.entry-cover img'),mediumZoom('.post-content img')</script>
+<script type=text/javascript>var disqus_config=function(){this.page.url='https://reorx.com/blog/python-yaml-tips/',this.page.identifier='python-yaml-tips'};(function(){let c=window.disqusEmbedLoaded;if(c)DISQUS.reset({reload:!0,config:disqus_config});else{var b=document,a=b.createElement('script');a.src='//reorx.disqus.com/embed.js',a.setAttribute('data-timestamp',+new Date),a.setAttribute('data-no-instant',''),b.head.appendChild(a),window.disqusEmbedLoaded=!0}})()</script>
+<script src=/js/instantclick.js data-no-instant></script>
+<script data-no-instant>InstantClick.init()</script>
+</body>
+</html>
