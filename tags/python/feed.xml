@@ -1,4 +1,127 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>python on Reorx’s Forge</title><link>https://reorx.com/tags/python/</link><description>Recent content in python on Reorx’s Forge</description><image><url>https://reorx.com/forge.png</url><link>https://reorx.com/forge.png</link></image><generator>Hugo -- gohugo.io</generator><lastBuildDate>Sun, 15 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://reorx.com/tags/python/feed.xml" rel="self" type="application/rss+xml"/><item><title>Tips that may save you from the hell of PyYAML</title><link>https://reorx.com/blog/python-yaml-tips/</link><pubDate>Sun, 15 May 2022 00:00:00 +0000</pubDate><guid>https://reorx.com/blog/python-yaml-tips/</guid><description>Try to make our life with PyYAML easier.</description><content:encoded><![CDATA[<p>YAML is a data-serialization language that is widely used.
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>python on Reorx’s Forge</title><link>https://reorx.com/tags/python/</link><description>Recent content in python on Reorx’s Forge</description><image><url>https://reorx.com/forge.png</url><link>https://reorx.com/forge.png</link></image><generator>Hugo -- gohugo.io</generator><lastBuildDate>Sun, 15 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://reorx.com/tags/python/feed.xml" rel="self" type="application/rss+xml"/><item><title>PyYAML 使用技巧</title><link>https://reorx.com/blog/python-yaml-tips-zh/</link><pubDate>Sun, 15 May 2022 00:00:00 +0000</pubDate><guid>https://reorx.com/blog/python-yaml-tips-zh/</guid><description>分享我在 Python 下使用 PyYAML 的技巧和代码片段，并介绍几个相关的库。</description><content:encoded><![CDATA[<blockquote>
+<p>英文版: <a href="https://reorx.com/blog/python-yaml-tips/">Tips that may save you from the hell of PyYAML</a>
+</p>
+</blockquote>
+<p>YAML 是一个被广泛使用的数据序列化和配置语言，作为一个开发者，总是不免和它打交道。
+但处理 YAML 文档，尤其是使用 PyYAML 的过程总是非常痛苦。</p>
+<p>这篇文章分享我在 Python 下使用 PyYAML 的技巧和代码片段，并介绍几个相关的库。</p>
+<blockquote>
+<p>注意：本文中的代码仅保证在 Python 3 下正常工作</p>
+</blockquote>
+<h2 id="总是使用-safe_loadsafe_dump">总是使用 <code>safe_load/safe_dump</code></h2>
+<p>PyYAML 的 <code>load</code> 函数可以构造任意 Python 对象（Pickle 协议），这意味着一次 <code>load</code> 可能导致任意 Python 函数被执行。</p>
+<p>为了确保应用程序的安全性，尽量在任何情况下使用 <code>yaml.safe_load</code> 和 <code>yaml.safe_dump</code>。</p>
+<h2 id="保留字段顺序">保留字段顺序</h2>
+<p>Python 3.7+ 中，<code>dict</code> keys 具备保留插入顺序的特性，所以通过 <code>yaml.safe_load</code> 得到的 <code>dict</code>，其 keys 顺序会与原始文件保持一致。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">yaml</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">text</span> <span class="o">=</span> <span class="s2">&#34;&#34;&#34;---
+</span><span class="s2">... c: 1
+</span><span class="s2">... b: 1
+</span><span class="s2">... d: 1
+</span><span class="s2">... a: 1
+</span><span class="s2">... &#34;&#34;&#34;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span> <span class="o">=</span> <span class="n">yaml</span><span class="o">.</span><span class="n">safe_load</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span>
+<span class="p">{</span><span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">list</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+<span class="p">[</span><span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">]</span>
+</code></pre></div><p>当把 <code>dict</code> 导出为 YAML 字符串时，为 <code>yaml.safe_dump</code> 传递 <code>sort_keys=False</code> 来保留 keys 的顺序。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">yaml</span><span class="o">.</span><span class="n">safe_dump</span><span class="p">(</span><span class="n">d</span><span class="p">))</span>
+<span class="n">a</span><span class="p">:</span> <span class="mi">1</span>
+<span class="n">b</span><span class="p">:</span> <span class="mi">1</span>
+<span class="n">c</span><span class="p">:</span> <span class="mi">1</span>
+<span class="n">d</span><span class="p">:</span> <span class="mi">1</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;e&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">yaml</span><span class="o">.</span><span class="n">safe_dump</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">sort_keys</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+<span class="n">c</span><span class="p">:</span> <span class="mi">1</span>
+<span class="n">b</span><span class="p">:</span> <span class="mi">1</span>
+<span class="n">d</span><span class="p">:</span> <span class="mi">1</span>
+<span class="n">a</span><span class="p">:</span> <span class="mi">1</span>
+<span class="n">e</span><span class="p">:</span> <span class="mi">1</span>
+</code></pre></div><p>如果 Python 版本较低，或者你想确保代码能在更广泛的环境下工作，你可以使用 <a href="https://github.com/wimglenn/oyaml">oyaml</a> 库来代替 PyYAML 的 <code>yaml</code> 包。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">oyaml</span> <span class="k">as</span> <span class="nn">yaml</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span> <span class="o">=</span> <span class="n">yaml</span><span class="o">.</span><span class="n">safe_load</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span>
+<span class="n">OrderedDict</span><span class="p">([(</span><span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)])</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;e&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">yaml</span><span class="o">.</span><span class="n">safe_dump</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">sort_keys</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+<span class="n">c</span><span class="p">:</span> <span class="mi">1</span>
+<span class="n">b</span><span class="p">:</span> <span class="mi">1</span>
+<span class="n">d</span><span class="p">:</span> <span class="mi">1</span>
+<span class="n">a</span><span class="p">:</span> <span class="mi">1</span>
+<span class="n">e</span><span class="p">:</span> <span class="mi">1</span>
+</code></pre></div><h2 id="优化列表项的缩进">优化列表项的缩进</h2>
+<p>默认情况下，PyYAML 输出的列表缩进与其父元素一致。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]}</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">yaml</span><span class="o">.</span><span class="n">safe_dump</span><span class="p">(</span><span class="n">d</span><span class="p">))</span>
+<span class="n">a</span><span class="p">:</span>
+<span class="o">-</span> <span class="mi">1</span>
+<span class="o">-</span> <span class="mi">2</span>
+<span class="o">-</span> <span class="mi">3</span>
+</code></pre></div><p>这并不是很好的格式，根据
+<a href="https://docs.ansible.com/ansible/latest/reference_appendices/YAMLSyntax.html">Ansible</a>
+和 <a href="https://developers.home-assistant.io/docs/documenting/yaml-style-guide/#block-style-sequences">HomeAssistant</a>
+等 YAML 书写规范，列表项应该缩进 2 空格。</p>
+<p>这种格式也会对导致列表项不会被如 VSCode 等编辑器识别，进而无法使用编辑器的折叠功能。</p>
+<p>要解决这个问题，使用如下代码片段，在代码中定义 <code>IndentDumper</code> class:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="k">class</span> <span class="nc">IndentDumper</span><span class="p">(</span><span class="n">yaml</span><span class="o">.</span><span class="n">Dumper</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">increase_indent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">flow</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">indentless</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">IndentDumper</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">increase_indent</span><span class="p">(</span><span class="n">flow</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+</code></pre></div><p>然后将它传递给 <code>yaml.dump</code> 的 <code>Dumper</code> 关键字参数。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">yaml</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">Dumper</span><span class="o">=</span><span class="n">IndentDumper</span><span class="p">))</span>
+<span class="n">a</span><span class="p">:</span>
+  <span class="o">-</span> <span class="mi">1</span>
+  <span class="o">-</span> <span class="mi">2</span>
+  <span class="o">-</span> <span class="mi">3</span>
+</code></pre></div><blockquote>
+<p>注意，<code>yaml.safe_dump</code> 由于有自己的 Dumper class，传递此参数会造成冲突。</p>
+</blockquote>
+<h2 id="输出可读的-utf-8-字符">输出可读的 UTF-8 字符</h2>
+<p>默认情况下，PyYAML 假设你希望输出的结果里只有 ASCII 字符。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="s1">&#39;你好&#39;</span><span class="p">}</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">yaml</span><span class="o">.</span><span class="n">safe_dump</span><span class="p">(</span><span class="n">d</span><span class="p">))</span>
+<span class="n">a</span><span class="p">:</span> <span class="s2">&#34;</span><span class="se">\u4F60\u597D</span><span class="s2">&#34;</span>
+</code></pre></div><p>这会让输出结果非常难以阅读。</p>
+<p>在 UTF-8 足够普及的今天，直接输出 UTF-8 字符是非常安全的。
+因此我们可以将 <code>allow_unicode=True</code> 传入 <code>yaml.safe_dump</code> 使 PyYAML 将 Unicode 转换成 UTF-8 字符串。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">yaml</span><span class="o">.</span><span class="n">safe_dump</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">allow_unicode</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+<span class="n">a</span><span class="p">:</span> <span class="n">你好</span>
+</code></pre></div><h2 id="一些-yaml-相关的库">一些 YAML 相关的库</h2>
+<h3 id="oyaml">oyaml</h3>
+<p>Link: <a href="https://github.com/wimglenn/oyaml">https://github.com/wimglenn/oyaml</a></p>
+<p>正如上文中提到的，oyaml 是 <code>yaml</code> 包的替换品，使 <code>dict</code> keys 的顺序在 dump/load 的时候得以保留。</p>
+<p>oyaml 是一个单文件库，只有 <a href="https://github.com/wimglenn/oyaml/blob/d0195070d26bd982f1e4e604bded5510dd035cd7/oyaml.py">53 行代码</a>，因此使用起来非常灵活，你可以直接把它的代码复制到自己的项目中，然后根据自己的需求进行修改。</p>
+<h3 id="strictyaml">strictyaml</h3>
+<p>Link: <a href="https://github.com/crdoconnor/strictyaml">https://github.com/crdoconnor/strictyaml</a></p>
+<p>有的人说 YAML 过于复杂和灵活，不是一个好的配置语言。但我认为这不是 YAML 的问题，而是使用方式的问题。如果我们限制程序只使用 YAML 的部分功能，YAML 其实可以变得像它设计的那般好用。</p>
+<p>这就是 StrictYAML 的设计意图，它是一个类型安全的 YAML 解析器，实现了 YAML 规范说明中的一个<a href="https:c//hitchdev.com/strictyaml/features-removed">子集</a> 。</p>
+<p>如果你对 YAML 的输入输出有较强的安全考虑，建议使用 StrictYAML 代替 PyYAML。</p>
+<p>顺带一提的是，StrictYAML 的<a href="https://hitchdev.com/strictyaml/">文档站</a>有很多关于设计细节和配置语言思考的文章，非常值得一看。</p>
+<h3 id="ruamelyaml">ruamel.yaml</h3>
+<p>Link: <a href="https://yaml.readthedocs.io/en/latest/overview.html">https://yaml.readthedocs.io/en/latest/overview.html</a></p>
+<p>ruamel.yaml 是 PyYAML 的一个分叉，于 2009 年发布并持续维护至今。</p>
+<p>ruamel.yaml 的文档里详细说明了它和 PyYAML 的<a href="https://yaml.readthedocs.io/en/latest/pyyaml.html#yaml-1-2-support">差异</a>。
+总体来说，ruamel.yaml 专注在 <a href="https://yaml.org/spec/1.2.2/">YAML 1.2</a>  上，对一些语法进行了优化。</p>
+<p>ruamel.yaml 最令我感兴趣的特性是输入输出的 “round-trip”，可以最大程度地保留输入源的原始格式。官方文档中的定义是这样的：</p>
+<blockquote>
+<p>A round-trip is a YAML load-modify-save sequence and ruamel.yaml tries to preserve, among others:</p>
+<ul>
+<li>comments</li>
+<li>block style and key ordering are kept, so you can diff the round-tripped source</li>
+<li>flow style sequences ( ‘a: b, c, d’) (based on request and test by Anthony Sottile)</li>
+<li>anchor names that are hand-crafted (i.e. not of the form<code>idNNN</code>)</li>
+<li>merges in dictionaries are preserved</li>
+</ul>
+</blockquote>
+<p>如果你有尽可能保留原始格式的需求，建议使用 ruamel.yaml 代替 PyYAML。</p>
+<blockquote>
+<p>在使用中我注意到 ruamel.yaml 的 safe load 方法 (<code>YAML(typ='safe').load</code>) 与 PyYAML 有些不同，它无法解析 flow style 的集合定义 (如 <code>a: {&quot;foo&quot;: &quot;bar&quot;}</code>)，这点没有在文档中提及，使用时须多加注意。</p>
+</blockquote>
+<h2 id="总结">总结</h2>
+<p>YAML 有它好的地方和坏的地方。它易于阅读，初期的学习曲线非常平缓。
+但 YAML 的规范说明非常复杂，不仅造成了使用中的混乱，也使不同语言的实现在很多细微的地方难以保持一致。</p>
+<p>尽管有这些小毛病，YAML 仍然是我心中最好的配置语言。希望这篇文章所介绍的技巧能够帮助你避免问题，获得更好的开发和使用体验。</p>
+]]></content:encoded></item><item><title>Tips that may save you from the hell of PyYAML</title><link>https://reorx.com/blog/python-yaml-tips/</link><pubDate>Sun, 15 May 2022 00:00:00 +0000</pubDate><guid>https://reorx.com/blog/python-yaml-tips/</guid><description>Try to make our life with PyYAML easier.</description><content:encoded><![CDATA[<p>YAML is a data-serialization language that is widely used.
 As a developer, I&rsquo;m always dealing with YAML from time to time.
 But processing YAML, especially using PyYAML in Python is painful and full of traps.
 Here I want to share some tips and snippets that can make your life with PyYAML easier.</p>
