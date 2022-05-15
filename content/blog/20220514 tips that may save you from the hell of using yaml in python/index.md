@@ -184,7 +184,7 @@ There are tons of great articles on the [documentation site](https://hitchdev.co
 
 Link: https://yaml.readthedocs.io/en/latest/overview.html
 
-ruamel.yaml is a fork of PyYAML, it was released in 2009
+ruamel.yaml is a fork of PyYAML, it was released in 2009 and continuously maintained in the past decade.
 
 The differences with PyYAML are listed [here](https://yaml.readthedocs.io/en/latest/pyyaml.html#yaml-1-2-support). Generally, ruamel.yaml focuses on [YAML 1.2](https://yaml.org/spec/1.2.2/)  with some opinionated enhancements for the syntax.
 
