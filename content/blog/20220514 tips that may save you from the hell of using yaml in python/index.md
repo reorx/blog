@@ -28,7 +28,7 @@ YAML's ability to construct an arbitrary Python object makes it dangerous to use
 It might be harmful to your application to simply `yaml.load` a document from an untrusted source such as the Internet and user input.
 
 See from [PyYAML official documentation](https://pyyaml.org/wiki/PyYAMLDocumentation#loading-yaml):
-> **Warning: It is not safe to call `yaml.load` with any data received from an untrusted source! `yaml.load` is as powerful as `pickle.load` and so may call any Python function.**
+> **Warning**: It is not safe to call `yaml.load` with any data received from an untrusted source! `yaml.load` is as powerful as `pickle.load` and so may call any Python function.
 
 In short, you should always use `yaml.safe_load` and `yaml.safe_dump` as the standard I/O methods for YAML.
 
