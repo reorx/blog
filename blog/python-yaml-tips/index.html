@@ -28,7 +28,7 @@
 <meta property="article:published_time" content="2022-05-15T00:00:00+00:00">
 <meta property="article:modified_time" content="2022-05-15T00:00:00+00:00">
 <script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Blogs","item":"https://reorx.com/blog/"},{"@type":"ListItem","position":2,"name":"Tips that may save you from the hell of PyYAML","item":"https://reorx.com/blog/python-yaml-tips/"}]}</script>
-<script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"Tips that may save you from the hell of PyYAML | Reorx’s Forge","name":"Tips that may save you from the hell of PyYAML","description":"Try to make our life with PyYAML easier.","keywords":["yaml","python"],"wordCount":"1071","inLanguage":"en","datePublished":"2022-05-15T00:00:00Z","dateModified":"2022-05-15T00:00:00Z","author":{"@type":"Person","name":"Reorx"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://reorx.com/blog/python-yaml-tips/"},"publisher":{"@type":"Organization","name":"Reorx’s Forge","logo":{"@type":"ImageObject","url":"https://reorx.com/favicon.ico"}}}</script>
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"Tips that may save you from the hell of PyYAML | Reorx’s Forge","name":"Tips that may save you from the hell of PyYAML","description":"Try to make our life with PyYAML easier.","keywords":["yaml","python"],"wordCount":"1072","inLanguage":"en","datePublished":"2022-05-15T00:00:00Z","dateModified":"2022-05-15T00:00:00Z","author":{"@type":"Person","name":"Reorx"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://reorx.com/blog/python-yaml-tips/"},"publisher":{"@type":"Organization","name":"Reorx’s Forge","logo":{"@type":"ImageObject","url":"https://reorx.com/favicon.ico"}}}</script>
 <noscript>
 <style>#theme-toggle,.top-link{display:none}</style>
 <style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary-bg:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51)}.list{background:var(--theme)}.list:not(.dark)::-webkit-scrollbar-track{background:0 0}.list:not(.dark)::-webkit-scrollbar-thumb{border-color:var(--theme)}}</style>
@@ -74,7 +74,7 @@ Try to make our life with PyYAML easier.
 <div class=post-meta><span class=meta-item><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar" style="user-select:text"><rect x="3" y="4" width="18" height="18" rx="2" ry="2" style="user-select:text"/><line x1="16" y1="2" x2="16" y2="6" style="user-select:text"/><line x1="8" y1="2" x2="8" y2="6" style="user-select:text"/><line x1="3" y1="10" x2="21" y2="10" style="user-select:text"/></svg>
 <span>2022-05-15</span></span><span class=meta-item><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon" style="user-select:text"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83.0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z" style="user-select:text"/><line x1="7" y1="7" x2="7" y2="7" style="user-select:text"/></svg>
 <span class=post-tags><a href=https://reorx.com/tags/yaml/>yaml</a><a href=https://reorx.com/tags/python/>python</a></span></span><span class=meta-item><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text" style="user-select:text"><path d="M14 2H6A2 2 0 004 4v16a2 2 0 002 2h12a2 2 0 002-2V8z" style="user-select:text"/><polyline points="14 2 14 8 20 8" style="user-select:text"/><line x1="16" y1="13" x2="8" y2="13" style="user-select:text"/><line x1="16" y1="17" x2="8" y2="17" style="user-select:text"/><polyline points="10 9 9 9 8 9" style="user-select:text"/></svg>
-<span>1071 words</span></span><span class=meta-item><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke="currentcolor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
+<span>1072 words</span></span><span class=meta-item><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke="currentcolor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
 <span>3 min</span></span>
 </div>
 </header> <div class="toc side right">
@@ -190,12 +190,12 @@ It is also not recognized by code editors like VSCode, making the list items unf
 </blockquote>
 <h2 id=output-readable-utf-8-dump>Output readable UTF-8 (dump)<a hidden class=anchor aria-hidden=true href=#output-readable-utf-8-dump>¶</a></h2>
 <p>By default, PyYAML assumes the user only wants ASCII code in the output,
-so it converts UTF-8 characters to Python&rsquo;s unicode representation.</p>
+so it converts UTF-8 characters to Python&rsquo;s Unicode representation.</p>
 <div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=o>&gt;&gt;&gt;</span> <span class=n>d</span> <span class=o>=</span> <span class=p>{</span><span class=s1>&#39;a&#39;</span><span class=p>:</span> <span class=s1>&#39;你好&#39;</span><span class=p>}</span>
 <span class=o>&gt;&gt;&gt;</span> <span class=nb>print</span><span class=p>(</span><span class=n>yaml</span><span class=o>.</span><span class=n>safe_dump</span><span class=p>(</span><span class=n>d</span><span class=p>))</span>
 <span class=n>a</span><span class=p>:</span> <span class=s2>&#34;</span><span class=se>\u4F60\u597D</span><span class=s2>&#34;</span>
 </code></pre></div><p>This makes the output hard to read for humans.</p>
-<p>In modern world, UTF-8 is widely supported, it&rsquo;s safe to write UTF-8 in the output.
+<p>In the modern world, UTF-8 is widely supported, it&rsquo;s safe to write UTF-8 in the output.
 Pass <code>allow_unicode=True</code> to <code>yaml.safe_dump</code> to enable that.</p>
 <div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=o>&gt;&gt;&gt;</span> <span class=nb>print</span><span class=p>(</span><span class=n>yaml</span><span class=o>.</span><span class=n>safe_dump</span><span class=p>(</span><span class=n>d</span><span class=p>,</span> <span class=n>allow_unicode</span><span class=o>=</span><span class=kc>True</span><span class=p>))</span>
 <span class=n>a</span><span class=p>:</span> <span class=n>你好</span>
@@ -254,6 +254,11 @@ but the specification is complex, which not only causes chaos in practice, but a
 </section>
 </div>
 <footer class=post-footer><div class=social-links>
+<div class=tweet-container>
+<div class=title>
+Discuss on twitter
+</div><blockquote class=twitter-tweet data-dnt=true><p lang=zh dir=ltr>New article: Tips that may save you from the hell of PyYAML<a href=https://t.co/uzUWCAKnHX>https://t.co/uzUWCAKnHX</a><br><br>总结了一些在 Python 中使用 PyYAML 库的建议。</p>&mdash; Reorx (@novoreorx) <a href="https://twitter.com/novoreorx/status/1525777955406114817?ref_src=twsrc%5Etfw">May 15, 2022</a></blockquote>
+</div>
 </div>
 <nav class=paginav>
 <a class=next href=https://reorx.com/blog/reinitiate-rss-reader/>

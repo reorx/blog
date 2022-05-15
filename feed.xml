@@ -79,12 +79,12 @@ It is also not recognized by code editors like VSCode, making the list items unf
 </blockquote>
 <h2 id="output-readable-utf-8-dump">Output readable UTF-8 (dump)</h2>
 <p>By default, PyYAML assumes the user only wants ASCII code in the output,
-so it converts UTF-8 characters to Python&rsquo;s unicode representation.</p>
+so it converts UTF-8 characters to Python&rsquo;s Unicode representation.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="s1">&#39;你好&#39;</span><span class="p">}</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">yaml</span><span class="o">.</span><span class="n">safe_dump</span><span class="p">(</span><span class="n">d</span><span class="p">))</span>
 <span class="n">a</span><span class="p">:</span> <span class="s2">&#34;</span><span class="se">\u4F60\u597D</span><span class="s2">&#34;</span>
 </code></pre></div><p>This makes the output hard to read for humans.</p>
-<p>In modern world, UTF-8 is widely supported, it&rsquo;s safe to write UTF-8 in the output.
+<p>In the modern world, UTF-8 is widely supported, it&rsquo;s safe to write UTF-8 in the output.
 Pass <code>allow_unicode=True</code> to <code>yaml.safe_dump</code> to enable that.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">yaml</span><span class="o">.</span><span class="n">safe_dump</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">allow_unicode</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
 <span class="n">a</span><span class="p">:</span> <span class="n">你好</span>
