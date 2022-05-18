@@ -1,4 +1,252 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Reorx’s Forge</title><link>https://reorx.com/</link><description>Recent content on Reorx’s Forge</description><image><url>https://reorx.com/forge.png</url><link>https://reorx.com/forge.png</link></image><generator>Hugo -- gohugo.io</generator><lastBuildDate>Wed, 18 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://reorx.com/feed.xml" rel="self" type="application/rss+xml"/><item><title>Google I/O 2022 Web Platform 新特性展示观看笔记</title><link>https://reorx.com/blog/notes-on-google-io-2022-web-platform-presentation/</link><pubDate>Wed, 18 May 2022 00:00:00 +0000</pubDate><guid>https://reorx.com/blog/notes-on-google-io-2022-web-platform-presentation/</guid><description>了解 Web 新技术从未如此充满乐趣。</description><content:encoded><![CDATA[<p>几天前临睡时看了 2022 Google IO 的一个 presentation: <a href="https://www.youtube.com/watch?v=5b4YcLB4DVI">What&rsquo;s new for the web platform</a>, 两位 Google 员工的解说让了解 Web 新技术的过程变得充满乐趣，于是做了些笔记在 <a href="https://threadreaderapp.com/thread/1525875286096904192.html">Twitter thread</a> 中。这篇文章对笔记进行了整理，并为每个特性附加详细说明的链接。</p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Reorx’s Forge</title><link>https://reorx.com/</link><description>Recent content on Reorx’s Forge</description><image><url>https://reorx.com/forge.png</url><link>https://reorx.com/forge.png</link></image><generator>Hugo -- gohugo.io</generator><lastBuildDate>Wed, 18 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://reorx.com/feed.xml" rel="self" type="application/rss+xml"/><item><title>Frontend Guide 01: Webpack babel-loader 使用指南</title><link>https://reorx.com/blog/migrate-from-ts-loader-to-babel-loader/</link><pubDate>Wed, 18 May 2022 00:00:00 +0000</pubDate><guid>https://reorx.com/blog/migrate-from-ts-loader-to-babel-loader/</guid><description>Frontend Guide 系列的第一篇文章，讲述我为何从 ts-loader 迁移到 babel-loader，以及我的 babel-loader 详细配置方案说明。</description><content:encoded><![CDATA[<h2 id="引子">引子</h2>
+<p>大约在两个月前，为了做出一款属于自己的产品，我正式开始学习 TypeScript 和 React 开发<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>。虽然接触 JavaScript 时间不短了，但一直热衷于使用 Vanilla JS，也没有正式做过比较严肃的项目。因此，我把自己定位为一个前端新手，决定从 0 开始学习现代化前端开发。</p>
+<p>这两个月来，我在学习实践过程中累计了一些自己的心得和体会，算不上高深，但应该可以为同样在学习中的新手起到参考作用。从这篇文章开始，我会逐一将我认为有价值的部分写成博客，归类于 #frontend-guide 标签下，并在未来的学习中持续更新。作为一个非专业的前端学习者，这些文章中一定会出现错误和疏漏，请读者朋友们不吝指正，如果能从批评中学到什么，将会是我写作的最大收获。</p>
+<p>先大致列举一些可写的话题，以作备忘：</p>
+<ul>
+<li>如何构建一个最基本的 TypeScript 项目
+<ul>
+<li>介绍 package.json 和基本的 devDependencies</li>
+<li>介绍 tsconfig.json 中必须了解的选项</li>
+<li>tsc 和 esbuild</li>
+</ul>
+</li>
+<li>如何使用 jest 进行细粒度的 TDD</li>
+<li>从零开始构建自己的 React project template
+<ul>
+<li>不使用 create-react-app 有哪些好处</li>
+<li>webpack</li>
+<li>babel: modular import and hot reload</li>
+<li>config and APP_ENV</li>
+</ul>
+</li>
+<li>如何构建一个最基本的 monorepo
+<ul>
+<li>npm workspace</li>
+<li>tsconfig reference</li>
+<li>webpack: resolve alias and tsconfig paths plugin</li>
+</ul>
+</li>
+<li>TypeScript caveats and cheatsheet</li>
+<li>如何使用 TypeScript 和 React 开发 Chrome Extension</li>
+<li>Mobx 使用指南</li>
+<li>实现一个简单的 useFetch Hook</li>
+<li>如何使用 swr 调用 HTTP API</li>
+<li>如何使用 Protobuf 和 TypeScript 封装 HTTP API</li>
+</ul>
+<h2 id="ts-loader">ts-loader</h2>
+<p>在现代化前端项目中，TypeScript 因其静态类型的特性，为代码的可维护性、健壮性带来了极大的提升，已逐渐成为前端开发的标准语言。但 TypeScript 不能直接在浏览器中运行，因此在项目构建流程中需要引入 <a href="https://en.wikipedia.org/wiki/Source-to-source_compiler">transpiler</a> 来将其编译为浏览器可用的 JavaScript。<a href="https://github.com/TypeStrong/ts-loader">ts-loader</a> 就是为 Webpack 设计的 transpiler 之一。</p>
+<p>过去的开发生涯中，我虽然不是专业的前端，也对 JavaScript 世界中的基石 babel 有所耳闻目见。但在这次从零开始学习 TypeScript 开发时，因为对 babel 有种过于复杂的印象，我选择了 ts-loader 作为第一个学习和上手的插件。</p>
+<p>ts-loader 的使用非常简单，文档也足够清晰，如果你的项目本身有正确配置 <code>tsconfig.json</code> 并可以使用 <code>tsc -b</code> 完成编译，那么在 webpack 中引入 ts-loader 后不需要额外的配置即可工作。</p>
+<p>下面是一份简化的 <code>webpack.config.js</code> 示例:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">entry</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">index</span><span class="o">:</span> <span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">srcDir</span><span class="p">,</span> <span class="s1">&#39;index.tsx&#39;</span><span class="p">),</span>
+  <span class="p">},</span>
+  <span class="nx">output</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">path</span><span class="o">:</span> <span class="nx">destDir</span><span class="p">,</span>
+    <span class="nx">filename</span><span class="o">:</span> <span class="s1">&#39;[name].bundle.js&#39;</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="nx">module</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">rules</span><span class="o">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="nx">test</span><span class="o">:</span> <span class="sr">/\.tsx?$/</span><span class="p">,</span>
+        <span class="nx">loader</span><span class="o">:</span> <span class="s1">&#39;ts-loader&#39;</span><span class="p">,</span>
+        <span class="nx">exclude</span><span class="o">:</span> <span class="sr">/node_modules/</span><span class="p">,</span>
+      <span class="p">},</span>
+    <span class="p">]</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><p>经过一段时间的使用，我发现了对 ts-loader 不太满意的几个地方：</p>
+<ul>
+<li>
+<p>偶尔出现莫名的错误</p>
+<p>有的时候，当对 TypeScript 源文件进行了某种变更，或许是大量的类型变化，或许是文件重命名和移动目录，可能会触发 ts-loader 报错，但此时 VSCode 的静态检查器却没有显示出任何问题（所有源文件），重启 webpack serve 也无济于事。这时只能通过删除所有与构建过程和结果有关的文件，如 <code>build</code>, <code>dist</code>, <code>**/*.d.ts</code>, <code>*.tsbuildinfo</code>，重新运行才可以消除这个不存在的错误。</p>
+</li>
+<li>
+<p>难以 Debug 某些 transpiling 过程中的错误</p>
+<p>如果你的 <code>tsconfig.json</code> 中设置了 <code>noEmit: true</code> 或 <code>noEmitOnError: true</code>, 那你很有可能会看到 <code>Error: TypeScript emitted no output for…</code> 这样的报错，这是因为 ts-loader 在将 TypeScript 转换成 JavaScript 时无法成功，于是没有输出 js 文件。但具体是什么错误，完全无法搞清楚。我在 GitHub 上跟踪了一个 <a href="https://github.com/TypeStrong/ts-loader/issues/1257">issue</a>, 目前仍然没有收获。</p>
+</li>
+<li>
+<p>项目内多个 package 引用必须生成描述文件</p>
+<p>如果想在项目内想要拆分多个 package 并互相引用，需要使用 TypeScript 的 <a href="https://www.typescriptlang.org/docs/handbook/project-references.html">Project References</a> 功能，而 <code>declaration</code>  必须设置为 true，此时 ts-loader 会为被引用的包生成 <code>.d.ts</code> 的描述文件，使文件浏览器变得混乱。</p>
+</li>
+<li>
+<p>在插件生态中不是一等公民</p>
+<p>一些优化项目开发流程的插件，如 <a href="https://github.com/pmmmwh/react-refresh-webpack-plugin">react-refresh-webpack-plugin</a>, 优先支持 babel 而非 ts-loader；<a href="https://github.com/umijs/babel-plugin-import">babel-plugin-import</a> 的 ts-loader 实现 <a href="https://github.com/Brooooooklyn/ts-import-plugin">ts-import-plugin</a> 远不如其本身流行。</p>
+</li>
+</ul>
+<p>于是我决定对 babel-loader 进行一次尝试。</p>
+<h2 id="babel-loader">babel-loader</h2>
+<p><a href="https://github.com/babel/babel-loader">babel-loader</a> 的项目页面有详细的安装配置说明，在此不做赘述。下面是一个在 TypeScript + React 项目中工作的最小化配置示例:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">module</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">rules</span><span class="o">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="nx">test</span><span class="o">:</span> <span class="sr">/\.tsx?$/</span><span class="p">,</span>
+        <span class="nx">exclude</span><span class="o">:</span> <span class="sr">/node_modules/</span><span class="p">,</span>
+        <span class="nx">use</span><span class="o">:</span> <span class="p">[</span>
+          <span class="p">{</span>
+            <span class="nx">loader</span><span class="o">:</span> <span class="s1">&#39;babel-loader&#39;</span><span class="p">,</span>
+            <span class="nx">options</span><span class="o">:</span> <span class="p">{</span>
+              <span class="nx">presets</span><span class="o">:</span> <span class="p">[</span>
+                <span class="p">[</span><span class="s1">&#39;@babel/preset-env&#39;</span><span class="p">,</span> <span class="p">{</span> <span class="nx">targets</span><span class="o">:</span> <span class="s2">&#34;defaults&#34;</span> <span class="p">}],</span>
+                <span class="s1">&#39;@babel/preset-typescript&#39;</span><span class="p">,</span>
+                <span class="p">[</span><span class="s1">&#39;@babel/preset-react&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;runtime&#39;</span><span class="o">:</span> <span class="s1">&#39;automatic&#39;</span><span class="p">}]</span>
+              <span class="p">],</span>
+            <span class="p">},</span>
+          <span class="p">},</span>
+        <span class="p">],</span>
+      <span class="p">}</span>
+    <span class="p">]</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><p>配置完成后，代码顺利编译，随后我开始了对构建配置优化的探索。</p>
+<h3 id="webpack-bundle-analyzer">webpack-bundle-analyzer</h3>
+<p>我首先想到的是对构建出的 bundle 的大小进行检查，一看竟然有 7MB 之大，于是安装了 <a href="https://github.com/webpack-contrib/webpack-bundle-analyzer">webpack-bundle-analyzer</a>, 对 bundle 中所包含的依赖进行分析。</p>
+<p>下面是引入 webpack-bundle-analyzer 之后的 <code>webpack.config.js</code> 文件，通过环境变量 <code>WEBPACK_USE_ANALYZE</code> 判断是否进入分析模式并修改 webpack 配置。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="kr">const</span> <span class="nx">useAnalyze</span> <span class="o">=</span> <span class="o">!!</span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">WEBPACK_USE_ANALYZE</span>
+
+<span class="kr">const</span> <span class="nx">config</span> <span class="o">=</span> <span class="p">{...}</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nx">useAnalyze</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kr">const</span> <span class="nx">BundleAnalyzerPlugin</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;webpack-bundle-analyzer&#39;</span><span class="p">).</span><span class="nx">BundleAnalyzerPlugin</span><span class="p">;</span>
+
+  <span class="nx">config</span><span class="p">.</span><span class="nx">mode</span> <span class="o">=</span> <span class="s1">&#39;development&#39;</span>
+  <span class="nx">config</span><span class="p">.</span><span class="nx">plugins</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span>
+    <span class="k">new</span> <span class="nx">BundleAnalyzerPlugin</span><span class="p">({</span>
+      <span class="nx">analyzerPort</span><span class="o">:</span> <span class="mi">18888</span><span class="p">,</span>
+    <span class="p">})</span>
+  <span class="p">)</span>
+<span class="p">}</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">config</span>
+</code></pre></div><p>运行 <code>WEBPACK_USE_ANALYZE=1 webpack</code> 在浏览器中查看分析结果。</p>
+<p><img loading="lazy" src="./images/webpack-analyze.png" alt=""  />
+</p>
+<p>原来 tabler-icons-react 一个库就占了 5.28MB，其他库中 lodash 也不算正常，似乎和 tabler-icons-react 一样被完整包含进来了。</p>
+<h3 id="babel-plugin-import">babel-plugin-import</h3>
+<p><a href="https://github.com/konradkalemba/tabler-icons-react">tabler-icons-react</a> 是一个 SVG 图标库，我只是使用了其中一部分图标。lodash 是非常通用的工具函数库，同样的，我只对其中一部分函数进行了引用。那么有没有办法按需加载依赖中的模块，只输出被 import 到的部分呢？答案就是 <a href="https://github.com/umijs/babel-plugin-import">babel-plugin-import</a>。</p>
+<p>继续修改 <code>webpack.config.js</code>，为 babel-loader 增加 plugins:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="p">{</span>
+  <span class="nx">loader</span><span class="o">:</span> <span class="s1">&#39;babel-loader&#39;</span><span class="p">,</span>
+    <span class="nx">plugins</span><span class="o">:</span> <span class="p">[</span>
+      <span class="p">[</span><span class="s1">&#39;import&#39;</span><span class="p">,</span> <span class="p">{</span>
+        <span class="nx">libraryName</span><span class="o">:</span> <span class="s1">&#39;tabler-icons-react&#39;</span><span class="p">,</span>
+        <span class="nx">libraryDirectory</span><span class="o">:</span> <span class="s1">&#39;dist/icons&#39;</span><span class="p">,</span>
+      <span class="p">}],</span>
+      <span class="p">[</span><span class="s1">&#39;import&#39;</span><span class="p">,</span> <span class="p">{</span>
+        <span class="nx">libraryName</span><span class="o">:</span> <span class="s1">&#39;lodash&#39;</span><span class="p">,</span>
+        <span class="nx">libraryDirectory</span><span class="o">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+        <span class="nx">camel2DashComponentName</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+      <span class="p">}],</span>
+    <span class="p">]</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><p>再次运行 <code>WEBPACK_USE_ANALYZE=1 webpack</code> ，可以看出 bundle 结构有了显著的改进（红色的部分是 tabler-icons-react 和 lodash）:</p>
+<p><img loading="lazy" src="./images/webpack-analyze-2.png" alt=""  />
+</p>
+<blockquote>
+<p><a href="https://github.com/lodash/babel-plugin-lodash">babel-plugin-lodash</a> 也可以实现 lodash 的按需加载，但它是专为 lodash 开发的，不具备 babel-plugin-import 的通用性。</p>
+</blockquote>
+<h3 id="babelpreset-env">@babel/preset-env</h3>
+<p><a href="https://babeljs.io/docs/en/babel-preset-env">@babel/preset-env</a> 是 babel 中最重要的一个 preset。所谓 preset，即预设配置的封装，让需求相近的用户可以不用关注细节直接使用，preset-env 提供了非常丰富的选项，让使用者可以快速定制出符合目标需求的编译结果。</p>
+<p>首先要关注的是 <a href="https://babeljs.io/docs/en/options#targets">targets</a> 选项，它决定了 babel 所编译出的 JavaScript 能否在特定平台上运行。<code>targets</code> 支持 <a href="https://github.com/ai/browserslist">browserslist</a> 语法，上文中我们的初始配置 <code>['@babel/preset-env', { targets: &quot;defaults&quot; }],</code> 代表使用 browserslist 的 defaults 查询<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>，虽然可以编译，但在浏览器中是无法运行的，会产生
+<code>Uncaught ReferenceError: regeneratorRuntime is not defined</code> 错误，这是为什么呢？</p>
+<p>为了统一不同浏览器的 JavaScript 实现差异，使 ES2015+ 代码可以正确运行，babel 会根据 targets 决定是否需要在编译结果中注入 polyfill。
+最早这一功能由 <a href="https://babeljs.io/docs/en/babel-polyfill">@babel/polyfill</a> 实现，但它在 babel 7.4.0 之后被废弃，由 <a href="https://github.com/zloirock/core-js">core-js </a> 接替。我们的代码之所以运行报错，就是因为没有指定 preset-env 使用 core-js，导致用于模拟 ES2015+ 运行环境的 <code>regeneratorRuntime</code> 缺失。</p>
+<p>修改后的 preset-env 配置如下:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="p">[</span><span class="s2">&#34;@babel/preset-env&#34;</span><span class="p">,</span> <span class="p">{</span>
+  <span class="nx">targets</span><span class="o">:</span> <span class="s2">&#34;defaults&#34;</span><span class="p">,</span>
+  <span class="nx">corejs</span><span class="o">:</span> <span class="mi">3</span><span class="p">,</span>
+  <span class="nx">useBuiltIns</span><span class="o">:</span> <span class="s1">&#39;usage&#39;</span><span class="p">,</span>
+<span class="p">}]</span>
+</code></pre></div><p>重新编译，代码即可成功运行。并且通过 webpack-bundle-analyzer 可以发现 bundle 中多出了 core-js 的部分。</p>
+<p>如果想在对浏览器的支持上激进一些，可以尝试将 targets 设为 <code>{browsers: '&gt; 5%'}</code>，即仅支持占有率超过 5% 的浏览器，你会发现 bundle 中 core-js 的部分会再次消失，因为这些浏览器不需要 core-js 就有完整的 ES2015 支持。</p>
+<h3 id="react-refresh-webpack-plugin">react-refresh-webpack-plugin</h3>
+<p>webpack 提供 <a href="https://webpack.js.org/concepts/hot-module-replacement/">HMR</a> 热更新功能，不需要刷新页面即可将改动反映到页面中。在 babel-loader 中，需要通过 <a href="https://github.com/pmmmwh/react-refresh-webpack-plugin">react-refresh-webpack-plugin</a> 插件来实现 React JSX 的热更新。</p>
+<p>首先要在 devServer 中开启 <code>hot</code> 选项:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">devServer</span><span class="o">:</span> <span class="p">{</span>
+    <span class="c1">// Enable hot reloading
+</span><span class="c1"></span>    <span class="nx">hot</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><p>然后为 webpack 添加 <code>ReactRefreshWebpackPlugin</code> 插件:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="kr">const</span> <span class="nx">ReactRefreshWebpackPlugin</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;@pmmmwh/react-refresh-webpack-plugin&#39;</span><span class="p">);</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">plugins</span><span class="o">:</span> <span class="p">[</span>
+    <span class="k">new</span> <span class="nx">ReactRefreshWebpackPlugin</span><span class="p">(),</span>
+  <span class="p">],</span>
+<span class="p">}</span>
+</code></pre></div><p>最后为 babel-loader 添加 <code>react-refresh/babel</code> 插件，通过 <code>isDevelopment</code> 决定是否存在:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="p">{</span>
+  <span class="nx">loader</span><span class="o">:</span> <span class="s1">&#39;babel-loader&#39;</span><span class="p">,</span>
+  <span class="nx">options</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">plugins</span><span class="o">:</span> <span class="p">[</span>
+      <span class="nx">isDevelopment</span> <span class="o">&amp;&amp;</span> <span class="s1">&#39;react-refresh/babel&#39;</span>
+    <span class="p">].</span><span class="nx">filter</span><span class="p">(</span><span class="nb">Boolean</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><h3 id="summary">Summary</h3>
+<p>最终结果如下:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">module</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">rules</span><span class="o">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="nx">test</span><span class="o">:</span> <span class="sr">/\.tsx?$/</span><span class="p">,</span>
+        <span class="nx">exclude</span><span class="o">:</span> <span class="sr">/node_modules/</span><span class="p">,</span>
+        <span class="nx">use</span><span class="o">:</span> <span class="p">[</span>
+          <span class="p">{</span>
+            <span class="nx">loader</span><span class="o">:</span> <span class="s1">&#39;babel-loader&#39;</span><span class="p">,</span>
+            <span class="nx">options</span><span class="o">:</span> <span class="p">{</span>
+              <span class="nx">presets</span><span class="o">:</span> <span class="p">[</span>
+                <span class="p">[</span><span class="s1">&#39;@babel/preset-env&#39;</span><span class="p">,</span> <span class="p">{</span>
+                  <span class="nx">targets</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="nx">browsers</span><span class="o">:</span> <span class="s1">&#39;&gt; 5%&#39;</span><span class="p">,</span>
+                  <span class="p">},</span>
+                  <span class="nx">corejs</span><span class="o">:</span> <span class="mi">3</span><span class="p">,</span>
+                  <span class="nx">useBuiltIns</span><span class="o">:</span> <span class="s1">&#39;usage&#39;</span><span class="p">,</span>
+                <span class="p">}],</span>
+                <span class="s1">&#39;@babel/preset-typescript&#39;</span><span class="p">,</span>
+                <span class="p">[</span><span class="s1">&#39;@babel/preset-react&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;runtime&#39;</span><span class="o">:</span> <span class="s1">&#39;automatic&#39;</span><span class="p">}]</span>
+              <span class="p">],</span>
+              <span class="nx">plugins</span><span class="o">:</span> <span class="p">[</span>
+                <span class="p">[</span><span class="s1">&#39;import&#39;</span><span class="p">,</span> <span class="p">{</span>
+                  <span class="nx">libraryName</span><span class="o">:</span> <span class="s1">&#39;tabler-icons-react&#39;</span><span class="p">,</span>
+                  <span class="nx">libraryDirectory</span><span class="o">:</span> <span class="s1">&#39;dist/icons&#39;</span><span class="p">,</span>
+                <span class="p">}],</span>
+                <span class="p">[</span><span class="s1">&#39;import&#39;</span><span class="p">,</span> <span class="p">{</span>
+                  <span class="nx">libraryName</span><span class="o">:</span> <span class="s1">&#39;lodash&#39;</span><span class="p">,</span>
+                  <span class="nx">libraryDirectory</span><span class="o">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+                  <span class="nx">camel2DashComponentName</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+                <span class="p">}],</span>
+                <span class="nx">isDevelopment</span> <span class="o">&amp;&amp;</span> <span class="s1">&#39;react-refresh/babel&#39;</span>
+              <span class="p">].</span><span class="nx">filter</span><span class="p">(</span><span class="nb">Boolean</span><span class="p">),</span>
+            <span class="p">},</span>
+          <span class="p">},</span>
+        <span class="p">],</span>
+      <span class="p">}</span>
+    <span class="p">]</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><p>如果你想看到一个可运行的例子，请参考我的最小化 React 项目模板 <a href="https://github.com/reorx/minireact">reorx/minireact</a>，其中有完整的 <a href="https://github.com/reorx/minireact/blob/6e5b086e309cdbe7132c268ba8cf1e6e5d5ab32e/webpack.config.js">webpack.config.js</a> 文件。</p>
+<h2 id="revision">Revision</h2>
+<ul>
+<li>2022-05-18: created</li>
+</ul>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p>开始学习时的推文: <a href="https://twitter.com/novoreorx/status/1500385952942157828">学习了俩小时如何开始一个 TypeScript 项目，现在已经不省人事了</a>&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2" role="doc-endnote">
+<p>根据 browerslist 文档，<code>defaults</code> 代表 <code>&gt; 0.5%, last 2 versions, Firefox ESR, not dead</code>，是一个非常宽泛的规则，可覆盖全世界所有浏览器中的 <a href="https://browserslist.dev/?q=ZGVmYXVsdHM%3D">90%</a>&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
+]]></content:encoded></item><item><title>Google I/O 2022 Web Platform 新特性展示观看笔记</title><link>https://reorx.com/blog/notes-on-google-io-2022-web-platform-presentation/</link><pubDate>Wed, 18 May 2022 00:00:00 +0000</pubDate><guid>https://reorx.com/blog/notes-on-google-io-2022-web-platform-presentation/</guid><description>了解 Web 新技术从未如此充满乐趣。</description><content:encoded><![CDATA[<p>几天前临睡时看了 2022 Google IO 的一个 presentation: <a href="https://www.youtube.com/watch?v=5b4YcLB4DVI">What&rsquo;s new for the web platform</a>, 两位 Google 员工的解说让了解 Web 新技术的过程变得充满乐趣，于是做了些笔记在 <a href="https://threadreaderapp.com/thread/1525875286096904192.html">Twitter thread</a> 中。这篇文章对笔记进行了整理，并为每个特性附加详细说明的链接。</p>
 <div class="tweet social-quote">
   <div class="title">
     <svg role="img" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><title>Twitter</title><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg>
