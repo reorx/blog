@@ -1,5 +1,5 @@
 ---
-title: Google I/O 2022 Web platform 新特性展示观看笔记
+title: Google I/O 2022 Web Platform 新特性展示观看笔记
 slug: notes-on-google-io-2022-web-platform-presentation
 date: 2022-05-18
 description: 了解 Web 新技术从未如此充满乐趣。
