@@ -29,7 +29,7 @@ params:
   ShowWordCount: true
   ShowCodeCopyButtons: true
   ShowPostNavLinks: true
-  MaskedEmail: novoreorx@gmail.com
+  Email: hello@reorx.com
 
   socialIcons:
     - name: github-simple
