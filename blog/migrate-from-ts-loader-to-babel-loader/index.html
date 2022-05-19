@@ -25,7 +25,7 @@
 <meta property="article:published_time" content="2022-05-18T00:00:00+00:00">
 <meta property="article:modified_time" content="2022-05-18T00:00:00+00:00">
 <script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Blogs","item":"https://reorx.com/blog/"},{"@type":"ListItem","position":2,"name":"Frontend Guide 01: Webpack babel-loader 使用指南","item":"https://reorx.com/blog/migrate-from-ts-loader-to-babel-loader/"}]}</script>
-<script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"Frontend Guide 01: Webpack babel-loader 使用指南 | Reorx’s Forge","name":"Frontend Guide 01: Webpack babel-loader 使用指南","description":"Frontend Guide 系列的第一篇文章，讲述我为何从 ts-loader 迁移到 babel-loader，以及我的 babel-loader 详细配置方案说明。","keywords":["frontend-guide","webpack"],"wordCount":"2642","inLanguage":"en","image":"https://reorx.com/blog/migrate-from-ts-loader-to-babel-loader/images/babel-webpack.png","datePublished":"2022-05-18T00:00:00Z","dateModified":"2022-05-18T00:00:00Z","author":{"@type":"Person","name":"Reorx"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://reorx.com/blog/migrate-from-ts-loader-to-babel-loader/"},"publisher":{"@type":"Organization","name":"Reorx’s Forge","logo":{"@type":"ImageObject","url":"https://reorx.com/favicon.ico"}}}</script>
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"Frontend Guide 01: Webpack babel-loader 使用指南 | Reorx’s Forge","name":"Frontend Guide 01: Webpack babel-loader 使用指南","description":"Frontend Guide 系列的第一篇文章，讲述我为何从 ts-loader 迁移到 babel-loader，以及我的 babel-loader 详细配置方案说明。","keywords":["frontend-guide","webpack"],"wordCount":"2693","inLanguage":"en","image":"https://reorx.com/blog/migrate-from-ts-loader-to-babel-loader/images/babel-webpack.png","datePublished":"2022-05-18T00:00:00Z","dateModified":"2022-05-18T00:00:00Z","author":{"@type":"Person","name":"Reorx"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://reorx.com/blog/migrate-from-ts-loader-to-babel-loader/"},"publisher":{"@type":"Organization","name":"Reorx’s Forge","logo":{"@type":"ImageObject","url":"https://reorx.com/favicon.ico"}}}</script>
 <noscript>
 <style>#theme-toggle,.top-link{display:none}</style>
 <style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary-bg:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51)}.list{background:var(--theme)}.list:not(.dark)::-webkit-scrollbar-track{background:0 0}.list:not(.dark)::-webkit-scrollbar-thumb{border-color:var(--theme)}}</style>
@@ -71,7 +71,7 @@ Frontend Guide 系列的第一篇文章，讲述我为何从 ts-loader 迁移到
 <div class=post-meta><span class=meta-item><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar" style="user-select:text"><rect x="3" y="4" width="18" height="18" rx="2" ry="2" style="user-select:text"/><line x1="16" y1="2" x2="16" y2="6" style="user-select:text"/><line x1="8" y1="2" x2="8" y2="6" style="user-select:text"/><line x1="3" y1="10" x2="21" y2="10" style="user-select:text"/></svg>
 <span>2022-05-18</span></span><span class=meta-item><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon" style="user-select:text"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83.0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z" style="user-select:text"/><line x1="7" y1="7" x2="7" y2="7" style="user-select:text"/></svg>
 <span class=post-tags><a href=https://reorx.com/tags/frontend-guide/>frontend-guide</a><a href=https://reorx.com/tags/webpack/>webpack</a></span></span><span class=meta-item><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text" style="user-select:text"><path d="M14 2H6A2 2 0 004 4v16a2 2 0 002 2h12a2 2 0 002-2V8z" style="user-select:text"/><polyline points="14 2 14 8 20 8" style="user-select:text"/><line x1="16" y1="13" x2="8" y2="13" style="user-select:text"/><line x1="16" y1="17" x2="8" y2="17" style="user-select:text"/><polyline points="10 9 9 9 8 9" style="user-select:text"/></svg>
-<span>2642 words</span></span><span class=meta-item><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke="currentcolor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
+<span>2693 words</span></span><span class=meta-item><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke="currentcolor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
 <span>6 min</span></span>
 </div>
 </header>
@@ -146,7 +146,7 @@ Frontend Guide 系列的第一篇文章，讲述我为何从 ts-loader 迁移到
 <p>在现代化前端项目中，TypeScript 因其静态类型的特性，为代码的可维护性、健壮性带来了极大的提升，已逐渐成为前端开发的标准语言。但 TypeScript 不能直接在浏览器中运行，因此在项目构建流程中需要引入 <a href=https://en.wikipedia.org/wiki/Source-to-source_compiler>transpiler</a> 来将其编译为浏览器可用的 JavaScript。<a href=https://github.com/TypeStrong/ts-loader>ts-loader</a> 就是为 Webpack 设计的 transpiler 之一。</p>
 <p>过去的开发生涯中，我虽然不是专业的前端，也对 JavaScript 世界中的基石 babel 有所耳闻目见。但在这次从零开始学习 TypeScript 开发时，因为对 babel 有种过于复杂的印象，我选择了 ts-loader 作为第一个学习和上手的插件。</p>
 <p>ts-loader 的使用非常简单，文档也足够清晰，如果你的项目本身有正确配置 <code>tsconfig.json</code> 并可以使用 <code>tsc -b</code> 完成编译，那么在 webpack 中引入 ts-loader 后不需要额外的配置即可工作。</p>
-<p>下面是一份简化的 <code>webpack.config.js</code> 示例:</p>
+<p>下面是一份使用 ts-loader 的 <code>webpack.config.js</code> 示例:</p>
 <div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=nx>module</span><span class=p>.</span><span class=nx>exports</span> <span class=o>=</span> <span class=p>{</span>
   <span class=nx>entry</span><span class=o>:</span> <span class=p>{</span>
     <span class=nx>index</span><span class=o>:</span> <span class=nx>path</span><span class=p>.</span><span class=nx>join</span><span class=p>(</span><span class=nx>srcDir</span><span class=p>,</span> <span class=s1>&#39;index.tsx&#39;</span><span class=p>),</span>
@@ -298,7 +298,7 @@ Frontend Guide 系列的第一篇文章，讲述我为何从 ts-loader 迁移到
   <span class=p>}</span>
 <span class=p>}</span>
 </code></pre></div><h3 id=summary>Summary<a hidden class=anchor aria-hidden=true href=#summary>¶</a></h3>
-<p>最终结果如下:</p>
+<p>将以上插件和技巧综合起来，最终我的 babel-loader 配置如下:</p>
 <div class=highlight><pre tabindex=0 class=chroma><code class=language-js data-lang=js><span class=nx>module</span><span class=p>.</span><span class=nx>exports</span> <span class=o>=</span> <span class=p>{</span>
   <span class=nx>module</span><span class=o>:</span> <span class=p>{</span>
     <span class=nx>rules</span><span class=o>:</span> <span class=p>[</span>
@@ -339,7 +339,13 @@ Frontend Guide 系列的第一篇文章，讲述我为何从 ts-loader 迁移到
     <span class=p>]</span>
   <span class=p>}</span>
 <span class=p>}</span>
-</code></pre></div><p>如果你想看到一个可运行的例子，请参考我的最小化 React 项目模板 <a href=https://github.com/reorx/minireact>reorx/minireact</a>，其中有完整的 <a href=https://github.com/reorx/minireact/blob/6e5b086e309cdbe7132c268ba8cf1e6e5d5ab32e/webpack.config.js>webpack.config.js</a> 文件。</p>
+</code></pre></div><p>它实现了：</p>
+<ul>
+<li>输出支持现代主流浏览器的 JavaScript</li>
+<li>按需加载 tabler-icons-react 和 lodash 模块</li>
+<li>React JSX 开发热更新</li>
+</ul>
+<p>如果你想看到一个可运行的例子，请参考我的最小化 React 项目模板 <a href=https://github.com/reorx/minireact>reorx/minireact</a>，其中有完整的 <a href=https://github.com/reorx/minireact/blob/6e5b086e309cdbe7132c268ba8cf1e6e5d5ab32e/webpack.config.js>webpack.config.js</a> 文件。</p>
 <h2 id=revision>Revision<a hidden class=anchor aria-hidden=true href=#revision>¶</a></h2>
 <ul>
 <li>2022-05-18: created</li>
