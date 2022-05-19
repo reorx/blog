@@ -13,6 +13,7 @@ params:
   logo:
     icon: forge.png
   DateFormat: "2006-01-02"
+  useCustomAnalytics: true
 
   # theme params
   DisableLanguageSwitch: true
@@ -102,7 +103,6 @@ languages:
 
         You can find me at the links below.
 
-googleAnalytics: G-6STBHZSBCD
 disqusShortname: reorx
 
 markup:
