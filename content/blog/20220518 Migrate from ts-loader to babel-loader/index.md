@@ -52,7 +52,7 @@ socialLinks:
 
 ts-loader 的使用非常简单，文档也足够清晰，如果你的项目本身有正确配置 `tsconfig.json` 并可以使用 `tsc -b` 完成编译，那么在 webpack 中引入 ts-loader 后不需要额外的配置即可工作。
 
-下面是一份简化的 `webpack.config.js` 示例:
+下面是一份使用 ts-loader 的 `webpack.config.js` 示例:
 
 ```js
 module.exports = {
@@ -250,7 +250,7 @@ module.exports = {
 
 ### Summary
 
-最终结果如下:
+将以上插件和技巧综合起来，最终我的 babel-loader 配置如下:
 
 ```js
 module.exports = {
@@ -294,6 +294,13 @@ module.exports = {
   }
 }
 ```
+
+
+它实现了：
+
+- 输出支持现代主流浏览器的 JavaScript
+- 按需加载 tabler-icons-react 和 lodash 模块
+- React JSX 开发热更新
 
 如果你想看到一个可运行的例子，请参考我的最小化 React 项目模板 [reorx/minireact](https://github.com/reorx/minireact)，其中有完整的 [webpack.config.js](https://github.com/reorx/minireact/blob/6e5b086e309cdbe7132c268ba8cf1e6e5d5ab32e/webpack.config.js) 文件。
 
