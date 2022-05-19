@@ -1,0 +1,241 @@
+<!doctype html><html lang=en dir=auto>
+<head><meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
+<meta name=robots content="index, follow">
+<title>搭建 umami 收集个人网站统计数据 | Reorx’s Forge</title>
+<meta name=keywords content="webmaster">
+<meta name=description content="教你如何免费搭建和使用美丽的 umami 网站统计服务，和 Google Analytics 说再见。">
+<meta name=author content="Reorx">
+<link rel=canonical href=https://reorx.com/blog/deploy-umami-for-personal-website/>
+<link crossorigin=anonymous href=/assets/css/stylesheet.min.bcfa29eb340c5d8058f54515c0cbc996719bd16a61436fa171c7dd5bd7bfde1a.css integrity="sha256-vPop6zQMXYBY9UUVwMvJlnGb0WphQ2+hccfdW9e/3ho=" rel="preload stylesheet" as=style>
+<link rel=icon href=https://reorx.com/favicon.ico>
+<script async defer data-website-id=b6b781e9-cf10-484a-a170-fc9083da6c9f src=https://oishii.reorx.com/oishii.js></script>
+<meta name=twitter:image content="https://reorx.com/blog/deploy-umami-for-personal-website/images/umami-chart.png">
+<meta name=twitter:card property="twitter:card" content="summary_large_image">
+<meta name=twitter:title content="搭建 umami 收集个人网站统计数据 | Reorx’s Forge">
+<meta name=twitter:description content="教你如何免费搭建和使用美丽的 umami 网站统计服务，和 Google Analytics 说再见。">
+<meta name=twitter:site content="@novoreorx">
+<meta name=twitter:creator content="@novoreorx">
+<meta property="og:title" content="搭建 umami 收集个人网站统计数据 | Reorx’s Forge">
+<meta property="og:description" content="教你如何免费搭建和使用美丽的 umami 网站统计服务，和 Google Analytics 说再见。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://reorx.com/blog/deploy-umami-for-personal-website/">
+<meta property="og:image" content="https://reorx.com/blog/deploy-umami-for-personal-website/images/umami-chart.png"><meta property="article:section" content="blog">
+<meta property="article:published_time" content="2022-05-19T00:00:00+00:00">
+<meta property="article:modified_time" content="2022-05-19T00:00:00+00:00">
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Blogs","item":"https://reorx.com/blog/"},{"@type":"ListItem","position":2,"name":"搭建 umami 收集个人网站统计数据","item":"https://reorx.com/blog/deploy-umami-for-personal-website/"}]}</script>
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"搭建 umami 收集个人网站统计数据 | Reorx’s Forge","name":"搭建 umami 收集个人网站统计数据","description":"教你如何免费搭建和使用美丽的 umami 网站统计服务，和 Google Analytics 说再见。","keywords":["webmaster"],"wordCount":"2336","inLanguage":"en","image":"https://reorx.com/blog/deploy-umami-for-personal-website/images/umami-chart.png","datePublished":"2022-05-19T00:00:00Z","dateModified":"2022-05-19T00:00:00Z","author":{"@type":"Person","name":"Reorx"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://reorx.com/blog/deploy-umami-for-personal-website/"},"publisher":{"@type":"Organization","name":"Reorx’s Forge","logo":{"@type":"ImageObject","url":"https://reorx.com/favicon.ico"}}}</script>
+<noscript>
+<style>#theme-toggle,.top-link{display:none}</style>
+<style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary-bg:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51)}.list{background:var(--theme)}.list:not(.dark)::-webkit-scrollbar-track{background:0 0}.list:not(.dark)::-webkit-scrollbar-thumb{border-color:var(--theme)}}</style>
+</noscript>
+</head>
+<body id=top>
+<script>localStorage.getItem("pref-theme")==="dark"?document.body.classList.add('dark'):localStorage.getItem("pref-theme")==="light"?document.body.classList.remove('dark'):window.matchMedia('(prefers-color-scheme: dark)').matches&&document.body.classList.add('dark')</script>
+<header class=header>
+<nav class=nav>
+<div class=logo>
+<a href=https://reorx.com/ accesskey=h title="Reorx’s Forge (Alt + H)">
+<img src=https://reorx.com/forge.png alt=logo aria-label=logo height=30>Reorx’s Forge</a>
+<span class=logo-switches>
+<button id=theme-toggle accesskey=t title="(Alt + T)"><svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg><svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+</button>
+</span>
+</div>
+<ul id=menu>
+<li>
+<a href=https://reorx.com/archives title=Archives>Archives
+</a>
+</li>
+<li>
+<a href=https://reorx.com/tags title=Tags>Tags
+</a>
+</li>
+<li>
+<a href=https://reorx.com/links title=Links>Links
+</a>
+</li>
+</ul>
+</nav>
+</header>
+<main class="main post">
+<article class=post-single>
+<header class=post-header>
+<h1 class=post-title>
+搭建 umami 收集个人网站统计数据
+</h1>
+<div class=post-description>
+教你如何免费搭建和使用美丽的 umami 网站统计服务，和 Google Analytics 说再见。
+</div>
+<div class=post-meta><span class=meta-item><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar" style="user-select:text"><rect x="3" y="4" width="18" height="18" rx="2" ry="2" style="user-select:text"/><line x1="16" y1="2" x2="16" y2="6" style="user-select:text"/><line x1="8" y1="2" x2="8" y2="6" style="user-select:text"/><line x1="3" y1="10" x2="21" y2="10" style="user-select:text"/></svg>
+<span>2022-05-19</span></span><span class=meta-item><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon" style="user-select:text"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83.0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z" style="user-select:text"/><line x1="7" y1="7" x2="7" y2="7" style="user-select:text"/></svg>
+<span class=post-tags><a href=https://reorx.com/tags/webmaster/>webmaster</a></span></span><span class=meta-item><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text" style="user-select:text"><path d="M14 2H6A2 2 0 004 4v16a2 2 0 002 2h12a2 2 0 002-2V8z" style="user-select:text"/><polyline points="14 2 14 8 20 8" style="user-select:text"/><line x1="16" y1="13" x2="8" y2="13" style="user-select:text"/><line x1="16" y1="17" x2="8" y2="17" style="user-select:text"/><polyline points="10 9 9 9 8 9" style="user-select:text"/></svg>
+<span>2336 words</span></span><span class=meta-item><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke="currentcolor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
+<span>5 min</span></span>
+</div>
+</header>
+<figure class=entry-cover>
+<img loading=lazy srcset="https://reorx.com/blog/deploy-umami-for-personal-website/images/umami-chart_hue4c3a257922138017abb5c99e3c274ab_114731_360x0_resize_box_3.png 360w ,https://reorx.com/blog/deploy-umami-for-personal-website/images/umami-chart_hue4c3a257922138017abb5c99e3c274ab_114731_480x0_resize_box_3.png 480w ,https://reorx.com/blog/deploy-umami-for-personal-website/images/umami-chart_hue4c3a257922138017abb5c99e3c274ab_114731_720x0_resize_box_3.png 720w ,https://reorx.com/blog/deploy-umami-for-personal-website/images/umami-chart_hue4c3a257922138017abb5c99e3c274ab_114731_1080x0_resize_box_3.png 1080w ,https://reorx.com/blog/deploy-umami-for-personal-website/images/umami-chart_hue4c3a257922138017abb5c99e3c274ab_114731_1500x0_resize_box_3.png 1500w ,https://reorx.com/blog/deploy-umami-for-personal-website/images/umami-chart.png 2276w" sizes="(min-width: 768px) 720px, 100vw" src=https://reorx.com/blog/deploy-umami-for-personal-website/images/umami-chart.png alt width=2276 height=1190>
+</figure><div class="toc side right">
+<details open>
+<summary accesskey=c title="(Alt + C)">
+<span class=details>Table of Contents</span>
+</summary>
+<div class=inner><ul>
+<li>
+<a href=#%e9%83%a8%e7%bd%b2%e8%af%b4%e6%98%8e aria-label=部署说明>部署说明</a><ul>
+<li>
+<a href=#%e5%ae%89%e8%a3%85%e4%be%9d%e8%b5%96 aria-label=安装依赖>安装依赖</a></li>
+<li>
+<a href=#%e6%9b%b4%e6%96%b0%e6%95%b0%e6%8d%ae%e5%ba%93 aria-label=更新数据库>更新数据库</a></li>
+<li>
+<a href=#%e9%85%8d%e7%bd%ae%e6%9c%8d%e5%8a%a1 aria-label=配置服务>配置服务</a><ul>
+<li>
+<a href=#%e6%9b%b4%e6%8d%a2%e5%af%86%e7%a0%81 aria-label=更换密码>更换密码</a></li>
+<li>
+<a href=#%e7%bb%91%e5%ae%9a%e4%b8%aa%e4%ba%ba%e5%9f%9f%e5%90%8d aria-label=绑定个人域名>绑定个人域名</a></li>
+<li>
+<a href=#%e4%bf%ae%e6%94%b9%e8%84%9a%e6%9c%ac%e5%90%8d%e7%a7%b0 aria-label=修改脚本名称>修改脚本名称</a></li></ul>
+</li></ul>
+</li>
+<li>
+<a href=#%e6%8e%a5%e5%85%a5%e4%b8%aa%e4%ba%ba%e7%bd%91%e7%ab%99 aria-label=接入个人网站>接入个人网站</a>
+</li>
+</ul>
+</div>
+</details>
+</div>
+<div class=post-content><p>距离博客第一篇文章发布正好一个月，我想查看一下网站的统计数据，在 Google Analytics 上操作了一番，发觉自己已无法忍受这个复杂且迟缓的老旧产品，这让我开始思考有没有更好的解决方案。</p>
+<p>我首先想到的是切换到另一家 hosting 的网站统计服务，如果可以的话，最好能有免费额度。然而开公司并不是做慈善，Google 之所以开放 Analytics 免费使用，除了本身体量足够大、边际成本够低之外，也因为网站统计与其核心的广告业务是密不可分的，Google 乐于让尽可能多的网站使用 Analytics，以得到可以推动广告和搜索业务发展的数据。果不其然，目前风评比较好的服务如 <a href=https://usefathom.com/pricing>fathom</a> 都没有免费套餐，价格也不便宜；<a href=https://plausible.io/#pricing>plausible</a> 价格较低，并且提供开源可部署的版本，这让我开始考虑自建统计服务的可行性。</p>
+<p>要选择一个 self-hosted 网站统计服务，我有以下几个考量：</p>
+<ul>
+<li><strong>实现语言</strong>：我非常倾向于 JavaScript 的实现，这并非出于我对它更加熟悉或者偏爱，而是因为近年来 Cloudflare 在 serverless 和 edge computing 领域不断深耕，推动了一系列基于 JavaScript 的运行环境和基础设施的发展，最近还联合 Vercel 等友商成立了 <a href=https://blog.cloudflare.com/introducing-the-wintercg/>WinterCG</a> 社区组织，让我看到了 JavaScript 一站式云端开发部署的未来。我自己也尝试过 Workers 开发，体验很好，免费额度充裕。如果一个服务是 JavaScript 实现，就有在 Workers 上部署的可能性。</li>
+<li><strong>数据库</strong>：最好是 SQLite。SQLite 的存储基于单文件，非常适合小型服务的开发部署。<a href=https://litestream.io/>Litestream</a> 的存在让基于 S3 等对象存储的低成本数据库维护成为可能。</li>
+<li><strong>便于部署</strong>：有官方维护的 docker image，或提供 PaaS/Serverless 平台的一键部署模板</li>
+<li><strong>尊重数据隐私</strong>：其实 self-hosted 统计服务产生的目的之一就是为了抵制商业服务滥用用户数据，因此这一点大部分项目都可以满足，稍加注意即可。</li>
+<li><strong>ublock</strong>：作为一个 webmaster，肯定希望统计数据越精确越好，因此这个服务得有绕过 ublock 拦截的能力。虽然我个人也会使用 ublock 拦截各种 tracker，但 self-hosted 统计服务本身不会过度收集用户数据，更不会将其用于商业目的，可以理直气壮地想办法确保其正常加载。</li>
+</ul>
+<p>经过一番调查，我选择了 umami，它基本满足以上所有需求：</p>
+<ul>
+<li>前后端全部使用 TypeScript 和 Next.js 开发</li>
+<li>数据库是 PostgreSQL，我比较喜欢，可以接受</li>
+<li>项目页面有个大大的 “Deploy on Railway”，也有 docker image</li>
+<li>项目 Slogan 就是 “privacy focused”
+<blockquote>
+<p>Umami does not collect any personally identifiable information and anonymizes all data collected.</p>
+</blockquote>
+</li>
+<li>提供 <code>TRACKER_SCRIPT_NAME</code> 环境变量用于自定义 script 名称，可以绕过 ublock 的默认规则</li>
+</ul>
+<p>择日不如撞日，选定工具后我立刻开始尝试部署。umami 的部署流程是如此顺滑，只花了大概 15 分钟，我就确信自己做了一个十分正确的选择。</p>
+<h2 id=部署说明>部署说明<a hidden class=anchor aria-hidden=true href=#部署说明>¶</a></h2>
+<p>我之前就对 Railway 有所了解，所以直接点击 “Deploy on Railway” 按钮开始部署流程。</p>
+<p><a href=https://railway.app>Railway</a> 是一个 PaaS 平台，可运行 JavaScript, Python, Go 等多种语言，提供 Redis, MySQL, MongoDB 等主流数据库存储。由于支持全面、界面友好，加上和 Cloudflare 一样有充裕的<a href=https://railway.app/pricing>免费额度</a>，足够个人项目免费使用，Railway 一直是我心中最好的 PaaS 之一。如果你有兴趣，欢迎通过我的 <a href="https://railway.app?referralCode=XkWaVV">referral link</a> 注册。</p>
+<p>umani 有一篇 <a href=https://umami.is/docs/running-on-railway>Running on Railway</a> 文档，我遵照这个流程很快就完成了初步部署。其实只有一个 <code>HASH_SALT</code> 需要输入，其他只需点点点即可。</p>
+<p>Railway Project 创建后，在管理界面可以看到两个 block，左边是数据库实例，右边是 umami 的后端服务。</p>
+<p><img loading=lazy src=./images/railway.png alt>
+</p>
+<h3 id=安装依赖>安装依赖<a hidden class=anchor aria-hidden=true href=#安装依赖>¶</a></h3>
+<p>在等待 umami 的镜像构建和部署的过程中，我们可以在命令行进行一些其他工作。</p>
+<p>打开命令行，使用以下命令安装 Railway CLI 和 pgsql 两个软件依赖。</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>brew install railwayapp/railway/railway
+brew install libpg
+</code></pre></div><p>完成后，将 libpg 的 bin 路径添加到 PATH 中，在 <code>.zshrc</code> 或 <code>.bashrc</code> 中添加一行:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=nb>export</span> <span class=nv>PATH</span><span class=o>=</span><span class=s2>&#34;</span><span class=nv>$PATH</span><span class=s2>:/opt/homebrew/opt/libpq/bin&#34;</span>
+</code></pre></div><p>你可以通过执行 <code>type pgsql</code> 确认 <code>pgsql</code> 是否存在。</p>
+<h3 id=更新数据库>更新数据库<a hidden class=anchor aria-hidden=true href=#更新数据库>¶</a></h3>
+<p>Railway 在创建 Project 时，会将 umami 的代码复制到在你的 GitHub 账户所创建的名为 <code>umami</code> 的仓库中，我们需要先将此仓库 clone 下来:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>git clone git@github.com:username/umami.git
+</code></pre></div><p>进入 umami 目录，执行以下命令，登录 Railway CLI 并完成链接:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=nb>cd</span> umami
+railway login
+railway link
+</code></pre></div><p>这一步完成后，可以通过 <code>railway variables</code> 看到 umami 服务的环境变量，确认 CLI 可以访问到线上数据。</p>
+<pre tabindex=0><code>DATABASE_URL:        postgresql://postgres:xxxxxxxxx@containers-us-west.railway.app:6595/railway
+DISABLE_TELEMETRY:   1
+HASH_SALT:           xxXXxxXXxxXXxx
+HOSTNAME:
+PGDATABASE:          railway
+PGHOST:              containers-us-west.railway.app
+PGPASSWORD:          xxXXxxXXxxXXxx
+PGPORT:              6595
+PGUSER:              postgres
+PORT:                3000
+</code></pre><p>执行以下命令，为 umami 创建表格、添加初始数据。注意要将 bash variable 替换为上文中的数据:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>railway run psql -h <span class=nv>$PGHOST</span> -U <span class=nv>$PGUSER</span> -d <span class=nv>$PGDATABASE</span> -f sql/schema.postgresql.sql
+</code></pre></div><h3 id=配置服务>配置服务<a hidden class=anchor aria-hidden=true href=#配置服务>¶</a></h3>
+<p>数据库初始化完毕后，回到 Project 管理界面，确认 umami 部署完毕，即可打开服务的主页。</p>
+<h4 id=更换密码>更换密码<a hidden class=anchor aria-hidden=true href=#更换密码>¶</a></h4>
+<p>使用初始用户名密码 <code>admin:umami</code> 登录进去，然后立刻到 Settings > Accounts 界面更换一个强密码。</p>
+<h4 id=绑定个人域名>绑定个人域名<a hidden class=anchor aria-hidden=true href=#绑定个人域名>¶</a></h4>
+<p>在 Project 管理界面点击 umami，选择 Settings，在 Service Domains 下添加个人域名。比如我使用的是 <code>oishii.reorx.com</code>。</p>
+<p><img loading=lazy src=./images/railway-1.png alt>
+</p>
+<p>打开域名的 DNS 服务商，根据 Railway 中的提示，为自定义域名添加 CNAME 记录。</p>
+<p><img loading=lazy src=./images/cloudflare.png alt>
+</p>
+<p>等待几分钟，生效后 Railway 中会显示上图所示的 ✅ 符号。</p>
+<h4 id=修改脚本名称>修改脚本名称<a hidden class=anchor aria-hidden=true href=#修改脚本名称>¶</a></h4>
+<p>为了避免 umami 被 ublock 误杀（有的规则集中有匹配 umami 的正则），还需要为它的统计脚本更换一个名称。<a href=https://umami.is/docs/environment-variables>Environment variables</a> 文档中的 <code>TRACKER_SCRIPT_NAME</code> 提供了这一功能。</p>
+<p>再次进入 Railway，打开 umami 的 Variables 选项卡，按下图所示添加环境变量，我使用的名称为 <code>oishii</code>，可以更换为任意非 tracker 特征词汇。</p>
+<p><img loading=lazy src=./images/railway-2.png alt>
+</p>
+<p>完成这一步后，需要重新构建 umami 的镜像，目前我还没有找到触发 rebuild 的简单方法，只能通过修改 Dockerfile 实现:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-diff data-lang=diff>RUN yarn next telemetry disable
+<span class=gi>+# Ensures `yarn build` will always run when BUILD_TIME is different
+</span><span class=gi>+ARG BUILD_TIME
+</span><span class=gi></span>RUN yarn build
+</code></pre></div><p>在 <code>yarn build</code> 之前增加一行 <code>ARG BUILD_TIME</code>，这样当此参数不同时，就会触发 <code>yarn build</code> 及之后的命令重新执行。</p>
+<p>保存修改，然后执行 <code>railway up</code>，等待镜像构建和部署完成。</p>
+<h2 id=接入个人网站>接入个人网站<a hidden class=anchor aria-hidden=true href=#接入个人网站>¶</a></h2>
+<p>一切准备就绪，我们重新使用自定义域名和修改后的密码登录 umami。</p>
+<p>要进行统计，第一件事情是添加一个 Website。操作非常简单，读者可以参考 <a href=https://umami.is/docs/add-a-website>Add a website</a> 文档来进行。唯一需要注意的是 Enable share URL 选项，如果你想将自己网站的统计数据分享出去，则需要勾选之。你可以在 <a href=https://oishii.reorx.com/share/jKljpE4T/reorx.com>https://oishii.reorx.com/share/jKljpE4T/reorx.com</a> 访问本站的统计信息。</p>
+<p>添加完成后，点击网站列表中对应网站的 Get tracking code 按钮，在浮窗中获得需要加入到网站 HTML 中的代码。</p>
+<p><img loading=lazy src=./images/umami.png alt>
+</p>
+<p>需要注意将 <code>src</code> 结尾的 <code>umami.js</code> 替换为 <code>$TRACKER_SCRIPT_NAME.js</code>。</p>
+<p>复制代码并添加到自己个人网站的 <code>&lt;head></code> 标签下的任意位置，由于使用了 <code>defer</code> 属性，这个 script 不会对网页加载造成阻塞。</p>
+<p>网站更新完成后，呼朋唤友点击访问一番，就可以看到 umami 清晰、美观的统计数据了。</p>
+<p><img loading=lazy src=./images/umami-1.png alt>
+</p>
+</div>
+<footer class=post-footer><div class=social-links>
+</div>
+<nav class=paginav>
+<a class=next href=https://reorx.com/blog/migrate-from-ts-loader-to-babel-loader/>
+<span class=title>Next Page&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right" style="user-select:text"><line x1="5" y1="12" x2="19" y2="12" style="user-select:text"/><polyline points="12 5 19 12 12 19" style="user-select:text"/></svg>
+</span>
+<br>
+<span>Frontend Guide 01: Webpack babel-loader 使用指南</span>
+</a>
+</nav>
+</footer><div class=disqus-container>
+<div id=disqus_thread></div>
+</div>
+</article>
+</main>
+<footer class=footer>
+<span>&copy; 2022 <a href=https://reorx.com/>Reorx’s Forge</a></span><span style=display:inline-block;margin-left:1em>
+<a href=https://creativecommons.org/licenses/by-sa/4.0/>CC BY-SA</a>
+</span>
+<span style=display:inline-block;margin-left:1em>
+Powered by
+<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
+    <a href=https://github.com/reorx/hugo-PaperModX rel=noopener target=_blank>PaperModX</a>
+</span>
+</footer>
+<a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentcolor"><path d="M12 6H0l6-6z"/></svg>
+</a>
+<script>(function(){let a=document.getElementById('menu');a&&(a.scrollLeft=localStorage.getItem("menu-scroll-position"),a.onscroll=function(){localStorage.setItem("menu-scroll-position",a.scrollLeft)});const b=''=='1',c='1'=='1';if(window.matchMedia('(prefers-reduced-motion: reduce)').matches||b||c)return;document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener("click",function(b){b.preventDefault();var a=this.getAttribute("href").substr(1);document.querySelector(`[id='${decodeURIComponent(a)}']`).scrollIntoView({behavior:"smooth"}),a==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${a}`)})})})()</script>
+<script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script>
+<script>document.getElementById("theme-toggle").addEventListener("click",()=>{document.body.className.includes("dark")?(document.body.classList.remove('dark'),localStorage.setItem("pref-theme",'light')):(document.body.classList.add('dark'),localStorage.setItem("pref-theme",'dark'))})</script>
+<script>if(window.scrollListeners)for(const a of scrollListeners)window.removeEventListener('scroll',a);window.scrollListeners=[]</script>
+<script src=/js/medium-zoom.min.js data-no-instant></script>
+<script>document.querySelectorAll('pre > code').forEach(b=>{const c=b.parentNode.parentNode,a=document.createElement('button');a.classList.add('copy-code'),a.innerText='copy';function d(){a.innerText='copied!',setTimeout(()=>{a.innerText='copy'},2e3)}a.addEventListener('click',e=>{if('clipboard'in navigator){navigator.clipboard.writeText(b.textContent),d();return}const a=document.createRange();a.selectNodeContents(b);const c=window.getSelection();c.removeAllRanges(),c.addRange(a);try{document.execCommand('copy'),d()}catch(a){}c.removeRange(a)}),c.classList.contains("highlight")?c.appendChild(a):c.parentNode.firstChild==c||(b.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName=="TABLE"?b.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(a):b.parentNode.appendChild(a))})</script>
+<script>(function(){const h='1'=='1';if(!h)return;const i=window.scrollListeners,c=document.querySelectorAll('h1[id],h2[id],h3[id],h4[id],h5[id]'),d='active';let a=c[0];e(a).classList.add(d);const g=()=>{const b=[];for(const a of c)if(j(a)<5)b.push(a);else break;b.length>0?newActiveHeading=b[b.length-1]:newActiveHeading=c[0],a!=newActiveHeading&&(e(a).classList.remove(d),a=newActiveHeading,e(a).classList.add(d))};let b=null;const f=()=>{b!==null&&clearTimeout(b),b=setTimeout(g,50)};window.addEventListener('scroll',f,!1),i.push(f);function e(a){const b=encodeURI(a.getAttribute('id')).toLowerCase();return document.querySelector(`.toc ul li a[href="#${b}"]`)}function j(a){if(!a.getClientRects().length)return 0;let b=a.getBoundingClientRect();return b.top}})()</script>
+<script>mediumZoom('.entry-cover img'),mediumZoom('.post-content img')</script><script type=text/javascript>var disqus_config=function(){this.page.url='https://reorx.com/blog/deploy-umami-for-personal-website/',this.page.identifier='deploy-umami-for-personal-website'};(function(){let c=window.disqusEmbedLoaded;if(c)DISQUS.reset({reload:!0,config:disqus_config});else{var b=document,a=b.createElement('script');a.src='//reorx.disqus.com/embed.js',a.setAttribute('data-timestamp',+new Date),a.setAttribute('data-no-instant',''),b.head.appendChild(a),window.disqusEmbedLoaded=!0}})()</script>
+<script src=/js/instantclick.js data-no-instant></script>
+<script data-no-instant>InstantClick.init()</script>
+</body>
+</html>
