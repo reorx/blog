@@ -12,7 +12,7 @@ cover:
 socialLinks:
   twitter:
     user: novoreorx
-    id: null
+    id: 1527333854759256065
 ---
 
 距离博客第一篇文章发布正好一个月，我想查看一下网站的统计数据，在 Google Analytics 上操作了一番，发觉自己已无法忍受这个复杂且迟缓的老旧产品，这让我开始思考有没有更好的解决方案。
