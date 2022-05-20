@@ -42,7 +42,7 @@ V2EX 有着丰富的 RSS 支持，在 [V2EX  ›  提醒系统](https://v2ex.c
 
 很快，我锁定了完美满足这三点的 [NetNewsWire](https://github.com/Ranchero-Software/NetNewsWire)
 
-![](./images/netnewswire-1.png)
+![](images/netnewswire-1.png)
 
 NetNewsWire 发布于 20 年前，是 macOS 上历史最悠久的 RSS 阅读器。我虽然很早就知道它，却一直没有尝试，使用的是更受追捧的 Reeder，但 Reeder 最近的几次付费更新有些令人失望，没有什么有趣的变更，我也厌倦了它那软绵绵的 UI 风格。
 
@@ -109,7 +109,7 @@ RSS 的用法因人而异，这篇文章主要目的是分享我个人的探索�
 
 前几天 [涛叔](https://taoshu.in/) 向我推荐了他的 [WebFeed](https://taoshu.in/webfeed/web-feed.html) 插件 (for Firefox)，它把浏览器变成 RSS 阅读器，并能自动发现网站的 RSS 源。
 
-![](./images/webfeed.png)
+![](images/webfeed.png)
 
 我很喜欢它的 Web 与 RSS 一体的使用体验，这让我开始思考一个问题，为何近些年来 RSS 逐渐式微，主流浏览器厂商没有做任何相关的支持[^3]，只有少部分开源爱好者还在坚持使用并为 RSS 社区做出贡献。
 

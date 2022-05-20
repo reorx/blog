@@ -46,7 +46,7 @@ umani 有一篇 [Running on Railway](https://umami.is/docs/running-on-railway) �
 
 Railway Project 创建后，在管理界面可以看到两个 block，左边是数据库实例，右边是 umami 的后端服务。
 
-![](./images/railway.png)
+![](images/railway.png)
 
 ### 安装依赖
 
@@ -116,11 +116,11 @@ railway run psql -h $PGHOST -U $PGUSER -d $PGDATABASE -f sql/schema.postgresql.s
 
 在 Project 管理界面点击 umami，选择 Settings，在 Service Domains 下添加个人域名。比如我使用的是 `oishii.reorx.com`。
 
-![](./images/railway-1.png)
+![](images/railway-1.png)
 
 打开域名的 DNS 服务商，根据 Railway 中的提示，为自定义域名添加 CNAME 记录。
 
-![](./images/cloudflare.png)
+![](images/cloudflare.png)
 
 等待几分钟，生效后 Railway 中会显示上图所示的 ✅ 符号。
 
@@ -130,7 +130,7 @@ railway run psql -h $PGHOST -U $PGUSER -d $PGDATABASE -f sql/schema.postgresql.s
 
 再次进入 Railway，打开 umami 的 Variables 选项卡，按下图所示添加环境变量，我使用的名称为 `oishii`，可以更换为任意非 tracker 特征词汇。
 
-![](./images/railway-2.png)
+![](images/railway-2.png)
 
 完成这一步后，需要重新构建 umami 的镜像，目前我还没有找到触发 rebuild 的简单方法，只能通过修改 Dockerfile 实现:
 
@@ -153,7 +153,7 @@ RUN yarn build
 
 添加完成后，点击网站列表中对应网站的 Get tracking code 按钮，在浮窗中获得需要加入到网站 HTML 中的代码。
 
-![](./images/umami.png)
+![](images/umami.png)
 
 需要注意将 `src` 结尾的 `umami.js` 替换为 `$TRACKER_SCRIPT_NAME.js`。
 
@@ -161,4 +161,4 @@ RUN yarn build
 
 网站更新完成后，呼朋唤友点击访问一番，就可以看到 umami 清晰、美观的统计数据了。
 
-![](./images/umami-1.png)
+![](images/umami-1.png)

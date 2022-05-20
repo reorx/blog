@@ -23,10 +23,10 @@ Back to the video at the beginning, after watching it I noticed a very interesti
 
 Here's the walk though of that amazing feature:
 
--  On a whiteboard, select several cards you would like to refer to ![](./images/The%203-step%20knowledge%20workflow%20in%20Heptabase%202-36%20screenshot.png)
-- Right-click on them and choose "Open in new tab", a new page with a left-right split layout appears. The first card selected shows on the left; others show on the right as a folded list. ![](./images/The%203-step%20knowledge%20workflow%20in%20Heptabase%202-39%20screenshot.png)
-- Click on the `+` sign button on the top menu bar; a new card is created on the left side, and the card that previously shows on the left is automatically moved to the card list on the right.  ![](./images/The%203-step%20knowledge%20workflow%20in%20Heptabase%202-53%20screenshot.png)
-- You can fold/unfold notes while browsing the right side, and drag'n drop blocks to copy them to the left side. ![](./images/The%203-step%20knowledge%20workflow%20in%20Heptabase%203-6%20screenshot.png)
+-  On a whiteboard, select several cards you would like to refer to ![](images/The%203-step%20knowledge%20workflow%20in%20Heptabase%202-36%20screenshot.png)
+- Right-click on them and choose "Open in new tab", a new page with a left-right split layout appears. The first card selected shows on the left; others show on the right as a folded list. ![](images/The%203-step%20knowledge%20workflow%20in%20Heptabase%202-39%20screenshot.png)
+- Click on the `+` sign button on the top menu bar; a new card is created on the left side, and the card that previously shows on the left is automatically moved to the card list on the right.  ![](images/The%203-step%20knowledge%20workflow%20in%20Heptabase%202-53%20screenshot.png)
+- You can fold/unfold notes while browsing the right side, and drag'n drop blocks to copy them to the left side. ![](images/The%203-step%20knowledge%20workflow%20in%20Heptabase%203-6%20screenshot.png)
 
 This is the best way I've ever seen to think and write a note while referring to many other notes. In other note-taking tools, take Obsidian for example, I can split the panes, but it is not convenient to organize the workspace well for more than 3 notes. As new panes are growing, it will become more and more interruptive to switch back and forth.
 

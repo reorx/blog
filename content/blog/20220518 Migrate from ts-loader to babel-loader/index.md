@@ -150,7 +150,7 @@ module.exports = config
 
 运行 `WEBPACK_USE_ANALYZE=1 webpack` 在浏览器中查看分析结果。
 
-![](./images/webpack-analyze.png)
+![](images/webpack-analyze.png)
 
 原来 tabler-icons-react 一个库就占了 5.28MB，其他库中 lodash 也不算正常，似乎和 tabler-icons-react 一样被完整包含进来了。
 
@@ -180,7 +180,7 @@ module.exports = config
 
 再次运行 `WEBPACK_USE_ANALYZE=1 webpack` ，可以看出 bundle 结构有了显著的改进（红色的部分是 tabler-icons-react 和 lodash）:
 
-![](./images/webpack-analyze-2.png)
+![](images/webpack-analyze-2.png)
 
 > [babel-plugin-lodash](https://github.com/lodash/babel-plugin-lodash) 也可以实现 lodash 的按需加载，但它是专为 lodash 开发的，不具备 babel-plugin-import 的通用性。
 

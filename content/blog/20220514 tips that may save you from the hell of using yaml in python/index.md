@@ -119,7 +119,7 @@ a:
 ```
 
 > Note that `Dumper` cannot be passed to `yaml.safe_dump` which has its owner dumper class defined.
- 
+
 ## Output readable UTF-8 (dump)
 
 By default, PyYAML assumes the user only wants ASCII code in the output,
@@ -150,7 +150,7 @@ According to [PyYAML documentation](https://pyyaml.org/wiki/PyYAMLDocumentation#
 After digging into the source code of the latest PyYaml (6.0), I find it is not needed anymore.
 You should remove this keyword argument to keep the code cleaner and less confusing.
 
-![](./images/yaml-dump-all.png)
+![](images/yaml-dump-all.png)
 
 ## Libraries
 
@@ -190,7 +190,7 @@ The differences with PyYAML are listed [here](https://yaml.readthedocs.io/en/lat
 What interests me most is the ability to round-trip in the loading/dumping process. It works like black magic. Here's the explanation from ruamel.yaml documentation:
 
 > A round-trip is a YAML load-modify-save sequence and ruamel.yaml tries to preserve, among others:
-> 
+>
 > -   comments
 > -   block style and key ordering are kept, so you can diff the round-tripped source
 > -   flow style sequences ( ‘a: b, c, d’) (based on request and test by Anthony Sottile)
