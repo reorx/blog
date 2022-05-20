@@ -5,7 +5,6 @@ date: 2022-05-20
 description: 一些我对 Newsletter platform 产品形态非常主观的探索和思考
 tags:
   - newsletter
-ShowToc: true
 writeTime: 01:27
 cover:
   image: null
@@ -31,6 +30,7 @@ socialLinks:
 
 "Send email via API" 一列表示是否可以通过 API 创建并发送邮件 (或叫 issue, broadcast，每家称呼不同)，这是我最关注的一个功能，其中只有 Buttondown 和 ConvertKit 支持，他们都是基于订阅者数量的收费模式。但每月 $9+ 的费用让我却步，我想写的是分享见闻和思考的 Weekly Newsletter，这种内容并不足以支撑起付费订阅的模式。我喜欢写作并乐意分享，但为此负担额外的费用就不大令人开心了，这也是为什么我特别感谢像 Cloudflare 这样为独立开发者考虑的公司[^1]。
 
+> 经 EGOIST 提醒，[Mailgun](https://documentation.mailgun.com/en/latest/api-mailinglists.html#mailing-lists) 的 API 有 mailing list 管理功能，同样可以实现 Newletter 所需的订阅者管理和群发。实际上 Newsletter 的本质就是 mailing list，之前我潜意识里觉得 Mailgun, SES 这些服务只是 SMTP 协议的接口化，忽略了他们其实有一些面向邮件订阅服务开发者的高级功能。
 
 {{<collapse "References">}}
 - [Buttondown](https://buttondown.email/)
