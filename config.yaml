@@ -50,6 +50,10 @@ params:
   links:
     - name: wzyboy’s blog
       url: https://wzyboy.im/
+    - name: 某高老师 - 人间观察
+      url: https://someonegao.com/
+      description: Blogger / Podcaster / Father of 2 sons
+      favicon: https://cdn.hashnode.com/res/hashnode/image/upload/v1650687751798/psTFDHSfP.png
     - name: Shyrism
       url: https://shyrz.me/
       description: Smile in cry, write in bytes.
