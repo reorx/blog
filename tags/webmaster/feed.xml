@@ -26,7 +26,7 @@
 <p><a href="https://railway.app">Railway</a> 是一个 PaaS 平台，可运行 JavaScript, Python, Go 等多种语言，提供 Redis, MySQL, MongoDB 等主流数据库存储。由于支持全面、界面友好，加上和 Cloudflare 一样有充裕的<a href="https://railway.app/pricing">免费额度</a>，足够个人项目免费使用，Railway 一直是我心中最好的 PaaS 之一。如果你有兴趣，欢迎通过我的 <a href="https://railway.app?referralCode=XkWaVV">referral link</a> 注册。</p>
 <p>umani 有一篇 <a href="https://umami.is/docs/running-on-railway">Running on Railway</a> 文档，我遵照这个流程很快就完成了初步部署。其实只有一个 <code>HASH_SALT</code> 需要输入，其他只需点点点即可。</p>
 <p>Railway Project 创建后，在管理界面可以看到两个 block，左边是数据库实例，右边是 umami 的后端服务。</p>
-<p></p>
+<p><img loading="lazy" src="/blog/deploy-umami-for-personal-website/images/railway.png" alt=""  /></p>
 <h3 id="安装依赖">安装依赖</h3>
 <p>在等待 umami 的镜像构建和部署的过程中，我们可以在命令行进行一些其他工作。</p>
 <p>打开命令行，使用以下命令安装 Railway CLI 和 pgsql 两个软件依赖。</p>
@@ -61,14 +61,14 @@ PORT:                3000
 <p>使用初始用户名密码 <code>admin:umami</code> 登录进去，然后立刻到 Settings &gt; Accounts 界面更换一个强密码。</p>
 <h4 id="绑定个人域名">绑定个人域名</h4>
 <p>在 Project 管理界面点击 umami，选择 Settings，在 Service Domains 下添加个人域名。比如我使用的是 <code>oishii.reorx.com</code>。</p>
-<p></p>
+<p><img loading="lazy" src="/blog/deploy-umami-for-personal-website/images/railway-1.png" alt=""  /></p>
 <p>打开域名的 DNS 服务商，根据 Railway 中的提示，为自定义域名添加 CNAME 记录。</p>
-<p></p>
+<p><img loading="lazy" src="/blog/deploy-umami-for-personal-website/images/cloudflare.png" alt=""  /></p>
 <p>等待几分钟，生效后 Railway 中会显示上图所示的 ✅ 符号。</p>
 <h4 id="修改脚本名称">修改脚本名称</h4>
 <p>为了避免 umami 被 ublock 误杀（有的规则集中有匹配 umami 的正则），还需要为它的统计脚本更换一个名称。<a href="https://umami.is/docs/environment-variables">Environment variables</a> 文档中的 <code>TRACKER_SCRIPT_NAME</code> 提供了这一功能。</p>
 <p>再次进入 Railway，打开 umami 的 Variables 选项卡，按下图所示添加环境变量，我使用的名称为 <code>oishii</code>，可以更换为任意非 tracker 特征词汇。</p>
-<p></p>
+<p><img loading="lazy" src="/blog/deploy-umami-for-personal-website/images/railway-2.png" alt=""  /></p>
 <p>完成这一步后，需要重新构建 umami 的镜像，目前我还没有找到触发 rebuild 的简单方法，只能通过修改 Dockerfile 实现:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-diff" data-lang="diff">RUN yarn next telemetry disable
 <span class="gi">+# Ensures `yarn build` will always run when BUILD_TIME is different
@@ -80,9 +80,9 @@ PORT:                3000
 <p>一切准备就绪，我们重新使用自定义域名和修改后的密码登录 umami。</p>
 <p>要进行统计，第一件事情是添加一个 Website。操作非常简单，读者可以参考 <a href="https://umami.is/docs/add-a-website">Add a website</a> 文档来进行。唯一需要注意的是 Enable share URL 选项，如果你想将自己网站的统计数据分享出去，则需要勾选之。你可以在 <a href="https://oishii.reorx.com/share/jKljpE4T/reorx.com">https://oishii.reorx.com/share/jKljpE4T/reorx.com</a> 访问本站的统计信息。</p>
 <p>添加完成后，点击网站列表中对应网站的 Get tracking code 按钮，在浮窗中获得需要加入到网站 HTML 中的代码。</p>
-<p></p>
+<p><img loading="lazy" src="/blog/deploy-umami-for-personal-website/images/umami.png" alt=""  /></p>
 <p>需要注意将 <code>src</code> 结尾的 <code>umami.js</code> 替换为 <code>$TRACKER_SCRIPT_NAME.js</code>。</p>
 <p>复制代码并添加到自己个人网站的 <code>&lt;head&gt;</code> 标签下的任意位置，由于使用了 <code>defer</code> 属性，这个 script 不会对网页加载造成阻塞。</p>
 <p>网站更新完成后，呼朋唤友点击访问一番，就可以看到 umami 清晰、美观的统计数据了。</p>
-<p></p>
+<p><img loading="lazy" src="/blog/deploy-umami-for-personal-website/images/umami-1.png" alt=""  /></p>
 ]]></content:encoded></item></channel></rss>
