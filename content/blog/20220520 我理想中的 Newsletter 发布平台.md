@@ -12,7 +12,7 @@ cover:
 socialLinks:
   twitter:
     user: novoreorx
-    id: null
+    id: 1527702100708589568
 ---
 
 近年来 Newletter 这种发布形式越来越受到欢迎，我也在考虑是否要创建一个自己的邮件专栏。由于我的博客是由静态网站生成器构建的，因此我也希望通过同样的方式来撰写邮件通讯。
