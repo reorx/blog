@@ -203,8 +203,7 @@ Pass <code>allow_unicode=True</code> to <code>yaml.safe_dump</code> to enable th
 According to <a href=https://pyyaml.org/wiki/PyYAMLDocumentation#dictionaries-without-nested-collections-are-not-dumped-correctly>PyYAML documentation</a>, <code>default_flow_style=False</code> should be passed to <code>yaml.safe_dump</code> to achieve that.</p>
 <p>After digging into the source code of the latest PyYaml (6.0), I find it is not needed anymore.
 You should remove this keyword argument to keep the code cleaner and less confusing.</p>
-<p><img loading=lazy src=./images/yaml-dump-all.png alt>
-</p>
+<p></p>
 <h2 id=libraries>Libraries<a hidden class=anchor aria-hidden=true href=#libraries>¶</a></h2>
 <h3 id=oyaml>oyaml<a hidden class=anchor aria-hidden=true href=#oyaml>¶</a></h3>
 <p>Link: <a href=https://github.com/wimglenn/oyaml>https://github.com/wimglenn/oyaml</a></p>
