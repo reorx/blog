@@ -3,11 +3,11 @@ title: 我关注的独立开发者们
 slug: indie-makers-im-following
 date: 2022-05-22
 description: 列举一些我所知的独立开发者，让更多的人能看到他们的经历和作品，获得启发。
-draft: true
 tags:
   - indie-maker
 ShowToc: true
 TocSide: false
+writeTime: 02:08
 cover:
   image: images/indie-makers-cover.jpg
   caption: Photo by [Malcolm Lightbody](https://unsplash.com/@mlightbody) from [Unsplash](https://unsplash.com/photos/gPRvTP0sZ2M)
