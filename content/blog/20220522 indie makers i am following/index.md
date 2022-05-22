@@ -2,7 +2,7 @@
 title: 我关注的独立开发者们
 slug: indie-makers-im-following
 date: 2022-05-22
-description: 列举一些我所知的独立开发者，让更多的人能看到他们的经历和作品，获得启发。
+description: 列举一些我所知的独立开发者们，让更多的人看到他们的经历和作品，获得启发。
 tags:
   - indie-maker
 ShowToc: true
@@ -14,7 +14,7 @@ cover:
 socialLinks:
   twitter:
     user: novoreorx
-    id: null
+    id: 1528390232483459072
 ---
 
 独立开发者，AKA indie makers, solo developers, or quite-my-job makers，是一群特别的人。他们或厌倦了大厂上班做重复性的工作，或不甘于只作为别人设计的实现者，或想要挑战自己的创造力、寻求被动收入甚至实现财务自由，初始的动机虽然各异，但却有一个共同点：不满足于一件事情已有的做法和存在方式，想用自己的手去改变和创造，实现心中那个理想的产品。
@@ -88,13 +88,6 @@ socialLinks:
         - [Tiny Projects](https://tinyprojects.dev/)
         - [Paper Website: Start a tiny website from your notebook](https://paperwebsite.com/)
         - [Earlyname | Get Your Username Before Anyone Else](https://earlyname.com/)
-- [Alyssa](https://alyssax.com/)
-    - Experiences
-        - [How I built a MacOS app and made $5000+ in a week | Women Make](https://medium.com/women-make/how-i-built-a-macos-app-and-made-5000-in-a-week-de25c7be0458)
-        - [The Serial Entrepreneur Newsletter by Alyssa X](https://newsletter.alyssax.com/)
-    - Products
-        - [Omni - Bookmark, History, & Tab Manager - Chrome Web Store](https://chrome.google.com/webstore/detail/omni-bookmark-history-tab/mapjgeachilmcbbokkgcbgpbakaaeehi?hl=en&authuser=0)
-        - [Later - Save your Mac apps for later](https://getlater.app/)
 - [@levelsio](https://twitter.com/levelsio)
     - Experiences
         - [How I built Nomad Jobs, a remote job board for 100% distributed startups](https://levels.io/how-i-built-a-remote-jobs-board/)
@@ -110,12 +103,6 @@ socialLinks:
         - [Testimonial - Collect and embed testimonials in minutes](https://testimonial.to/)
         - [Embed.so - The video hosting platform for your business](https://embed.so/)
         - [Supportman - Intercom Metrics & Ratings in Slack](https://supportman.io/)
-- [Thomas Sanlis](https://www.thomas-sanlis.com/)
-    - Experiences
-        - [When, Why and How I've changed my life](https://www.thomas-sanlis.com/blog/when-why-and-how-i-have-changed-my-life/)
-    - Products
-        - [Uneed, the best tools of the internet.](https://www.uneed.best/)
-        - [Griddely](https://www.griddely.com/)
 - [Tony Dinh](https://tonydinh.com/)
     - Experiences
         - [After 7 years working as a dev, I quit my job to pursue my dream: build software I love and make a living out of it.](https://twitter.com/tdinh_me/status/1427930913355100167)
@@ -123,6 +110,13 @@ socialLinks:
     - Products
         - [Twitter Analytics & CRM - BlackMagic.so](https://blackmagic.so/)
         - [DevUtils.app - All-in-one Toolbox for Developers](https://devutils.app/)
+- [Alyssa](https://alyssax.com/)
+    - Experiences
+        - [How I built a MacOS app and made $5000+ in a week | Women Make](https://medium.com/women-make/how-i-built-a-macos-app-and-made-5000-in-a-week-de25c7be0458)
+        - [The Serial Entrepreneur Newsletter by Alyssa X](https://newsletter.alyssax.com/)
+    - Products
+        - [Omni - Bookmark, History, & Tab Manager - Chrome Web Store](https://chrome.google.com/webstore/detail/omni-bookmark-history-tab/mapjgeachilmcbbokkgcbgpbakaaeehi?hl=en&authuser=0)
+        - [Later - Save your Mac apps for later](https://getlater.app/)
 - [@SachinNeravath](https://twitter.com/SachinNeravath)
     - Experiences
         - See twitter timeline
@@ -131,6 +125,12 @@ socialLinks:
         - [Samay - Supercharge your focus and productivity.](https://www.samay.live/)
         - [lightGallery - Full featured javascript gallery for web and mobile.](https://www.lightgalleryjs.com/)
         - http://tack.one (100% free)
+- [Thomas Sanlis](https://www.thomas-sanlis.com/)
+    - Experiences
+        - [When, Why and How I've changed my life](https://www.thomas-sanlis.com/blog/when-why-and-how-i-have-changed-my-life/)
+    - Products
+        - [Uneed, the best tools of the internet.](https://www.uneed.best/)
+        - [Griddely](https://www.griddely.com/)
 - [Jonnie Hallman](https://destroytoday.com/)
     - Products
          [Cushion](https://cushionapp.com/)
