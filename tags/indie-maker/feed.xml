@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>indie-maker on Reorx’s Forge</title><link>https://reorx.com/tags/indie-maker/</link><description>Recent content in indie-maker on Reorx’s Forge</description><image><url>https://reorx.com/forge.png</url><link>https://reorx.com/forge.png</link></image><generator>Hugo -- gohugo.io</generator><lastBuildDate>Sun, 22 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://reorx.com/tags/indie-maker/feed.xml" rel="self" type="application/rss+xml"/><item><title>我关注的独立开发者们</title><link>https://reorx.com/blog/indie-makers-im-following/</link><pubDate>Sun, 22 May 2022 00:00:00 +0000</pubDate><guid>https://reorx.com/blog/indie-makers-im-following/</guid><description>列举一些我所知的独立开发者，让更多的人能看到他们的经历和作品，获得启发。</description><content:encoded><![CDATA[<p>独立开发者，AKA indie makers, solo developers, or quite-my-job makers，是一群特别的人。他们或厌倦了大厂上班做重复性的工作，或不甘于只作为别人设计的实现者，或想要挑战自己的创造力、寻求被动收入甚至实现财务自由，初始的动机虽然各异，但却有一个共同点：不满足于一件事情已有的做法和存在方式，想用自己的手去改变和创造，实现心中那个理想的产品。</p>
+<blockquote>
+<p>An indie maker is an <strong>independent creator</strong>. They build projects with their own resources, often without funding, taking care of all aspects: development, design, marketing&hellip;</p>
+<p>by <a href="https://www.whatisanindiemaker.com/">What is an Indie Maker?</a></p>
+</blockquote>
+<p>独立开发者有着两个特质，勇气和追求。放弃待遇优渥的工作，投身不确定的未来，是勇气；对已有的产品不满，用更高的标准要求打磨，则是追求。</p>
+<p>我一直关注着一些独立开发者们，怀着敬意欣赏他们的作品，为他们的成就欢呼喝彩，从他们身上汲取勇气和追求的养分，让踏上同样道路的自己得到志同道合者的陪伴。这篇文章将我所知的独立开发者们列举出来<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>，让更多的人能看到他们的经历和作品，获得启发。</p>
+<blockquote>
+<p>如果看到本文的你也是一位独立开发者（或者认识某位），欢迎在评论和推文中分享你的经历和作品。</p>
+</blockquote>
+<h2 id="zh">ZH</h2>
+<ul>
+<li><a href="https://blog.guyskk.com/about">Guyskk</a>
+<ul>
+<li>Experiences
+<ul>
+<li><a href="https://blog.guyskk.com/notes/onebiz-begin">自宅创业 - 开始</a></li>
+<li><a href="https://blog.guyskk.com/notes/onebiz-1-recent-and-product">自宅创业 - 两周近况和新产品</a></li>
+<li><a href="https://blog.guyskk.com/notes/onebiz-6">自宅创业 - 创业三个月了</a></li>
+<li><a href="https://blog.guyskk.com/notes/onebiz-13">自宅创业 - #13 创业半年回顾</a></li>
+<li><a href="https://blog.guyskk.com/notes/review-2021">2021自宅创业10个月总结，我会再次挑战</a></li>
+</ul>
+</li>
+<li>Products
+<ul>
+<li><a href="https://github.com/anyant/rssant">蚁阅</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="https://timqian.com/">Tim Qian</a>
+<ul>
+<li>Experiences
+<ul>
+<li><a href="https://blog.t9t.io/transparent-startup-experiment-2019-05-20/">我的透明创业实验</a></li>
+<li><a href="https://blog.t9t.io/2019-2020-01-03/">2019 年 t9t.io 赚了多少钱</a></li>
+<li><a href="https://blog.t9t.io/t9t-year1-2020-05-18/">我的一年独立开发经历</a></li>
+</ul>
+</li>
+<li>Products
+<ul>
+<li><a href="https://feeds.pub/">Feeds Pub</a></li>
+<li><a href="https://github.com/timqian/chart.xkcd">chart.xkcd</a></li>
+<li><a href="https://github.com/bytebase/star-history">star-history</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Tob
+<ul>
+<li>Experiences
+<ul>
+<li><a href="https://eleduck.com/posts/MkRfER">独立开发挑战:做一款产品,6个月之内实现月收入30,000元 | 电鸭</a></li>
+<li><a href="https://eleduck.com/posts/ez1fBR">从硅谷到北京再到东南亚，为自己而工作的306天 | 电鸭</a></li>
+</ul>
+</li>
+<li>Products
+<ul>
+<li><a href="https://www.21cloudbox.com/">21YunBox</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="https://ranhe.xyz/about/">染河</a>
+<ul>
+<li>Experiences
+<ul>
+<li><a href="https://mp.weixin.qq.com/s?__biz=Mzg4NDYwNjk2NA==&amp;mid=2247483680&amp;idx=1&amp;sn=1797b7e6b02724abd02caf2865117801&amp;chksm=cfb4d3bbf8c35aad173a1de7313e6b49d1f0fec3bd627b01a5aec768479887fa54934bfa4032&amp;mpshare=1&amp;scene=1&amp;srcid=0314XxUXk5LuIVDw6P4D1yTJ&amp;sharer_sharetime=1647247408010&amp;sharer_shareid=499a00e1cb53b0df2fa10b0279edd40a#rd">我为什么从字节跳动裸辞全职开发浏览器扩展</a></li>
+</ul>
+</li>
+<li>Products
+<ul>
+<li><a href="http://circlereader.com/">Circle 阅读助手</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>zy5a59
+<ul>
+<li>Experiences
+<ul>
+<li><a href="https://www.v2ex.com/t/850671">人生自由实验 - V2EX</a></li>
+<li><a href="https://www.v2ex.com/t/759394#reply11">『独立开发』复盘一个“可能”月入过万的小项目 - V2EX</a></li>
+<li><a href="https://space.bilibili.com/20667846">我是张万里的个人空间_哔哩哔哩_bilibili</a></li>
+</ul>
+</li>
+<li>Products
+<ul>
+<li><a href="https://yezishuzhai.com/">叶子书摘</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="en">EN</h2>
+<ul>
+<li><a href="https://mtlynch.io/">Michael Lynch</a>
+<ul>
+<li>Experiences
+<ul>
+<li><a href="https://mtlynch.io/why-i-quit-google/">Why I Quit Google to Work for Myself · mtlynch.io</a></li>
+<li><a href="https://mtlynch.io/solo-developer-year-1/">My First Year as a Solo Developer</a></li>
+<li><a href="https://mtlynch.io/solo-developer-year-2/">My Second Year as a Solo Developer</a></li>
+<li><a href="https://mtlynch.io/solo-developer-year-3/">My Third Year as a Solo Developer</a></li>
+<li><a href="https://mtlynch.io/solo-developer-year-4/">My Fourth Year as a Bootstrapped Founder</a></li>
+</ul>
+</li>
+<li>Products
+<ul>
+<li><a href="https://tinypilotkvm.com/">The Modern, Open-Source KVM over IP | TinyPilot</a></li>
+<li><a href="https://refactoringenglish.com/">Refactoring English</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="https://benstokes.dev/">Ben Stokes</a>
+<ul>
+<li>Experiences
+<ul>
+<li><a href="https://tinyprojects.dev/posts/i_spent_two_years_launching_tiny_projects">I Spent 2 years Launching Tiny Projects | Tiny Projects</a></li>
+<li><a href="https://daily.tinyprojects.dev/paper_website">I blew $720 on 100 notebooks from Alibaba and started a Paper Website business | Tiny Projects</a></li>
+<li><a href="https://tinyprojects.dev/projects/earlyname">Earlyname: Reserving Usernames on the Internet | Tiny Projects</a></li>
+</ul>
+</li>
+<li>Products
+<ul>
+<li><a href="https://tinyprojects.dev/">Tiny Projects</a></li>
+<li><a href="https://paperwebsite.com/">Paper Website: Start a tiny website from your notebook</a></li>
+<li><a href="https://earlyname.com/">Earlyname | Get Your Username Before Anyone Else</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="https://alyssax.com/">Alyssa</a>
+<ul>
+<li>Experiences
+<ul>
+<li><a href="https://medium.com/women-make/how-i-built-a-macos-app-and-made-5000-in-a-week-de25c7be0458">How I built a MacOS app and made $5000+ in a week | Women Make</a></li>
+<li><a href="https://newsletter.alyssax.com/">The Serial Entrepreneur Newsletter by Alyssa X</a></li>
+</ul>
+</li>
+<li>Products
+<ul>
+<li><a href="https://chrome.google.com/webstore/detail/omni-bookmark-history-tab/mapjgeachilmcbbokkgcbgpbakaaeehi?hl=en&amp;authuser=0">Omni - Bookmark, History, &amp; Tab Manager - Chrome Web Store</a></li>
+<li><a href="https://getlater.app/">Later - Save your Mac apps for later</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="https://twitter.com/levelsio">@levelsio</a>
+<ul>
+<li>Experiences
+<ul>
+<li><a href="https://levels.io/how-i-built-a-remote-jobs-board/">How I built Nomad Jobs, a remote job board for 100% distributed startups</a></li>
+<li><a href="https://levels.io/12-startups-12-months/">I&rsquo;m Launching 12 Startups in 12 Months</a></li>
+<li><a href="https://levels.io/product-hunt-hacker-news-number-one/">How I got my startup to #1 on both Product Hunt and Hacker News by accident</a></li>
+</ul>
+</li>
+<li>Products
+<ul>
+<li><a href="https://nomadlist.com/">Nomad List - Best Places to Live for Digital Nomads</a></li>
+<li><a href="https://remoteok.com/">Remote Jobs in Programming, Design, Sales and more #OpenSalaries</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="https://twitter.com/damengchen">@damengchen</a>
+<ul>
+<li>Experiences
+<ul>
+<li><a href="https://testimonial.to/blog/one-year-of-indie-hacking-i-have-learned-a-lot">One year of indie hacking, I&rsquo;ve learned a lot!</a></li>
+</ul>
+</li>
+<li>Products
+<ul>
+<li><a href="https://testimonial.to/">Testimonial - Collect and embed testimonials in minutes</a></li>
+<li><a href="https://embed.so/">Embed.so - The video hosting platform for your business</a></li>
+<li><a href="https://supportman.io/">Supportman - Intercom Metrics &amp; Ratings in Slack</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="https://www.thomas-sanlis.com/">Thomas Sanlis</a>
+<ul>
+<li>Experiences
+<ul>
+<li><a href="https://www.thomas-sanlis.com/blog/when-why-and-how-i-have-changed-my-life/">When, Why and How I&rsquo;ve changed my life</a></li>
+</ul>
+</li>
+<li>Products
+<ul>
+<li><a href="https://www.uneed.best/">Uneed, the best tools of the internet.</a></li>
+<li><a href="https://www.griddely.com/">Griddely</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="https://tonydinh.com/">Tony Dinh</a>
+<ul>
+<li>Experiences
+<ul>
+<li><a href="https://twitter.com/tdinh_me/status/1427930913355100167">After 7 years working as a dev, I quit my job to pursue my dream: build software I love and make a living out of it.</a></li>
+<li><a href="https://newsletter.tonydinh.com/">Tony Dinh’s Newsletter | Revue</a></li>
+</ul>
+</li>
+<li>Products
+<ul>
+<li><a href="https://blackmagic.so/">Twitter Analytics &amp; CRM - BlackMagic.so</a></li>
+<li><a href="https://devutils.app/">DevUtils.app - All-in-one Toolbox for Developers</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="https://twitter.com/SachinNeravath">@SachinNeravath</a>
+<ul>
+<li>Experiences
+<ul>
+<li>See twitter timeline</li>
+</ul>
+</li>
+<li>Products
+<ul>
+<li><a href="https://www.paritydeals.com/">ParityDeals - Price Smarter, Sell bigger!</a></li>
+<li><a href="https://www.samay.live/">Samay - Supercharge your focus and productivity.</a></li>
+<li><a href="https://www.lightgalleryjs.com/">lightGallery - Full featured javascript gallery for web and mobile.</a></li>
+<li><a href="http://tack.one">http://tack.one</a> (100% free)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="https://destroytoday.com/">Jonnie Hallman</a>
+<ul>
+<li>Products
+<a href="https://cushionapp.com/">Cushion</a></li>
+<li>Experiences
+<ul>
+<li><a href="https://cushionapp.com/journal/launch">Cushion Journal - Launch</a></li>
+<li><a href="https://cushionapp.com/journal/funding-cushion">Cushion Journal - Funding Cushion</a></li>
+<li>…all in <a href="https://destroytoday.com/blog/categories/cushion">https://destroytoday.com/blog/categories/cushion</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="一些链接">一些链接</h2>
+<p>本文不打算整理对如何成为一个独立开发者的建议或工具（以后有机会可以做下分享<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>），如果你看到这里感到意犹未尽，想了解更多关于独立开发的事情，可以对下面的链接进行探索。</p>
+<ul>
+<li><a href="https://www.whatisanindiemaker.com/">What is an Indie Maker?</a></li>
+<li><a href="https://news.ycombinator.com/item?id=29667095">Ask HN: Those making $500/month on side projects in 2021 – Show and tell | Hacker News</a></li>
+<li><a href="https://github.com/mezod/awesome-indie">mezod/awesome-indie: Resources for independent developers to make money</a></li>
+<li><a href="https://www.indiehackers.com/">Indie Hackers: Work Together to Build Profitable Online Businesses</a></li>
+<li><a href="https://josephchang10.github.io/chinese-indie-hackers/">独立 | 中国独立 iOS 和 macOS 开发者图鉴</a></li>
+<li><a href="https://microacquire.com/">MicroAcquire, the #1 Startup Acquisition Marketplace</a></li>
+</ul>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p>本文列举的独立开发者都分享过自己的经历，这是对我来讲特别重要的一点，但并不是只有分享经历的独立开发者才值得关注。每个独立开发者都是人间宝藏。&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2" role="doc-endnote">
+<p>但正如我的一个推文所说，专注于具体创作的人在输出经验方面的精力会比较少 <a href="https://twitter.com/novoreorx/status/1528309074550747138">https://twitter.com/novoreorx/status/1528309074550747138</a>&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
+]]></content:encoded></item></channel></rss>
