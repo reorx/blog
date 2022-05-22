@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Reorx’s Forge</title><link>https://reorx.com/</link><description>Recent content on Reorx’s Forge</description><image><url>https://reorx.com/forge.png</url><link>https://reorx.com/forge.png</link></image><generator>Hugo -- gohugo.io</generator><lastBuildDate>Sun, 22 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://reorx.com/feed.xml" rel="self" type="application/rss+xml"/><item><title>我关注的独立开发者们</title><link>https://reorx.com/blog/indie-makers-im-following/</link><pubDate>Sun, 22 May 2022 00:00:00 +0000</pubDate><guid>https://reorx.com/blog/indie-makers-im-following/</guid><description>列举一些我所知的独立开发者，让更多的人能看到他们的经历和作品，获得启发。</description><content:encoded><![CDATA[<p>独立开发者，AKA indie makers, solo developers, or quite-my-job makers，是一群特别的人。他们或厌倦了大厂上班做重复性的工作，或不甘于只作为别人设计的实现者，或想要挑战自己的创造力、寻求被动收入甚至实现财务自由，初始的动机虽然各异，但却有一个共同点：不满足于一件事情已有的做法和存在方式，想用自己的手去改变和创造，实现心中那个理想的产品。</p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Reorx’s Forge</title><link>https://reorx.com/</link><description>Recent content on Reorx’s Forge</description><image><url>https://reorx.com/forge.png</url><link>https://reorx.com/forge.png</link></image><generator>Hugo -- gohugo.io</generator><lastBuildDate>Sun, 22 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://reorx.com/feed.xml" rel="self" type="application/rss+xml"/><item><title>我关注的独立开发者们</title><link>https://reorx.com/blog/indie-makers-im-following/</link><pubDate>Sun, 22 May 2022 00:00:00 +0000</pubDate><guid>https://reorx.com/blog/indie-makers-im-following/</guid><description>列举一些我所知的独立开发者们，让更多的人看到他们的经历和作品，获得启发。</description><content:encoded><![CDATA[<p>独立开发者，AKA indie makers, solo developers, or quite-my-job makers，是一群特别的人。他们或厌倦了大厂上班做重复性的工作，或不甘于只作为别人设计的实现者，或想要挑战自己的创造力、寻求被动收入甚至实现财务自由，初始的动机虽然各异，但却有一个共同点：不满足于一件事情已有的做法和存在方式，想用自己的手去改变和创造，实现心中那个理想的产品。</p>
 <blockquote>
 <p>An indie maker is an <strong>independent creator</strong>. They build projects with their own resources, often without funding, taking care of all aspects: development, design, marketing&hellip;</p>
 <p>by <a href="https://www.whatisanindiemaker.com/">What is an Indie Maker?</a></p>
@@ -131,22 +131,6 @@
 </li>
 </ul>
 </li>
-<li><a href="https://alyssax.com/">Alyssa</a>
-<ul>
-<li>Experiences
-<ul>
-<li><a href="https://medium.com/women-make/how-i-built-a-macos-app-and-made-5000-in-a-week-de25c7be0458">How I built a MacOS app and made $5000+ in a week | Women Make</a></li>
-<li><a href="https://newsletter.alyssax.com/">The Serial Entrepreneur Newsletter by Alyssa X</a></li>
-</ul>
-</li>
-<li>Products
-<ul>
-<li><a href="https://chrome.google.com/webstore/detail/omni-bookmark-history-tab/mapjgeachilmcbbokkgcbgpbakaaeehi?hl=en&amp;authuser=0">Omni - Bookmark, History, &amp; Tab Manager - Chrome Web Store</a></li>
-<li><a href="https://getlater.app/">Later - Save your Mac apps for later</a></li>
-</ul>
-</li>
-</ul>
-</li>
 <li><a href="https://twitter.com/levelsio">@levelsio</a>
 <ul>
 <li>Experiences
@@ -180,21 +164,6 @@
 </li>
 </ul>
 </li>
-<li><a href="https://www.thomas-sanlis.com/">Thomas Sanlis</a>
-<ul>
-<li>Experiences
-<ul>
-<li><a href="https://www.thomas-sanlis.com/blog/when-why-and-how-i-have-changed-my-life/">When, Why and How I&rsquo;ve changed my life</a></li>
-</ul>
-</li>
-<li>Products
-<ul>
-<li><a href="https://www.uneed.best/">Uneed, the best tools of the internet.</a></li>
-<li><a href="https://www.griddely.com/">Griddely</a></li>
-</ul>
-</li>
-</ul>
-</li>
 <li><a href="https://tonydinh.com/">Tony Dinh</a>
 <ul>
 <li>Experiences
@@ -207,6 +176,22 @@
 <ul>
 <li><a href="https://blackmagic.so/">Twitter Analytics &amp; CRM - BlackMagic.so</a></li>
 <li><a href="https://devutils.app/">DevUtils.app - All-in-one Toolbox for Developers</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="https://alyssax.com/">Alyssa</a>
+<ul>
+<li>Experiences
+<ul>
+<li><a href="https://medium.com/women-make/how-i-built-a-macos-app-and-made-5000-in-a-week-de25c7be0458">How I built a MacOS app and made $5000+ in a week | Women Make</a></li>
+<li><a href="https://newsletter.alyssax.com/">The Serial Entrepreneur Newsletter by Alyssa X</a></li>
+</ul>
+</li>
+<li>Products
+<ul>
+<li><a href="https://chrome.google.com/webstore/detail/omni-bookmark-history-tab/mapjgeachilmcbbokkgcbgpbakaaeehi?hl=en&amp;authuser=0">Omni - Bookmark, History, &amp; Tab Manager - Chrome Web Store</a></li>
+<li><a href="https://getlater.app/">Later - Save your Mac apps for later</a></li>
 </ul>
 </li>
 </ul>
@@ -224,6 +209,21 @@
 <li><a href="https://www.samay.live/">Samay - Supercharge your focus and productivity.</a></li>
 <li><a href="https://www.lightgalleryjs.com/">lightGallery - Full featured javascript gallery for web and mobile.</a></li>
 <li><a href="http://tack.one">http://tack.one</a> (100% free)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="https://www.thomas-sanlis.com/">Thomas Sanlis</a>
+<ul>
+<li>Experiences
+<ul>
+<li><a href="https://www.thomas-sanlis.com/blog/when-why-and-how-i-have-changed-my-life/">When, Why and How I&rsquo;ve changed my life</a></li>
+</ul>
+</li>
+<li>Products
+<ul>
+<li><a href="https://www.uneed.best/">Uneed, the best tools of the internet.</a></li>
+<li><a href="https://www.griddely.com/">Griddely</a></li>
 </ul>
 </li>
 </ul>
