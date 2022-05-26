@@ -1,4 +1,325 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Blogs on Reorx’s Forge</title><link>https://reorx.com/blog/</link><description>Recent content in Blogs on Reorx’s Forge</description><image><url>https://reorx.com/forge-v2-compat.svg</url><link>https://reorx.com/forge-v2-compat.svg</link></image><generator>Hugo -- gohugo.io</generator><lastBuildDate>Sun, 22 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://reorx.com/blog/feed.xml" rel="self" type="application/rss+xml"/><item><title>我关注的独立开发者们</title><link>https://reorx.com/blog/indie-makers-im-following/</link><pubDate>Sun, 22 May 2022 00:00:00 +0000</pubDate><guid>https://reorx.com/blog/indie-makers-im-following/</guid><description>列举一些我所知的独立开发者们，让更多的人看到他们的经历和作品，获得启发。</description><content:encoded><![CDATA[<p>独立开发者，AKA indie makers, solo developers, or quite-my-job makers，是一群特别的人。他们或厌倦了大厂上班做重复性的工作，或不甘于只作为别人设计的实现者，或想要挑战自己的创造力、寻求被动收入甚至实现财务自由，初始的动机虽然各异，但却有一个共同点：不满足于一件事情已有的做法和存在方式，想用自己的手去改变和创造，实现心中那个理想的产品。</p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Blogs on Reorx’s Forge</title><link>https://reorx.com/blog/</link><description>Recent content in Blogs on Reorx’s Forge</description><image><url>https://reorx.com/forge-v2-compat.svg</url><link>https://reorx.com/forge-v2-compat.svg</link></image><generator>Hugo -- gohugo.io</generator><lastBuildDate>Wed, 25 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://reorx.com/blog/feed.xml" rel="self" type="application/rss+xml"/><item><title>使用自动化工作流聚合信息摄入和输出</title><link>https://reorx.com/blog/sharing-my-footprints-automation/</link><pubDate>Wed, 25 May 2022 00:00:00 +0000</pubDate><guid>https://reorx.com/blog/sharing-my-footprints-automation/</guid><description>展示我是如何用 n8n 将 Twitter, YouTube, GitHub, Douban 等服务的动态同步到 Telegram Channel，实现个人数字生活的信息聚合。</description><content:encoded><![CDATA[<p>欢迎关注我的 Telegram 频道: <a href="https://t.me/reorx_share">Reorx’s Footprints</a>。这篇文章讲述我为什么创建这个频道，以及如何用 n8n 将 Twitter, YouTube, GitHub, Douban 等服务的动态同步过去，实现个人数字生活的信息聚合。</p>
+<h2 id="前言">前言</h2>
+<p><a href="https://en.wikipedia.org/wiki/Cyberspace">赛博空间</a>构成了我的精神世界。</p>
+<p>我的大脑从苏醒的那一刻开始渴求信息，大量新鲜的信息，它们比饮用水更早地进入我的身体。每天睁开眼睛，我做的第一件事情是拿起手机，逐个查看昨夜的消息提醒。起床之后，我会在马桶上浏览 RSS 阅读器和 Telegram 频道中的新闻，让思维复苏的过程伴随新知识的冲击。我已经习惯了如此，一边加载昨日的进展并思考今日的安排，一边点开链接，使用不同的工具进行阅读、收藏和记录。</p>
+<p>一天之中的碎片时间，我也会不断地在 Twitter、RSS、Telegram 之间切换，这对我来说并不是信息焦虑，而是自然而然的生活习惯。在工作上，我也完全依赖于网络，在解决问题的过程中搜索阅读大量的网站，将之转化为代码和学习笔记。</p>
+<p>我就像一台不停运行的收集器和过滤器，持续地消费、生产信息。但大脑被设计用于分析和联想，却不擅长高效精确的索引，这些信息散落在各个服务中，我可以想起一些关键词或模糊的上下文，但总是很难快速获取到。我需要一个能将它们聚合在一起的工具，或者工作流，这样既可以方便自己的回溯，也可以将这些经过提纯的信息分享出来，为和我兴趣接近的人提供另一个输入管道。</p>
+<h2 id="聚合什么信息">聚合什么信息？</h2>
+<p>不是所有在赛博空间产生的信息都需要被聚合。一些被动产生的如搜索记录、地理位置记录、个人健康信息等，他们可以用作 <a href="https://en.wikipedia.org/wiki/Quantified_self">quantified self</a>（这是另一个话题），但并不在我的考虑范畴内。</p>
+<p>我要聚合的主要有两类信息，一类是是由我主动创造的，比如Twitter 上发表的看法、GitHub 上为开源项目提交的问题；一类是我主动收藏或标记的，Pinboard 上收藏的书签、YouTube 上点赞过的视频均属此列。它们有的直接流入我的知识库<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>，有的保存在线上服务中，作为知识的原材料储备，留待日后进行消化吸收。</p>
+<p>考虑到分享的目的，这些信息中还要去掉功能性的部分，只保留我确认有价值的那些。比如 Twitter Like 有时会用于社交目的，作为一种赞赏的回应；YouTube, Spotify 中各种 playlist 很多只是为了满足收集癖，不一定具有普适性；豆瓣的想看、想读只是待确认的 enqueue，只有看过、读过才是值得推荐的。</p>
+<h3 id="内容来源">内容来源</h3>
+<p>基于以上考虑，我将自己主要摄入和产生信息的来源进行了整理，得到如下列表：</p>
+<ul>
+<li>
+<p><strong>Telegram</strong></p>
+<p>我在 Telegram 中分享一些一闪而过的想法，菜谱，和在看其他频道时将特别有意思的内容进行转发。</p>
+<ul>
+<li>Fleeting thoughts 💭</li>
+<li>Recipe 🍳</li>
+<li>Forward 🔄</li>
+</ul>
+</li>
+<li>
+<p><strong>Twitter</strong> 🐦</p>
+<p>我的所有 Tweet 和 Retweet 都经过认真思考，是希望被阅读的内容创作。</p>
+<ul>
+<li>Tweet</li>
+<li>Retweet</li>
+</ul>
+</li>
+<li>
+<p><strong>Instapaper</strong> 📖</p>
+<p>我这样管理我的待看列表：对于没确认是否有价值的那些，我会加入 TODO 或 Telegram Saved Messages。只有当我认真阅读过并认为值得再次阅读，我才会将其加入 Instapaper 中。</p>
+</li>
+<li>
+<p><strong>Blog</strong> 📝</p>
+<p>我的个人博客，通过 RSS 发布更新。</p>
+</li>
+<li>
+<p><strong>Music</strong> 🎵</p>
+<p>我主要使用 Spotify 听歌，类似 Instapaper，只有我愿意反复听的歌曲才会加入 Liked Songs，可以看做是我基于个人音乐品味的推荐。</p>
+<ul>
+<li>Spotify</li>
+</ul>
+</li>
+<li>
+<p><strong>YouTube</strong> ▶️</p>
+<p>YouTube 是我探索世界无限可能性的地方，it&rsquo;s about everything and nothing。每个 Like 过的视频都有着让我会心一笑或拍案叫绝的亮点。</p>
+</li>
+<li>
+<p><strong>Bookmark</strong> 🔖</p>
+<p>我从 2013 年开始使用 Pinboard，虽然 Pinboard 的社交属性很弱，但我一直坚持用 private/public 属性来区分我的收藏，所有 public 的书签都具备一定的分享价值。</p>
+<ul>
+<li>Pinboard</li>
+</ul>
+</li>
+<li>
+<p><strong>GitHub</strong></p>
+<p>由于对 Pinboard 的重度使用，大部分 GitHub 项目都收藏在 Pinboard 中，Star 的是我觉得值得鼓励的项目。每个 Issue 和 Pull-request 我都有认真撰写，他们是我参与开源活动的记录。</p>
+<ul>
+<li>Star 🌟</li>
+<li>Issue ⚡️</li>
+<li>Pull-request ⤴️</li>
+</ul>
+</li>
+<li>
+<p><strong>Douban</strong></p>
+<p>我主要用 Douban 记录看过的电影和书。如上文所说，这里只分享在看、看过的电影和在读、读过的书籍。后续考虑对评分进行过滤。</p>
+<ul>
+<li>Movie 📺</li>
+<li>Book 📖</li>
+</ul>
+</li>
+</ul>
+<h3 id="展现形式">展现形式</h3>
+<p>我选择 Telegram Channel 作为信息聚合的目的地。一方面我许多信息都来源于 Telegram ，另一方面它也非常易于使用和接入。</p>
+<p>Telegram 以下几种功能极大程度地丰富了信息的展现形式<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>：</p>
+<ul>
+<li>
+<p>链接预览</p>
+<p>Telegram 会将消息中附带的链接进行抓取，将摘要和图片显示在消息下方。</p>
+</li>
+<li>
+<p>富文本格式</p>
+<p>Telegram 消息支持 Markdown 和 HTML 两种富文本格式的解析，可以实现粗体、斜体、下划线、超链接、行内和块级代码等样式。</p>
+</li>
+<li>
+<p>标签索引</p>
+<p>Telegram 的消息支持 <code>#</code> 为前缀的标签，在频道/群组内点击标签即可对消息进行筛选，这让结构化的信息索引成为可能。</p>
+</li>
+</ul>
+<h2 id="实现自动化同步">实现自动化同步</h2>
+<p>我使用 <a href="https://github.com/n8n-io/n8n">n8n</a> 来实现整套信息收集和聚合的自动化工作流<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>。下面将对我的操作方法和配置进行讲解，参照这些说明，你也可以快速搭建一套属于自己的自动化信息分享系统。</p>
+<h3 id="n8n-概念说明">n8n 概念说明</h3>
+<ul>
+<li>
+<p><strong>workflow</strong></p>
+<p>用于定义一条自动化工作流，由多个 node 以及 node 之间的指向关系构成。</p>
+</li>
+<li>
+<p><strong>node</strong></p>
+<p>构成 workflow 的基本单位，每个 node 可以完成一个独立的任务，比如定时触发、获取数据、筛选数据、发送信息等。</p>
+</li>
+<li>
+<p><strong>credential</strong></p>
+<p>访问凭据，用于在访问在线服务接口时进行身份验证。workflow 内只存储 credential 的 id，只有在运行时才会获取其中的实际内容，这一机制确保了 workflow 在分享时不会造成凭据泄露。</p>
+</li>
+</ul>
+<h3 id="安装-n8n">安装 n8n</h3>
+<p>n8n 支持使用 Docker 进行自部署，它由 Nodejs 开发，使用 SQLite 作为数据库，没有其他外部依赖，因此理论上可以部署在任何 Docker 或 Nodejs 运行环境。</p>
+<p>为了方便调试，我将 n8n 部署在家里的 NAS 上，你也可以尝试将其部署在 <a href="https://railway.app?referralCode=XkWaVV">Railway</a> 等 PaaS 平台。</p>
+<p>正常情况下，参照 n8n 的 <a href="https://docs.n8n.io/hosting/installation/docker/">Docker Installation</a> 文档即可完成初步运行。但在使用中，我发现了 n8n Twitter 接入的 bug，在对代码进行了修改后，不得不在本地构建 Docker 镜像 (见 <a href="https://github.com/n8n-io/n8n/tree/master/docker/images/n8n-custom">n8n - Custom Image</a>)。如果你需要使用 Twitter 接入，在这个 <a href="https://github.com/n8n-io/n8n/pull/3354">PR</a> 合并之前，建议使用我构建好的镜像 <a href="https://hub.docker.com/r/reorx/n8n-custom">reorx/n8n-custom</a>。</p>
+<p><details >
+  <summary markdown="span">附上我的 docker-compose.yml 文件作为参考</summary>
+  <pre tabindex="0"><code>version: '3'
+services:
+  n8n:
+    #image: n8nio/n8n
+    image: n8n-custom
+    ports:
+      - 5678:5678
+    volumes:
+      - /share/CACHEDEV2_DATA/Misc/AppData/n8n:/home/node/.n8n
+      - /share/CACHEDEV1_DATA/homes/reorx/Misc_Backup/:/backup
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - VUE_APP_URL_BASE_API=http://harrogath-local.com:5678/
+      - WEBHOOK_URL=http://harrogath-local.com:5678/
+      - GENERIC_TIMEZONE=Asia/Shanghai
+      - TZ=Asia/Shanghai
+      - N8N_LOG_LEVEL=verbose
+    restart: unless-stopped
+
+</code></pre>
+</details></p>
+
+<p>由于许多服务需要通过 OAuth 进行接入，我们运行的 n8n 需要有一个固定的访问地址，以便接收 OAuth callback url 的访问。我的做法是在局域网内将 <code>harrogath-local.com</code> 这个域名指向 n8n 所在的机器，并为 n8n 设置如下环境变量，使其显示的 OAuth callback 与域名一致。</p>
+<pre tabindex="0"><code>VUE_APP_URL_BASE_API=http://harrogath-local.com:5678/
+WEBHOOK_URL=http://harrogath-local.com:5678/
+</code></pre><p>启动完成后，即可通过 <code>http://harrogath-local.com:5678/</code> 访问 n8n 的 web 界面了。</p>
+<h3 id="创建-workflows">创建 Workflows</h3>
+<p>我的每个 workflow 都分享到了 GitHub <a href="https://github.com/reorx/n8n-workflows">reorx/n8n-workflows</a> 仓库中，通过复制 <code>.json</code> 文件的内容、粘贴在 n8n 的 workflow 编辑界面，即可对 workflow 进行复用。也可以使用 n8n 的命令直接将 workflow 导入到 n8n 的数据库中 (见文档 <a href="https://docs.n8n.io/reference/cli-commands/#import-workflows-and-credentials">Import workflows and credentials</a>)。注意无论使用何种方式导入，credentials 都需要重新配置。</p>
+<h4 id="new-tweet-to-telegram">New tweet to telegram</h4>
+<p>Link: <a href="https://github.com/reorx/n8n-workflows/blob/master/workflows/new%20tweet%20to%20tg.json">n8n-workflows/workflows/new tweet to tg.json</a></p>
+<p>这一 workflow 实现了每 5 分钟搜索一次我的 Twitter 时间线，将最新的 tweets 发送到 Telegram Channel。</p>
+<p><img loading="lazy" src="/blog/sharing-my-footprints-automation/images/n8n.png" alt=""  /></p>
+<p>第一个 node 是 Interval，它是一个 trigger，可以设置重复运行的间隔时长。</p>
+<p>随后是 Twitter node，它通过 OAuth 连接了我的账户，使用 <code>from:novoreorx</code> 搜索语法来获取我最近的推文条目。</p>
+<p>IF reply to other 是一个 IF node，通过条目中的 <code>in_reply_to_screen_name</code> 字段判断推文是否是对别人的回复，只有否才可以走向下一步。意味着只有单独创建或回复自己的推文才会被转发。</p>
+<p>Set Retweeted node 根据条目中的 <code>retweeted_status</code> 字段，识别 retweet 条目，并将原推的 URL 拼凑出来，赋值给新的字段 <code>retweeted</code> 和 <code>retweetedUrl</code>，以便后续使用。</p>
+<p>Function 是我写的一段 JavaScript 代码，它使用了 n8n runtime 内置的 <a href="https://docs.n8n.io/integrations/core-nodes/n8n-nodes-base.function/#method-getworkflowstaticdatatype">getWorkflowStaticData</a> 函数，记录每次更新的第一个条目 <code>lastItemId</code>，通过与上一次的记录进行对比，确保只有新的条目会被输送到下一个 node 执行。如果没有 <code>lastItemId</code>，则只返回第一个条目，避免冷启动时造成大量信息的无效转发。这段代码基本在每个 workflow 中都有用到，下面将不再赘述。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="cm">/* only return new items */</span>
+<span class="kr">const</span> <span class="nx">staticData</span> <span class="o">=</span> <span class="nx">getWorkflowStaticData</span><span class="p">(</span><span class="s1">&#39;global&#39;</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">lastItemId</span> <span class="o">=</span> <span class="nx">staticData</span><span class="p">.</span><span class="nx">lastItemId</span><span class="p">;</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;lastItemId&#39;</span><span class="p">,</span> <span class="nx">lastItemId</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">firstItem</span> <span class="o">=</span> <span class="nx">items</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+<span class="kd">let</span> <span class="nx">newItems</span> <span class="o">=</span> <span class="p">[];</span>
+
+<span class="kd">function</span> <span class="nx">getId</span><span class="p">(</span><span class="nx">item</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">item</span><span class="p">.</span><span class="nx">json</span><span class="p">.</span><span class="nx">id</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nx">lastItemId</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kr">const</span> <span class="nx">item</span> <span class="k">of</span> <span class="nx">items</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">getId</span><span class="p">(</span><span class="nx">item</span><span class="p">)</span> <span class="o">===</span> <span class="nx">lastItemId</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">break</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nx">newItems</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">item</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="nx">newItems</span> <span class="o">=</span> <span class="p">[</span><span class="nx">firstItem</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="nx">staticData</span><span class="p">.</span><span class="nx">lastItemId</span> <span class="o">=</span> <span class="nx">getId</span><span class="p">(</span><span class="nx">firstItem</span><span class="p">)</span>
+<span class="k">return</span> <span class="nx">newItems</span>
+</code></pre></div><p>经过 Function 的处理后，有效条目会被送往 Telegram node，进行 message 组装，最终发送到频道。</p>
+<p><img loading="lazy" src="/blog/sharing-my-footprints-automation/images/n8n-1.png" alt=""  /></p>
+<p>n8n 的表达式 (Expression) 有一个可以预览的编辑界面，左侧会展示当前 node 从上一个 node 获取到的输入数据 (Input Data)，点击即可将模板变量插入到 Expression 中。模板语法 <code>{{ }}</code> 中可以使用 JavaScript 语法，这里我通过 <code>$json[&quot;retweeted&quot;]</code> 来决定 tag 为 <code>#retweet</code> 还是 <code>#tweet</code>。推文 URL 放在了 <code>&lt;a&gt;</code> 标签中，既可以触发 Telegram 的 link preview 功能，也避免展示太长的 URL 影响可读性。</p>
+<h4 id="blog-rss-to-telegram">Blog RSS to telegram</h4>
+<p>Link: <a href="https://github.com/reorx/n8n-workflows/blob/master/workflows/blog%20rss%20to%20tg.json">n8n-workflows/workflows/blog rss to tg.json</a></p>
+<blockquote>
+<p>从第二个 workflow 开始，我将只对大致逻辑进行说明，不再详细讲解每个 node 的实现方式，有兴趣的读者可以在 workflow 编辑器中自行查看。</p>
+</blockquote>
+<p>这一 workflow 实现了每 10 分钟检查一次博客的 RSS，将最新的文章发送到 Telegram Channel。</p>
+<p><img loading="lazy" src="/blog/sharing-my-footprints-automation/images/n8n-2.png" alt=""  /></p>
+<p>RSS Feed Read node 填写了博客的 RSS 地址，Function 同样是实现了有状态的更新判断，唯一的不同是将 <code>getId</code> 函数改为从 <code>item.json.guid</code> 获取 item id。</p>
+<h4 id="spotify-like-to-telegram">Spotify like to telegram</h4>
+<p>Link: <a href="https://github.com/reorx/n8n-workflows/blob/master/workflows/spotify%20likes%20to%20tg.json">n8n-workflows/workflows/spotify likes to tg.json</a></p>
+<p>这一 workflow 实现了每 1 小时检查一次 Spotify Liked Tracks，将最新的歌曲发送到 Telegram Channel。</p>
+<p><img loading="lazy" src="/blog/sharing-my-footprints-automation/images/n8n-3.png" alt=""  /></p>
+<h4 id="youtube-like-to-telegram">YouTube like to telegram</h4>
+<p>Link: <a href="https://github.com/reorx/n8n-workflows/blob/master/workflows/youtube%20like%20to%20tg.json">n8n-workflows/workflows/youtube like to tg.json</a></p>
+<p><img loading="lazy" src="/blog/sharing-my-footprints-automation/images/n8n-4.png" alt=""  /></p>
+<p>这一 workflow 实现了每 30 分钟检查一次 YouTube Liked Playlist，将最新的视频发送到 Telegram Channel。</p>
+<p>这里需要注意的是，Liked 是一个内置的 playlist，因此其 ID 与自己创建的不一样，通过访问 YouTube get playlists API，得到其 ID 为 <code>LL</code>，顺利完成了这一 node 的配置。</p>
+<h4 id="pinboard-new-bookmark-to-telegram">Pinboard new bookmark to telegram</h4>
+<p>Link: <a href="https://github.com/reorx/n8n-workflows/blob/master/workflows/pinboard%20to%20tg.json">n8n-workflows/workflows/pinboard to tg.json</a></p>
+<p>这一 workflow 实现了每 5 分钟检查一次 Pinboard 最近的书签，将最新的书签发送到 Telegram Channel。</p>
+<p><img loading="lazy" src="/blog/sharing-my-footprints-automation/images/n8n-5.png" alt=""  /></p>
+<p>n8n 没有 Pinboard 支持，但我们可以通过 HTTP Request 直接访问 Pinboard 的接口。古怪的是 Pinboard 没有官方的 API 文档，于是我对一些开源的 Pinboard SDK 代码进行阅读，得到了我所需要的接口 <code>https://api.pinboard.in/v1/posts/recent</code>。</p>
+<p>Pinboard 接口返回的数据并不直接是一个列表，而是一个形如 <code>{&quot;posts&quot;: [...]}</code> 的结构，这里用了 Item Lists 将 <code>posts</code> 字段提取出来作为 items 向后传递。</p>
+<h4 id="github-activities-to-telegram">GitHub activities to telegram</h4>
+<p>Link: <a href="https://github.com/reorx/n8n-workflows/blob/master/workflows/github%20activities%20to%20tg.json">n8n-workflows/workflows/github activities to tg.json</a></p>
+<p>这一 workflow 实现了每 10 分钟检查一次 GitHub 的动态，筛选出 star, pull-request 和 issue 发送到 Telegram Channel。</p>
+<p><img loading="lazy" src="/blog/sharing-my-footprints-automation/images/n8n-6.png" alt=""  /></p>
+<p>GitHub 可以通过 <code>https://github.com/$username.atom</code> 获取用户公开的动态信息，因此不需要复杂的 API 接入，直接使用 RSS Feed Read 即可获取到我们所需要的数据。</p>
+<p>在 Function filter 中，我用正则为动态进行了分类，并组成最终所需的消息格式，代码如下:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="cm">/* filter items */</span>
+<span class="kr">const</span> <span class="nx">newItems</span> <span class="o">=</span> <span class="p">[];</span>
+
+<span class="kr">const</span> <span class="nx">regexes</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s1">&#39;star&#39;</span><span class="o">:</span> <span class="sr">/^reorx starred/</span><span class="p">,</span>
+  <span class="s1">&#39;pull-request&#39;</span><span class="o">:</span> <span class="sr">/^reorx opened a pull request/</span><span class="p">,</span>
+  <span class="s1">&#39;issue&#39;</span><span class="o">:</span> <span class="sr">/^reorx opened an issue/</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="kr">const</span> <span class="nx">tagSymbols</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s1">&#39;star&#39;</span><span class="o">:</span> <span class="s1">&#39;🌟&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;pull-request&#39;</span><span class="o">:</span> <span class="s1">&#39;⤴️&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;issue&#39;</span><span class="o">:</span> <span class="s1">&#39;⚡️&#39;</span>
+<span class="p">}</span>
+
+<span class="k">for</span> <span class="p">(</span><span class="kr">const</span> <span class="nx">item</span> <span class="k">of</span> <span class="nx">items</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kr">const</span> <span class="nx">title</span> <span class="o">=</span> <span class="nx">item</span><span class="p">.</span><span class="nx">json</span><span class="p">.</span><span class="nx">title</span>
+  <span class="kd">let</span> <span class="nx">tag</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+
+  <span class="k">for</span> <span class="p">(</span><span class="kr">const</span> <span class="nx">key</span> <span class="k">in</span> <span class="nx">regexes</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kr">const</span> <span class="nx">regex</span> <span class="o">=</span> <span class="nx">regexes</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">regex</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="nx">title</span><span class="p">))</span> <span class="p">{</span>
+      <span class="nx">tag</span> <span class="o">=</span> <span class="nx">key</span>
+      <span class="k">break</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">tag</span> <span class="o">!==</span> <span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">item</span><span class="p">.</span><span class="nx">json</span><span class="p">.</span><span class="nx">tag</span> <span class="o">=</span> <span class="nx">tag</span>
+    <span class="nx">item</span><span class="p">.</span><span class="nx">json</span><span class="p">.</span><span class="nx">tgTitle</span> <span class="o">=</span> <span class="sb">`</span><span class="si">${</span><span class="nx">tagSymbols</span><span class="p">[</span><span class="nx">tag</span><span class="p">]</span><span class="si">}</span><span class="sb"> </span><span class="si">${</span><span class="nx">title</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/^reorx /</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span><span class="si">}</span><span class="sb"> #github #</span><span class="si">${</span><span class="nx">tag</span><span class="si">}</span><span class="sb">`</span>
+    <span class="nx">item</span><span class="p">.</span><span class="nx">json</span><span class="p">.</span><span class="nx">guid</span> <span class="o">=</span> <span class="nx">item</span><span class="p">.</span><span class="nx">json</span><span class="p">.</span><span class="nx">id</span>
+    <span class="nx">newItems</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">item</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="k">return</span> <span class="nx">newItems</span>
+</code></pre></div><blockquote>
+<p>这个 workflow 还有一个使用 GitHub API 的版本，但 RSS 可以获得所有动态，更加方便，最终胜出。</p>
+<p>Link: <a href="https://github.com/reorx/n8n-workflows/blob/master/workflows/github%20issues%20to%20tg.json">n8n-workflows/workflows/github issues to tg.json</a></p>
+</blockquote>
+<h4 id="douban-activities-to-telegram">Douban activities to telegram</h4>
+<p>Link: <a href="https://github.com/reorx/n8n-workflows/blob/master/workflows/douban%20activities%20to%20tg.json">n8n-workflows/workflows/douban activities to tg.json</a></p>
+<p>这一 workflow 实现了每 10 分钟检查一次 Douban 的动态，筛选出看过、在看、读过、在读发送到 Telegram Channel。</p>
+<p><img loading="lazy" src="/blog/sharing-my-footprints-automation/images/n8n-7.png" alt=""  /></p>
+<p>Douban 也有一个隐藏的 RSS 订阅源 <code>https://www.douban.com/feed/people/$username/interests</code>，包含书影音的所有动态。</p>
+<p>Function filter 与上一个 workflow 类似，这里做了一些优化，将正则和符号定义在一个 object 中。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="kr">const</span> <span class="nx">SYMBOL_MOVIE</span> <span class="o">=</span> <span class="s1">&#39;📺&#39;</span>
+<span class="kr">const</span> <span class="nx">SYMBOL_BOOK</span> <span class="o">=</span> <span class="s1">&#39;📖&#39;</span>
+
+<span class="kr">const</span> <span class="nx">tagInfoMap</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">watched</span><span class="o">:</span> <span class="p">{</span> <span class="nx">re</span><span class="o">:</span> <span class="sr">/看过/</span><span class="p">,</span> <span class="nx">symbol</span><span class="o">:</span> <span class="nx">SYMBOL_MOVIE</span> <span class="p">},</span>
+  <span class="nx">watching</span><span class="o">:</span> <span class="p">{</span> <span class="nx">re</span><span class="o">:</span> <span class="sr">/在看/</span><span class="p">,</span> <span class="nx">symbol</span><span class="o">:</span> <span class="nx">SYMBOL_MOVIE</span> <span class="p">},</span>
+  <span class="nx">read</span><span class="o">:</span> <span class="p">{</span> <span class="nx">re</span><span class="o">:</span> <span class="sr">/读过/</span><span class="p">,</span> <span class="nx">symbol</span><span class="o">:</span> <span class="nx">SYMBOL_BOOK</span> <span class="p">},</span>
+  <span class="nx">reading</span><span class="o">:</span> <span class="p">{</span> <span class="nx">re</span><span class="o">:</span> <span class="sr">/在读/</span><span class="p">,</span> <span class="nx">symbol</span><span class="o">:</span> <span class="nx">SYMBOL_BOOK</span> <span class="p">},</span>
+<span class="p">}</span>
+</code></pre></div><h3 id="异常通知">异常通知</h3>
+<p>n8n 作为一个自动化服务，在配置完成后，一般我们不会去主动查看系统的运行情况，因此需要有监控手段得知异常的发生，以便及时维护。</p>
+<p>n8n 支持通过 <a href="https://docs.n8n.io/integrations/core-nodes/n8n-nodes-base.errortrigger/">Error Trigger</a> 创建 Error Workflow，用于接收其他 workflow 的错误信息。这一步虽然不是必须，但我强烈建议创建一个全局的 Error Workflow，并在每个 workflow 的 Settings 中设置错误处理指向它。</p>
+<p><img loading="lazy" src="/blog/sharing-my-footprints-automation/images/n8n-8.png" alt=""  /></p>
+<p>我在 <a href="https://github.com/reorx/n8n-workflows/blob/master/workflows/ERROR%20TO%20TG.json">n8n-workflows/workflows/ERROR TO TG.json</a> 中实现了将错误信息发送到 Telegram Group 的功能，效果如下。
+<div class="image-size-control" style="width: 400px;">
+  <img src="images/telegram.png" alt="">
+</div>
+</p>
+<h3 id="使用-saas-自动化服务">使用 SaaS 自动化服务</h3>
+<p>对于一些 n8n 尚不支持，或配置比较麻烦的服务，也可以通过 SaaS 服务来实现自动化。IFTTT 是一个不错的选择，它应该是最早被广泛使用的自动化服务，免费用户可以设置 5 个 applet (即 workflow)，同步间隔 1 小时。</p>
+<p>下图是我在 IFTTT 中配置的 Instapaper 新文章推送到 Telegram 频道的 applet。</p>
+<div class="image-size-control" style="width: 400px;">
+  <img src="images/ifttt.png" alt="">
+</div>
+
+<p><a href="https://www.integromat.com/">Integromat</a> 曾是一个非常好用的 IFTTT alternative，有着现代化的交互界面，和更为灵活的定制功能，但后来 rebrand 成 make.com，变得非常难用，不仅加载速度缓慢，而且连 migration 都无法正常完成<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup>。建议大家远离这个奇怪的公司。</p>
+<figure class="center align-center">
+  <img src="images/integromat.png" alt="">
+
+  <figcaption><p>曾经美好的 Integromat</p></figcaption>
+</figure>
+
+<figure class="center align-center">
+  <img src="images/integromat-scenario.png" alt="">
+
+  <figcaption><p>和它出色的交互界面</p></figcaption>
+</figure>
+
+<h2 id="结语">结语</h2>
+<p>使用 n8n 的过程总体是非常顺畅的，虽然一开始就在 Twitter 上栽了跟头，好在我能看懂 Nodejs 代码，自己动手修复后一路坦途。</p>
+<p>曾经我特别痴迷于自己实现工具、制造轮子，现有工具稍有不顺就要全盘抛弃，自己解决。后来我在 happy xiao 的<a href="https://happyxiao.com/system/">忘记系统</a>一文中看到 <a href="https://twitter.com/johnvoorhees">John Voorhees</a> 的一段话，改变了我对使用工具的态度:</p>
+<blockquote>
+<p>If there&rsquo;s anything I&rsquo;ve learned about productivity systems, it&rsquo;s that the best one is the one that works for you. Approaching the problem is tricky, but my advice is to use an app first and adopt a system later. That way, you&rsquo;ll have a better understanding of what your needs are before you dive in.</p>
+</blockquote>
+<p>实现的结果才是最重要的，工具只是手段，不是目的。</p>
+<p>这也让我对自己正在开发的产品有了更多的思考，它是一个用于信息前处理的工具，同样是为了解决信息的分散和封闭而做出的努力，我设想了很多功能要去开发，但哪些是核心需求，哪些有代替品，或者换个思路通过其他方式实现，则必须放在实际场景中去考虑，而不是凭自己作为开发者的喜欢来武断确定。</p>
+<p>回到赛博空间这个话题，我一直觉得人类对电子设备的依赖是一个不可逆的过程，人脑与电脑的边界会逐渐模糊。这是当我们有了智慧、抛弃自然为我们提供的进化之路后，自己所选择的进化方式。正如 Ghost In The Shell 开篇所描绘的越来越近的未来：</p>
+<blockquote>
+<p>企業のネットが星を被い、電子や光が駆け巡っても
+国家や民族が消えてなくなるほど、情報化されていない近未来</p>
+</blockquote>
+<p>而在这一天到来之前，我在精神上已经完成了自然人向 <a href="https://en.wikipedia.org/wiki/Cyborg">cyborg</a> 的转变。</p>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p>我的知识库中有三个分类:「制品」、「技术」、「事实」。制品 (artifacts) 是人所创造的作品、产品，如一个开源项目、一个软件；技术 (techniques) 是完成一类事情的方法或经验，也可以叫做 know-how，比如做饭的菜谱、编程语言的技巧、健身动作说明；事实 (facts) 是对概念、词汇的客观解释，多数来源于维基百科的词条。这三个分类可以基本涵盖我摄入的各类信息。&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2" role="doc-endnote">
+<p>预计微信还需要 100 年才能赶上&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3" role="doc-endnote">
+<p>self-hosted workflow automation 的另一个选择是 <a href="https://github.com/huginn/huginn">Huginn</a>, 我没有尝试和对比，在看过它的项目页面，感觉 UI 非常简陋就放弃了。&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:4" role="doc-endnote">
+<p>见我在 Twitter 的吐槽: <a href="https://twitter.com/novoreorx/status/1528985317847736320">http://make.com 大概是我 10 年来用过最糟糕的服务</a>&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
+]]></content:encoded></item><item><title>我关注的独立开发者们</title><link>https://reorx.com/blog/indie-makers-im-following/</link><pubDate>Sun, 22 May 2022 00:00:00 +0000</pubDate><guid>https://reorx.com/blog/indie-makers-im-following/</guid><description>列举一些我所知的独立开发者们，让更多的人看到他们的经历和作品，获得启发。</description><content:encoded><![CDATA[<p>独立开发者，AKA indie makers, solo developers, or quite-my-job makers，是一群特别的人。他们或厌倦了大厂上班做重复性的工作，或不甘于只作为别人设计的实现者，或想要挑战自己的创造力、寻求被动收入甚至实现财务自由，初始的动机虽然各异，但却有一个共同点：不满足于一件事情已有的做法和存在方式，想用自己的手去改变和创造，实现心中那个理想的产品。</p>
 <blockquote>
 <p>An indie maker is an <strong>independent creator</strong>. They build projects with their own resources, often without funding, taking care of all aspects: development, design, marketing&hellip;</p>
 <p>by <a href="https://www.whatisanindiemaker.com/">What is an Indie Maker?</a></p>
