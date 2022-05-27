@@ -332,7 +332,7 @@ Readarr 是电子书的追踪和下载器。我看书不多，偶尔需要看的
 </ul>
 <h3 id="lunasea">LunaSea</h3>
 <p><a href="https://www.lunasea.app/">LunaSea</a> 是一个 Sonarr 和 Usenet 生态圈的远程控制器，能让你在手机上查看 Sonarr / Radarr / Lidarr 的资源和放送时间表。</p>
-<div class="image-size-control" style="height: 600px;">
+<div class="image-size-control" style="max-height: 600px;">
   <img src="images/lunasea.jpeg" alt="">
 </div>
 
