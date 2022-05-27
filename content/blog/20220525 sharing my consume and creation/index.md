@@ -11,10 +11,11 @@ writeTime: 06:32
 imageNameKey: n8n
 cover:
   image: images/telegram-channel.png
+  caption: '[Reorx’s Footprints](https://t.me/reorx_share)'
 socialLinks:
   twitter:
     user: novoreorx
-    id: null
+    id: 1530015511173509121
 ---
 
 欢迎关注我的 Telegram 频道: [Reorx’s Footprints](https://t.me/reorx_share)。这篇文章讲述我为什么创建这个频道，以及如何用 n8n 将 Twitter, YouTube, GitHub, Douban 等服务的动态同步过去，实现个人数字生活的信息聚合。
@@ -43,7 +44,7 @@ socialLinks:
 
 - **Telegram**
 
-    我在 Telegram 中分享一些一闪而过的想法，菜谱，和在看其他频道时将特别有意思的内容进行转发。
+    我在 Telegram 中分享一些一闪而过的想法、菜谱，转发浏览其他频道时看到特别有意思的内容。
     - Fleeting thoughts 💭
     - Recipe 🍳
     - Forward 🔄
@@ -382,6 +383,7 @@ n8n 支持通过 [Error Trigger](https://docs.n8n.io/integrations/core-nodes/n8n
 回到赛博空间这个话题，我一直觉得人类对电子设备的依赖是一个不可逆的过程，人脑与电脑的边界会逐渐模糊。这是当我们有了智慧、抛弃自然为我们提供的进化之路后，自己所选择的进化方式。正如 Ghost In The Shell 开篇所描绘的越来越近的未来：
 
 > 企業のネットが星を被い、電子や光が駆け巡っても
+> 
 > 国家や民族が消えてなくなるほど、情報化されていない近未来
 
 而在这一天到来之前，我在精神上已经完成了自然人向 [cyborg](https://en.wikipedia.org/wiki/Cyborg) 的转变。
