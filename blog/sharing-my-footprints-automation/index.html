@@ -26,7 +26,7 @@
 <meta property="article:published_time" content="2022-05-25T00:00:00+00:00">
 <meta property="article:modified_time" content="2022-05-25T00:00:00+00:00">
 <script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Blogs","item":"https://reorx.com/blog/"},{"@type":"ListItem","position":2,"name":"使用自动化工作流聚合信息摄入和输出","item":"https://reorx.com/blog/sharing-my-footprints-automation/"}]}</script>
-<script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"使用自动化工作流聚合信息摄入和输出 | Reorx’s Forge","name":"使用自动化工作流聚合信息摄入和输出","description":"展示我是如何用 n8n 将 Twitter, YouTube, GitHub, Douban 等服务的动态同步到 Telegram Channel，实现个人数字生活的信息聚合。","keywords":["digital-life","automation"],"wordCount":"5448","inLanguage":"en","image":"https://reorx.com/blog/sharing-my-footprints-automation/images/telegram-channel.png","datePublished":"2022-05-25T00:00:00Z","dateModified":"2022-05-25T00:00:00Z","author":{"@type":"Person","name":"Reorx"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://reorx.com/blog/sharing-my-footprints-automation/"},"publisher":{"@type":"Organization","name":"Reorx’s Forge","logo":{"@type":"ImageObject","url":"https://reorx.com/favicon.ico"}}}</script>
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"使用自动化工作流聚合信息摄入和输出 | Reorx’s Forge","name":"使用自动化工作流聚合信息摄入和输出","description":"展示我是如何用 n8n 将 Twitter, YouTube, GitHub, Douban 等服务的动态同步到 Telegram Channel，实现个人数字生活的信息聚合。","keywords":["digital-life","automation"],"wordCount":"5446","inLanguage":"en","image":"https://reorx.com/blog/sharing-my-footprints-automation/images/telegram-channel.png","datePublished":"2022-05-25T00:00:00Z","dateModified":"2022-05-25T00:00:00Z","author":{"@type":"Person","name":"Reorx"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://reorx.com/blog/sharing-my-footprints-automation/"},"publisher":{"@type":"Organization","name":"Reorx’s Forge","logo":{"@type":"ImageObject","url":"https://reorx.com/favicon.ico"}}}</script>
 <noscript>
 <style>#theme-toggle,.top-link{display:none}</style>
 <style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary-bg:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51)}.list{background:var(--theme)}.list:not(.dark)::-webkit-scrollbar-track{background:0 0}.list:not(.dark)::-webkit-scrollbar-thumb{border-color:var(--theme)}}</style>
@@ -72,12 +72,13 @@
 <div class=post-meta><span class=meta-item><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar" style="user-select:text"><rect x="3" y="4" width="18" height="18" rx="2" ry="2" style="user-select:text"/><line x1="16" y1="2" x2="16" y2="6" style="user-select:text"/><line x1="8" y1="2" x2="8" y2="6" style="user-select:text"/><line x1="3" y1="10" x2="21" y2="10" style="user-select:text"/></svg>
 <span>2022-05-25</span></span><span class=meta-item><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon" style="user-select:text"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83.0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z" style="user-select:text"/><line x1="7" y1="7" x2="7" y2="7" style="user-select:text"/></svg>
 <span class=post-tags><a href=https://reorx.com/tags/digital-life/>digital-life</a><a href=https://reorx.com/tags/automation/>automation</a></span></span><span class=meta-item><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text" style="user-select:text"><path d="M14 2H6A2 2 0 004 4v16a2 2 0 002 2h12a2 2 0 002-2V8z" style="user-select:text"/><polyline points="14 2 14 8 20 8" style="user-select:text"/><line x1="16" y1="13" x2="8" y2="13" style="user-select:text"/><line x1="16" y1="17" x2="8" y2="17" style="user-select:text"/><polyline points="10 9 9 9 8 9" style="user-select:text"/></svg>
-<span>5448 words</span></span><span class=meta-item><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke="currentcolor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
+<span>5446 words</span></span><span class=meta-item><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke="currentcolor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
 <span>11 min</span></span>
 </div>
 </header>
 <figure class=entry-cover>
-<img loading=lazy srcset="https://reorx.com/blog/sharing-my-footprints-automation/images/telegram-channel_hu9928f446f5a6cd3eca5c4bd9b6dcb699_42201_360x0_resize_box_3.png 360w ,https://reorx.com/blog/sharing-my-footprints-automation/images/telegram-channel_hu9928f446f5a6cd3eca5c4bd9b6dcb699_42201_480x0_resize_box_3.png 480w ,https://reorx.com/blog/sharing-my-footprints-automation/images/telegram-channel_hu9928f446f5a6cd3eca5c4bd9b6dcb699_42201_720x0_resize_box_3.png 720w ,https://reorx.com/blog/sharing-my-footprints-automation/images/telegram-channel_hu9928f446f5a6cd3eca5c4bd9b6dcb699_42201_1080x0_resize_box_3.png 1080w ,https://reorx.com/blog/sharing-my-footprints-automation/images/telegram-channel.png 1200w" sizes="(min-width: 768px) 720px, 100vw" src=https://reorx.com/blog/sharing-my-footprints-automation/images/telegram-channel.png alt width=1200 height=630>
+<img loading=lazy srcset="https://reorx.com/blog/sharing-my-footprints-automation/images/telegram-channel_hu9928f446f5a6cd3eca5c4bd9b6dcb699_42201_360x0_resize_box_3.png 360w ,https://reorx.com/blog/sharing-my-footprints-automation/images/telegram-channel_hu9928f446f5a6cd3eca5c4bd9b6dcb699_42201_480x0_resize_box_3.png 480w ,https://reorx.com/blog/sharing-my-footprints-automation/images/telegram-channel_hu9928f446f5a6cd3eca5c4bd9b6dcb699_42201_720x0_resize_box_3.png 720w ,https://reorx.com/blog/sharing-my-footprints-automation/images/telegram-channel_hu9928f446f5a6cd3eca5c4bd9b6dcb699_42201_1080x0_resize_box_3.png 1080w ,https://reorx.com/blog/sharing-my-footprints-automation/images/telegram-channel.png 1200w" sizes="(min-width: 768px) 720px, 100vw" src=https://reorx.com/blog/sharing-my-footprints-automation/images/telegram-channel.png alt="[Reorx’s Footprints](https://t.me/reorx_share)" width=1200 height=630>
+<p><a href=https://t.me/reorx_share>Reorx’s Footprints</a></p>
 </figure><div class="toc side right">
 <details open>
 <summary accesskey=c title="(Alt + C)">
@@ -143,7 +144,7 @@
 <ul>
 <li>
 <p><strong>Telegram</strong></p>
-<p>我在 Telegram 中分享一些一闪而过的想法，菜谱，和在看其他频道时将特别有意思的内容进行转发。</p>
+<p>我在 Telegram 中分享一些一闪而过的想法、菜谱，转发浏览其他频道时看到特别有意思的内容。</p>
 <ul>
 <li>Fleeting thoughts 💭</li>
 <li>Recipe 🍳</li>
@@ -422,8 +423,8 @@ WEBHOOK_URL=http://harrogath-local.com:5678/
 <p>这也让我对自己正在开发的产品有了更多的思考，它是一个用于信息前处理的工具，同样是为了解决信息的分散和封闭而做出的努力，我设想了很多功能要去开发，但哪些是核心需求，哪些有代替品，或者换个思路通过其他方式实现，则必须放在实际场景中去考虑，而不是凭自己作为开发者的喜欢来武断确定。</p>
 <p>回到赛博空间这个话题，我一直觉得人类对电子设备的依赖是一个不可逆的过程，人脑与电脑的边界会逐渐模糊。这是当我们有了智慧、抛弃自然为我们提供的进化之路后，自己所选择的进化方式。正如 Ghost In The Shell 开篇所描绘的越来越近的未来：</p>
 <blockquote>
-<p>企業のネットが星を被い、電子や光が駆け巡っても
-国家や民族が消えてなくなるほど、情報化されていない近未来</p>
+<p>企業のネットが星を被い、電子や光が駆け巡っても</p>
+<p>国家や民族が消えてなくなるほど、情報化されていない近未来</p>
 </blockquote>
 <p>而在这一天到来之前，我在精神上已经完成了自然人向 <a href=https://en.wikipedia.org/wiki/Cyborg>cyborg</a> 的转变。</p>
 <section class=footnotes role=doc-endnotes>
@@ -445,6 +446,12 @@ WEBHOOK_URL=http://harrogath-local.com:5678/
 </section>
 </div>
 <footer class=post-footer><div class=social-links>
+<div class="tweet social-quote">
+<div class=title><svg role="img" viewBox="0 0 24 24" fill="currentcolor" xmlns="http://www.w3.org/2000/svg"><title>Twitter</title><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958.0 002.163-2.723c-.951.555-2.005.959-3.127 1.184A4.92 4.92.0 0011.78 8.288C7.69 8.095 4.067 6.13 1.64 3.162A4.822 4.822.0 00.974 5.637c0 1.71.87 3.213 2.188 4.096A4.904 4.904.0 01.934 9.117v.06a4.923 4.923.0 003.946 4.827 4.996 4.996.0 01-2.212.085 4.936 4.936.0 004.604 3.417A9.867 9.867.0 011.17 19.611c-.39.0-.779-.023-1.17-.067a13.995 13.995.0 007.557 2.209c9.053.0 13.998-7.496 13.998-13.985.0-.21.0-.42-.015-.63A9.935 9.935.0 0024 4.59z"/></svg>
+<span>Discuss on Twitter</span>
+</div>
+<blockquote class=twitter-tweet data-dnt=true><p lang=zh dir=ltr>新文章：使用自动化工作流聚合信息摄入和输出<a href=https://t.co/YN4EajnyQH>https://t.co/YN4EajnyQH</a><br><br>展示我是如何用 n8n 将 Twitter, YouTube, GitHub, Douban 等服务的动态同步到 Telegram Channel，实现个人数字生活足迹的信息聚合。<br>欢迎关注: <a href=https://t.co/xPfdEs6EO2>https://t.co/xPfdEs6EO2</a></p>&mdash; Reorx (@novoreorx) <a href="https://twitter.com/novoreorx/status/1530015511173509121?ref_src=twsrc%5Etfw">May 27, 2022</a></blockquote>
+</div>
 </div>
 <nav class=paginav>
 <a class=next href=https://reorx.com/blog/indie-makers-im-following/>
