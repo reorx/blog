@@ -30,6 +30,14 @@ params:
   ShowPostNavLinks: true
   Email: hello@reorx.com
 
+  commentSystem:
+    # disqus:
+    #   shortname: reorx
+    telegramWidget:
+      channel: reorx_share
+      accentColor: "9077e1"
+      limit: 20
+
   socialIcons:
     - name: github-simple
       url: "https://github.com/reorx"
@@ -105,8 +113,6 @@ languages:
             I'm now working full-time as the co-founder of a SaaS product that refines the way to collect and ingest information. It's the first product I designed and built upon my own will. I'm excited to make it alive in the next 1 or 2 months.
 
         You can find me at the links below.
-
-disqusShortname: reorx
 
 markup:
   goldmark:
