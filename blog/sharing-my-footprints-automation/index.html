@@ -8,7 +8,7 @@
 <meta name=description content="展示我是如何用 n8n 将 Twitter, YouTube, GitHub, Douban 等服务的动态同步到 Telegram Channel，实现个人数字生活的信息聚合。">
 <meta name=author content="Reorx">
 <link rel=canonical href=https://reorx.com/blog/sharing-my-footprints-automation/>
-<link crossorigin=anonymous href=/assets/css/stylesheet.min.4c363e0aa24a989595baedc0d53d683615c41b7ac2834435731498ca7d3aea76.css integrity="sha256-TDY+CqJKmJWVuu3A1T1oNhXEG3rCg0Q1cxSYyn066nY=" rel="preload stylesheet" as=style>
+<link crossorigin=anonymous href=/assets/css/stylesheet.min.062e998afe3022cdaff98d855786c7e10c8d7b55276e4773e725c32f336c139e.css integrity="sha256-Bi6Ziv4wIs2v+Y2FV4bH4QyNe1Unbkdz5yXDLzNsE54=" rel="preload stylesheet" as=style>
 <link rel=icon href=https://reorx.com/favicon.ico>
 <link rel=apple-touch-icon href=https://reorx.com/apple-touch-icon.png>
 <script async defer data-website-id=b6b781e9-cf10-484a-a170-fc9083da6c9f src=https://oishii.reorx.com/oishii.js></script>
@@ -46,15 +46,15 @@
 </div>
 <ul id=menu>
 <li>
-<a href=https://reorx.com/archives title=Archives>Archives
+<a href=https://reorx.com/archives/ title=Archives>Archives
 </a>
 </li>
 <li>
-<a href=https://reorx.com/tags title=Tags>Tags
+<a href=https://reorx.com/tags/ title=Tags>Tags
 </a>
 </li>
 <li>
-<a href=https://reorx.com/links title=Links>Links
+<a href=https://reorx.com/links/ title=Links>Links
 </a>
 </li>
 </ul>
@@ -461,10 +461,9 @@ WEBHOOK_URL=http://harrogath-local.com:5678/
 <span>我关注的独立开发者们</span>
 </a>
 </nav>
-</footer>
-<div class=telegram-widget-container></div>
-<script>(function(){const a={'data-telegram-discussion':"reorx_share",'data-comments-limit':"20",'data-no-instant':''},c='9077e1';c&&(a['data-color']=c),isDarkTheme()&&(a['data-dark']='1');var e=document,b=e.createElement('script');b.src="https://telegram.org/js/telegram-widget.js?19";for(const c in a)b.setAttribute(c,a[c]);const d=document.querySelector('.telegram-widget-container');d.innerHTML='',d.appendChild(b)})()</script>
-<script data-no-instant>(function(){if(!toggleThemeCallbacks)return;toggleThemeCallbacks.push(a=>{if(!window.Telegram)return;a?Telegram.setWidgetOptions({nodark:1}):Telegram.setWidgetOptions({dark:1})})})()</script>
+</footer><div id=remark42></div>
+<script>var remark_config={host:'https://remark42.reorx.com',site_id:'reorx.com',components:['embed'],max_shown_comments:20,theme:'light',simple_view:!0};isDarkTheme()&&(remark_config.theme='dark'),function(){console.log('ok');const b=window.REMARK42;if(b)b.destroy(),b.createInstance(remark_config);else for(const b of remark_config.components){var c=document,a=c.createElement('script');a.src=`${remark_config.host}/web/${b}.mjs`,a.type='module',a.defer=!0,a.setAttribute('data-no-instant',''),c.head.appendChild(a)}}()</script>
+<script data-no-instant>(function(){if(!toggleThemeCallbacks)return;toggleThemeCallbacks.push(b=>{const a=window.REMARK42;if(!a)return;if(!document.getElementById('remark42'))return;b?a.changeTheme('light'):a.changeTheme('dark')})})()</script>
 </article>
 </main>
 <footer class=footer>
@@ -487,7 +486,7 @@ Powered by
 <script src=/js/medium-zoom.min.js data-no-instant></script>
 <script>document.querySelectorAll('pre > code').forEach(b=>{const c=b.parentNode.parentNode,a=document.createElement('button');a.classList.add('copy-code'),a.innerText='copy';function d(){a.innerText='copied!',setTimeout(()=>{a.innerText='copy'},2e3)}a.addEventListener('click',e=>{if('clipboard'in navigator){navigator.clipboard.writeText(b.textContent),d();return}const a=document.createRange();a.selectNodeContents(b);const c=window.getSelection();c.removeAllRanges(),c.addRange(a);try{document.execCommand('copy'),d()}catch(a){}c.removeRange(a)}),c.classList.contains("highlight")?c.appendChild(a):c.parentNode.firstChild==c||(b.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName=="TABLE"?b.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(a):b.parentNode.appendChild(a))})</script>
 <script>(function(){const h='1'=='1';if(!h)return;const i=window.scrollListeners,c=document.querySelectorAll('h1[id],h2[id],h3[id],h4[id],h5[id]'),d='active';let a=c[0];e(a).classList.add(d);const g=()=>{const b=[];for(const a of c)if(j(a)<5)b.push(a);else break;b.length>0?newActiveHeading=b[b.length-1]:newActiveHeading=c[0],a!=newActiveHeading&&(e(a).classList.remove(d),a=newActiveHeading,e(a).classList.add(d))};let b=null;const f=()=>{b!==null&&clearTimeout(b),b=setTimeout(g,50)};window.addEventListener('scroll',f,!1),i.push(f);function e(a){const b=encodeURI(a.getAttribute('id')).toLowerCase();return document.querySelector(`.toc ul li a[href="#${b}"]`)}function j(a){if(!a.getClientRects().length)return 0;let b=a.getBoundingClientRect();return b.top}})()</script>
-<script>mediumZoom('.entry-cover img'),mediumZoom('.post-content img')</script>
+<script>mediumZoom('.entry-cover img'),mediumZoom('.post-content img:not([no-zoom])')</script>
 <script src=/js/instantclick.min.js data-no-instant></script>
 <script data-no-instant>InstantClick.init()</script>
 </body>
