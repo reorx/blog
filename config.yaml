@@ -34,10 +34,13 @@ params:
   commentSystem:
     # disqus:
     #   shortname: reorx
-    telegramWidget:
-      channel: reorx_share
-      accentColor: "9077e1"
-      limit: 20
+    remark42:
+      url: https://remark42.reorx.com
+      site: reorx.com
+    # telegramWidget:
+    #   channel: reorx_share
+    #   accentColor: "9077e1"
+    #   limit: 20
 
   socialIcons:
     - name: github-simple
@@ -82,13 +85,13 @@ outputFormats:
 menu:
   main:
     - name: Archives
-      url: archives
+      url: /archives/
       weight: 1
     - name: Tags
-      url: tags
+      url: /tags/
       weight: 2
     - name: Links
-      url: links
+      url: /links/
 
 languages:
   en:
