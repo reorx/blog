@@ -31,16 +31,18 @@ params:
   ShowPostNavLinks: true
   Email: hello@reorx.com
 
-  commentSystem:
-    # disqus:
-    #   shortname: reorx
+  commentSystems:
+    disqus:
+      shortname: reorx
     remark42:
       url: https://remark42.reorx.com
       site: reorx.com
-    # telegramWidget:
-    #   channel: reorx_share
-    #   accentColor: "9077e1"
-    #   limit: 20
+    telegramWidget:
+      channel: reorx_share
+      accentColor: "9077e1"
+      limit: 20
+  defaultCommentSystems:
+    remark42: true
 
   socialIcons:
     - name: github-simple
