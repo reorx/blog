@@ -205,13 +205,13 @@ if (lastItemId) {
 }
 
 staticData.lastItemId = getId(firstItem)
-return newItems
+// Reverse the order so that items are sent from old to new
+return newItems.reverse()
 ```
 
 经过 Function 的处理后，有效条目会被送往 Telegram node，进行 message 组装，最终发送到频道。
 
 ![](images/n8n-1.png)
-
 
 n8n 的表达式 (Expression) 有一个可以预览的编辑界面，左侧会展示当前 node 从上一个 node 获取到的输入数据 (Input Data)，点击即可将模板变量插入到 Expression 中。模板语法 `{{ }}` 中可以使用 JavaScript 语法，这里我通过 `$json["retweeted"]` 来决定 tag 为 `#retweet` 还是 `#tweet`。推文 URL 放在了 `<a>` 标签中，既可以触发 Telegram 的 link preview 功能，也避免展示太长的 URL 影响可读性。
 
@@ -388,10 +388,15 @@ n8n 支持通过 [Error Trigger](https://docs.n8n.io/integrations/core-nodes/n8n
 
 而在这一天到来之前，我在精神上已经完成了自然人向 [cyborg](https://en.wikipedia.org/wiki/Cyborg) 的转变。
 
+## Revision
+- 2022-05-26: created
+- 2022-05-27: published
+- 2022-05-28: fix "Function" node script items order by adding `.reverse()` to return items.
+
 [^1]: 我的知识库中有三个分类:「制品」、「技术」、「事实」。制品 (artifacts) 是人所创造的作品、产品，如一个开源项目、一个软件；技术 (techniques) 是完成一类事情的方法或经验，也可以叫做 know-how，比如做饭的菜谱、编程语言的技巧、健身动作说明；事实 (facts) 是对概念、词汇的客观解释，多数来源于维基百科的词条。这三个分类可以基本涵盖我摄入的各类信息。
 
 [^2]: 预计微信还需要 100 年才能赶上
 
 [^3]: self-hosted workflow automation 的另一个选择是 [Huginn](https://github.com/huginn/huginn), 我没有尝试和对比，在看过它的项目页面，感觉 UI 非常简陋就放弃了。
 
-[^4]: 见我在 Twitter 的吐槽: [http://make.com 大概是我 10 年来用过最糟糕的服务](https://twitter.com/novoreorx/status/1528985317847736320)
+[^4]: 见我在 Twitter 的吐槽: [make.com 大概是我 10 年来用过最糟糕的服务](https://twitter.com/novoreorx/status/1528985317847736320)
