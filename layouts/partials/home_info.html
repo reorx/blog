@@ -1,0 +1,11 @@
+<article class="first-entry home-info">
+  <header class="entry-header">
+    <h1>Crafting tools and products to help people think and create.</h1>
+  </header>
+  <section class="entry-content">
+    {{- partial "personal_intro.html" -}}
+  </section>
+  <footer class="entry-footer">
+    {{- partial "social_icons.html" (dict "icons" site.Params.socialIcons "svg" $.Site.Data.svg "MaskedEmail" site.Params.MaskedEmail "Email" site.Params.Email) -}}
+  </footer>
+</article>
