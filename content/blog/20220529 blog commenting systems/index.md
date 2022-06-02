@@ -51,10 +51,10 @@ socialLinks:
         - [Isso](https://github.com/posativ/isso): 使用 Python 开发，数据库为 SQLite。界面复古而简洁，适合 minimalist。Isso 可以配置评论自动通过，或者先审核再通过。
         - [Cusdis](https://github.com/djyde/cusdis): 我很佩服的开发者 [Randy](https://lutaonan.com/) 的作品，也是使用 SQLite 作为数据库，就像是 Isso 的 Nodejs 翻版，但界面更加美观。与 Isso 不同的是，Cusdis 要求评论必须通过人工审核才可以显示，提供了 Email 和 Dashboard 两种审核方式。
         - [Commento](https://github.com/adtac/commento): SaaS Commento 的开源版，使用 Go 开发，支持各种 social auth 登录，甚至可以配置 SSO。但这个项目已经停止更新一年多了，如果你有兴趣，可以考虑使用社区 fork 维护的 [Commento++](https://github.com/souramoo/commentoplusplus)，作者的更新还挺活跃的。
-        - [Twikoo](https://twikoo.js.org/), [Artalk](https://artalk.js.org/), [Valine](https://valine.js.org/): 三者都是面向国内用户所开发的评论系统，有很多相似之处，因此放在一起介绍。与上述其他项目不同的是，三者的接入方式并非 ifame，而是直接操作网页的 DOM 元素。
+        - [Twikoo](https://twikoo.js.org/), [Artalk](https://artalk.js.org/), [Valine](https://valine.js.org/): 三者都是面向国内用户所开发的评论系统，有很多相似之处，因此放在一起介绍。与上述其他项目不同的是，三者的接入方式并非 iframe，而是直接操作网页的 DOM 元素。
             - Twikoo 主要支持腾讯云 CloudBase，也可以部署到 Vercel。数据库是 MongoDB。更新[比较活跃](https://github.com/imaegoo/twikoo/graphs/contributors)。
             - Artalk 使用 Go 开发，无部署环境限制，支持常见的 RDBMS。更新[近期较为活跃](https://github.com/ArtalkJS/Artalk/graphs/contributors)。
-                <mark>Artalk 的作者 [qwqcode](https://qwqaq.com/about/) 去年高考步入大学，开发 Artalk 的时候刚上高一。在三年里独立完成 Artalk 从 PHP 向 Go 的架构转变，TypeScript 也写的贼溜，[现在的年轻人真是越来越强了](https://twitter.com/novoreorx/status/1532175668766683136)</mark>
+                <mark>Artalk 的作者 [qwqcode](https://qwqaq.com/about/) 去年高考步入大学，开发 Artalk 的时候刚上高一。在三年里独立完成 Artalk 从 PHP 向 Go 的架构转变，TypeScript 也写的贼溜，[现在的年轻人真是越来越强了](https://twitter.com/novoreorx/status/1532175668766683136)</mark>。
             - Valine 似乎只支持 LeanCloud 部署，已经[很久没有更新](https://github.com/xCss/Valine/graphs/contributors)了。
 - **Proxied**
   
@@ -81,7 +81,7 @@ socialLinks:
 ### 技术层面
 - 它使用 Go 语言实现，我很难抗拒二进制单文件的诱惑。
 - 它使用基于文件的数据库。我最喜欢的数据库是 SQLite，单文件无任何依赖，Remark42 使用的 [boltdb](https://github.com/etcd-io/bbolt) 也是基于文件，对我来说和 SQLite 一样美好。
-- 它有较为现代化的前端技术栈，使用 TypeScript, Peact, Postcss 开发。
+- 它有较为现代化的前端技术栈，使用 TypeScript, Preact, Postcss 开发。
 - 它是一个成熟的开源项目，文档全面、开发时间长，基本上我的任何问题都可以在文档和 Issues 中找到解答。
 - 它的 [API](https://remark42.com/docs/contributing/api/) 非常完善，比如导入导出都可以用一行 curl 来完成。在其他方面作者也显示出很高的[技术品味](https://remark42.com/docs/contributing/technical-details/)。
 
