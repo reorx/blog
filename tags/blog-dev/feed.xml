@@ -31,11 +31,11 @@
 <li><a href="https://github.com/posativ/isso">Isso</a>: 使用 Python 开发，数据库为 SQLite。界面复古而简洁，适合 minimalist。Isso 可以配置评论自动通过，或者先审核再通过。</li>
 <li><a href="https://github.com/djyde/cusdis">Cusdis</a>: 我很佩服的开发者 <a href="https://lutaonan.com/">Randy</a> 的作品，也是使用 SQLite 作为数据库，就像是 Isso 的 Nodejs 翻版，但界面更加美观。与 Isso 不同的是，Cusdis 要求评论必须通过人工审核才可以显示，提供了 Email 和 Dashboard 两种审核方式。</li>
 <li><a href="https://github.com/adtac/commento">Commento</a>: SaaS Commento 的开源版，使用 Go 开发，支持各种 social auth 登录，甚至可以配置 SSO。但这个项目已经停止更新一年多了，如果你有兴趣，可以考虑使用社区 fork 维护的 <a href="https://github.com/souramoo/commentoplusplus">Commento++</a>，作者的更新还挺活跃的。</li>
-<li><a href="https://twikoo.js.org/">Twikoo</a>, <a href="https://artalk.js.org/">Artalk</a>, <a href="https://valine.js.org/">Valine</a>: 三者都是面向国内用户所开发的评论系统，有很多相似之处，因此放在一起介绍。与上述其他项目不同的是，三者的接入方式并非 ifame，而是直接操作网页的 DOM 元素。
+<li><a href="https://twikoo.js.org/">Twikoo</a>, <a href="https://artalk.js.org/">Artalk</a>, <a href="https://valine.js.org/">Valine</a>: 三者都是面向国内用户所开发的评论系统，有很多相似之处，因此放在一起介绍。与上述其他项目不同的是，三者的接入方式并非 iframe，而是直接操作网页的 DOM 元素。
 <ul>
 <li>Twikoo 主要支持腾讯云 CloudBase，也可以部署到 Vercel。数据库是 MongoDB。更新<a href="https://github.com/imaegoo/twikoo/graphs/contributors">比较活跃</a>。</li>
 <li>Artalk 使用 Go 开发，无部署环境限制，支持常见的 RDBMS。更新<a href="https://github.com/ArtalkJS/Artalk/graphs/contributors">近期较为活跃</a>。
-<mark>Artalk 的作者 <a href="https://qwqaq.com/about/">qwqcode</a> 去年高考步入大学，开发 Artalk 的时候刚上高一。在三年里独立完成 Artalk 从 PHP 向 Go 的架构转变，TypeScript 也写的贼溜，<a href="https://twitter.com/novoreorx/status/1532175668766683136">现在的年轻人真是越来越强了</a></mark></li>
+<mark>Artalk 的作者 <a href="https://qwqaq.com/about/">qwqcode</a> 去年高考步入大学，开发 Artalk 的时候刚上高一。在三年里独立完成 Artalk 从 PHP 向 Go 的架构转变，TypeScript 也写的贼溜，<a href="https://twitter.com/novoreorx/status/1532175668766683136">现在的年轻人真是越来越强了</a></mark>。</li>
 <li>Valine 似乎只支持 LeanCloud 部署，已经<a href="https://github.com/xCss/Valine/graphs/contributors">很久没有更新</a>了。</li>
 </ul>
 </li>
@@ -76,7 +76,7 @@
 <ul>
 <li>它使用 Go 语言实现，我很难抗拒二进制单文件的诱惑。</li>
 <li>它使用基于文件的数据库。我最喜欢的数据库是 SQLite，单文件无任何依赖，Remark42 使用的 <a href="https://github.com/etcd-io/bbolt">boltdb</a> 也是基于文件，对我来说和 SQLite 一样美好。</li>
-<li>它有较为现代化的前端技术栈，使用 TypeScript, Peact, Postcss 开发。</li>
+<li>它有较为现代化的前端技术栈，使用 TypeScript, Preact, Postcss 开发。</li>
 <li>它是一个成熟的开源项目，文档全面、开发时间长，基本上我的任何问题都可以在文档和 Issues 中找到解答。</li>
 <li>它的 <a href="https://remark42.com/docs/contributing/api/">API</a> 非常完善，比如导入导出都可以用一行 curl 来完成。在其他方面作者也显示出很高的<a href="https://remark42.com/docs/contributing/technical-details/">技术品味</a>。</li>
 </ul>
