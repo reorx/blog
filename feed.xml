@@ -91,7 +91,7 @@
 <h3 id="功能层面">功能层面</h3>
 <p>我其实不喜欢 pre-moderation，即评论必须先通过审核才可以显示，这会给我带来额外的工作量，并且评论者也没法得到即时的效果反馈。但我也不想开放无审核的匿名评论，给自己带来被评论机器人攻击的风险。</p>
 <p>我想到的折中方案是，首先提供尽可能多的 social auth 登录方式，比如 Twitter, Google, GitHub，这些 Remark42 都支持；再提供一种基于邮箱的认证方式，这是 Remark42 最大的亮点——Passwordless Authentication。评论者输入邮箱，点击 login，Remark42 会向其发送一个含有 token 的邮件，评论者使用这个 token 完成登入便可以进行评论。</p>
-<p>邮箱认证是我个人最喜欢的登录方式，因为社交账号登录总是会存在风险，服务会拿到可以访问用户数据的 access token，你不知道它会做些什么 <sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>。而邮箱不存在用户数据，唯一的担忧是被 spam 骚扰，但有很多匿名邮箱和邮件转发服务帮助我们解决这个问题。使用邮箱登录进行的评论，在评论被回复后也会发送邮件提醒评论者，确保了双向沟通的流畅性。</p>
+<p>邮箱认证是我个人最喜欢的登录方式，因为社交账号登录总是会存在风险，服务会拿到可以访问用户数据的 access token，你不知道它会做些什么 <sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>。而邮箱不存在用户数据，唯一的担忧是被 spam 骚扰，但有很多匿名邮箱和邮件转发服务帮助我们解决这个问题。<del>使用邮箱登录进行的评论，在被回复后也会发送邮件提醒评论者，确保了双向沟通的流畅性</del><sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>。</p>
 <p><figure>
     <video class="video-shortcode" preload="metadata" controls>
       <source src="/blog/blog-commenting-systems/images/remark42-email-login.mov">
@@ -109,7 +109,7 @@
 <blockquote>
 <p>Supports complete cleanup of all information related to user&rsquo;s activity by user&rsquo;s &ldquo;deleteme&rdquo; request.</p>
 </blockquote>
-<p>用户可以通过 &ldquo;deleteme&rdquo; 请求将所有与自己相关的数据全部清除，类似近年来用户呼吁各大网站去支持的 opt-out <sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>。</p>
+<p>用户可以通过 &ldquo;deleteme&rdquo; 请求将所有与自己相关的数据全部清除，类似近年来用户呼吁各大网站去支持的 opt-out <sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>。</p>
 <h2 id="小结">小结</h2>
 <p>Remark42 还有许多功能，比如评论的 RSS 输出、Telegram 通知接入、Webhook 等等，限于本文篇幅，就不做展开了。下一篇博客我会对如何在 <a href="https://fly.io/">Fly.io</a> 部署 Remark42、自定义 UI、接入 CDN 等内容进行详细的讲解，让读者也可以快速搭建自己的 Remark42 实例，敬请期待。</p>
 <section class="footnotes" role="doc-endnotes">
@@ -119,7 +119,10 @@
 <p>虽然一个优秀的服务应尽可能少的申请用户权限（减少 scope），但遇到糟糕的服务申请过多权限，我们一个不留神点了 Allow 的风险依然存在。&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:2" role="doc-endnote">
-<p><a href="https://justdeleteme.xyz/">JustDeleteMe</a> 列出了各大网站对删除账户数据的支持情况，并提供直达链接。&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>经过尝试和搜索，发现 Remark42 的用户提醒是一项单独的功能（Subscribe），与是否用邮箱登录无关。我打算为邮箱登录实现一个「subscribe to notification」的勾选框，实现登录后即可自动订阅邮件提醒，见此 issue 下的<a href="https://github.com/umputun/remark42/issues/745#issuecomment-1144526472">评论</a>。&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3" role="doc-endnote">
+<p><a href="https://justdeleteme.xyz/">JustDeleteMe</a> 列出了各大网站对删除账户数据的支持情况，并提供直达链接。&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
 </section>
