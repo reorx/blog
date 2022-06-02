@@ -54,6 +54,7 @@ socialLinks:
         - [Twikoo](https://twikoo.js.org/), [Artalk](https://artalk.js.org/), [Valine](https://valine.js.org/): 三者都是面向国内用户所开发的评论系统，有很多相似之处，因此放在一起介绍。与上述其他项目不同的是，三者的接入方式并非 ifame，而是直接操作网页的 DOM 元素。
             - Twikoo 主要支持腾讯云 CloudBase，也可以部署到 Vercel。数据库是 MongoDB。更新[比较活跃](https://github.com/imaegoo/twikoo/graphs/contributors)。
             - Artalk 使用 Go 开发，无部署环境限制，支持常见的 RDBMS。更新[近期较为活跃](https://github.com/ArtalkJS/Artalk/graphs/contributors)。
+                <mark>Artalk 的作者 [qwqcode](https://qwqaq.com/about/) 去年高考步入大学，开发 Artalk 的时候刚上高一。在三年里独立完成 Artalk 从 PHP 向 Go 的架构转变，TypeScript 也写的贼溜，[现在的年轻人真是越来越强了](https://twitter.com/novoreorx/status/1532175668766683136)</mark>
             - Valine 似乎只支持 LeanCloud 部署，已经[很久没有更新](https://github.com/xCss/Valine/graphs/contributors)了。
 - **Proxied**
   
