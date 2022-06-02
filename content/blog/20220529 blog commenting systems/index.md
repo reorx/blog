@@ -2,7 +2,7 @@
 title: 更换博客评论系统
 slug: blog-commenting-systems
 date: 2022-05-29
-description: 整理了一份比较完整的评论系统评测列表，并对最终选择 Remark42 进行了详细的介绍。
+description: 整理了一份比较完整的评论系统评测列表，并详细介绍了最终选择的 Remark42。
 tags:
   - blog-dev
 ShowToc: true
@@ -78,10 +78,10 @@ socialLinks:
 基于如下这些原因，我在众多评论系统中选择了 Remark42。
 
 ### 技术层面
-- 它使用 Go 语言实现，我很难抗拒二进制单文件部署的诱惑，并且我也有对 Go 项目的维护能力
-- 它使用基于文件的数据库。我最喜欢的数据库是 SQLite，单文件无任何依赖，Remark42 使用的 [boltdb](https://github.com/etcd-io/bbolt) 也是基于文件的数据库，对我来说和 SQLite 一样美好。
+- 它使用 Go 语言实现，我很难抗拒二进制单文件的诱惑。
+- 它使用基于文件的数据库。我最喜欢的数据库是 SQLite，单文件无任何依赖，Remark42 使用的 [boltdb](https://github.com/etcd-io/bbolt) 也是基于文件，对我来说和 SQLite 一样美好。
 - 它有较为现代化的前端技术栈，使用 TypeScript, Peact, Postcss 开发。
-- 它的文档全面、开发时间长，是一个成熟的开源项目，基本上我的任何问题都可以在文档和 Issues 中找到解答。
+- 它是一个成熟的开源项目，文档全面、开发时间长，基本上我的任何问题都可以在文档和 Issues 中找到解答。
 - 它的 [API](https://remark42.com/docs/contributing/api/) 非常完善，比如导入导出都可以用一行 curl 来完成。在其他方面作者也显示出很高的[技术品味](https://remark42.com/docs/contributing/technical-details/)。
 
 ### 视觉层面
