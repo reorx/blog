@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Blogs on Reorx’s Forge</title><link>https://reorx.com/blog/</link><description>Recent content in Blogs on Reorx’s Forge</description><image><url>https://reorx.com/forge-v2-compat.svg</url><link>https://reorx.com/forge-v2-compat.svg</link></image><generator>Hugo -- gohugo.io</generator><lastBuildDate>Sun, 29 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://reorx.com/blog/feed.xml" rel="self" type="application/rss+xml"/><item><title>更换博客评论系统</title><link>https://reorx.com/blog/blog-commenting-systems/</link><pubDate>Sun, 29 May 2022 00:00:00 +0000</pubDate><guid>https://reorx.com/blog/blog-commenting-systems/</guid><description>整理了一份比较完整的评论系统评测列表，并对最终选择 Remark42 进行了详细的介绍。</description><content:encoded><![CDATA[<h2 id="告别-disqus">告别 Disqus</h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Blogs on Reorx’s Forge</title><link>https://reorx.com/blog/</link><description>Recent content in Blogs on Reorx’s Forge</description><image><url>https://reorx.com/forge-v2-compat.svg</url><link>https://reorx.com/forge-v2-compat.svg</link></image><generator>Hugo -- gohugo.io</generator><lastBuildDate>Sun, 29 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://reorx.com/blog/feed.xml" rel="self" type="application/rss+xml"/><item><title>更换博客评论系统</title><link>https://reorx.com/blog/blog-commenting-systems/</link><pubDate>Sun, 29 May 2022 00:00:00 +0000</pubDate><guid>https://reorx.com/blog/blog-commenting-systems/</guid><description>整理了一份比较完整的评论系统评测列表，并详细介绍了最终选择的 Remark42。</description><content:encoded><![CDATA[<h2 id="告别-disqus">告别 Disqus</h2>
 <p>博客建成也有一段时日了，渐渐也会收到一些读者的评论，在和大家交流中学到了很多新的知识，我很喜欢这种感觉，把评论看做我和读者之间重要的交流渠道。有一天我收到了 <a href="https://twitter.com/geekdada">@geekdada</a> 在 <a href="/blog/deploy-umami-for-personal-website/">搭建 umami …</a> 下的留言:</p>
 <blockquote>
 <p>非常感谢推荐。不知道作者有没有想把 Disqus 换掉，又臃肿又收集数据。</p>
@@ -34,7 +34,8 @@
 <li><a href="https://twikoo.js.org/">Twikoo</a>, <a href="https://artalk.js.org/">Artalk</a>, <a href="https://valine.js.org/">Valine</a>: 三者都是面向国内用户所开发的评论系统，有很多相似之处，因此放在一起介绍。与上述其他项目不同的是，三者的接入方式并非 ifame，而是直接操作网页的 DOM 元素。
 <ul>
 <li>Twikoo 主要支持腾讯云 CloudBase，也可以部署到 Vercel。数据库是 MongoDB。更新<a href="https://github.com/imaegoo/twikoo/graphs/contributors">比较活跃</a>。</li>
-<li>Artalk 使用 Go 开发，无部署环境限制，支持常见的 RDBMS。更新<a href="https://github.com/ArtalkJS/Artalk/graphs/contributors">近期较为活跃</a>。</li>
+<li>Artalk 使用 Go 开发，无部署环境限制，支持常见的 RDBMS。更新<a href="https://github.com/ArtalkJS/Artalk/graphs/contributors">近期较为活跃</a>。
+<mark>Artalk 的作者 <a href="https://qwqaq.com/about/">qwqcode</a> 去年高考步入大学，开发 Artalk 的时候刚上高一。在三年里独立完成 Artalk 从 PHP 向 Go 的架构转变，TypeScript 也写的贼溜，<a href="https://twitter.com/novoreorx/status/1532175668766683136">现在的年轻人真是越来越强了</a></mark></li>
 <li>Valine 似乎只支持 LeanCloud 部署，已经<a href="https://github.com/xCss/Valine/graphs/contributors">很久没有更新</a>了。</li>
 </ul>
 </li>
@@ -73,10 +74,10 @@
 <p>基于如下这些原因，我在众多评论系统中选择了 Remark42。</p>
 <h3 id="技术层面">技术层面</h3>
 <ul>
-<li>它使用 Go 语言实现，我很难抗拒二进制单文件部署的诱惑，并且我也有对 Go 项目的维护能力</li>
-<li>它使用基于文件的数据库。我最喜欢的数据库是 SQLite，单文件无任何依赖，Remark42 使用的 <a href="https://github.com/etcd-io/bbolt">boltdb</a> 也是基于文件的数据库，对我来说和 SQLite 一样美好。</li>
+<li>它使用 Go 语言实现，我很难抗拒二进制单文件的诱惑。</li>
+<li>它使用基于文件的数据库。我最喜欢的数据库是 SQLite，单文件无任何依赖，Remark42 使用的 <a href="https://github.com/etcd-io/bbolt">boltdb</a> 也是基于文件，对我来说和 SQLite 一样美好。</li>
 <li>它有较为现代化的前端技术栈，使用 TypeScript, Peact, Postcss 开发。</li>
-<li>它的文档全面、开发时间长，是一个成熟的开源项目，基本上我的任何问题都可以在文档和 Issues 中找到解答。</li>
+<li>它是一个成熟的开源项目，文档全面、开发时间长，基本上我的任何问题都可以在文档和 Issues 中找到解答。</li>
 <li>它的 <a href="https://remark42.com/docs/contributing/api/">API</a> 非常完善，比如导入导出都可以用一行 curl 来完成。在其他方面作者也显示出很高的<a href="https://remark42.com/docs/contributing/technical-details/">技术品味</a>。</li>
 </ul>
 <h3 id="视觉层面">视觉层面</h3>
