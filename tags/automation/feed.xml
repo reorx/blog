@@ -144,7 +144,7 @@ WEBHOOK_URL=http://harrogath-local.com:5678/
 <h4 id="new-tweet-to-telegram">New tweet to telegram</h4>
 <p>Link: <a href="https://github.com/reorx/n8n-workflows/blob/master/workflows/new%20tweet%20to%20tg.json">n8n-workflows/workflows/new tweet to tg.json</a></p>
 <p>这一 workflow 实现了每 5 分钟搜索一次我的 Twitter 时间线，将最新的 tweets 发送到 Telegram Channel。</p>
-<p><img loading="lazy" src="/blog/sharing-my-footprints-automation/images/n8n.png" alt=""  /></p>
+<p><img loading="lazy" src="/blog/sharing-my-footprints-automation/images/n8n.png" type="" alt=""  /></p>
 <p>第一个 node 是 Interval，它是一个 trigger，可以设置重复运行的间隔时长。</p>
 <p>随后是 Twitter node，它通过 OAuth 连接了我的账户，使用 <code>from:novoreorx</code> 搜索语法来获取我最近的推文条目。</p>
 <p>IF reply to other 是一个 IF node，通过条目中的 <code>in_reply_to_screen_name</code> 字段判断推文是否是对别人的回复，只有否才可以走向下一步。意味着只有单独创建或回复自己的推文才会被转发。</p>
@@ -177,7 +177,7 @@ WEBHOOK_URL=http://harrogath-local.com:5678/
 <span class="c1">// Reverse the order so that items are sent from old to new
 </span><span class="c1"></span><span class="k">return</span> <span class="nx">newItems</span><span class="p">.</span><span class="nx">reverse</span><span class="p">()</span>
 </code></pre></div><p>经过 Function 的处理后，有效条目会被送往 Telegram node，进行 message 组装，最终发送到频道。</p>
-<p><img loading="lazy" src="/blog/sharing-my-footprints-automation/images/n8n-1.png" alt=""  /></p>
+<p><img loading="lazy" src="/blog/sharing-my-footprints-automation/images/n8n-1.png" type="" alt=""  /></p>
 <p>n8n 的表达式 (Expression) 有一个可以预览的编辑界面，左侧会展示当前 node 从上一个 node 获取到的输入数据 (Input Data)，点击即可将模板变量插入到 Expression 中。模板语法 <code>{{ }}</code> 中可以使用 JavaScript 语法，这里我通过 <code>$json[&quot;retweeted&quot;]</code> 来决定 tag 为 <code>#retweet</code> 还是 <code>#tweet</code>。推文 URL 放在了 <code>&lt;a&gt;</code> 标签中，既可以触发 Telegram 的 link preview 功能，也避免展示太长的 URL 影响可读性。</p>
 <h4 id="blog-rss-to-telegram">Blog RSS to telegram</h4>
 <p>Link: <a href="https://github.com/reorx/n8n-workflows/blob/master/workflows/blog%20rss%20to%20tg.json">n8n-workflows/workflows/blog rss to tg.json</a></p>
@@ -185,27 +185,27 @@ WEBHOOK_URL=http://harrogath-local.com:5678/
 <p>从第二个 workflow 开始，我将只对大致逻辑进行说明，不再详细讲解每个 node 的实现方式，有兴趣的读者可以在 workflow 编辑器中自行查看。</p>
 </blockquote>
 <p>这一 workflow 实现了每 10 分钟检查一次博客的 RSS，将最新的文章发送到 Telegram Channel。</p>
-<p><img loading="lazy" src="/blog/sharing-my-footprints-automation/images/n8n-2.png" alt=""  /></p>
+<p><img loading="lazy" src="/blog/sharing-my-footprints-automation/images/n8n-2.png" type="" alt=""  /></p>
 <p>RSS Feed Read node 填写了博客的 RSS 地址，Function 同样是实现了有状态的更新判断，唯一的不同是将 <code>getId</code> 函数改为从 <code>item.json.guid</code> 获取 item id。</p>
 <h4 id="spotify-like-to-telegram">Spotify like to telegram</h4>
 <p>Link: <a href="https://github.com/reorx/n8n-workflows/blob/master/workflows/spotify%20likes%20to%20tg.json">n8n-workflows/workflows/spotify likes to tg.json</a></p>
 <p>这一 workflow 实现了每 1 小时检查一次 Spotify Liked Tracks，将最新的歌曲发送到 Telegram Channel。</p>
-<p><img loading="lazy" src="/blog/sharing-my-footprints-automation/images/n8n-3.png" alt=""  /></p>
+<p><img loading="lazy" src="/blog/sharing-my-footprints-automation/images/n8n-3.png" type="" alt=""  /></p>
 <h4 id="youtube-like-to-telegram">YouTube like to telegram</h4>
 <p>Link: <a href="https://github.com/reorx/n8n-workflows/blob/master/workflows/youtube%20like%20to%20tg.json">n8n-workflows/workflows/youtube like to tg.json</a></p>
-<p><img loading="lazy" src="/blog/sharing-my-footprints-automation/images/n8n-4.png" alt=""  /></p>
+<p><img loading="lazy" src="/blog/sharing-my-footprints-automation/images/n8n-4.png" type="" alt=""  /></p>
 <p>这一 workflow 实现了每 30 分钟检查一次 YouTube Liked Playlist，将最新的视频发送到 Telegram Channel。</p>
 <p>这里需要注意的是，Liked 是一个内置的 playlist，因此其 ID 与自己创建的不一样，通过访问 YouTube get playlists API，得到其 ID 为 <code>LL</code>，顺利完成了这一 node 的配置。</p>
 <h4 id="pinboard-new-bookmark-to-telegram">Pinboard new bookmark to telegram</h4>
 <p>Link: <a href="https://github.com/reorx/n8n-workflows/blob/master/workflows/pinboard%20to%20tg.json">n8n-workflows/workflows/pinboard to tg.json</a></p>
 <p>这一 workflow 实现了每 5 分钟检查一次 Pinboard 最近的书签，将最新的书签发送到 Telegram Channel。</p>
-<p><img loading="lazy" src="/blog/sharing-my-footprints-automation/images/n8n-5.png" alt=""  /></p>
+<p><img loading="lazy" src="/blog/sharing-my-footprints-automation/images/n8n-5.png" type="" alt=""  /></p>
 <p>n8n 没有 Pinboard 支持，但我们可以通过 HTTP Request 直接访问 Pinboard 的接口。古怪的是 Pinboard 没有官方的 API 文档，于是我对一些开源的 Pinboard SDK 代码进行阅读，得到了我所需要的接口 <code>https://api.pinboard.in/v1/posts/recent</code>。</p>
 <p>Pinboard 接口返回的数据并不直接是一个列表，而是一个形如 <code>{&quot;posts&quot;: [...]}</code> 的结构，这里用了 Item Lists 将 <code>posts</code> 字段提取出来作为 items 向后传递。</p>
 <h4 id="github-activities-to-telegram">GitHub activities to telegram</h4>
 <p>Link: <a href="https://github.com/reorx/n8n-workflows/blob/master/workflows/github%20activities%20to%20tg.json">n8n-workflows/workflows/github activities to tg.json</a></p>
 <p>这一 workflow 实现了每 10 分钟检查一次 GitHub 的动态，筛选出 star, pull-request 和 issue 发送到 Telegram Channel。</p>
-<p><img loading="lazy" src="/blog/sharing-my-footprints-automation/images/n8n-6.png" alt=""  /></p>
+<p><img loading="lazy" src="/blog/sharing-my-footprints-automation/images/n8n-6.png" type="" alt=""  /></p>
 <p>GitHub 可以通过 <code>https://github.com/$username.atom</code> 获取用户公开的动态信息，因此不需要复杂的 API 接入，直接使用 RSS Feed Read 即可获取到我们所需要的数据。</p>
 <p>在 Function filter 中，我用正则为动态进行了分类，并组成最终所需的消息格式，代码如下:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="cm">/* filter items */</span>
@@ -248,7 +248,7 @@ WEBHOOK_URL=http://harrogath-local.com:5678/
 <h4 id="douban-activities-to-telegram">Douban activities to telegram</h4>
 <p>Link: <a href="https://github.com/reorx/n8n-workflows/blob/master/workflows/douban%20activities%20to%20tg.json">n8n-workflows/workflows/douban activities to tg.json</a></p>
 <p>这一 workflow 实现了每 10 分钟检查一次 Douban 的动态，筛选出看过、在看、读过、在读发送到 Telegram Channel。</p>
-<p><img loading="lazy" src="/blog/sharing-my-footprints-automation/images/n8n-7.png" alt=""  /></p>
+<p><img loading="lazy" src="/blog/sharing-my-footprints-automation/images/n8n-7.png" type="" alt=""  /></p>
 <p>Douban 也有一个隐藏的 RSS 订阅源 <code>https://www.douban.com/feed/people/$username/interests</code>，包含书影音的所有动态。</p>
 <p>Function filter 与上一个 workflow 类似，这里做了一些优化，将正则和符号定义在一个 object 中。</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="kr">const</span> <span class="nx">SYMBOL_MOVIE</span> <span class="o">=</span> <span class="s1">&#39;📺&#39;</span>
@@ -263,28 +263,28 @@ WEBHOOK_URL=http://harrogath-local.com:5678/
 </code></pre></div><h3 id="异常通知">异常通知</h3>
 <p>n8n 作为一个自动化服务，在配置完成后，一般我们不会去主动查看系统的运行情况，因此需要有监控手段得知异常的发生，以便及时维护。</p>
 <p>n8n 支持通过 <a href="https://docs.n8n.io/integrations/core-nodes/n8n-nodes-base.errortrigger/">Error Trigger</a> 创建 Error Workflow，用于接收其他 workflow 的错误信息。这一步虽然不是必须，但我强烈建议创建一个全局的 Error Workflow，并在每个 workflow 的 Settings 中设置错误处理指向它。</p>
-<p><img loading="lazy" src="/blog/sharing-my-footprints-automation/images/n8n-8.png" alt=""  /></p>
+<p><img loading="lazy" src="/blog/sharing-my-footprints-automation/images/n8n-8.png" type="" alt=""  /></p>
 <p>我在 <a href="https://github.com/reorx/n8n-workflows/blob/master/workflows/ERROR%20TO%20TG.json">n8n-workflows/workflows/ERROR TO TG.json</a> 中实现了将错误信息发送到 Telegram Group 的功能，效果如下。
 <div class="image-size-control" style="max-width: 400px;">
-  <img loading="lazy" src="/blog/sharing-my-footprints-automation/images/telegram.png" alt=""  />
+  <img loading="lazy" src="/blog/sharing-my-footprints-automation/images/telegram.png" type="" alt=""  />
 </div>
 </p>
 <h3 id="使用-saas-自动化服务">使用 SaaS 自动化服务</h3>
 <p>对于一些 n8n 尚不支持，或配置比较麻烦的服务，也可以通过 SaaS 服务来实现自动化。IFTTT 是一个不错的选择，它应该是最早被广泛使用的自动化服务，免费用户可以设置 5 个 applet (即 workflow)，同步间隔 1 小时。</p>
 <p>下图是我在 IFTTT 中配置的 Instapaper 新文章推送到 Telegram 频道的 applet。</p>
 <div class="image-size-control" style="max-width: 400px;">
-  <img loading="lazy" src="/blog/sharing-my-footprints-automation/images/ifttt.png" alt=""  />
+  <img loading="lazy" src="/blog/sharing-my-footprints-automation/images/ifttt.png" type="" alt=""  />
 </div>
 
 <p><a href="https://www.integromat.com/">Integromat</a> 曾是一个非常好用的 IFTTT alternative，有着现代化的交互界面，和更为灵活的定制功能，但后来 rebrand 成 make.com，变得非常难用，不仅加载速度缓慢，而且连 migration 都无法正常完成<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup>。建议大家远离这个奇怪的公司。</p>
 <figure class="center align-center">
-  <img loading="lazy" src="/blog/sharing-my-footprints-automation/images/integromat.png" alt=""  />
+  <img loading="lazy" src="/blog/sharing-my-footprints-automation/images/integromat.png" type="" alt=""  />
 
   <figcaption><p>曾经美好的 Integromat</p></figcaption>
 </figure>
 
 <figure class="center align-center">
-  <img loading="lazy" src="/blog/sharing-my-footprints-automation/images/integromat-scenario.png" alt=""  />
+  <img loading="lazy" src="/blog/sharing-my-footprints-automation/images/integromat-scenario.png" type="" alt=""  />
 
   <figcaption><p>和它出色的交互界面</p></figcaption>
 </figure>

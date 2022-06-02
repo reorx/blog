@@ -231,7 +231,7 @@ Frontend Guide 系列的第一篇文章，讲述我为何从 ts-loader 迁移到
 
 <span class=nx>module</span><span class=p>.</span><span class=nx>exports</span> <span class=o>=</span> <span class=nx>config</span>
 </code></pre></div><p>运行 <code>WEBPACK_USE_ANALYZE=1 webpack</code> 在浏览器中查看分析结果。</p>
-<p><img loading=lazy src=/blog/migrate-from-ts-loader-to-babel-loader/images/webpack-analyze.png alt></p>
+<p><img loading=lazy src=/blog/migrate-from-ts-loader-to-babel-loader/images/webpack-analyze.png type alt></p>
 <p>原来 tabler-icons-react 一个库就占了 5.28MB，其他库中 lodash 也不算正常，似乎和 tabler-icons-react 一样被完整包含进来了。</p>
 <h3 id=babel-plugin-import>babel-plugin-import<a hidden class=anchor aria-hidden=true href=#babel-plugin-import>¶</a></h3>
 <p><a href=https://github.com/konradkalemba/tabler-icons-react>tabler-icons-react</a> 是一个 SVG 图标库，我只是使用了其中一部分图标。lodash 是非常通用的工具函数库，同样的，我只对其中一部分函数进行了引用。那么有没有办法按需加载依赖中的模块，只输出被 import 到的部分呢？答案就是 <a href=https://github.com/umijs/babel-plugin-import>babel-plugin-import</a>。</p>
@@ -252,7 +252,7 @@ Frontend Guide 系列的第一篇文章，讲述我为何从 ts-loader 迁移到
   <span class=p>}</span>
 <span class=p>}</span>
 </code></pre></div><p>再次运行 <code>WEBPACK_USE_ANALYZE=1 webpack</code> ，可以看出 bundle 结构有了显著的改进（红色的部分是 tabler-icons-react 和 lodash）:</p>
-<p><img loading=lazy src=/blog/migrate-from-ts-loader-to-babel-loader/images/webpack-analyze-2.png alt></p>
+<p><img loading=lazy src=/blog/migrate-from-ts-loader-to-babel-loader/images/webpack-analyze-2.png type alt></p>
 <blockquote>
 <p><a href=https://github.com/lodash/babel-plugin-lodash>babel-plugin-lodash</a> 也可以实现 lodash 的按需加载，但它是专为 lodash 开发的，不具备 babel-plugin-import 的通用性。</p>
 </blockquote>

@@ -6,8 +6,7 @@
 <figure>
 <video class="video-shortcode" preload="" controls>
   <source src="https://i.imgur.com/bGLcQKl.mp4" type="">
-  There should have been a video here but your browser does not seem
-  to support it.
+  There should have been a video here but your browser does not seem to support it.
 </video>
 </figure>
 
@@ -19,10 +18,10 @@
 <h2 id="the-feature">The feature</h2>
 <p>Here&rsquo;s the walk though of that amazing feature:</p>
 <ul>
-<li>On a whiteboard, select several cards you would like to refer to <img loading="lazy" src="/blog/heptabase-split-writing/images/heptabase.png" alt=""  /></li>
-<li>Right-click on them and choose &ldquo;Open in new tab&rdquo;, a new page with a left-right split layout appears. The first card selected shows on the left; others show on the right as a folded list. <img loading="lazy" src="/blog/heptabase-split-writing/images/heptabase-1.png" alt=""  /></li>
-<li>Click on the <code>+</code> sign button on the top menu bar; a new card is created on the left side, and the card that previously shows on the left is automatically moved to the card list on the right.  <img loading="lazy" src="/blog/heptabase-split-writing/images/heptabase-2.png" alt=""  /></li>
-<li>You can fold/unfold notes while browsing the right side, and drag&rsquo;n drop blocks to copy them to the left side. <img loading="lazy" src="/blog/heptabase-split-writing/images/heptabase-3.png" alt=""  /></li>
+<li>On a whiteboard, select several cards you would like to refer to <img loading="lazy" src="/blog/heptabase-split-writing/images/heptabase.png" type="" alt=""  /></li>
+<li>Right-click on them and choose &ldquo;Open in new tab&rdquo;, a new page with a left-right split layout appears. The first card selected shows on the left; others show on the right as a folded list. <img loading="lazy" src="/blog/heptabase-split-writing/images/heptabase-1.png" type="" alt=""  /></li>
+<li>Click on the <code>+</code> sign button on the top menu bar; a new card is created on the left side, and the card that previously shows on the left is automatically moved to the card list on the right.  <img loading="lazy" src="/blog/heptabase-split-writing/images/heptabase-2.png" type="" alt=""  /></li>
+<li>You can fold/unfold notes while browsing the right side, and drag&rsquo;n drop blocks to copy them to the left side. <img loading="lazy" src="/blog/heptabase-split-writing/images/heptabase-3.png" type="" alt=""  /></li>
 </ul>
 <p>This is the best way I&rsquo;ve ever seen to think and write a note while referring to many other notes. In other note-taking tools, take Obsidian for example, I can split the panes, but it is not convenient to organize the workspace well for more than 3 notes. As new panes are growing, it will become more and more interruptive to switch back and forth.</p>
 <p>Even if I managed to build up a tidy workspace, it&rsquo;s still very frustrating to switch to another context. Obsidian has the functionality to manage workspaces, but you have to manually save before switching, otherwise, the context will be missing. In Heptabase, all the workspaces are clearly shown in the sidebar, switching around is fast and easy as a breath.</p>

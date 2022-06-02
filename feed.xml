@@ -1,4 +1,128 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Reorx’s Forge</title><link>https://reorx.com/</link><description>Recent content on Reorx’s Forge</description><image><url>https://reorx.com/forge-v2-compat.svg</url><link>https://reorx.com/forge-v2-compat.svg</link></image><generator>Hugo -- gohugo.io</generator><lastBuildDate>Tue, 31 May 2022 00:36:42 +0800</lastBuildDate><atom:link href="https://reorx.com/feed.xml" rel="self" type="application/rss+xml"/><item><title>使用自动化工作流聚合信息摄入和输出</title><link>https://reorx.com/blog/sharing-my-footprints-automation/</link><pubDate>Wed, 25 May 2022 00:00:00 +0000</pubDate><guid>https://reorx.com/blog/sharing-my-footprints-automation/</guid><description>展示我是如何用 n8n 将 Twitter, YouTube, GitHub, Douban 等服务的动态同步到 Telegram Channel，实现个人数字生活的信息聚合。</description><content:encoded><![CDATA[<p>欢迎关注我的 Telegram 频道: <a href="https://t.me/reorx_share">Reorx’s Footprints</a>。这篇文章讲述我为什么创建这个频道，以及如何用 n8n 将 Twitter, YouTube, GitHub, Douban 等服务的动态同步过去，实现个人数字生活的信息聚合。</p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Reorx’s Forge</title><link>https://reorx.com/</link><description>Recent content on Reorx’s Forge</description><image><url>https://reorx.com/forge-v2-compat.svg</url><link>https://reorx.com/forge-v2-compat.svg</link></image><generator>Hugo -- gohugo.io</generator><lastBuildDate>Tue, 31 May 2022 00:36:42 +0800</lastBuildDate><atom:link href="https://reorx.com/feed.xml" rel="self" type="application/rss+xml"/><item><title>更换博客评论系统</title><link>https://reorx.com/blog/blog-commenting-systems/</link><pubDate>Sun, 29 May 2022 00:00:00 +0000</pubDate><guid>https://reorx.com/blog/blog-commenting-systems/</guid><description>整理了一份比较完整的评论系统评测列表，并对最终选择 Remark42 进行了详细的介绍。</description><content:encoded><![CDATA[<h2 id="告别-disqus">告别 Disqus</h2>
+<p>博客建成也有一段时日了，渐渐也会收到一些读者的评论，在和大家交流中学到了很多新的知识，我很喜欢这种感觉，把评论看做我和读者之间重要的交流渠道。有一天我收到了 <a href="https://twitter.com/geekdada">@geekdada</a> 在 <a href="/blog/deploy-umami-for-personal-website/">搭建 umami …</a> 下的留言:</p>
+<blockquote>
+<p>非常感谢推荐。不知道作者有没有想把 Disqus 换掉，又臃肿又收集数据。</p>
+</blockquote>
+<p>于是我开始留意起 Disqus 的使用体验。其实我在 2013 年就注册了 Disqus，用在了自己最早的一版个人网站上，对它也算是有些感情，这也是一开始快速实现时选择它的原因。</p>
+<p>我打开 Chrome Dev Tools，刷新文章页，果然看见一大堆请求，一共有 94 次，这可太恶心了！且不论它收集了哪些统计数据和用户隐私，光是数量之多就让有代码洁癖的我无法忍受。</p>
+<p><img loading="lazy" src="/blog/blog-commenting-systems/images/disqus.png" type="" alt=""  /></p>
+<p>再试探性地关掉 ublock，这下更不得了，显示出有半个屏幕之大的广告区域，充斥着猎奇的图片和 clickbait 标题的链接。去设置页看了下，果然只有付费用户才可以关闭广告，但接连被恶心到，我已经彻底决定抛弃 Disqus。</p>
+<p>就像之前从 Google analytics 换到 umami 那样，我踏上了寻找新的评论系统的旅程。</p>
+<h2 id="评论系统的选择">评论系统的选择</h2>
+<p>经过一番调查，我大致将评论系统分为了如下几类，每类都放上我认为最好的几种可选项，为同样带着自己的需求寻找评论系统的读者提供参考。</p>
+<ul>
+<li>
+<p><strong>Full-fledged</strong></p>
+<p>全功能的评论系统，从前端的 UI 组件到后端的 API、数据存储都完整实现。其下又分为 SaaS 和 Self-hosted 两类。</p>
+<ul>
+<li>
+<p><strong>SaaS</strong></p>
+<p>Disqus 就是属于这一类产品，优点是配置便捷，不用操心；缺点则是可能会收集隐私数据，缺乏可控性，并且价格都比较贵。</p>
+<ul>
+<li><a href="https://commento.io/">Commento</a>: 目前是我最喜欢的一个 SaaS 评论系统，界面简洁清爽，能适应大部分博客的主题样式，无广告和追踪。价格为每月 $10。</li>
+<li><a href="https://commentbox.io/">CommentBox</a>: 我很早收藏过的一个评论系统，和 Commento 一样的 slogan 和价格，就是功能和设计看起来要弱一些。</li>
+</ul>
+</li>
+<li>
+<p><strong>Self-hosted</strong></p>
+<p>与一般的互联网服务不同，评论系统中 Self-hosted 的比例反而比 SaaS 化的大很多，这大概是因为自建博客的市场比较小众，且使用者也多为喜欢造轮子的程序员。Self-hosted 虽然较为麻烦，但优势也非常明显——由开源带来的高可控性、高定制性，并且近年来 PaaS 平台的蓬勃发展大大降低了部署成本，不需要拥有服务器便可一条龙 0 元购搭建起来。因此如果你有一定的技术基础，非常建议尝试自部署一套评论系统。</p>
+<ul>
+<li><a href="https://github.com/umputun/remark42">Remark42</a>: 我最喜欢的一个 self-hosted 评论系统，也是本文接下来所要讲解的对象。</li>
+<li><a href="https://github.com/posativ/isso">Isso</a>: 使用 Python 开发，数据库为 SQLite。界面复古而简洁，适合 minimalist。Isso 可以配置评论自动通过，或者先审核再通过。</li>
+<li><a href="https://github.com/djyde/cusdis">Cusdis</a>: 我很佩服的开发者 <a href="https://lutaonan.com/">Randy</a> 的作品，也是使用 SQLite 作为数据库，就像是 Isso 的 Nodejs 翻版，但界面更加美观。与 Isso 不同的是，Cusdis 要求评论必须通过人工审核才可以显示，提供了 Email 和 Dashboard 两种审核方式。</li>
+<li><a href="https://github.com/adtac/commento">Commento</a>: SaaS Commento 的开源版，使用 Go 开发，支持各种 social auth 登录，甚至可以配置 SSO。但这个项目已经停止更新一年多了，如果你有兴趣，可以考虑使用社区 fork 维护的 <a href="https://github.com/souramoo/commentoplusplus">Commento++</a>，作者的更新还挺活跃的。</li>
+<li><a href="https://twikoo.js.org/">Twikoo</a>, <a href="https://artalk.js.org/">Artalk</a>, <a href="https://valine.js.org/">Valine</a>: 三者都是面向国内用户所开发的评论系统，有很多相似之处，因此放在一起介绍。与上述其他项目不同的是，三者的接入方式并非 ifame，而是直接操作网页的 DOM 元素。
+<ul>
+<li>Twikoo 主要支持腾讯云 CloudBase，也可以部署到 Vercel。数据库是 MongoDB。更新<a href="https://github.com/imaegoo/twikoo/graphs/contributors">比较活跃</a>。</li>
+<li>Artalk 使用 Go 开发，无部署环境限制，支持常见的 RDBMS。更新<a href="https://github.com/ArtalkJS/Artalk/graphs/contributors">近期较为活跃</a>。</li>
+<li>Valine 似乎只支持 LeanCloud 部署，已经<a href="https://github.com/xCss/Valine/graphs/contributors">很久没有更新</a>了。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Proxied</strong></p>
+<p>类似 full-fledged，有自己实现的 UI 和 API，但数据存储依托于一个已有的其他服务。我个人并不偏爱此类应用，一者登录方式被限制在其所依托的服务上，再者数据也不好维护。</p>
+<ul>
+<li><a href="https://github.com/utterance/utterances">utterances</a>: 应该是最早的基于 GitHub 的评论系统，提供了一个用于接入评论的公开服务。</li>
+<li><a href="https://github.com/giscus/giscus">giscus</a>: utterances 的 fork 版，增加了自部署的能力。</li>
+</ul>
+</li>
+<li>
+<p><strong>IM Plugin</strong></p>
+<p>由即时通讯服务提供的插件。这是个顺理成章的思路，对于即时通许服务商来说，可以利用已有的基础设施提供更多的 user engagement，何乐而不为呢。其中最为知名的当属 Facebook，Google 曾经也有，但和 Google Plus 一同被埋葬了。这种评论系统也存在登录方式单一的问题，请谨慎选择。</p>
+<ul>
+<li><a href="https://comments.app/">Comments.app</a>: Telegram 提供的网站评论插件，使用简便，界面美观，支持 dark mode 和 accent color。</li>
+<li><a href="https://core.telegram.org/widgets/discussion">Discussion Widget</a>: 同样是 Telegram 的服务，但与 Comments.app 的不同在于，Discussion Widget 原本的设计目的是将 Channel 消息中的评论嵌入到网页中，但我发现这同样是一种评论系统，并且多出了将评论对应到 Channel 消息的功能。我在探索中已经顺便将 Discussion Widget 实现到了博客主题中，你可以在这个页面中预览和尝试: <a href="/playground/comment-telegram/">Commenting System: Telegram Widget</a></li>
+<li><a href="https://developers.facebook.com/docs/plugins/comments/?locale=en_US">Meta Comments Plugin</a>: Meta (Facebook) 的评论插件，我的社交圈里基本没人使用 Facebook，因此不予评价。</li>
+</ul>
+</li>
+<li>
+<p><strong>Static</strong></p>
+<p>静态评论，即评论作为静态网站原始数据的一部分，跟随网站的构建流程生成到页面中。不同于其他评论系统可以灵活嵌入到任何页面，静态评论只能用于静态网站中。评论的数据是否应该属于网站本身呢？这是一个非常两极分化的问题。</p>
+<ul>
+<li><a href="https://welcomments.io/">Welcomments</a>: 静态评论 SaaS 服务，需要用户绑定自己网站的 GitHub 仓库。当有人评论时，Welcomments 会生成一个 commit 包含评论的数据提交到仓库中，触发 GitHub 的自动构建流程，将评论更新到静态网页中。Welcomments 支持在它的网站上进行评论审核，还接入了 <a href="https://akismet.com/">Akismet</a> anti-spam 服务，每月 $6，年付减为 $4。</li>
+<li><a href="https://github.com/eduardoboucas/staticman">Staticman</a>: 更为强大的 Welcomments，并且是 self-hosted。Staticman 支持更多的代码托管平台，并且可以通过 pull-request 的方式审核评论，这才是基于 Git 的工作流应有的样子。但 Staticman 已经有 2 年没更新了，在进行更深入的调研之前，不建议作为第一选择。</li>
+<li>手动维护: 任何手动维护评论的方式。有的博主会在网站会留下邮箱、即时通讯号等联系方式，让读者将想要评论的内容发送过去，然后将评论内容手动更新到文章的评论区。这种方式虽然简陋，但也不失为一种最简单的实现手段，毕竟评论的本质就是交流。</li>
+</ul>
+</li>
+</ul>
+<h2 id="我的选择-remark42">我的选择: Remark42</h2>
+<p>基于如下这些原因，我在众多评论系统中选择了 Remark42。</p>
+<h3 id="技术层面">技术层面</h3>
+<ul>
+<li>它使用 Go 语言实现，我很难抗拒二进制单文件部署的诱惑，并且我也有对 Go 项目的维护能力</li>
+<li>它使用基于文件的数据库。我最喜欢的数据库是 SQLite，单文件无任何依赖，Remark42 使用的 <a href="https://github.com/etcd-io/bbolt">boltdb</a> 也是基于文件的数据库，对我来说和 SQLite 一样美好。</li>
+<li>它有较为现代化的前端技术栈，使用 TypeScript, Peact, Postcss 开发。</li>
+<li>它的文档全面、开发时间长，是一个成熟的开源项目，基本上我的任何问题都可以在文档和 Issues 中找到解答。</li>
+<li>它的 <a href="https://remark42.com/docs/contributing/api/">API</a> 非常完善，比如导入导出都可以用一行 curl 来完成。在其他方面作者也显示出很高的<a href="https://remark42.com/docs/contributing/technical-details/">技术品味</a>。</li>
+</ul>
+<h3 id="视觉层面">视觉层面</h3>
+<p>Remark42 界面简洁美观，虽然比 Isso 和 Cusdis 复杂，但依然保持了足够的适应性和可塑性。</p>
+<figure class="center align-center">
+  <img loading="lazy" src="/blog/blog-commenting-systems/images/remark42-1.png" type="" alt=""  />
+
+  <figcaption><p>Remark42 简洁的界面</p></figcaption>
+</figure>
+
+<h3 id="功能层面">功能层面</h3>
+<p>我其实不喜欢 pre-moderation，即评论必须先通过审核才可以显示，这会给我带来额外的工作量，并且评论者也没法得到即时的效果反馈。但我也不想开放无审核的匿名评论，给自己带来被评论机器人攻击的风险。</p>
+<p>我想到的折中方案是，首先提供尽可能多的 social auth 登录方式，比如 Twitter, Google, GitHub，这些 Remark42 都支持；再提供一种基于邮箱的认证方式，这是 Remark42 最大的亮点——Passwordless Authentication。评论者输入邮箱，点击 login，Remark42 会向其发送一个含有 token 的邮件，评论者使用这个 token 完成登入便可以进行评论。</p>
+<p>邮箱认证是我个人最喜欢的登录方式，因为社交账号登录总是会存在风险，服务会拿到可以访问用户数据的 access token，你不知道它会做些什么 <sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>。而邮箱不存在用户数据，唯一的担忧是被 spam 骚扰，但有很多匿名邮箱和邮件转发服务帮助我们解决这个问题。使用邮箱登录进行的评论，在评论被回复后也会发送邮件提醒评论者，确保了双向沟通的流畅性。</p>
+<p><figure>
+    <video class="video-shortcode" preload="metadata" controls>
+      <source src="/blog/blog-commenting-systems/images/remark42-email-login.mov">
+      There should have been a video here but your browser does not seem to support it.
+    </video>
+    </figure></p>
+<p>Remark42 还有一个特别的地方，它没有 Admin 界面，或者 Dashboard，这得益于其清晰的设计理念和完善的功能实现。一般对于评论系统来说，Admin 主要用于查看和审核评论，但 Remark42 不需要审核，而对评论和评论者的操作（隐藏、删除、屏蔽）都集成在评论控件中。加上 API 简单易用，去掉 Admin 不仅没有让人感到不便，反而成为一个值得一提的 feature 了。</p>
+<p>最后，Remark42 在设计上就支持 multi-site，只需要部署一个实例，便可以为多个不同域名的站点提供评论服务。</p>
+<h3 id="隐私层面">隐私层面</h3>
+<p>Remark42 的标语是「Privacy-focused lightweight commenting engine」，而它的确在隐私这件事情上做了许多事情。无追踪和广告自不必说，尽可能少的申请 OAuth 权限也只是基操，Remark42 还对用户数据做了这些考虑：</p>
+<blockquote>
+<p>Users can request all information Remark42 knows about them and receive the export in the gz file.</p>
+</blockquote>
+<p>用户可将自己在一个 Remark42 服务中的所有评论数据导出，多希望我高中时使用的百度空间也有这个功能。</p>
+<blockquote>
+<p>Supports complete cleanup of all information related to user&rsquo;s activity by user&rsquo;s &ldquo;deleteme&rdquo; request.</p>
+</blockquote>
+<p>用户可以通过 &ldquo;deleteme&rdquo; 请求将所有与自己相关的数据全部清除，类似近年来用户呼吁各大网站去支持的 opt-out <sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>。</p>
+<h2 id="小结">小结</h2>
+<p>Remark42 还有许多功能，比如评论的 RSS 输出、Telegram 通知接入、Webhook 等等，限于本文篇幅，就不做展开了。下一篇博客我会对如何在 <a href="https://fly.io/">Fly.io</a> 部署 Remark42、自定义 UI、接入 CDN 等内容进行详细的讲解，让读者也可以快速搭建自己的 Remark42 实例，敬请期待。</p>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p>虽然一个优秀的服务应尽可能少的申请用户权限（减少 scope），但遇到糟糕的服务申请过多权限，我们一个不留神点了 Allow 的风险依然存在。&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2" role="doc-endnote">
+<p><a href="https://justdeleteme.xyz/">JustDeleteMe</a> 列出了各大网站对删除账户数据的支持情况，并提供直达链接。&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
+]]></content:encoded></item><item><title>使用自动化工作流聚合信息摄入和输出</title><link>https://reorx.com/blog/sharing-my-footprints-automation/</link><pubDate>Wed, 25 May 2022 00:00:00 +0000</pubDate><guid>https://reorx.com/blog/sharing-my-footprints-automation/</guid><description>展示我是如何用 n8n 将 Twitter, YouTube, GitHub, Douban 等服务的动态同步到 Telegram Channel，实现个人数字生活的信息聚合。</description><content:encoded><![CDATA[<p>欢迎关注我的 Telegram 频道: <a href="https://t.me/reorx_share">Reorx’s Footprints</a>。这篇文章讲述我为什么创建这个频道，以及如何用 n8n 将 Twitter, YouTube, GitHub, Douban 等服务的动态同步过去，实现个人数字生活的信息聚合。</p>
 <h2 id="前言">前言</h2>
 <p><a href="https://en.wikipedia.org/wiki/Cyberspace">赛博空间</a>构成了我的精神世界。</p>
 <p>我的大脑从苏醒的那一刻开始渴求信息，大量新鲜的信息，它们比饮用水更早地进入我的身体。每天睁开眼睛，我做的第一件事情是拿起手机，逐个查看昨夜的消息提醒。起床之后，我会在马桶上浏览 RSS 阅读器和 Telegram 频道中的新闻，让思维复苏的过程伴随新知识的冲击。我已经习惯了如此，一边加载昨日的进展并思考今日的安排，一边点开链接，使用不同的工具进行阅读、收藏和记录。</p>
@@ -144,7 +268,7 @@ WEBHOOK_URL=http://harrogath-local.com:5678/
 <h4 id="new-tweet-to-telegram">New tweet to telegram</h4>
 <p>Link: <a href="https://github.com/reorx/n8n-workflows/blob/master/workflows/new%20tweet%20to%20tg.json">n8n-workflows/workflows/new tweet to tg.json</a></p>
 <p>这一 workflow 实现了每 5 分钟搜索一次我的 Twitter 时间线，将最新的 tweets 发送到 Telegram Channel。</p>
-<p><img loading="lazy" src="/blog/sharing-my-footprints-automation/images/n8n.png" alt=""  /></p>
+<p><img loading="lazy" src="/blog/sharing-my-footprints-automation/images/n8n.png" type="" alt=""  /></p>
 <p>第一个 node 是 Interval，它是一个 trigger，可以设置重复运行的间隔时长。</p>
 <p>随后是 Twitter node，它通过 OAuth 连接了我的账户，使用 <code>from:novoreorx</code> 搜索语法来获取我最近的推文条目。</p>
 <p>IF reply to other 是一个 IF node，通过条目中的 <code>in_reply_to_screen_name</code> 字段判断推文是否是对别人的回复，只有否才可以走向下一步。意味着只有单独创建或回复自己的推文才会被转发。</p>
@@ -177,7 +301,7 @@ WEBHOOK_URL=http://harrogath-local.com:5678/
 <span class="c1">// Reverse the order so that items are sent from old to new
 </span><span class="c1"></span><span class="k">return</span> <span class="nx">newItems</span><span class="p">.</span><span class="nx">reverse</span><span class="p">()</span>
 </code></pre></div><p>经过 Function 的处理后，有效条目会被送往 Telegram node，进行 message 组装，最终发送到频道。</p>
-<p><img loading="lazy" src="/blog/sharing-my-footprints-automation/images/n8n-1.png" alt=""  /></p>
+<p><img loading="lazy" src="/blog/sharing-my-footprints-automation/images/n8n-1.png" type="" alt=""  /></p>
 <p>n8n 的表达式 (Expression) 有一个可以预览的编辑界面，左侧会展示当前 node 从上一个 node 获取到的输入数据 (Input Data)，点击即可将模板变量插入到 Expression 中。模板语法 <code>{{ }}</code> 中可以使用 JavaScript 语法，这里我通过 <code>$json[&quot;retweeted&quot;]</code> 来决定 tag 为 <code>#retweet</code> 还是 <code>#tweet</code>。推文 URL 放在了 <code>&lt;a&gt;</code> 标签中，既可以触发 Telegram 的 link preview 功能，也避免展示太长的 URL 影响可读性。</p>
 <h4 id="blog-rss-to-telegram">Blog RSS to telegram</h4>
 <p>Link: <a href="https://github.com/reorx/n8n-workflows/blob/master/workflows/blog%20rss%20to%20tg.json">n8n-workflows/workflows/blog rss to tg.json</a></p>
@@ -185,27 +309,27 @@ WEBHOOK_URL=http://harrogath-local.com:5678/
 <p>从第二个 workflow 开始，我将只对大致逻辑进行说明，不再详细讲解每个 node 的实现方式，有兴趣的读者可以在 workflow 编辑器中自行查看。</p>
 </blockquote>
 <p>这一 workflow 实现了每 10 分钟检查一次博客的 RSS，将最新的文章发送到 Telegram Channel。</p>
-<p><img loading="lazy" src="/blog/sharing-my-footprints-automation/images/n8n-2.png" alt=""  /></p>
+<p><img loading="lazy" src="/blog/sharing-my-footprints-automation/images/n8n-2.png" type="" alt=""  /></p>
 <p>RSS Feed Read node 填写了博客的 RSS 地址，Function 同样是实现了有状态的更新判断，唯一的不同是将 <code>getId</code> 函数改为从 <code>item.json.guid</code> 获取 item id。</p>
 <h4 id="spotify-like-to-telegram">Spotify like to telegram</h4>
 <p>Link: <a href="https://github.com/reorx/n8n-workflows/blob/master/workflows/spotify%20likes%20to%20tg.json">n8n-workflows/workflows/spotify likes to tg.json</a></p>
 <p>这一 workflow 实现了每 1 小时检查一次 Spotify Liked Tracks，将最新的歌曲发送到 Telegram Channel。</p>
-<p><img loading="lazy" src="/blog/sharing-my-footprints-automation/images/n8n-3.png" alt=""  /></p>
+<p><img loading="lazy" src="/blog/sharing-my-footprints-automation/images/n8n-3.png" type="" alt=""  /></p>
 <h4 id="youtube-like-to-telegram">YouTube like to telegram</h4>
 <p>Link: <a href="https://github.com/reorx/n8n-workflows/blob/master/workflows/youtube%20like%20to%20tg.json">n8n-workflows/workflows/youtube like to tg.json</a></p>
-<p><img loading="lazy" src="/blog/sharing-my-footprints-automation/images/n8n-4.png" alt=""  /></p>
+<p><img loading="lazy" src="/blog/sharing-my-footprints-automation/images/n8n-4.png" type="" alt=""  /></p>
 <p>这一 workflow 实现了每 30 分钟检查一次 YouTube Liked Playlist，将最新的视频发送到 Telegram Channel。</p>
 <p>这里需要注意的是，Liked 是一个内置的 playlist，因此其 ID 与自己创建的不一样，通过访问 YouTube get playlists API，得到其 ID 为 <code>LL</code>，顺利完成了这一 node 的配置。</p>
 <h4 id="pinboard-new-bookmark-to-telegram">Pinboard new bookmark to telegram</h4>
 <p>Link: <a href="https://github.com/reorx/n8n-workflows/blob/master/workflows/pinboard%20to%20tg.json">n8n-workflows/workflows/pinboard to tg.json</a></p>
 <p>这一 workflow 实现了每 5 分钟检查一次 Pinboard 最近的书签，将最新的书签发送到 Telegram Channel。</p>
-<p><img loading="lazy" src="/blog/sharing-my-footprints-automation/images/n8n-5.png" alt=""  /></p>
+<p><img loading="lazy" src="/blog/sharing-my-footprints-automation/images/n8n-5.png" type="" alt=""  /></p>
 <p>n8n 没有 Pinboard 支持，但我们可以通过 HTTP Request 直接访问 Pinboard 的接口。古怪的是 Pinboard 没有官方的 API 文档，于是我对一些开源的 Pinboard SDK 代码进行阅读，得到了我所需要的接口 <code>https://api.pinboard.in/v1/posts/recent</code>。</p>
 <p>Pinboard 接口返回的数据并不直接是一个列表，而是一个形如 <code>{&quot;posts&quot;: [...]}</code> 的结构，这里用了 Item Lists 将 <code>posts</code> 字段提取出来作为 items 向后传递。</p>
 <h4 id="github-activities-to-telegram">GitHub activities to telegram</h4>
 <p>Link: <a href="https://github.com/reorx/n8n-workflows/blob/master/workflows/github%20activities%20to%20tg.json">n8n-workflows/workflows/github activities to tg.json</a></p>
 <p>这一 workflow 实现了每 10 分钟检查一次 GitHub 的动态，筛选出 star, pull-request 和 issue 发送到 Telegram Channel。</p>
-<p><img loading="lazy" src="/blog/sharing-my-footprints-automation/images/n8n-6.png" alt=""  /></p>
+<p><img loading="lazy" src="/blog/sharing-my-footprints-automation/images/n8n-6.png" type="" alt=""  /></p>
 <p>GitHub 可以通过 <code>https://github.com/$username.atom</code> 获取用户公开的动态信息，因此不需要复杂的 API 接入，直接使用 RSS Feed Read 即可获取到我们所需要的数据。</p>
 <p>在 Function filter 中，我用正则为动态进行了分类，并组成最终所需的消息格式，代码如下:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="cm">/* filter items */</span>
@@ -248,7 +372,7 @@ WEBHOOK_URL=http://harrogath-local.com:5678/
 <h4 id="douban-activities-to-telegram">Douban activities to telegram</h4>
 <p>Link: <a href="https://github.com/reorx/n8n-workflows/blob/master/workflows/douban%20activities%20to%20tg.json">n8n-workflows/workflows/douban activities to tg.json</a></p>
 <p>这一 workflow 实现了每 10 分钟检查一次 Douban 的动态，筛选出看过、在看、读过、在读发送到 Telegram Channel。</p>
-<p><img loading="lazy" src="/blog/sharing-my-footprints-automation/images/n8n-7.png" alt=""  /></p>
+<p><img loading="lazy" src="/blog/sharing-my-footprints-automation/images/n8n-7.png" type="" alt=""  /></p>
 <p>Douban 也有一个隐藏的 RSS 订阅源 <code>https://www.douban.com/feed/people/$username/interests</code>，包含书影音的所有动态。</p>
 <p>Function filter 与上一个 workflow 类似，这里做了一些优化，将正则和符号定义在一个 object 中。</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="kr">const</span> <span class="nx">SYMBOL_MOVIE</span> <span class="o">=</span> <span class="s1">&#39;📺&#39;</span>
@@ -263,28 +387,28 @@ WEBHOOK_URL=http://harrogath-local.com:5678/
 </code></pre></div><h3 id="异常通知">异常通知</h3>
 <p>n8n 作为一个自动化服务，在配置完成后，一般我们不会去主动查看系统的运行情况，因此需要有监控手段得知异常的发生，以便及时维护。</p>
 <p>n8n 支持通过 <a href="https://docs.n8n.io/integrations/core-nodes/n8n-nodes-base.errortrigger/">Error Trigger</a> 创建 Error Workflow，用于接收其他 workflow 的错误信息。这一步虽然不是必须，但我强烈建议创建一个全局的 Error Workflow，并在每个 workflow 的 Settings 中设置错误处理指向它。</p>
-<p><img loading="lazy" src="/blog/sharing-my-footprints-automation/images/n8n-8.png" alt=""  /></p>
+<p><img loading="lazy" src="/blog/sharing-my-footprints-automation/images/n8n-8.png" type="" alt=""  /></p>
 <p>我在 <a href="https://github.com/reorx/n8n-workflows/blob/master/workflows/ERROR%20TO%20TG.json">n8n-workflows/workflows/ERROR TO TG.json</a> 中实现了将错误信息发送到 Telegram Group 的功能，效果如下。
 <div class="image-size-control" style="max-width: 400px;">
-  <img loading="lazy" src="/blog/sharing-my-footprints-automation/images/telegram.png" alt=""  />
+  <img loading="lazy" src="/blog/sharing-my-footprints-automation/images/telegram.png" type="" alt=""  />
 </div>
 </p>
 <h3 id="使用-saas-自动化服务">使用 SaaS 自动化服务</h3>
 <p>对于一些 n8n 尚不支持，或配置比较麻烦的服务，也可以通过 SaaS 服务来实现自动化。IFTTT 是一个不错的选择，它应该是最早被广泛使用的自动化服务，免费用户可以设置 5 个 applet (即 workflow)，同步间隔 1 小时。</p>
 <p>下图是我在 IFTTT 中配置的 Instapaper 新文章推送到 Telegram 频道的 applet。</p>
 <div class="image-size-control" style="max-width: 400px;">
-  <img loading="lazy" src="/blog/sharing-my-footprints-automation/images/ifttt.png" alt=""  />
+  <img loading="lazy" src="/blog/sharing-my-footprints-automation/images/ifttt.png" type="" alt=""  />
 </div>
 
 <p><a href="https://www.integromat.com/">Integromat</a> 曾是一个非常好用的 IFTTT alternative，有着现代化的交互界面，和更为灵活的定制功能，但后来 rebrand 成 make.com，变得非常难用，不仅加载速度缓慢，而且连 migration 都无法正常完成<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup>。建议大家远离这个奇怪的公司。</p>
 <figure class="center align-center">
-  <img loading="lazy" src="/blog/sharing-my-footprints-automation/images/integromat.png" alt=""  />
+  <img loading="lazy" src="/blog/sharing-my-footprints-automation/images/integromat.png" type="" alt=""  />
 
   <figcaption><p>曾经美好的 Integromat</p></figcaption>
 </figure>
 
 <figure class="center align-center">
-  <img loading="lazy" src="/blog/sharing-my-footprints-automation/images/integromat-scenario.png" alt=""  />
+  <img loading="lazy" src="/blog/sharing-my-footprints-automation/images/integromat-scenario.png" type="" alt=""  />
 
   <figcaption><p>和它出色的交互界面</p></figcaption>
 </figure>
@@ -746,7 +870,7 @@ WEBHOOK_URL=http://harrogath-local.com:5678/
 <p><a href="https://railway.app">Railway</a> 是一个 PaaS 平台，可运行 JavaScript, Python, Go 等多种语言，提供 Redis, MySQL, MongoDB 等主流数据库存储。由于支持全面、界面友好，加上和 Cloudflare 一样有充裕的<a href="https://railway.app/pricing">免费额度</a>，足够个人项目免费使用，Railway 一直是我心中最好的 PaaS 之一。如果你有兴趣，欢迎通过我的 <a href="https://railway.app?referralCode=XkWaVV">referral link</a> 注册。</p>
 <p>umani 有一篇 <a href="https://umami.is/docs/running-on-railway">Running on Railway</a> 文档，我遵照这个流程很快就完成了初步部署。其实只有一个 <code>HASH_SALT</code> 需要输入，其他只需点点点即可。</p>
 <p>Railway Project 创建后，在管理界面可以看到两个 block，左边是数据库实例，右边是 umami 的后端服务。</p>
-<p><img loading="lazy" src="/blog/deploy-umami-for-personal-website/images/railway.png" alt=""  /></p>
+<p><img loading="lazy" src="/blog/deploy-umami-for-personal-website/images/railway.png" type="" alt=""  /></p>
 <h3 id="安装依赖">安装依赖</h3>
 <p>在等待 umami 的镜像构建和部署的过程中，我们可以在命令行进行一些其他工作。</p>
 <p>打开命令行，使用以下命令安装 Railway CLI 和 pgsql 两个软件依赖。</p>
@@ -781,14 +905,14 @@ PORT:                3000
 <p>使用初始用户名密码 <code>admin:umami</code> 登录进去，然后立刻到 Settings &gt; Accounts 界面更换一个强密码。</p>
 <h4 id="绑定个人域名">绑定个人域名</h4>
 <p>在 Project 管理界面点击 umami，选择 Settings，在 Service Domains 下添加个人域名。比如我使用的是 <code>oishii.reorx.com</code>。</p>
-<p><img loading="lazy" src="/blog/deploy-umami-for-personal-website/images/railway-1.png" alt=""  /></p>
+<p><img loading="lazy" src="/blog/deploy-umami-for-personal-website/images/railway-1.png" type="" alt=""  /></p>
 <p>打开域名的 DNS 服务商，根据 Railway 中的提示，为自定义域名添加 CNAME 记录。</p>
-<p><img loading="lazy" src="/blog/deploy-umami-for-personal-website/images/cloudflare.png" alt=""  /></p>
+<p><img loading="lazy" src="/blog/deploy-umami-for-personal-website/images/cloudflare.png" type="" alt=""  /></p>
 <p>等待几分钟，生效后 Railway 中会显示上图所示的 ✅ 符号。</p>
 <h4 id="修改脚本名称">修改脚本名称</h4>
 <p>为了避免 umami 被 ublock 误杀（有的规则集中有匹配 umami 的正则），还需要为它的统计脚本更换一个名称。<a href="https://umami.is/docs/environment-variables">Environment variables</a> 文档中的 <code>TRACKER_SCRIPT_NAME</code> 提供了这一功能。</p>
 <p>再次进入 Railway，打开 umami 的 Variables 选项卡，按下图所示添加环境变量，我使用的名称为 <code>oishii</code>，可以更换为任意非 tracker 特征词汇。</p>
-<p><img loading="lazy" src="/blog/deploy-umami-for-personal-website/images/railway-2.png" alt=""  /></p>
+<p><img loading="lazy" src="/blog/deploy-umami-for-personal-website/images/railway-2.png" type="" alt=""  /></p>
 <p>完成这一步后，需要重新构建 umami 的镜像，目前我还没有找到触发 rebuild 的简单方法，只能通过修改 Dockerfile 实现:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-diff" data-lang="diff">RUN yarn next telemetry disable
 <span class="gi">+# Ensures `yarn build` will always run when BUILD_TIME is different
@@ -800,11 +924,11 @@ PORT:                3000
 <p>一切准备就绪，我们重新使用自定义域名和修改后的密码登录 umami。</p>
 <p>要进行统计，第一件事情是添加一个 Website。操作非常简单，读者可以参考 <a href="https://umami.is/docs/add-a-website">Add a website</a> 文档来进行。唯一需要注意的是 Enable share URL 选项，如果你想将自己网站的统计数据分享出去，则需要勾选之。你可以在 <a href="https://oishii.reorx.com/share/jKljpE4T/reorx.com">https://oishii.reorx.com/share/jKljpE4T/reorx.com</a> 访问本站的统计信息。</p>
 <p>添加完成后，点击网站列表中对应网站的 Get tracking code 按钮，在浮窗中获得需要加入到网站 HTML 中的代码。</p>
-<p><img loading="lazy" src="/blog/deploy-umami-for-personal-website/images/umami.png" alt=""  /></p>
+<p><img loading="lazy" src="/blog/deploy-umami-for-personal-website/images/umami.png" type="" alt=""  /></p>
 <p>需要注意将 <code>src</code> 结尾的 <code>umami.js</code> 替换为 <code>$TRACKER_SCRIPT_NAME.js</code>。</p>
 <p>复制代码并添加到自己个人网站的 <code>&lt;head&gt;</code> 标签下的任意位置，由于使用了 <code>defer</code> 属性，这个 script 不会对网页加载造成阻塞。</p>
 <p>网站更新完成后，呼朋唤友点击访问一番，就可以看到 umami 清晰、美观的统计数据了。</p>
-<p><img loading="lazy" src="/blog/deploy-umami-for-personal-website/images/umami-1.png" alt=""  /></p>
+<p><img loading="lazy" src="/blog/deploy-umami-for-personal-website/images/umami-1.png" type="" alt=""  /></p>
 ]]></content:encoded></item><item><title>Frontend Guide 01: Webpack babel-loader 使用指南</title><link>https://reorx.com/blog/migrate-from-ts-loader-to-babel-loader/</link><pubDate>Wed, 18 May 2022 00:00:00 +0000</pubDate><guid>https://reorx.com/blog/migrate-from-ts-loader-to-babel-loader/</guid><description>Frontend Guide 系列的第一篇文章，讲述我为何从 ts-loader 迁移到 babel-loader，以及我的 babel-loader 详细配置方案说明。</description><content:encoded><![CDATA[<h2 id="引子">引子</h2>
 <p>大约在两个月前，为了做出一款属于自己的产品，我正式开始学习 TypeScript 和 React 开发<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>。虽然接触 JavaScript 时间不短了，但一直热衷于使用 Vanilla JS，也没有正式做过比较严肃的项目。因此，我把自己定位为一个前端新手，决定从 0 开始学习现代化前端开发。</p>
 <p>这两个月来，我在学习实践过程中累计了一些自己的心得和体会，算不上高深，但应该可以为同样在学习中的新手起到参考作用。从这篇文章开始，我会逐一将我认为有价值的部分写成博客，归类于 #frontend-guide 标签下，并在未来的学习中持续更新。作为一个非专业的前端学习者，这些文章中一定会出现错误和疏漏，请读者朋友们不吝指正，如果能从批评中学到什么，将会是我写作的最大收获。</p>
@@ -928,7 +1052,7 @@ PORT:                3000
 
 <span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">config</span>
 </code></pre></div><p>运行 <code>WEBPACK_USE_ANALYZE=1 webpack</code> 在浏览器中查看分析结果。</p>
-<p><img loading="lazy" src="/blog/migrate-from-ts-loader-to-babel-loader/images/webpack-analyze.png" alt=""  /></p>
+<p><img loading="lazy" src="/blog/migrate-from-ts-loader-to-babel-loader/images/webpack-analyze.png" type="" alt=""  /></p>
 <p>原来 tabler-icons-react 一个库就占了 5.28MB，其他库中 lodash 也不算正常，似乎和 tabler-icons-react 一样被完整包含进来了。</p>
 <h3 id="babel-plugin-import">babel-plugin-import</h3>
 <p><a href="https://github.com/konradkalemba/tabler-icons-react">tabler-icons-react</a> 是一个 SVG 图标库，我只是使用了其中一部分图标。lodash 是非常通用的工具函数库，同样的，我只对其中一部分函数进行了引用。那么有没有办法按需加载依赖中的模块，只输出被 import 到的部分呢？答案就是 <a href="https://github.com/umijs/babel-plugin-import">babel-plugin-import</a>。</p>
@@ -949,7 +1073,7 @@ PORT:                3000
   <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div><p>再次运行 <code>WEBPACK_USE_ANALYZE=1 webpack</code> ，可以看出 bundle 结构有了显著的改进（红色的部分是 tabler-icons-react 和 lodash）:</p>
-<p><img loading="lazy" src="/blog/migrate-from-ts-loader-to-babel-loader/images/webpack-analyze-2.png" alt=""  /></p>
+<p><img loading="lazy" src="/blog/migrate-from-ts-loader-to-babel-loader/images/webpack-analyze-2.png" type="" alt=""  /></p>
 <blockquote>
 <p><a href="https://github.com/lodash/babel-plugin-lodash">babel-plugin-lodash</a> 也可以实现 lodash 的按需加载，但它是专为 lodash 开发的，不具备 babel-plugin-import 的通用性。</p>
 </blockquote>
@@ -1074,65 +1198,65 @@ PORT:                3000
 <h3 id="dialog"><code>&lt;dialog&gt;</code></h3>
 <p><a href="https://web.dev/building-a-dialog-component/">https://web.dev/building-a-dialog-component/</a></p>
 <p><code>&lt;dialog&gt;</code> 和 <code>&lt;selectmenu&gt;</code>，基本上所有 UI Kit 都会在组件库里实现的功能，终于被 HTML 原生实现了。如果 HTML 能多一些这种常用的交互组件，我会很乐意手写 Vanilla JS 来使用它们。</p>
-<p><img loading="lazy" src="/blog/notes-on-google-io-2022-web-platform-presentation/images/google-io-2022-web-dialog.png" alt=""  /></p>
+<p><img loading="lazy" src="/blog/notes-on-google-io-2022-web-platform-presentation/images/google-io-2022-web-dialog.png" type="" alt=""  /></p>
 <h3 id="selectmenu"><code>&lt;selectmenu&gt;</code></h3>
 <p><a href="https://open-ui.org/prototypes/selectmenu">https://open-ui.org/prototypes/selectmenu</a></p>
-<p><img loading="lazy" src="/blog/notes-on-google-io-2022-web-platform-presentation/images/google-io-2022-web-selectmenu.png" alt=""  /></p>
+<p><img loading="lazy" src="/blog/notes-on-google-io-2022-web-platform-presentation/images/google-io-2022-web-selectmenu.png" type="" alt=""  /></p>
 <h3 id="input-typedatetile-local"><code>&lt;input type=datetile-local&gt;</code></h3>
 <p><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/datetime-local">https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/datetime-local</a></p>
 <p>记得 7 年前在豌豆荚工作时，因为这个标签不被 Firefox 支持，被迫找了一个 JavaScript 库来代替 (Pikaday, I still remember)。如今终于可以在主流浏览器上全面通用，太不容易了😭。</p>
-<p><img loading="lazy" src="/blog/notes-on-google-io-2022-web-platform-presentation/images/google-io-2022-web-datetime-local.png" alt=""  /></p>
+<p><img loading="lazy" src="/blog/notes-on-google-io-2022-web-platform-presentation/images/google-io-2022-web-datetime-local.png" type="" alt=""  /></p>
 <h2 id="css">CSS</h2>
 <h3 id="has-selector"><code>:has</code> selector</h3>
 <p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:has">https://developer.mozilla.org/en-US/docs/Web/CSS/:has</a></p>
 <p>用于声明父子元素关系的 :has 选择器！这个功能前阵子正好搜索过，现在只能用 JavaScript 实现。</p>
 <p>图中的代码可以解释为，在包含 <code>&lt;figcaption&gt;</code> 的 <code>&lt;figure&gt;</code> 元素中，将其 children 中的 <code>&lt;img&gt;</code> 增加 1rem 的 bottom margin。</p>
-<p><img loading="lazy" src="/blog/notes-on-google-io-2022-web-platform-presentation/images/google-io-2022-web-has.png" alt=""  /></p>
+<p><img loading="lazy" src="/blog/notes-on-google-io-2022-web-platform-presentation/images/google-io-2022-web-has.png" type="" alt=""  /></p>
 <h3 id="aspect-ratio">Aspect ratio</h3>
 <p><a href="https://web.dev/aspect-ratio/">https://web.dev/aspect-ratio/</a></p>
 <p>CSS aspect-radio，使元素保持固定的宽高比。这是曾经在 <code>&lt;img&gt;</code> 标签上的实验特性，如今终于被所有元素支持了。</p>
-<p><img loading="lazy" src="/blog/notes-on-google-io-2022-web-platform-presentation/images/google-io-2022-web-aspect-ratio.png" alt=""  /></p>
+<p><img loading="lazy" src="/blog/notes-on-google-io-2022-web-platform-presentation/images/google-io-2022-web-aspect-ratio.png" type="" alt=""  /></p>
 <h3 id="cascade-layer">Cascade Layer</h3>
 <p><a href="https://developer.chrome.com/blog/cascade-layers/">https://developer.chrome.com/blog/cascade-layers/</a></p>
 <p>Cascade Layers, 给 CSS 加上了层级的概念，layer 可以自由排列顺序，后面的比前面的有更高的优先级 (specificity)；还展示了下越来越复杂的 CSS 优先级关系图，其实也可以把每一级都当做一个 layer。</p>
-<p><img loading="lazy" src="/blog/notes-on-google-io-2022-web-platform-presentation/images/google-io-2022-web-cascade-layer.png" alt=""  /></p>
-<p><img loading="lazy" src="/blog/notes-on-google-io-2022-web-platform-presentation/images/google-io-2022-web-cascade-layer-1.png" alt=""  /></p>
+<p><img loading="lazy" src="/blog/notes-on-google-io-2022-web-platform-presentation/images/google-io-2022-web-cascade-layer.png" type="" alt=""  /></p>
+<p><img loading="lazy" src="/blog/notes-on-google-io-2022-web-platform-presentation/images/google-io-2022-web-cascade-layer-1.png" type="" alt=""  /></p>
 <h3 id="container-queries">Container queries</h3>
 <p>Container queries，在响应式中能够发挥重要作用，但我基本没听懂，未来应该会影响一些 CSS 框架的 API，到时候再来学习吧。</p>
-<p><img loading="lazy" src="/blog/notes-on-google-io-2022-web-platform-presentation/images/google-io-2022-web-container-queries.png" alt=""  /></p>
+<p><img loading="lazy" src="/blog/notes-on-google-io-2022-web-platform-presentation/images/google-io-2022-web-container-queries.png" type="" alt=""  /></p>
 <h3 id="accent-color">Accent color</h3>
 <p><a href="https://web.dev/accent-color/">https://web.dev/accent-color/</a></p>
 <p>CSS accent-color，为 HTML 基本元素设定一个统一的色调，主流浏览器在一年内都争先恐后地实现了😂，毕竟这是最能体现自己颜值的功能。不知道能不能和操作系统的 accent-color 互通，这样体验就更一致了。</p>
-<p><img loading="lazy" src="/blog/notes-on-google-io-2022-web-platform-presentation/images/google-io-2022-web-accent-color.png" alt=""  /></p>
+<p><img loading="lazy" src="/blog/notes-on-google-io-2022-web-platform-presentation/images/google-io-2022-web-accent-color.png" type="" alt=""  /></p>
 <h2 id="javascript">JavaScript</h2>
 <h3 id="arrayprototypeat">Array.prototype.at</h3>
 <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/at">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/at</a></p>
 <p>Array 增加了 at 方法，JavaScript 终于可以用类似 Python <code>list[-1]</code> 的写法了。这曾经是我刚学习 JavaScript 时觉得它不如 Python 最主要的原因。</p>
-<p><img loading="lazy" src="/blog/notes-on-google-io-2022-web-platform-presentation/images/google-io-2022-web-array-at.png" alt=""  /></p>
+<p><img loading="lazy" src="/blog/notes-on-google-io-2022-web-platform-presentation/images/google-io-2022-web-array-at.png" type="" alt=""  /></p>
 <h3 id="urlpattern">URLPattern</h3>
 <p><a href="https://web.dev/urlpattern/">https://web.dev/urlpattern/</a></p>
 <p>新类型 URLPattern，定义 URL 路径中的参数并解析出对应的 object。routing library 不用再写麻烦的正则了</p>
-<p><img loading="lazy" src="/blog/notes-on-google-io-2022-web-platform-presentation/images/google-io-2022-web-urlpattern.png" alt=""  /></p>
+<p><img loading="lazy" src="/blog/notes-on-google-io-2022-web-platform-presentation/images/google-io-2022-web-urlpattern.png" type="" alt=""  /></p>
 <h3 id="structuredclone">structuredClone</h3>
 <p><a href="https://web.dev/structured-clone/">https://web.dev/structured-clone/</a></p>
 <p>有了 structuredClone, 再也不用写 JSON.parse JSON.stringify 这种扭曲心智的代码了，非常适合在面试官问到 deep clone 的问题时反将一军。还可以用来 clone 其他数据结构如 blobs, bitmaps, typed arrays。</p>
-<p><img loading="lazy" src="/blog/notes-on-google-io-2022-web-platform-presentation/images/google-io-2022-web-structuredclone.png" alt=""  /></p>
-<p><img loading="lazy" src="/blog/notes-on-google-io-2022-web-platform-presentation/images/google-io-2022-web-structuredclone-1.png" alt=""  /></p>
+<p><img loading="lazy" src="/blog/notes-on-google-io-2022-web-platform-presentation/images/google-io-2022-web-structuredclone.png" type="" alt=""  /></p>
+<p><img loading="lazy" src="/blog/notes-on-google-io-2022-web-platform-presentation/images/google-io-2022-web-structuredclone-1.png" type="" alt=""  /></p>
 <h3 id="createimagebitmap">createImageBitmap</h3>
 <p><a href="https://developer.mozilla.org/en-US/docs/Web/API/createImageBitmap">https://developer.mozilla.org/en-US/docs/Web/API/createImageBitmap</a></p>
 <p>createImageBitmap, 把 blob 直接转化成 Image 对象，改善了一直以来复杂而脆弱的写法。</p>
-<p><img loading="lazy" src="/blog/notes-on-google-io-2022-web-platform-presentation/images/google-io-2022-web-blob.png" alt=""  /></p>
-<p><img loading="lazy" src="/blog/notes-on-google-io-2022-web-platform-presentation/images/google-io-2022-web-blob-1.png" alt=""  /></p>
+<p><img loading="lazy" src="/blog/notes-on-google-io-2022-web-platform-presentation/images/google-io-2022-web-blob.png" type="" alt=""  /></p>
+<p><img loading="lazy" src="/blog/notes-on-google-io-2022-web-platform-presentation/images/google-io-2022-web-blob-1.png" type="" alt=""  /></p>
 <h2 id="miscellaneous">Miscellaneous</h2>
 <h3 id="chips">CHIPS</h3>
 <p><a href="https://developer.chrome.com/docs/privacy-sandbox/chips/">https://developer.chrome.com/docs/privacy-sandbox/chips/</a></p>
 <p>CHIPS 全称 Cookies Having Independent Partitioned State, 是 Cookie 在安全策略上的新特性，为 Set-Cookie 增加了 <code>Partitioned</code> 关键词。可以使特定 cookie 在 iframe 中只用于当前站点。自两年前 <code>SameSite</code> 关键词推广后，third-party cookie 只能选择全有或者全无，这次终于有了一个折中的选择。</p>
-<p><img loading="lazy" src="/blog/notes-on-google-io-2022-web-platform-presentation/images/google-io-2022-web-chips.png" alt=""  /></p>
-<p><img loading="lazy" src="/blog/notes-on-google-io-2022-web-platform-presentation/images/google-io-2022-web-chips-1.png" alt=""  /></p>
+<p><img loading="lazy" src="/blog/notes-on-google-io-2022-web-platform-presentation/images/google-io-2022-web-chips.png" type="" alt=""  /></p>
+<p><img loading="lazy" src="/blog/notes-on-google-io-2022-web-platform-presentation/images/google-io-2022-web-chips-1.png" type="" alt=""  /></p>
 <h3 id="window-controls-overlay">Window controls overlay</h3>
 <p><a href="https://web.dev/window-controls-overlay/">https://web.dev/window-controls-overlay/</a></p>
 <p>Window controls overlay 是一组 <a href="https://developer.mozilla.org/en-US/docs/Web/Manifest">Web app manifests</a>, CSS, JavaScript API 的集合，实现了定制 PWA 窗口在 window bar 部分区域的显示效果，用于获得更有沉浸感的使用体验。</p>
-<p><img loading="lazy" src="/blog/notes-on-google-io-2022-web-platform-presentation/images/google-io-2022-web-wco.png" alt=""  /></p>
+<p><img loading="lazy" src="/blog/notes-on-google-io-2022-web-platform-presentation/images/google-io-2022-web-wco.png" type="" alt=""  /></p>
 ]]></content:encoded></item><item><title>PyYAML 使用技巧</title><link>https://reorx.com/blog/python-yaml-tips-zh/</link><pubDate>Sun, 15 May 2022 00:00:00 +0000</pubDate><guid>https://reorx.com/blog/python-yaml-tips-zh/</guid><description>分享我在 Python 下使用 PyYAML 的技巧和代码片段，并介绍几个相关的库。</description><content:encoded><![CDATA[<blockquote>
 <p>英文版: <a href="https://reorx.com/blog/python-yaml-tips/">Tips that may save you from the hell of PyYAML</a>
 </p>
@@ -1351,7 +1475,7 @@ Pass <code>allow_unicode=True</code> to <code>yaml.safe_dump</code> to enable th
 According to <a href="https://pyyaml.org/wiki/PyYAMLDocumentation#dictionaries-without-nested-collections-are-not-dumped-correctly">PyYAML documentation</a>, <code>default_flow_style=False</code> should be passed to <code>yaml.safe_dump</code> to achieve that.</p>
 <p>After digging into the source code of the latest PyYaml (6.0), I find it is not needed anymore.
 You should remove this keyword argument to keep the code cleaner and less confusing.</p>
-<p><img loading="lazy" src="/blog/python-yaml-tips/images/yaml-dump-all.png" alt=""  /></p>
+<p><img loading="lazy" src="/blog/python-yaml-tips/images/yaml-dump-all.png" type="" alt=""  /></p>
 <h2 id="libraries">Libraries</h2>
 <h3 id="oyaml">oyaml</h3>
 <p>Link: <a href="https://github.com/wimglenn/oyaml">https://github.com/wimglenn/oyaml</a></p>
@@ -1415,7 +1539,7 @@ but the specification is complex, which not only causes chaos in practice, but a
 <li>简洁清爽的界面</li>
 </ul>
 <p>很快，我锁定了完美满足这三点的 <a href="https://github.com/Ranchero-Software/NetNewsWire">NetNewsWire</a></p>
-<p><img loading="lazy" src="/blog/reinitiate-rss-reader/images/netnewswire-1.png" alt=""  /></p>
+<p><img loading="lazy" src="/blog/reinitiate-rss-reader/images/netnewswire-1.png" type="" alt=""  /></p>
 <p>NetNewsWire 发布于 20 年前，是 macOS 上历史最悠久的 RSS 阅读器。我虽然很早就知道它，却一直没有尝试，使用的是更受追捧的 Reeder，但 Reeder 最近的几次付费更新有些令人失望，没有什么有趣的变更，我也厌倦了它那软绵绵的 UI 风格。</p>
 <p>NetNewsWire 让我眼前一亮，它使用 macOS 原生的 UI 组件，适应起来没有任何障碍。打开就算经典的三栏布局，没有多余的选项，让我感觉真正在使用一个信息组织工具，而非另一个漂亮的玩具。</p>
 <p>Minimal and no distraction, 这是我对 NetNewsWire 的整体印象。我很快就爱上了它，逐渐把我其他几个正在摄取的信息源也添加了上去。</p>
@@ -1485,7 +1609,7 @@ but the specification is complex, which not only causes chaos in practice, but a
 <h2 id="一些思考">一些思考</h2>
 <p>RSS 的用法因人而异，这篇文章主要目的是分享我个人的探索过程，希望带给读者一些借鉴。选择适合自己的，不要盲目追求别人看起来「高效」「强大」的工作流。</p>
 <p>前几天 <a href="https://taoshu.in/">涛叔</a> 向我推荐了他的 <a href="https://taoshu.in/webfeed/web-feed.html">WebFeed</a> 插件 (for Firefox)，它把浏览器变成 RSS 阅读器，并能自动发现网站的 RSS 源。</p>
-<p><img loading="lazy" src="/blog/reinitiate-rss-reader/images/webfeed.png" alt=""  /></p>
+<p><img loading="lazy" src="/blog/reinitiate-rss-reader/images/webfeed.png" type="" alt=""  /></p>
 <p>我很喜欢它的 Web 与 RSS 一体的使用体验，这让我开始思考一个问题，为何近些年来 RSS 逐渐式微，主流浏览器厂商没有做任何相关的支持<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>，只有少部分开源爱好者还在坚持使用并为 RSS 社区做出贡献。</p>
 <p>我能想到的答案之一是，商业公司在控制和引导互联网生态，将公开流量变成自己的私域流量。而主流浏览器背后正好也都是商业公司。想象一下，如果所有内容都来自于独立博客的 RSS，作者可以直达受众，那内容分发市场的商业价值就没他们什么事了，更不用说将用户绑定在自己的平台上。</p>
 <p>另一个原因可能是内容农场的肆虐，独立创作者很难靠自己将原创内容推广，内容农场却通过 SEO 技术将自己洗稿后的文章顶在了搜索结果的前面。关于这个问题，少数派有一篇文章值得一读： <a href="https://sspai.com/post/71637">少数派思考 007：关于 RSS</a>。</p>
@@ -1675,19 +1799,19 @@ but the specification is complex, which not only causes chaos in practice, but a
 <p><a href="https://bangumi.moe/">Bangume Moe</a> 是我经常使用的资源站，它提供基于 tag 的 RSS 搜索功能，可以非常精确地定位到番剧在特定字幕组、语言、分辨率瞎的视频发布链接。</p>
 <ul>
 <li>首先在右上角的搜索框中输入想看的番剧名称，这里我使用「夏日重现」作为例子，可以看到下方自动匹配了 <code>Summertime Render</code> 这个 tag。
-<img loading="lazy" src="/blog/track-and-download-shows-automatically-with-sonarr/images/qnap-rss-anime-2.png" alt=""  /></li>
+<img loading="lazy" src="/blog/track-and-download-shows-automatically-with-sonarr/images/qnap-rss-anime-2.png" type="" alt=""  /></li>
 <li>点击这个 tag，搜索结果中会出现许多不同字幕组发布的资源，我们选择其中一个字幕组「喵萌奶茶屋」的资源，在 Torrent Details 中，可以看到其标注的 tags，有 <code>喵萌奶茶屋</code>, <code>720p</code>, <code>chs-jpn</code> 等，妥善使用这些 tags 能够帮助我们缩小搜索结果范围
-<img loading="lazy" src="/blog/track-and-download-shows-automatically-with-sonarr/images/qnap-rss-anime-1.png" alt=""  /></li>
+<img loading="lazy" src="/blog/track-and-download-shows-automatically-with-sonarr/images/qnap-rss-anime-1.png" type="" alt=""  /></li>
 <li>将 <code>喵萌奶茶屋</code>, <code>chs-jpn</code> 添加到 Selected tags 中，现在我们一共有 3 个 tags，搜索结果缩短到了 2 条，已经非常清晰了，点击右上角的 RSS 图标即可得到用于订阅的链接。（美中不足的是，喵萌奶茶屋将 1080p 的资源错标为了 <code>720p</code>，不过这点我们可以在后面的下载管理器中解决）
-<img loading="lazy" src="/blog/track-and-download-shows-automatically-with-sonarr/images/qnap-rss-anime.png" alt=""  /></li>
+<img loading="lazy" src="/blog/track-and-download-shows-automatically-with-sonarr/images/qnap-rss-anime.png" type="" alt=""  /></li>
 </ul>
 <h3 id="2-将-rss-url-添加到下载器">2. 将 RSS URL 添加到下载器</h3>
 <p>RSS 订阅是许多下载管理器的通用功能，如 Synology、qBittorrent 也都具有，使用方式与 Download Station 大同小异。</p>
 <ul>
 <li>打开 RSS Download Manager，将上一步得到的订阅链接复制到 Feed URL 中。Label 填写番剧名称，两个 Location 根据自己 NAS 的目录结构选择。点击 Apply 添加。
-<img loading="lazy" src="/blog/track-and-download-shows-automatically-with-sonarr/images/qnap-rss-anime-filter.png" alt=""  /></li>
+<img loading="lazy" src="/blog/track-and-download-shows-automatically-with-sonarr/images/qnap-rss-anime-filter.png" type="" alt=""  /></li>
 <li>添加完成后，打开 Filter Settings，它可以用于进一步过滤 RSS 返回的结果，避免下载不需要的资源。之前在进行资源搜索时，我们没能通过 tag 过滤掉 720p 的结果，在 Filter Settings 中，我们选择 1080p，这样 720p 就被忽略了。
-<img loading="lazy" src="/blog/track-and-download-shows-automatically-with-sonarr/images/qnap-rss-anime-filter-1.png" alt=""  /></li>
+<img loading="lazy" src="/blog/track-and-download-shows-automatically-with-sonarr/images/qnap-rss-anime-filter-1.png" type="" alt=""  /></li>
 <li>回到主界面，刷新添加的 RSS，可以看到两条结果中只有 1080p 被加入到下载列表。Status 为 Finished 代表下载完成，New 代表新添加到 RSS，但不在下载列表中。</li>
 </ul>
 <h3 id="小结">小结</h3>
@@ -1759,7 +1883,7 @@ docker context create harrogath
 <span class="c1"># 更新 context 的配置信息</span>
 docker context update harrogath --docker <span class="s2">&#34;host=tcp://harrogath:2376,ca=</span><span class="nv">$HOME</span><span class="s2">/.docker/ca.pem,cert=</span><span class="nv">$HOME</span><span class="s2">/.docker/cert.pem,key=</span><span class="nv">$HOME</span><span class="s2">/.docker/key.pem&#34;</span>
 </code></pre></div><p>QNAP 的 Docker 需要通过证书来访问，因此要在 Container Station 的设置中下载证书。
-<img loading="lazy" src="/blog/track-and-download-shows-automatically-with-sonarr/images/qnap-docker-certs.png" alt=""  /></p>
+<img loading="lazy" src="/blog/track-and-download-shows-automatically-with-sonarr/images/qnap-docker-certs.png" type="" alt=""  /></p>
 <p>完成 context 创建后，通过 <code>use</code> 命令切换到 context，之后所有的 Docker 命令都是与 NAS Docker 进行通讯</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="l">docker context use harrogath</span><span class="w">
 </span><span class="w"></span><span class="l">docker context ls</span><span class="w">
@@ -1878,17 +2002,17 @@ docker context update harrogath --docker <span class="s2">&#34;host=tcp://harrog
 <p>下面对各个服务的 Web UI 的使用方法进行说明，以我的 NAS hostname  <code>harrogath</code> 为例展示服务的访问地址。</p>
 <h4 id="jackett-1">Jackett</h4>
 <p>打开 <code>http://harrogath:9117</code>, Jackett 的界面展示如下:</p>
-<p><img loading="lazy" src="/blog/track-and-download-shows-automatically-with-sonarr/images/jackett.png" alt=""  /></p>
+<p><img loading="lazy" src="/blog/track-and-download-shows-automatically-with-sonarr/images/jackett.png" type="" alt=""  /></p>
 <p>使用方式非常简单，Jackett 已经将这个世界上绝大部分 indexer 都内置了，只需要点击 Add indexer 搜索并添加即可。除了部分有访问限制的 indexer 需要配置外，基本上都可以一路点击确认完成添加。之后在 Sonarr 中对接时，需要复制订阅 URL 和 API key，参照截图中所示即可。</p>
 <p>我目前使用了 4 个 indexer，其中 Bangumi Moe 和 dmhy 用于下载动画番剧，EZTV 和 RARBG 用于下载美剧。</p>
 <p>为了使 FlareSolverr 发挥作用，我们还需要将它的 URL 填在最下方的配置中，然后点击 Apply server settings 保存生效。
-<img loading="lazy" src="/blog/track-and-download-shows-automatically-with-sonarr/images/jackett-1.png" alt=""  /></p>
+<img loading="lazy" src="/blog/track-and-download-shows-automatically-with-sonarr/images/jackett-1.png" type="" alt=""  /></p>
 <h4 id="qbittorrent-1">qBittorrent</h4>
 <p>打开 <code>http://harrogath:8080</code>，使用默认用户名密码 <code>admin:adminadmin</code> 登录。</p>
 <p>打开 Tools » Options，将 Default Save Path 修改为 <code>/data/downloads</code>。这样做的目的是为了使 qBittorrnet 所记录的文件路径与 Sonarr 保持一致，以便不需要额外配置就能使 Sonarr 的重命名功能正常工作。若你不希望修改下载路径，或使用的是其他下载器，可以参考 <a href="https://trash-guides.info/Sonarr/Sonarr-remote-path-mapping/">Remote Path Mappings</a> 来解决路径不一致的问题。
-<img loading="lazy" src="/blog/track-and-download-shows-automatically-with-sonarr/images/qbittorrent.png" alt=""  /></p>
+<img loading="lazy" src="/blog/track-and-download-shows-automatically-with-sonarr/images/qbittorrent.png" type="" alt=""  /></p>
 <p>在 Options 中切换到 BitTorrent 选项卡，将 Seeding Limits 下的 &ldquo;then&rdquo; 修改为 &ldquo;Pause torrent&rdquo;，这是为了避免 Sonarr 在删除种子时产生冲突。&ldquo;When ratio reaches&rdquo; 代表做种分享资源的比率。BT 协议提倡共享精神，既然从别人那里获取到自己想要的资源，理应做出回馈。推荐将分享率设置为 2.0，即上传量为下载量的两倍之后停止分享。如果你担心硬盘过度损耗，可以将比率降低。(<em>也可以修改为 0 关闭做种功能，如果克服了道德感的约束</em>)
-<img loading="lazy" src="/blog/track-and-download-shows-automatically-with-sonarr/images/qbittorrent-3.png" alt=""  /></p>
+<img loading="lazy" src="/blog/track-and-download-shows-automatically-with-sonarr/images/qbittorrent-3.png" type="" alt=""  /></p>
 <h4 id="sonarr-1">Sonarr</h4>
 <p>终于到了追番大计最核心的组件——Sonarr，但先不要急，在添加番剧前，还有一些设置要做。</p>
 <ol>
@@ -1896,36 +2020,36 @@ docker context update harrogath --docker <span class="s2">&#34;host=tcp://harrog
 <p>Indexers</p>
 <ul>
 <li>将先前在 Jackett 中添加的 indexers 逐个对接到 Sonarr，使用 Torznab 协议。
-<img loading="lazy" src="/blog/track-and-download-shows-automatically-with-sonarr/images/sonarr-1.png" alt=""  /></li>
+<img loading="lazy" src="/blog/track-and-download-shows-automatically-with-sonarr/images/sonarr-1.png" type="" alt=""  /></li>
 <li>Bangumi.moe 的配置展示，URL 和 API Key 都是从 Jackett 中复制过来。需要注意的是， Categories 是影视剧的分类，应该留空，而在 Anime Categories 中勾选所有与番剧相关的分类项。
-<img loading="lazy" src="/blog/track-and-download-shows-automatically-with-sonarr/images/sonarr-2.png" alt=""  />
+<img loading="lazy" src="/blog/track-and-download-shows-automatically-with-sonarr/images/sonarr-2.png" type="" alt=""  />
 <ul>
 <li>若不确定自己要搜索在资源属于哪个分类项，可在 Jackett 中使用 Manual Search 来确认
-<img loading="lazy" src="/blog/track-and-download-shows-automatically-with-sonarr/images/jackett-2.png" alt=""  /></li>
+<img loading="lazy" src="/blog/track-and-download-shows-automatically-with-sonarr/images/jackett-2.png" type="" alt=""  /></li>
 </ul>
 </li>
 <li>rarbg 的配置展示，由于 rarbg 是影视剧 indexer，我们需要在 Categories 中勾选分类项而将 Anime Categories 留空
-<img loading="lazy" src="/blog/track-and-download-shows-automatically-with-sonarr/images/sonarr-3.png" alt=""  /></li>
+<img loading="lazy" src="/blog/track-and-download-shows-automatically-with-sonarr/images/sonarr-3.png" type="" alt=""  /></li>
 </ul>
 </li>
 <li>
 <p>Download Clients</p>
 <ul>
 <li>qBittorrent 配置展示。Host 最好填写 IP，使用 hostname 可能会失败。
-<img loading="lazy" src="/blog/track-and-download-shows-automatically-with-sonarr/images/sonarr-qbittorrent.png" alt=""  /></li>
+<img loading="lazy" src="/blog/track-and-download-shows-automatically-with-sonarr/images/sonarr-qbittorrent.png" type="" alt=""  /></li>
 </ul>
 </li>
 <li>
 <p>Profiles</p>
-<p>默认只有 English，需要添加一个中文的 Profile 以在添加番剧时设定语言。<img loading="lazy" src="/blog/track-and-download-shows-automatically-with-sonarr/images/sonarr-profile.png" alt=""  /></p>
+<p>默认只有 English，需要添加一个中文的 Profile 以在添加番剧时设定语言。<img loading="lazy" src="/blog/track-and-download-shows-automatically-with-sonarr/images/sonarr-profile.png" type="" alt=""  /></p>
 </li>
 <li>
 <p>Media Management</p>
 <p>这个设置关系到下载的文件能否被 Plex 或其他 media server 识别，但别被眼花缭乱的设置项吓到， 我们只需要关心下图红框圈起的部分。
-<img loading="lazy" src="/blog/track-and-download-shows-automatically-with-sonarr/images/sonarr-mediamanagement.png" alt=""  /></p>
+<img loading="lazy" src="/blog/track-and-download-shows-automatically-with-sonarr/images/sonarr-mediamanagement.png" type="" alt=""  /></p>
 <ul>
 <li>首先打开 Rename Episodes 功能</li>
-<li>然后配置 Anime Episode Format 和 Season Folder Format，这代表番剧被重命名后的文件名格式和上级目录格式。你不用关心源文件的名称如何被 Sonarr 解析，你只用知道它自信并出色地完成了这项脏活，让我们可以使用变量定义想要的文件和目录名称。这里我使用的是 Plex 的 <a href="https://support.plex.tv/articles/naming-and-organizing-your-tv-show-files/">TV Show Files</a> 格式，实现的结果如下: <img loading="lazy" src="/blog/track-and-download-shows-automatically-with-sonarr/images/finder.png" alt=""  /></li>
+<li>然后配置 Anime Episode Format 和 Season Folder Format，这代表番剧被重命名后的文件名格式和上级目录格式。你不用关心源文件的名称如何被 Sonarr 解析，你只用知道它自信并出色地完成了这项脏活，让我们可以使用变量定义想要的文件和目录名称。这里我使用的是 Plex 的 <a href="https://support.plex.tv/articles/naming-and-organizing-your-tv-show-files/">TV Show Files</a> 格式，实现的结果如下: <img loading="lazy" src="/blog/track-and-download-shows-automatically-with-sonarr/images/finder.png" type="" alt=""  /></li>
 <li>最后配置 Root Folders，它们在添加番剧的时候会用到，作为放置番剧的目录。你可以根据自己的需求设置多个，一般来说设置两个将影视剧和动画番剧分开存放即可。还记得我们在 <code>docker-compose.yaml</code> 中配置的目录映射吗？这里的目录 <code>/data/media/anime tv</code> 在 NAS 中对应的是 <code>AppData/sonarr/data/media/anime tv</code>，在 Plex 添加媒体库时不要忘了如何找到它。</li>
 <li>Optional: 文件重命名时，Sonarr 默认采取移动策略，这样会导致 BT 下载器无法继续对资源做种，为了避免这种情况，在 Media Management 页面打开 Advanced Settings，找到并打开 &ldquo;Use Hardlinks instead of Copy&rdquo;，这样既保留了下载资源的原始路径，又不会额外占用硬盘空间。</li>
 </ul>
@@ -1935,7 +2059,7 @@ docker context update harrogath --docker <span class="s2">&#34;host=tcp://harrog
 <p>实现自动化追剧的目的是为了不需要人工检查剧集的更新情况，因此通知是必不可少的。Connect 可以连接许多通知服务，让你第一时间知道剧集何时上线，资源何时发布，何时完成下载、可以观看。下面说明如何对接 Telegram 获取通知信息。</p>
 <ul>
 <li>
-<p>在 Telegram 搜索机器人 <code>@BotFather</code>，按照提示创建一个新的机器人，获取 API Token。我的机器人名为 <code>@reorx_notify_bot</code>。 <img loading="lazy" src="/blog/track-and-download-shows-automatically-with-sonarr/images/sonarr-telegram-2.png" alt=""  /></p>
+<p>在 Telegram 搜索机器人 <code>@BotFather</code>，按照提示创建一个新的机器人，获取 API Token。我的机器人名为 <code>@reorx_notify_bot</code>。 <img loading="lazy" src="/blog/track-and-download-shows-automatically-with-sonarr/images/sonarr-telegram-2.png" type="" alt=""  /></p>
 </li>
 <li>
 <p>创建一个群组，将 bot 加入到群组中，请求接口 <code>https://api.telegram.org/bot&lt;TOKEN&gt;/getUpdates</code>, 取出返回结果中的 <code>result[0].channel_post.chat.id</code> 作为 chat id</p>
@@ -1945,10 +2069,10 @@ docker context update harrogath --docker <span class="s2">&#34;host=tcp://harrog
 </li>
 <li>
 <p>在 Sonarr 中添加 Telegram connection，勾选自己关心的通知类型，一般至少会选择 On Download，代表新剧集下载完成的时间。
-<img loading="lazy" src="/blog/track-and-download-shows-automatically-with-sonarr/images/sonarr-telegram.png" alt=""  /></p>
+<img loading="lazy" src="/blog/track-and-download-shows-automatically-with-sonarr/images/sonarr-telegram.png" type="" alt=""  /></p>
 </li>
 <li>
-<p>配置好后，就可以通过 Telegram 第一时间掌握番剧的更新情况了。 <img loading="lazy" src="/blog/track-and-download-shows-automatically-with-sonarr/images/sonarr-telegram-1.png" alt=""  /></p>
+<p>配置好后，就可以通过 Telegram 第一时间掌握番剧的更新情况了。 <img loading="lazy" src="/blog/track-and-download-shows-automatically-with-sonarr/images/sonarr-telegram-1.png" type="" alt=""  /></p>
 </li>
 </ul>
 </li>
@@ -1957,7 +2081,7 @@ docker context update harrogath --docker <span class="s2">&#34;host=tcp://harrog
 <p>配置完成，现在可以开始追剧了。下面以「盾之勇者成名录 第二季」为例说明在 Sonarr 添加番剧的过程。</p>
 <p>打开 <a href="https://thetvdb.com/">TheTVDB.com</a>, 搜索到你想要追踪的番剧的页面 <a href="https://thetvdb.com/series/the-rising-of-the-shield-hero">The Rising of the Shield Hero</a>，获取 URL 中的最后一段 <code>the-rising-of-the-shield-hero</code> 作为在 Sonarr 搜索关键词。</p>
 <p>打开 Sonarr，在左上角的 Search 框中输入 <code>the-rising-of-the-shield-hero</code>，点击搜索结果，进入添加番剧的界面。</p>
-<p><img loading="lazy" src="/blog/track-and-download-shows-automatically-with-sonarr/images/sonarr-6.png" alt=""  /></p>
+<p><img loading="lazy" src="/blog/track-and-download-shows-automatically-with-sonarr/images/sonarr-6.png" type="" alt=""  /></p>
 <ol>
 <li>Root Folder: 选择先前在 Media Management 中设置的 <code>anime tv</code></li>
 <li>Monitor: 由于我们只想看最近的第二季，因此选择 Only Latest Season</li>
@@ -1968,7 +2092,7 @@ docker context update harrogath --docker <span class="s2">&#34;host=tcp://harrog
 <li>Start search for missing episodes: 勾选，这会使 Sonarr 在添加番剧后立刻根据 Monitor 所设置的条件开始搜索资源。也可以在添加完成后在详情页手动点击触发。</li>
 </ol>
 <p>完成添加后，点击番剧进入详情页。</p>
-<p><img loading="lazy" src="/blog/track-and-download-shows-automatically-with-sonarr/images/sonarr-7.png" alt=""  /></p>
+<p><img loading="lazy" src="/blog/track-and-download-shows-automatically-with-sonarr/images/sonarr-7.png" type="" alt=""  /></p>
 <ol>
 <li>点击放大镜图标对其所在的 Season 进行剧集搜索。</li>
 <li>Status 列的图标说明
@@ -1981,11 +2105,11 @@ docker context update harrogath --docker <span class="s2">&#34;host=tcp://harrog
 <li>书签符号有填充代表该季处于正在监控状态，无填充代表未监控，可以点击手动设置为监控</li>
 </ol>
 <p>在 Sonarr 首页可以看到各个番剧的追踪状态，蓝色代表标记追踪的剧集都已下载完成，红色代表有缺失，正在持续监控中。
-<img loading="lazy" src="/blog/track-and-download-shows-automatically-with-sonarr/images/sonarr-5.png" alt=""  /></p>
+<img loading="lazy" src="/blog/track-and-download-shows-automatically-with-sonarr/images/sonarr-5.png" type="" alt=""  /></p>
 <p>下载了一些资源后，我们打开 Plex，将 <code>anime tv</code> 对应的路径添加到「动画」Library 中，Plex 就会开始自动扫描文件、刮削元数据、下载中文字幕了。</p>
-<p><img loading="lazy" src="/blog/track-and-download-shows-automatically-with-sonarr/images/plex.png" alt=""  /></p>
+<p><img loading="lazy" src="/blog/track-and-download-shows-automatically-with-sonarr/images/plex.png" type="" alt=""  /></p>
 <p>大功告成，在 Plex 上愉快看番吧☺️。</p>
-<p><img loading="lazy" src="/blog/track-and-download-shows-automatically-with-sonarr/images/plex-1.png" alt=""  /></p>
+<p><img loading="lazy" src="/blog/track-and-download-shows-automatically-with-sonarr/images/plex-1.png" type="" alt=""  /></p>
 <h2 id="番外">番外</h2>
 <h3 id="sonarr-的其他朋友们">Sonarr 的其他朋友们</h3>
 <ul>
@@ -2001,7 +2125,7 @@ Readarr 是电子书的追踪和下载器。我看书不多，偶尔需要看的
 <h3 id="lunasea">LunaSea</h3>
 <p><a href="https://www.lunasea.app/">LunaSea</a> 是一个 Sonarr 和 Usenet 生态圈的远程控制器，能让你在手机上查看 Sonarr / Radarr / Lidarr 的资源和放送时间表。</p>
 <div class="image-size-control" style="max-height: 600px;">
-  <img loading="lazy" src="/blog/track-and-download-shows-automatically-with-sonarr/images/lunasea.jpeg" alt=""  />
+  <img loading="lazy" src="/blog/track-and-download-shows-automatically-with-sonarr/images/lunasea.jpeg" type="" alt=""  />
 </div>
 
 <h3 id="seedboxio">Seedbox.io</h3>
@@ -2012,7 +2136,7 @@ Readarr 是电子书的追踪和下载器。我看书不多，偶尔需要看的
 <li>规避 P2P 下载资源的版权问题</li>
 </ul>
 <p>其中有一家服务商叫 seedbox.io, 它们的服务器包含本篇介绍的所有组件。如果你有兴趣的话，可以通过这个 <a href="https://panel.seedbox.io/aff.php?aff=1061">affiliate link</a> 注册和购买他们的服务。</p>
-<p><img loading="lazy" src="/blog/track-and-download-shows-automatically-with-sonarr/images/seedbox-apps.png" alt=""  /></p>
+<p><img loading="lazy" src="/blog/track-and-download-shows-automatically-with-sonarr/images/seedbox-apps.png" type="" alt=""  /></p>
 <h2 id="结语">结语</h2>
 <p>Sonarr 和它的朋友们还有许多功能，本篇旨在引导用户完成最基本的自动化追番配置，就不一一介绍了，有兴趣的读者可以自行探索，欢迎在评论区留言分享。</p>
 <p>近两年来，在家办公越来越融入到我们的生活，家庭网络和服务的搭建也逐渐从以往对 Geek 的刻板印象，变成或许没被意识到，但人人都有的需求。照片存储、数据备份、远程控制、环境监控、智能家居、多媒体娱乐…这些无一不是我们的日常所需。往后我会写更多这方面的文章，将我使用 NAS 改变生活方式的过程记录下来。The digital life has just begun.</p>
@@ -2035,8 +2159,7 @@ Readarr 是电子书的追踪和下载器。我看书不多，偶尔需要看的
 <figure>
 <video class="video-shortcode" preload="" controls>
   <source src="https://i.imgur.com/bGLcQKl.mp4" type="">
-  There should have been a video here but your browser does not seem
-  to support it.
+  There should have been a video here but your browser does not seem to support it.
 </video>
 </figure>
 
@@ -2048,10 +2171,10 @@ Readarr 是电子书的追踪和下载器。我看书不多，偶尔需要看的
 <h2 id="the-feature">The feature</h2>
 <p>Here&rsquo;s the walk though of that amazing feature:</p>
 <ul>
-<li>On a whiteboard, select several cards you would like to refer to <img loading="lazy" src="/blog/heptabase-split-writing/images/heptabase.png" alt=""  /></li>
-<li>Right-click on them and choose &ldquo;Open in new tab&rdquo;, a new page with a left-right split layout appears. The first card selected shows on the left; others show on the right as a folded list. <img loading="lazy" src="/blog/heptabase-split-writing/images/heptabase-1.png" alt=""  /></li>
-<li>Click on the <code>+</code> sign button on the top menu bar; a new card is created on the left side, and the card that previously shows on the left is automatically moved to the card list on the right.  <img loading="lazy" src="/blog/heptabase-split-writing/images/heptabase-2.png" alt=""  /></li>
-<li>You can fold/unfold notes while browsing the right side, and drag&rsquo;n drop blocks to copy them to the left side. <img loading="lazy" src="/blog/heptabase-split-writing/images/heptabase-3.png" alt=""  /></li>
+<li>On a whiteboard, select several cards you would like to refer to <img loading="lazy" src="/blog/heptabase-split-writing/images/heptabase.png" type="" alt=""  /></li>
+<li>Right-click on them and choose &ldquo;Open in new tab&rdquo;, a new page with a left-right split layout appears. The first card selected shows on the left; others show on the right as a folded list. <img loading="lazy" src="/blog/heptabase-split-writing/images/heptabase-1.png" type="" alt=""  /></li>
+<li>Click on the <code>+</code> sign button on the top menu bar; a new card is created on the left side, and the card that previously shows on the left is automatically moved to the card list on the right.  <img loading="lazy" src="/blog/heptabase-split-writing/images/heptabase-2.png" type="" alt=""  /></li>
+<li>You can fold/unfold notes while browsing the right side, and drag&rsquo;n drop blocks to copy them to the left side. <img loading="lazy" src="/blog/heptabase-split-writing/images/heptabase-3.png" type="" alt=""  /></li>
 </ul>
 <p>This is the best way I&rsquo;ve ever seen to think and write a note while referring to many other notes. In other note-taking tools, take Obsidian for example, I can split the panes, but it is not convenient to organize the workspace well for more than 3 notes. As new panes are growing, it will become more and more interruptive to switch back and forth.</p>
 <p>Even if I managed to build up a tidy workspace, it&rsquo;s still very frustrating to switch to another context. Obsidian has the functionality to manage workspaces, but you have to manually save before switching, otherwise, the context will be missing. In Heptabase, all the workspaces are clearly shown in the sidebar, switching around is fast and easy as a breath.</p>
