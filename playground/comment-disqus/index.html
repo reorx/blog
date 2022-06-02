@@ -8,7 +8,7 @@
 <meta name=description content="No content, just play with comment.">
 <meta name=author content="Reorx">
 <link rel=canonical href=https://reorx.com/playground/comment-disqus/>
-<link crossorigin=anonymous href=/assets/css/stylesheet.min.dbaa2f3279175f91a827f3f67c775adc34cd1a44034342842add653849910caf.css integrity="sha256-26ovMnkXX5GoJ/P2fHda3DTNGkQDQ0KEKt1lOEmRDK8=" rel="preload stylesheet" as=style>
+<link crossorigin=anonymous href=/assets/css/stylesheet.min.413b56b5a12efe1ddbf789fdcb88848283bb3e67027489aeb56cc2e85c39ff65.css integrity="sha256-QTtWtaEu/h3b94n9y4iEgoO7PmcCdImutWzC6Fw5/2U=" rel="preload stylesheet" as=style>
 <link rel=icon href=https://reorx.com/favicon.ico>
 <link rel=apple-touch-icon href=https://reorx.com/apple-touch-icon.png>
 <script async defer data-website-id=b6b781e9-cf10-484a-a170-fc9083da6c9f src=https://oishii.reorx.com/oishii.js></script>
@@ -31,7 +31,7 @@
 <style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary-bg:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51)}.list{background:var(--theme)}.list:not(.dark)::-webkit-scrollbar-track{background:0 0}.list:not(.dark)::-webkit-scrollbar-thumb{border-color:var(--theme)}}</style>
 </noscript>
 </head>
-<body id=top><script data-no-instant>function switchTheme(a){switch(a){case'light':document.body.classList.remove('dark');break;case'dark':document.body.classList.add('dark');break;default:window.matchMedia('(prefers-color-scheme: dark)').matches&&document.body.classList.add('dark')}}function isDarkTheme(){return document.body.className.includes("dark")}function getPrefTheme(){return localStorage.getItem("pref-theme")}function setPrefTheme(a){switchTheme(a),localStorage.setItem("pref-theme",a)}const toggleThemeCallbacks=[];toggleThemeCallbacks.push(a=>{a?setPrefTheme('light'):setPrefTheme('dark')}),window.addEventListener('toggle-theme',function(){const a=isDarkTheme();toggleThemeCallbacks.forEach(b=>b(a))})</script>
+<body id=top><script data-no-instant>function switchTheme(a){switch(a){case'light':document.body.classList.remove('dark');break;case'dark':document.body.classList.add('dark');break;default:window.matchMedia('(prefers-color-scheme: dark)').matches&&document.body.classList.add('dark')}}function isDarkTheme(){return document.body.className.includes("dark")}function getPrefTheme(){return localStorage.getItem("pref-theme")}function setPrefTheme(a){switchTheme(a),localStorage.setItem("pref-theme",a)}const toggleThemeCallbacks={};toggleThemeCallbacks.main=a=>{a?setPrefTheme('light'):setPrefTheme('dark')},window.addEventListener('toggle-theme',function(){const a=isDarkTheme();for(const b in toggleThemeCallbacks)toggleThemeCallbacks[b](a)});function toggleThemeListener(){window.dispatchEvent(new CustomEvent('toggle-theme'))}</script>
 <script>(function(){const b='light',a=getPrefTheme(),c=a||b;switchTheme(c)})()</script>
 <header class=header>
 <nav class=nav>
@@ -73,7 +73,7 @@ Commenting System: Disqus
 <div class=post-content><p>No content, just play with comment.</p>
 </div>
 <footer class=post-footer>
-</footer><div class=disqus-container>
+</footer><div class=comments-box>
 <div id=disqus_thread></div>
 </div>
 <script type=text/javascript>var disqus_config=function(){this.page.url='https://reorx.com/playground/comment-disqus/',this.page.identifier='comment-disqus'};(function(){const b=window.DISQUS;if(b)b.reset({reload:!0,config:disqus_config});else{var c=document,a=c.createElement('script');a.src='//reorx.disqus.com/embed.js',a.defer=!0,a.setAttribute('data-timestamp',+new Date),a.setAttribute('data-no-instant',''),c.head.appendChild(a)}})()</script>
@@ -91,13 +91,13 @@ Powered by
 </footer>
 <a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentcolor"><path d="M12 6H0l6-6z"/></svg>
 </a>
-<script>(function(){const a=''=='1';if(a)return;document.getElementById("theme-toggle").addEventListener("click",()=>{window.dispatchEvent(new CustomEvent('toggle-theme'))})})()</script>
+<script>(function(){const b=''=='1';if(b)return;let a=document.getElementById("theme-toggle");a.removeEventListener('click',toggleThemeListener),a.addEventListener('click',toggleThemeListener)})()</script>
 <script>(function(){let a=document.getElementById('menu');a&&(a.scrollLeft=localStorage.getItem("menu-scroll-position"),a.onscroll=function(){localStorage.setItem("menu-scroll-position",a.scrollLeft)});const b=''=='1',c='1'=='1';if(window.matchMedia('(prefers-reduced-motion: reduce)').matches||b||c)return;document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener("click",function(b){b.preventDefault();var a=this.getAttribute("href").substr(1);document.querySelector(`[id='${decodeURIComponent(a)}']`).scrollIntoView({behavior:"smooth"}),a==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${a}`)})})})()</script>
 <script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script>
 <script>if(window.scrollListeners)for(const a of scrollListeners)window.removeEventListener('scroll',a);window.scrollListeners=[]</script>
 <script src=/js/medium-zoom.min.js data-no-instant></script>
 <script>document.querySelectorAll('pre > code').forEach(b=>{const c=b.parentNode.parentNode,a=document.createElement('button');a.classList.add('copy-code'),a.innerText='copy';function d(){a.innerText='copied!',setTimeout(()=>{a.innerText='copy'},2e3)}a.addEventListener('click',e=>{if('clipboard'in navigator){navigator.clipboard.writeText(b.textContent),d();return}const a=document.createRange();a.selectNodeContents(b);const c=window.getSelection();c.removeAllRanges(),c.addRange(a);try{document.execCommand('copy'),d()}catch(a){}c.removeRange(a)}),c.classList.contains("highlight")?c.appendChild(a):c.parentNode.firstChild==c||(b.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName=="TABLE"?b.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(a):b.parentNode.appendChild(a))})</script>
-<script>(function(){const h=''=='1';if(!h)return;const i=window.scrollListeners,c=document.querySelectorAll('h1[id],h2[id],h3[id],h4[id],h5[id]'),d='active';let a=c[0];e(a).classList.add(d);const g=()=>{const b=[];for(const a of c)if(j(a)<5)b.push(a);else break;b.length>0?newActiveHeading=b[b.length-1]:newActiveHeading=c[0],a!=newActiveHeading&&(e(a).classList.remove(d),a=newActiveHeading,e(a).classList.add(d))};let b=null;const f=()=>{b!==null&&clearTimeout(b),b=setTimeout(g,50)};window.addEventListener('scroll',f,!1),i.push(f);function e(a){const b=encodeURI(a.getAttribute('id')).toLowerCase();return document.querySelector(`.toc ul li a[href="#${b}"]`)}function j(a){if(!a.getClientRects().length)return 0;let b=a.getBoundingClientRect();return b.top}})()</script>
+<script>(function(){const h=''=='1';if(!h)return;if(!document.querySelector('.toc')){console.log('no toc found, ignore toc scroll');return}const i=window.scrollListeners,c=document.querySelectorAll('h1[id],h2[id],h3[id],h4[id],h5[id]'),d='active';let a=c[0];e(a).classList.add(d);const g=()=>{const b=[];for(const a of c)if(j(a)<5)b.push(a);else break;b.length>0?newActiveHeading=b[b.length-1]:newActiveHeading=c[0],a!=newActiveHeading&&(e(a).classList.remove(d),a=newActiveHeading,e(a).classList.add(d))};let b=null;const f=()=>{b!==null&&clearTimeout(b),b=setTimeout(g,50)};window.addEventListener('scroll',f,!1),i.push(f);function e(a){const b=encodeURI(a.getAttribute('id')).toLowerCase();return document.querySelector(`.toc ul li a[href="#${b}"]`)}function j(a){if(!a.getClientRects().length)return 0;let b=a.getBoundingClientRect();return b.top}})()</script>
 <script>mediumZoom('.entry-cover img'),mediumZoom('.post-content img:not([no-zoom])')</script>
 <script src=/js/instantclick.min.js data-no-instant></script>
 <script data-no-instant>InstantClick.init()</script>

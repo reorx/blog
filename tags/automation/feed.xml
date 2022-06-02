@@ -266,25 +266,25 @@ WEBHOOK_URL=http://harrogath-local.com:5678/
 <p><img loading="lazy" src="/blog/sharing-my-footprints-automation/images/n8n-8.png" alt=""  /></p>
 <p>我在 <a href="https://github.com/reorx/n8n-workflows/blob/master/workflows/ERROR%20TO%20TG.json">n8n-workflows/workflows/ERROR TO TG.json</a> 中实现了将错误信息发送到 Telegram Group 的功能，效果如下。
 <div class="image-size-control" style="max-width: 400px;">
-  <img src="images/telegram.png" alt="">
+  <img loading="lazy" src="/blog/sharing-my-footprints-automation/images/telegram.png" alt=""  />
 </div>
 </p>
 <h3 id="使用-saas-自动化服务">使用 SaaS 自动化服务</h3>
 <p>对于一些 n8n 尚不支持，或配置比较麻烦的服务，也可以通过 SaaS 服务来实现自动化。IFTTT 是一个不错的选择，它应该是最早被广泛使用的自动化服务，免费用户可以设置 5 个 applet (即 workflow)，同步间隔 1 小时。</p>
 <p>下图是我在 IFTTT 中配置的 Instapaper 新文章推送到 Telegram 频道的 applet。</p>
 <div class="image-size-control" style="max-width: 400px;">
-  <img src="images/ifttt.png" alt="">
+  <img loading="lazy" src="/blog/sharing-my-footprints-automation/images/ifttt.png" alt=""  />
 </div>
 
 <p><a href="https://www.integromat.com/">Integromat</a> 曾是一个非常好用的 IFTTT alternative，有着现代化的交互界面，和更为灵活的定制功能，但后来 rebrand 成 make.com，变得非常难用，不仅加载速度缓慢，而且连 migration 都无法正常完成<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup>。建议大家远离这个奇怪的公司。</p>
 <figure class="center align-center">
-  <img src="images/integromat.png" alt="">
+  <img loading="lazy" src="/blog/sharing-my-footprints-automation/images/integromat.png" alt=""  />
 
   <figcaption><p>曾经美好的 Integromat</p></figcaption>
 </figure>
 
 <figure class="center align-center">
-  <img src="images/integromat-scenario.png" alt="">
+  <img loading="lazy" src="/blog/sharing-my-footprints-automation/images/integromat-scenario.png" alt=""  />
 
   <figcaption><p>和它出色的交互界面</p></figcaption>
 </figure>
