@@ -12,7 +12,7 @@ cover:
 socialLinks:
   twitter:
     user: novoreorx
-    id: null
+    id: 1532207595842580480
 ---
 
 ## 告别 Disqus
