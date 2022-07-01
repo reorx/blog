@@ -132,11 +132,11 @@ TP-Link 有很多[此类产品](https://www.tp-link.com/hk/home-networking/range
 
 也叫「无线上网卡」，比较准确的英文名称应该是 Mobile Wi-Fi Router (or 4G Wi-Fi Router)。这类产品的目的是使用 3G/4G LTE 创建随时随地可供使用的 Wi-Fi。分为内置 eSIM 卡和依赖外部 SIM 卡两种。
 
-国内的随身 Wi-Fi 一般都是内置 eSIM 卡的，外形像一个 U 盘或充电宝，在设计上并没有提供多少可定制性，但由于其普及程度非常高，广大 DIY 爱好者早已将其研究通透。[@酱紫表](https://twitter.com/pengchujin) 分享过一篇 [4g 随身 Wi-Fi 刷 openwrt 变成软路由](https://qust.me/post/msm8916/) 教程，成本展示在这条[推文](https://twitter.com/pengchujin/status/1536310680109735936)中。
+国内的随身 Wi-Fi 一般都是内置 eSIM 卡的，外形像一个 U 盘或充电宝，在设计上并没有提供多少可定制性，但由于其普及程度非常高，广大 DIY 爱好者早已将其研究通透。[@酱紫表](https://twitter.com/pengchujin) 分享过一篇 [4g 随身 Wi-Fi 刷 openwrt 变成软路由](https://qust.me/post/msm8916/) 教程，成品展示在这条[推文](https://twitter.com/pengchujin/status/1536310680109735936)中。
 
 > 其实在刷上 OpenWrt 后，随身 Wi-Fi 就等同于上文中 [Connect to the Internet via cellular](https://docs.gl-inet.com/en/4/tutorials/internet_cellular/) 模式下的  GL iNet，因此它同样可以看做无线便携路由器的特化版。
 
-Netgear 的 [MR1100](https://www.netgear.com/home/mobile-wifi/hotspots/mr1100/) 则是插卡的，黑色金属质地体现出服务器特有的神秘和冷酷，还有着让我无法抗拒的数据指示屏。
+Netgear 的 [MR1100](https://www.netgear.com/home/mobile-wifi/hotspots/mr1100/) 则是插卡的，黑色金属质地体现出服务器特有的冷酷和科技感，还有着让我无法抗拒的数据指示屏。
 
 {{<figure-img-size "Netgear MR1100" "500px" "" >}}
 ![](images/netgear.png)
