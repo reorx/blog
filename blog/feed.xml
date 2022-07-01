@@ -59,10 +59,10 @@
 </figure>
 
 <p>实际上树莓派等其他 <a href="https://en.wikipedia.org/wiki/Single-board_computer">SBC</a> 也可以用同样的思路配置实现，不过我更喜欢 NanoPi 的外形和亲民的价格（去年好像涨价了），感兴趣的读者可以在淘宝认准 FriendlyElec 官方店购买。</p>
-<p>固件方面，使用 OpenWrt 或其发行版即可，通过 Wi-Fi 连接互联网是 OpenWrt 的基础功能之一，见文档 <a href="https://openwrt.org/docs/guide-user/network/wifi/relay_configuration">Wi-Fi extender / repeater / bridge configuration</a></p>
-<h3 id="硬件产品">硬件产品</h3>
-<p><a href="https://www.gl-inet.com/products/gl-axt1800/">GL-AXT1800</a> 即属于此类，在硬件层面已经高度集成，但固件、代理等还需用户自行配置。GL iNet 系产品的优点之一是其固件是基于 OpenWrt 开发的 <sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>，功能足够强大多样，省去了自己刷的麻烦。</p>
-<p>列举 GL iNet 的其他几款 Travel Router 如下:</p>
+<p>固件方面，使用 OpenWrt 或其发行版即可，通过 Wi-Fi 连接互联网是 OpenWrt 的基础功能之一，官方文档对此有着非常详细的说明: <a href="https://openwrt.org/docs/guide-user/network/wifi/relay_configuration">Wi-Fi extender / repeater / bridge configuration</a>.</p>
+<h3 id="纯硬件产品">纯硬件产品</h3>
+<p><a href="https://www.gl-inet.com/products/gl-axt1800/">GL-AXT1800</a> 即属于此类，在硬件层面已经高度集成，但固件、代理等还需用户自行配置。GL iNet 系产品的优点之一是自带基于 OpenWrt 开发的固件 <sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>，功能足够强大，省去了自己刷的麻烦。</p>
+<p>下面列举 GL iNet 的其他几款 Travel Routers:</p>
 <ul>
 <li>
 <p><a href="https://www.gl-inet.com/products/gl-mt300n-v2/">GL-MT300N-V2</a></p>
@@ -114,8 +114,8 @@
   <figcaption><p>TP-Link TL-WR902AC</p></figcaption>
 </figure>
 
-<h3 id="硬件产品--代理服务">硬件产品 + 代理服务</h3>
-<p>推友 <a href="https://twitter.com/BigEyeSmolMouth">@BigEyeSmolMouth</a>  向我分享了<a href="https://www.meihuavpn.com/">梅花VPN</a> <sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup>，使我得知有这类产品的存在。它们就像网易的 UU 加速盒，在硬件上内置了自己的网络代理服务，实现了软硬件一体化的翻墙 Wi-Fi。</p>
+<h3 id="硬件--服务">硬件 + 服务</h3>
+<p>推友 <a href="https://twitter.com/BigEyeSmolMouth">@BigEyeSmolMouth</a>  向我分享了<a href="https://www.meihuavpn.com/">梅花VPN</a> <sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup>，使我得知有这类产品的存在。它们就像网易的 UU 加速盒，在硬件上内置了自己的网络代理服务，实现成软硬一体化的翻墙 Wi-Fi。</p>
 <p>在我看来，这种产品优缺点都很明显。优点是开箱即用，省事不折腾；缺点是可控性差，无法更换代理提供商，且商品的溢价较高，其硬件性能不会有多少剩余空间。从安全的角度考虑，这样一个黑盒设备也无法让人信任。</p>
 
 <figure class="center align-center">
