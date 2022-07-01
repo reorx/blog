@@ -10,7 +10,7 @@ ShowToc: true
 writeTime: 05:00
 cover:
   image: images/travel_router.jpg
-  caption: GL iNet Slate AX (GL-AXT1800), from gl-inet.com
+  caption: GL.iNet Slate AX (GL-AXT1800), from gl-inet.com
 socialLinks:
   twitter:
     user: novoreorx
@@ -25,9 +25,9 @@ socialLinks:
 
 {{<social-quote-tweet id="1542120681520844801" user="pengchujin" />}}
 
-虽然没有提及这款名为 [GL-AXT1800](https://www.gl-inet.com/products/gl-axt1800/) 的路由器是否可以连接已有 Wi-Fi，但既然设计的这么小巧便携，应该是针对出门在外的应用场景吧？我如此寻思，注意到它在 GL iNet 的产品矩阵中属于 Travel Router 这一分类，于是顺着这个关键词进行了一番搜索，果然发现这类产品大都有着和我们的需求一致的应用场景。
+虽然没有提及这款名为 [GL-AXT1800](https://www.gl-inet.com/products/gl-axt1800/) 的路由器是否可以连接已有 Wi-Fi，但既然设计的这么小巧便携，应该是针对出门在外的应用场景吧？我如此寻思，注意到它在 GL.iNet 的产品矩阵中属于 Travel Router 这一分类，于是顺着这个关键词进行了一番搜索，果然发现这类产品大都有着和我们的需求一致的应用场景。
 
-我随后去阅读了 GL iNet 的[官方使用手册](https://docs.gl-inet.com/en/4/user_guide/)，弄清了 GL-AXT1800 所支持的四种连接互联网的模式：
+我随后去阅读了 GL.iNet 的[官方使用手册](https://docs.gl-inet.com/en/4/user_guide/)，弄清了 GL-AXT1800 所支持的四种连接互联网的模式：
 
 -   [Connect to the Internet via an ethernet cable](https://docs.gl-inet.com/en/4/tutorials/internet_ethernet)
   
@@ -37,12 +37,12 @@ socialLinks:
     通过已有 Wi-Fi 连接互联网。这就是本文一开始所提到的在咖啡馆中的使用场景，将公共 Wi-Fi 扩展成为相对安全可控的局域网。
 -   [Connect to the Internet via usb tethering](https://docs.gl-inet.com/en/4/tutorials/internet_tethering)
   
-    通过 USB 连接手机，使用手机的移动网络连接互联网。这种模式需要打开手机的热点功能，使用有线以降低传输损耗。
+    通过 USB-A 口连接手机，使用手机的移动网络连接互联网。这种模式需要打开手机的热点功能，使用有线以降低传输损耗。
 -   [Connect to the Internet via usb modem](https://docs.gl-inet.com/en/4/tutorials/internet_cellular)
   
     通过 USB 调制解调器连接互联网。这种模式将只能插在笔记本电脑上的传统的无线上网卡变成可供多人使用的 Wi-Fi。
 
-这些模式基本可以定义出 Travel Router——无线便携路由器的主要功能，读者可思考自己的需求是否在其中，从而对无线便携路由器种草或拔草。
+这些模式基本可以定义出 Travel Router——无线便携路由器的主要功能，读者可思考其中是否有符合自己需求的功能，从而对这种产品做出种草或拔草的判断。
 
 ## 同类产品介绍
 
@@ -50,7 +50,7 @@ socialLinks:
 
 ### 单板机 DIY
 
-弄清楚产品功能之后，我发现自己家用作软路由[^1] 的 [NanoPi R2S](https://www.friendlyelec.com/index.php?route=product/product&product_id=282) 是可以成为无线便携路由器的，只不过还需要对系统和配件进行一些 DIY 配置。
+弄清楚产品功能之后，我发现家里被用作软路由[^1] 的 [NanoPi R2S](https://www.friendlyelec.com/index.php?route=product/product&product_id=282) 是可以成为无线便携路由器的，只不过还需要对系统和配件进行一些 DIY 配置。
 
 一个未经雕琢的 R2S 长这样:
 
@@ -64,15 +64,17 @@ socialLinks:
 ![](images/r2s-2.png)
 {{</figure-img-size>}}
 
+> 不过这样使用也有局限，由于 R2S 只有一个 USB-A 口，当扩展为 Wi-Fi 天线后，就无法实现上文提到的 USB tethering/modem 模式了。
+
 实际上树莓派等其他 [SBC](https://en.wikipedia.org/wiki/Single-board_computer) 也可以用同样的思路配置实现，不过我更喜欢 NanoPi 的外形和亲民的价格（去年好像涨价了），感兴趣的读者可以在淘宝认准 FriendlyElec 官方店购买。
 
 固件方面，使用 OpenWrt 或其发行版即可，通过 Wi-Fi 连接互联网是 OpenWrt 的基础功能之一，官方文档对此有着非常详细的说明: [Wi-Fi extender / repeater / bridge configuration](https://openwrt.org/docs/guide-user/network/wifi/relay_configuration).
 
 ### 纯硬件产品
 
-[GL-AXT1800](https://www.gl-inet.com/products/gl-axt1800/) 即属于此类，在硬件层面已经高度集成，但固件、代理等还需用户自行配置。GL iNet 系产品的优点之一是自带基于 OpenWrt 开发的固件 [^2]，功能足够强大，省去了自己刷的麻烦。
+[GL-AXT1800](https://www.gl-inet.com/products/gl-axt1800/) 即属于此类，在硬件层面已经高度集成和完善，但固件、代理等还需用户自行配置。GL.iNet 系产品的优点之一是自带基于 OpenWrt 开发的固件 [^2]，功能足够强大，省去了自己刷的麻烦。
 
-下面列举 GL iNet 的其他几款 Travel Routers:
+下面列举 GL.iNet 的其他几款 Travel Routers:
 
 - [GL-MT300N-V2](https://www.gl-inet.com/products/gl-mt300n-v2/)
   
@@ -86,7 +88,7 @@ socialLinks:
     {{<figure-img-size "GL-AR300M" "500px" "" >}}![](images/gl-ar300m.png){{</figure-img-size>}}
 - [GL-USB150](https://www.gl-inet.com/products/gl-usb150/)
   
-    无线上网卡的大小，可以直接插在 USB 上使用。
+    传统 U 盘的大小，可以直接插在充电器 USB-A 口上使用。
     
     {{<figure-img-size "GL-USB150" "500px" "" >}}![](images/gl-usb150.png){{</figure-img-size>}}
 
@@ -134,7 +136,7 @@ TP-Link 有很多[此类产品](https://www.tp-link.com/hk/home-networking/range
 
 国内的随身 Wi-Fi 一般都是内置 eSIM 卡的，外形像一个 U 盘或充电宝，在设计上并没有提供多少可定制性，但由于其普及程度非常高，广大 DIY 爱好者早已将其研究通透。[@酱紫表](https://twitter.com/pengchujin) 分享过一篇 [4g 随身 Wi-Fi 刷 openwrt 变成软路由](https://qust.me/post/msm8916/) 教程，成品展示在这条[推文](https://twitter.com/pengchujin/status/1536310680109735936)中。
 
-> 其实在刷上 OpenWrt 后，随身 Wi-Fi 就等同于上文中 [Connect to the Internet via cellular](https://docs.gl-inet.com/en/4/tutorials/internet_cellular/) 模式下的  GL iNet，因此它同样可以看做无线便携路由器的特化版。
+> 其实在刷上 OpenWrt 后，随身 Wi-Fi 就等同于上文中 [Connect to the Internet via cellular](https://docs.gl-inet.com/en/4/tutorials/internet_cellular/) 模式下的  GL.iNet，因此它同样可以看做无线便携路由器的特化版。
 
 Netgear 的 [MR1100](https://www.netgear.com/home/mobile-wifi/hotspots/mr1100/) 则是插卡的，黑色金属质地体现出服务器特有的冷酷和科技感，还有着让我无法抗拒的数据指示屏。
 
