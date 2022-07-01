@@ -66,13 +66,13 @@ socialLinks:
 
 实际上树莓派等其他 [SBC](https://en.wikipedia.org/wiki/Single-board_computer) 也可以用同样的思路配置实现，不过我更喜欢 NanoPi 的外形和亲民的价格（去年好像涨价了），感兴趣的读者可以在淘宝认准 FriendlyElec 官方店购买。
 
-固件方面，使用 OpenWrt 或其发行版即可，通过 Wi-Fi 连接互联网是 OpenWrt 的基础功能之一，见文档 [Wi-Fi extender / repeater / bridge configuration](https://openwrt.org/docs/guide-user/network/wifi/relay_configuration)
+固件方面，使用 OpenWrt 或其发行版即可，通过 Wi-Fi 连接互联网是 OpenWrt 的基础功能之一，官方文档对此有着非常详细的说明: [Wi-Fi extender / repeater / bridge configuration](https://openwrt.org/docs/guide-user/network/wifi/relay_configuration).
 
-### 硬件产品
+### 纯硬件产品
 
-[GL-AXT1800](https://www.gl-inet.com/products/gl-axt1800/) 即属于此类，在硬件层面已经高度集成，但固件、代理等还需用户自行配置。GL iNet 系产品的优点之一是其固件是基于 OpenWrt 开发的 [^2]，功能足够强大多样，省去了自己刷的麻烦。
+[GL-AXT1800](https://www.gl-inet.com/products/gl-axt1800/) 即属于此类，在硬件层面已经高度集成，但固件、代理等还需用户自行配置。GL iNet 系产品的优点之一是自带基于 OpenWrt 开发的固件 [^2]，功能足够强大，省去了自己刷的麻烦。
 
-列举 GL iNet 的其他几款 Travel Router 如下:
+下面列举 GL iNet 的其他几款 Travel Routers:
 
 - [GL-MT300N-V2](https://www.gl-inet.com/products/gl-mt300n-v2/)
   
@@ -96,9 +96,9 @@ socialLinks:
 ![](images/TL-WR902AC.png)
 {{</figure-img-size>}}
 
-### 硬件产品 + 代理服务
+### 硬件 + 服务
 
-推友 [@BigEyeSmolMouth](https://twitter.com/BigEyeSmolMouth)  向我分享了[梅花VPN](https://www.meihuavpn.com/) [^4]，使我得知有这类产品的存在。它们就像网易的 UU 加速盒，在硬件上内置了自己的网络代理服务，实现了软硬件一体化的翻墙 Wi-Fi。
+推友 [@BigEyeSmolMouth](https://twitter.com/BigEyeSmolMouth)  向我分享了[梅花VPN](https://www.meihuavpn.com/) [^4]，使我得知有这类产品的存在。它们就像网易的 UU 加速盒，在硬件上内置了自己的网络代理服务，实现成软硬一体化的翻墙 Wi-Fi。
 
 在我看来，这种产品优缺点都很明显。优点是开箱即用，省事不折腾；缺点是可控性差，无法更换代理提供商，且商品的溢价较高，其硬件性能不会有多少剩余空间。从安全的角度考虑，这样一个黑盒设备也无法让人信任。
 
