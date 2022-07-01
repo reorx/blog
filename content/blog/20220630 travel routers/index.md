@@ -14,7 +14,7 @@ cover:
 socialLinks:
   twitter:
     user: novoreorx
-    id: null
+    id: 1542720028835213312
 ---
 
 时间回到两个月前的某天，和好友 [@iwendellsun](https://github.com/xwjdsh) 一起在咖啡馆工作时，他提出了一个问题：有没有一种路由器，它可以先连接一个已有的 Wi-Fi，再发射一个新的 Wi-Fi 供自己的设备连接？
@@ -98,7 +98,7 @@ socialLinks:
 
 ### 硬件产品 + 代理服务
 
-推友 [@BigEyeSmolMouth](https://twitter.com/BigEyeSmolMouth)  向我分享了[梅花VPN](https://www.meihuavpn.com/) [^4]，使我得知有这类产品的存在。它们就像网易的 UU 加速器，在硬件上内置了自己的网络代理服务，实现了软硬件一体化的翻墙 Wi-Fi。
+推友 [@BigEyeSmolMouth](https://twitter.com/BigEyeSmolMouth)  向我分享了[梅花VPN](https://www.meihuavpn.com/) [^4]，使我得知有这类产品的存在。它们就像网易的 UU 加速盒，在硬件上内置了自己的网络代理服务，实现了软硬件一体化的翻墙 Wi-Fi。
 
 在我看来，这种产品优缺点都很明显。优点是开箱即用，省事不折腾；缺点是可控性差，无法更换代理提供商，且商品的溢价较高，其硬件性能不会有多少剩余空间。从安全的角度考虑，这样一个黑盒设备也无法让人信任。
 
@@ -130,9 +130,9 @@ TP-Link 有很多[此类产品](https://www.tp-link.com/hk/home-networking/range
 
 ### 随身 Wi-Fi
 
-也叫「无线上网卡」，比较准确的英文名称应该是 Mobile Wi-Fi Router (or 4G Wi-Fi Router)。这类产品的目的是使用 3G/4G LTE 创建随时随地可供使用的 Wi-Fi。分为内置和插卡（SIM 卡）两种。
+也叫「无线上网卡」，比较准确的英文名称应该是 Mobile Wi-Fi Router (or 4G Wi-Fi Router)。这类产品的目的是使用 3G/4G LTE 创建随时随地可供使用的 Wi-Fi。分为内置 eSIM 卡和依赖外部 SIM 卡两种。
 
-国内的随身 Wi-Fi 一般都是内置的，像一个 U 盘或充电宝，在设计上并没有提供多少可定制性，但由于其普及程度非常高，广大 DIY 爱好者早已将其研究通透，[@酱紫表](https://twitter.com/pengchujin) 分享过一篇 [4g 随身 Wi-Fi 刷 openwrt 变成软路由](https://qust.me/post/msm8916/) 教程，成本展示在这条[推文](https://twitter.com/pengchujin/status/1536310680109735936)中。
+国内的随身 Wi-Fi 一般都是内置 eSIM 卡的，外形像一个 U 盘或充电宝，在设计上并没有提供多少可定制性，但由于其普及程度非常高，广大 DIY 爱好者早已将其研究通透。[@酱紫表](https://twitter.com/pengchujin) 分享过一篇 [4g 随身 Wi-Fi 刷 openwrt 变成软路由](https://qust.me/post/msm8916/) 教程，成本展示在这条[推文](https://twitter.com/pengchujin/status/1536310680109735936)中。
 
 > 其实在刷上 OpenWrt 后，随身 Wi-Fi 就等同于上文中 [Connect to the Internet via cellular](https://docs.gl-inet.com/en/4/tutorials/internet_cellular/) 模式下的  GL iNet，因此它同样可以看做无线便携路由器的特化版。
 
@@ -147,7 +147,7 @@ Netgear 的 [MR1100](https://www.netgear.com/home/mobile-wifi/hotspots/mr1100/) 
 
 在移动办公越来越广泛的今天，无论你是时常出差办公的技术工作者，还是四海为家的数字游民，无线便携路由器都是值得了解和尝试的产品。数据和隐私是无价的，当连接到公共 Wi-Fi 时，我们的设备便存在被攻击和窃取数据的风险，而通过无线便携路由器，我们可以在一个可控的局域网中管理设备、增加防护，获得更安全的办公环境和更高效的生产力。
 
-本文仅对一些无线便携路由器做了简单的列举，不涉及传输和加密性能的测评，由于我还没有实际使用过，因此无法对这些产品的好坏做出评价，读者将本文当做科普知识的分享即可。在未来我会补充一篇实际的产品使用体验，当然如果你使用过这一类产品，也欢迎在评论区或 Twitter 分享你的经验。
+本文仅对一些无线便携路由器做了简单的列举，不涉及传输和加密性能的测评，由于我还没有实际使用过，因此无法对这些产品的好坏做出评价，读者将本文当做科普知识的分享即可。在未来我会补充一篇实际的产品使用体验，如果你使用过这一类产品，欢迎在评论区或 Twitter 分享你的经验。
 
 [^1]: 见推文 https://twitter.com/novoreorx/status/1412406192845033473
 
