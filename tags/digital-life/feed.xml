@@ -1,4 +1,195 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>digital-life on Reorx’s Forge</title><link>https://reorx.com/tags/digital-life/</link><description>Recent content in digital-life on Reorx’s Forge</description><image><url>https://reorx.com/forge-v2-compat.svg</url><link>https://reorx.com/forge-v2-compat.svg</link></image><generator>Hugo -- gohugo.io</generator><lastBuildDate>Wed, 25 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://reorx.com/tags/digital-life/feed.xml" rel="self" type="application/rss+xml"/><item><title>使用自动化工作流聚合信息摄入和输出</title><link>https://reorx.com/blog/sharing-my-footprints-automation/</link><pubDate>Wed, 25 May 2022 00:00:00 +0000</pubDate><guid>https://reorx.com/blog/sharing-my-footprints-automation/</guid><description>展示我是如何用 n8n 将 Twitter, YouTube, GitHub, Douban 等服务的动态同步到 Telegram Channel，实现个人数字生活的信息聚合。</description><content:encoded><![CDATA[<p>欢迎关注我的 Telegram 频道: <a href="https://t.me/reorx_share">Reorx’s Footprints</a>。这篇文章讲述我为什么创建这个频道，以及如何用 n8n 将 Twitter, YouTube, GitHub, Douban 等服务的动态同步过去，实现个人数字生活的信息聚合。</p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>digital-life on Reorx’s Forge</title><link>https://reorx.com/tags/digital-life/</link><description>Recent content in digital-life on Reorx’s Forge</description><image><url>https://reorx.com/forge-v2-compat.svg</url><link>https://reorx.com/forge-v2-compat.svg</link></image><generator>Hugo -- gohugo.io</generator><lastBuildDate>Thu, 30 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://reorx.com/tags/digital-life/feed.xml" rel="self" type="application/rss+xml"/><item><title>种草无线便携路由器</title><link>https://reorx.com/blog/travel-routers/</link><pubDate>Thu, 30 Jun 2022 00:00:00 +0000</pubDate><guid>https://reorx.com/blog/travel-routers/</guid><description>介绍无线便携路由器 Travel Router 的功能和产品，并对比说明它与 Wi-Fi 信号放大器和随身 Wi-Fi 的差异。</description><content:encoded><![CDATA[<p>时间回到两个月前的某天，和好友 <a href="https://github.com/xwjdsh">@iwendellsun</a> 一起在咖啡馆工作时，他提出了一个问题：有没有一种路由器，它可以先连接一个已有的 Wi-Fi，再发射一个新的 Wi-Fi 供自己的设备连接？</p>
+<p>我立刻理解了这个诉求的来源。咖啡馆、图书馆等场所的公共 Wi-Fi 一般都有身份验证机制，连接超过一个设备就会感觉很不方便，更不用说每个设备都还要独立设置代理；如果多人在一起工作，联机调试很可能会遇到公共 Wi-Fi 的端口限制而无法成功。我们对这个需求讨论了一番，但两人都缺乏对这类产品的认识，便不了了之。</p>
+<p>最近在 Twitter 上看到 <a href="https://twitter.com/pengchujin">@酱紫表</a> 分享了一款产品，突然意识到这可能正是我们想要的东西:</p>
+<div class="tweet social-quote">
+  <div class="title">
+    <svg role="img" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><title>Twitter</title><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg>
+
+    
+  </div>
+
+  <blockquote class="twitter-tweet" data-dnt="true"><p lang="zh" dir="ltr">收到了一款非常有趣的产品— GL-AXT1800，我喜欢这款路由器的地方实在有点多：迷你的体积带出门很方便、高通 IPQ6000 的 CPU 性能足够强大、出厂自带 openwrt 和 uboot 真的方便、type c 电源口、支持 usb 3.0 还有 Wi-Fi 6、还自带 pwm 风扇。 <a href="https://t.co/5gAFEdiGkH">pic.twitter.com/5gAFEdiGkH</a></p>&mdash; 酱紫表 (@pengchujin) <a href="https://twitter.com/pengchujin/status/1542120681520844801?ref_src=twsrc%5Etfw">June 29, 2022</a></blockquote>
+
+</div>
+
+
+<p>虽然没有提及这款名为 <a href="https://www.gl-inet.com/products/gl-axt1800/">GL-AXT1800</a> 的路由器是否可以连接已有 Wi-Fi，但既然设计的这么小巧便携，应该是针对出门在外的应用场景吧？我如此寻思，注意到它在 GL iNet 的产品矩阵中属于 Travel Router 这一分类，于是顺着这个关键词进行了一番搜索，果然发现这类产品大都有着和我们的需求一致的应用场景。</p>
+<p>我随后去阅读了 GL iNet 的<a href="https://docs.gl-inet.com/en/4/user_guide/">官方使用手册</a>，弄清了 GL-AXT1800 所支持的四种连接互联网的模式：</p>
+<ul>
+<li>
+<p><a href="https://docs.gl-inet.com/en/4/tutorials/internet_ethernet">Connect to the Internet via an ethernet cable</a></p>
+<p>通过网线连接互联网。GL 的路由器都有一个 WAN 口，这种用法与通常的家用路由器一致，连接在光猫或已有路由器的后面。</p>
+</li>
+<li>
+<p><a href="https://docs.gl-inet.com/en/4/tutorials/internet_repeater">Connect to the Internet via an existing Wi-Fi</a></p>
+<p>通过已有 Wi-Fi 连接互联网。这就是本文一开始所提到的在咖啡馆中的使用场景，将公共 Wi-Fi 扩展成为相对安全可控的局域网。</p>
+</li>
+<li>
+<p><a href="https://docs.gl-inet.com/en/4/tutorials/internet_tethering">Connect to the Internet via usb tethering</a></p>
+<p>通过 USB 连接手机，使用手机的移动网络连接互联网。这种模式需要打开手机的热点功能，使用有线以降低传输损耗。</p>
+</li>
+<li>
+<p><a href="https://docs.gl-inet.com/en/4/tutorials/internet_cellular">Connect to the Internet via usb modem</a></p>
+<p>通过 USB 调制解调器连接互联网。这种模式将只能插在笔记本电脑上的传统的无线上网卡变成可供多人使用的 Wi-Fi。</p>
+</li>
+</ul>
+<p>这些模式基本可以定义出 Travel Router——无线便携路由器的主要功能，读者可思考自己的需求是否在其中，从而对无线便携路由器种草或拔草。</p>
+<h2 id="同类产品介绍">同类产品介绍</h2>
+<p>说完了什么是无线便携路由器，我们再来看看有哪些可供选择的同类产品。</p>
+<h3 id="单板机-diy">单板机 DIY</h3>
+<p>弄清楚产品功能之后，我发现自己家用作软路由<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> 的 <a href="https://www.friendlyelec.com/index.php?route=product/product&amp;product_id=282">NanoPi R2S</a> 是可以成为无线便携路由器的，只不过还需要对系统和配件进行一些 DIY 配置。</p>
+<p>一个未经雕琢的 R2S 长这样:</p>
+
+<figure class="center align-center">
+  <div class="image-size-control" style="max-width: 500px;">
+    <img loading="lazy" src="/blog/travel-routers/images/r2s.png" type="" alt=""  />
+  </div>
+
+  <figcaption><p>NanoPi R2S original</p></figcaption>
+</figure>
+
+<p>插上一个外置的无线扩展模块，它从结构上就与 GL-AXT1800 一般无二了:</p>
+
+<figure class="center align-center">
+  <div class="image-size-control" style="max-width: 500px;">
+    <img loading="lazy" src="/blog/travel-routers/images/r2s-2.png" type="" alt=""  />
+  </div>
+
+  <figcaption><p>NanoPi R2S with wireless adapter</p></figcaption>
+</figure>
+
+<p>实际上树莓派等其他 <a href="https://en.wikipedia.org/wiki/Single-board_computer">SBC</a> 也可以用同样的思路配置实现，不过我更喜欢 NanoPi 的外形和亲民的价格（去年好像涨价了），感兴趣的读者可以在淘宝认准 FriendlyElec 官方店购买。</p>
+<p>固件方面，使用 OpenWrt 或其发行版即可，通过 Wi-Fi 连接互联网是 OpenWrt 的基础功能之一，见文档 <a href="https://openwrt.org/docs/guide-user/network/wifi/relay_configuration">Wi-Fi extender / repeater / bridge configuration</a></p>
+<h3 id="硬件产品">硬件产品</h3>
+<p><a href="https://www.gl-inet.com/products/gl-axt1800/">GL-AXT1800</a> 即属于此类，在硬件层面已经高度集成，但固件、代理等还需用户自行配置。GL iNet 系产品的优点之一是其固件是基于 OpenWrt 开发的 <sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>，功能足够强大多样，省去了自己刷的麻烦。</p>
+<p>列举 GL iNet 的其他几款 Travel Router 如下:</p>
+<ul>
+<li>
+<p><a href="https://www.gl-inet.com/products/gl-mt300n-v2/">GL-MT300N-V2</a></p>
+<p>昵称 Mango 芒果，有着鲜明的颜色和与 R2S 近似的小巧外形。电源输入是 5V/2A，相比 GL-AXT1800 的 5V/4A 对充电头更加友好。</p>
+
+<figure class="center align-center">
+  <div class="image-size-control" style="max-width: 500px;">
+    <img loading="lazy" src="/blog/travel-routers/images/mango.png" type="" alt=""  />
+  </div>
+
+  <figcaption><p>GL-MT300N-V2, AKA Mango</p></figcaption>
+</figure>
+
+</li>
+<li>
+<p><a href="https://www.gl-inet.com/products/gl-ar300m/">GL-AR300M</a></p>
+<p>黑色并升级了 CPU 的 GL-MT300N-V2。</p>
+
+<figure class="center align-center">
+  <div class="image-size-control" style="max-width: 500px;">
+    <img loading="lazy" src="/blog/travel-routers/images/gl-ar300m.png" type="" alt=""  />
+  </div>
+
+  <figcaption><p>GL-AR300M</p></figcaption>
+</figure>
+
+</li>
+<li>
+<p><a href="https://www.gl-inet.com/products/gl-usb150/">GL-USB150</a></p>
+<p>无线上网卡的大小，可以直接插在 USB 上使用。</p>
+
+<figure class="center align-center">
+  <div class="image-size-control" style="max-width: 500px;">
+    <img loading="lazy" src="/blog/travel-routers/images/gl-usb150.png" type="" alt=""  />
+  </div>
+
+  <figcaption><p>GL-USB150</p></figcaption>
+</figure>
+
+</li>
+</ul>
+<p>其他品牌中，TP-Link 有一款 <a href="https://www.tp-link.com/us/home-networking/wifi-router/tl-wr902ac/">TL-WR902AC</a> 和 GL-MT300N-V2 类似，支持刷入 OpenWrt <sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>.</p>
+
+<figure class="center align-center">
+  <div class="image-size-control" style="max-width: 500px;">
+    <img loading="lazy" src="/blog/travel-routers/images/TL-WR902AC.png" type="" alt=""  />
+  </div>
+
+  <figcaption><p>TP-Link TL-WR902AC</p></figcaption>
+</figure>
+
+<h3 id="硬件产品--代理服务">硬件产品 + 代理服务</h3>
+<p>推友 <a href="https://twitter.com/BigEyeSmolMouth">@BigEyeSmolMouth</a>  向我分享了<a href="https://www.meihuavpn.com/">梅花VPN</a> <sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup>，使我得知有这类产品的存在。它们就像网易的 UU 加速器，在硬件上内置了自己的网络代理服务，实现了软硬件一体化的翻墙 Wi-Fi。</p>
+<p>在我看来，这种产品优缺点都很明显。优点是开箱即用，省事不折腾；缺点是可控性差，无法更换代理提供商，且商品的溢价较高，其硬件性能不会有多少剩余空间。从安全的角度考虑，这样一个黑盒设备也无法让人信任。</p>
+
+<figure class="center align-center">
+  <div class="image-size-control" style="max-width: 500px;">
+    <img loading="lazy" src="/blog/travel-routers/images/meihua.png" type="" alt=""  />
+  </div>
+
+  <figcaption><p>梅花M3家用版</p></figcaption>
+</figure>
+
+
+<figure class="center align-center">
+  <div class="image-size-control" style="max-width: 500px;">
+    <img loading="lazy" src="/blog/travel-routers/images/meihua-1.png" type="" alt=""  />
+  </div>
+
+  <figcaption><p>梅花M3便携版</p></figcaption>
+</figure>
+
+<blockquote>
+<p><a href="https://www.meihuavpn.com/collections/shop/products/11offer-h">官网</a>的 spec 中没有关于 CPU、固件、协议等信息的描述。</p>
+</blockquote>
+<h2 id="相似但不同的产品">相似但不同的产品</h2>
+<p>看过上文对无线便携路由器的介绍后，你是否有种似曾相识的感觉？没错，其实有一些与之类似但却不同的产品存在，平时没有用过也多少见过，这也是我在一开始未能准确把握自己想要什么产品的原因，它们都存在硬件或功能上的共性。下面我将针对两种可以明确定义出功能边界的设备进行阐述。</p>
+<h3 id="wi-fi-信号放大器">Wi-Fi 信号放大器</h3>
+<p>也有人将其称为「无线中继」，比较准确的英文名称应该是 Range Extender。这类产品的核心用途是接收已有 Wi-Fi 的信号，作为 <a href="https://en.wikipedia.org/wiki/Wireless_access_point">AP</a> 发射出相同的 SSID，以达到延长其信号范围的目的。一般用在家庭、办公室等空间较大、Wi-Fi 信号容易衰减的环境。</p>
+<p>它和无线便携路由器在接收 Wi-Fi 信号这件事情上使用了相同的技术 <a href="https://en.wikipedia.org/wiki/Wireless_distribution_system">WDS</a>，但一个是扩展已有的 LAN，一个是创建新的 LAN，用途的差异使两者最终呈现出不同的产品形态。可以把 Wi-Fi 信号放大器看做特化的无线便携路由器。</p>
+<p>TP-Link 有很多<a href="https://www.tp-link.com/hk/home-networking/range-extender/">此类产品</a>，它们的外形通常像耳朵长着天线的机器人🤖</p>
+
+<figure class="center align-center">
+  <div class="image-size-control" style="max-width: 500px;">
+    <img loading="lazy" src="/blog/travel-routers/images/TPLink-RE605X.png" type="" alt=""  />
+  </div>
+
+  <figcaption><p>TP-Link RE605X</p></figcaption>
+</figure>
+
+<h3 id="随身-wi-fi">随身 Wi-Fi</h3>
+<p>也叫「无线上网卡」，比较准确的英文名称应该是 Mobile Wi-Fi Router (or 4G Wi-Fi Router)。这类产品的目的是使用 3G/4G LTE 创建随时随地可供使用的 Wi-Fi。分为内置和插卡（SIM 卡）两种。</p>
+<p>国内的随身 Wi-Fi 一般都是内置的，像一个 U 盘或充电宝，在设计上并没有提供多少可定制性，但由于其普及程度非常高，广大 DIY 爱好者早已将其研究通透，<a href="https://twitter.com/pengchujin">@酱紫表</a> 分享过一篇 <a href="https://qust.me/post/msm8916/">4g 随身 Wi-Fi 刷 openwrt 变成软路由</a> 教程，成本展示在这条<a href="https://twitter.com/pengchujin/status/1536310680109735936">推文</a>中。</p>
+<blockquote>
+<p>其实在刷上 OpenWrt 后，随身 Wi-Fi 就等同于上文中 <a href="https://docs.gl-inet.com/en/4/tutorials/internet_cellular/">Connect to the Internet via cellular</a> 模式下的  GL iNet，因此它同样可以看做无线便携路由器的特化版。</p>
+</blockquote>
+<p>Netgear 的 <a href="https://www.netgear.com/home/mobile-wifi/hotspots/mr1100/">MR1100</a> 则是插卡的，黑色金属质地体现出服务器特有的神秘和冷酷，还有着让我无法抗拒的数据指示屏。</p>
+
+<figure class="center align-center">
+  <div class="image-size-control" style="max-width: 500px;">
+    <img loading="lazy" src="/blog/travel-routers/images/netgear.png" type="" alt=""  />
+  </div>
+
+  <figcaption><p>Netgear MR1100</p></figcaption>
+</figure>
+
+<h2 id="结语">结语</h2>
+<p>在移动办公越来越广泛的今天，无论你是时常出差办公的技术工作者，还是四海为家的数字游民，无线便携路由器都是值得了解和尝试的产品。数据和隐私是无价的，当连接到公共 Wi-Fi 时，我们的设备便存在被攻击和窃取数据的风险，而通过无线便携路由器，我们可以在一个可控的局域网中管理设备、增加防护，获得更安全的办公环境和更高效的生产力。</p>
+<p>本文仅对一些无线便携路由器做了简单的列举，不涉及传输和加密性能的测评，由于我还没有实际使用过，因此无法对这些产品的好坏做出评价，读者将本文当做科普知识的分享即可。在未来我会补充一篇实际的产品使用体验，当然如果你使用过这一类产品，也欢迎在评论区或 Twitter 分享你的经验。</p>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p>见推文 <a href="https://twitter.com/novoreorx/status/1412406192845033473">https://twitter.com/novoreorx/status/1412406192845033473</a>&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2" role="doc-endnote">
+<p>见 GitHub 项目页 <a href="https://github.com/gl-inet/openwrt">https://github.com/gl-inet/openwrt</a>&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3" role="doc-endnote">
+<p>见 OpenWrt 官网的硬件支持页面: <a href="https://openwrt.org/toh/tp-link/tl-wr902ac_v3">https://openwrt.org/toh/tp-link/tl-wr902ac_v3</a>&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:4" role="doc-endnote">
+<p>见推文 <a href="https://twitter.com/BigEyeSmolMouth/status/1542379014970417153">https://twitter.com/BigEyeSmolMouth/status/1542379014970417153</a>&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
+]]></content:encoded></item><item><title>使用自动化工作流聚合信息摄入和输出</title><link>https://reorx.com/blog/sharing-my-footprints-automation/</link><pubDate>Wed, 25 May 2022 00:00:00 +0000</pubDate><guid>https://reorx.com/blog/sharing-my-footprints-automation/</guid><description>展示我是如何用 n8n 将 Twitter, YouTube, GitHub, Douban 等服务的动态同步到 Telegram Channel，实现个人数字生活的信息聚合。</description><content:encoded><![CDATA[<p>欢迎关注我的 Telegram 频道: <a href="https://t.me/reorx_share">Reorx’s Footprints</a>。这篇文章讲述我为什么创建这个频道，以及如何用 n8n 将 Twitter, YouTube, GitHub, Douban 等服务的动态同步过去，实现个人数字生活的信息聚合。</p>
 <h2 id="前言">前言</h2>
 <p><a href="https://en.wikipedia.org/wiki/Cyberspace">赛博空间</a>构成了我的精神世界。</p>
 <p>我的大脑从苏醒的那一刻开始渴求信息，大量新鲜的信息，它们比饮用水更早地进入我的身体。每天睁开眼睛，我做的第一件事情是拿起手机，逐个查看昨夜的消息提醒。起床之后，我会在马桶上浏览 RSS 阅读器和 Telegram 频道中的新闻，让思维复苏的过程伴随新知识的冲击。我已经习惯了如此，一边加载昨日的进展并思考今日的安排，一边点开链接，使用不同的工具进行阅读、收藏和记录。</p>
