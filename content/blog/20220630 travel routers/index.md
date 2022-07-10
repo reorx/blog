@@ -35,6 +35,8 @@ socialLinks:
 -   [Connect to the Internet via an existing Wi-Fi](https://docs.gl-inet.com/en/4/tutorials/internet_repeater)
   
     通过已有 Wi-Fi 连接互联网。这就是本文一开始所提到的在咖啡馆中的使用场景，将公共 Wi-Fi 扩展成为相对安全可控的局域网。
+    
+    一些公共 Wi-Fi 要求对手机号/身份证等进行验证方可连接互联网，使用无线便携路由器是否会影响验证流程呢？我初步判断是不会，这种验证发生在连接 Wi-Fi 时的密码验证之后，此时无线便携路由器已完成了连接已有 Wi-Fi 并创建新的局域网的工作，假设公共 Wi-Fi 的 IP 是 192.168.1.1，无线便携路由器是 192.168.50.1，我们访问互联网触发的对 192.168.1.1 验证界面的访问是完全没有问题的，类似在家庭双层 NAT 环境下访问光猫的管理界面，DHCP 会处理好不同网段 IP 的访问关系。
 -   [Connect to the Internet via usb tethering](https://docs.gl-inet.com/en/4/tutorials/internet_tethering)
   
     通过 USB-A 口连接手机，使用手机的移动网络连接互联网。这种模式需要打开手机的热点功能，使用有线以降低传输损耗。
@@ -64,7 +66,9 @@ socialLinks:
 ![](images/r2s-2.png)
 {{</figure-img-size>}}
 
-> 不过这样使用也有局限，由于 R2S 只有一个 USB-A 口，当扩展为 Wi-Fi 天线后，就无法实现上文提到的 USB tethering/modem 模式了。
+> Note 1: 不过这样使用也有局限，由于 R2S 只有一个 USB-A 口，当扩展为 Wi-Fi 天线后，就无法实现上文提到的 USB tethering/modem 模式了。
+> 
+> Note 2: 据推友 [@q1ngyang](https://twitter.com/q1ngyang) 告知 [^5]，R2S 网卡方案有点麻烦，固件大多用不了无线网卡或无法驱动 AC，因此 R2S 不见得是最好的选择，若要使用 SBC 进行 DIY，还请读者在多方考察后慎重行事。
 
 实际上树莓派等其他 [SBC](https://en.wikipedia.org/wiki/Single-board_computer) 也可以用同样的思路配置实现，不过我更喜欢 NanoPi 的外形和亲民的价格（去年好像涨价了），感兴趣的读者可以在淘宝认准 FriendlyElec 官方店购买。
 
@@ -159,6 +163,8 @@ Netgear 的 [MR1100](https://www.netgear.com/home/mobile-wifi/hotspots/mr1100/) 
 ## Revision
 - 2022-06-30: created
 - 2022-07-02: add GL-E750
+- 2022-07-09: update R2S notes
+- 2022-07-10: 添加关于「使用无线便携路由器是否会影响公共 Wi-Fi 手机号验证流程」的描述
 
 [^1]: 见推文 https://twitter.com/novoreorx/status/1412406192845033473
 
@@ -167,3 +173,5 @@ Netgear 的 [MR1100](https://www.netgear.com/home/mobile-wifi/hotspots/mr1100/) 
 [^3]: 见 OpenWrt 官网的硬件支持页面: https://openwrt.org/toh/tp-link/tl-wr902ac_v3
 
 [^4]: 见推文 https://twitter.com/BigEyeSmolMouth/status/1542379014970417153
+
+[^5]: 见推文 https://twitter.com/q1ngyang/status/1543116478987190275
