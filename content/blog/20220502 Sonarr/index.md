@@ -67,7 +67,7 @@ Download Station RSS 虽然解决了基本的温饱问题，但与真正的自�
 ### Sonarr
 
  > Sonarr is a PVR (Personal Video Recorder) for Usenet and BitTorrent users. It can monitor multiple RSS feeds for new episodes of your favorite shows and will grab, sort and rename them.
-
+ 
 [Sonarr](https://wiki.servarr.com/sonarr) 是一个 PVR 系统，它可以监控多种信息源的剧集发布信息，对剧集进行自动下载、刮削和重命名。
 
 Sonarr 是 Sick Beard 的继任者，Sick Beard 基于 Python 开发，曾经是最著名的 PVR 系统，但后来逐渐式微，后续虽然有 Sick Gear 等 fork，但最终都没能满足人们日益增长的看片需求，最后被一群 C# 爱好者们开发出 Sonarr 给替代了。经过多年发展，Sonarr 的软件质量趋于成熟和稳定，成为构架自动化的家庭多媒体中心不可缺少的组件。
@@ -148,7 +148,7 @@ harrogath *         moby
 - [linuxserver/qbittorrent - Docker Image | Docker Hub](https://hub.docker.com/r/linuxserver/qbittorrent)
 - [flaresolverr/flaresolverr - Docker Image | Docker Hub](https://hub.docker.com/r/flaresolverr/flaresolverr)
 
-#### Hierarchy
+#### Hierarchy 
 
 Sonarr 和它的朋友们需要对 NAS 的存储进行读写，因此在运行服务之前，首先要理解并设计一个好用的目录结构。
 
@@ -304,10 +304,10 @@ docker compose up -d
     - qBittorrent 配置展示。Host 最好填写 IP，使用 hostname 可能会失败。
         ![](images/sonarr-qbittorrent.png)
 3. Profiles
-
+  
     默认只有 English，需要添加一个中文的 Profile 以在添加番剧时设定语言。![](images/sonarr-profile.png)
 4. Media Management
-
+  
    这个设置关系到下载的文件能否被 Plex 或其他 media server 识别，但别被眼花缭乱的设置项吓到， 我们只需要关心下图红框圈起的部分。
     ![](images/sonarr-mediamanagement.png)
     - 首先打开 Rename Episodes 功能
@@ -316,11 +316,12 @@ docker compose up -d
     - Optional: 文件重命名时，Sonarr 默认采取移动策略，这样会导致 BT 下载器无法继续对资源做种，为了避免这种情况，在 Media Management 页面打开 Advanced Settings，找到并打开 "Use Hardlinks instead of Copy"，这样既保留了下载资源的原始路径，又不会额外占用硬盘空间。
 
 5. Connect
-
+  
     实现自动化追剧的目的是为了不需要人工检查剧集的更新情况，因此通知是必不可少的。Connect 可以连接许多通知服务，让你第一时间知道剧集何时上线，资源何时发布，何时完成下载、可以观看。下面说明如何对接 Telegram 获取通知信息。
     - 在 Telegram 搜索机器人 `@BotFather`，按照提示创建一个新的机器人，获取 API Token。我的机器人名为 `@reorx_notify_bot`。 ![](images/sonarr-telegram-2.png)
     - 创建一个群组，将 bot 加入到群组中，请求接口 `https://api.telegram.org/bot<TOKEN>/getUpdates`, 取出返回结果中的 `result[0].channel_post.chat.id` 作为 chat id
         > 方法来自 [How to obtain Telegram chat_id for a specific user?](https://stackoverflow.com/a/61215414/596206)
+        - 2022-08-11 updated: 也可以通过将 `@getidsbot` 邀请到群组中来获得 chat id，这个方法更加简单便捷
 
     - 在 Sonarr 中添加 Telegram connection，勾选自己关心的通知类型，一般至少会选择 On Download，代表新剧集下载完成的时间。
         ![](images/sonarr-telegram.png)
@@ -412,3 +413,4 @@ Sonarr 和它的朋友们还有许多功能，本篇旨在引导用户完成最�
 - 2022-04-19: created with "使用 QNAP Download Station"
 - 2022-05-02: added "使用 Sonarr 和它的朋友们", finished "部署说明"
 - 2022-05-04: finished "使用说明" and the whole article
+- 2022-08-11: added using `@getidsbot` to find Chat ID in Telegram
