@@ -66,6 +66,12 @@ socialLinks:
         - [我是张万里的个人空间_哔哩哔哩_bilibili](https://space.bilibili.com/20667846)
     - Products
         - [叶子书摘](https://yezishuzhai.com/)
+- Hawstein
+    - Experiences
+        - [不上班的 613 天](https://hawstein.com/2020/02/17/be-an-indie-hacker-for-613-days/)
+        - [Indie Hacker 笔记](https://hawstein.com/2020/01/08/indie-hacker-notes-issue-14/)
+    - Products
+        - [AlgoCasts 简明、轻松、易懂的算法教学视频](https://algocasts.io/)
 
 ## EN
 
@@ -149,6 +155,10 @@ socialLinks:
 - [Indie Hackers: Work Together to Build Profitable Online Businesses](https://www.indiehackers.com/)
 - [独立 | 中国独立 iOS 和 macOS 开发者图鉴](https://josephchang10.github.io/chinese-indie-hackers/)
 - [MicroAcquire, the #1 Startup Acquisition Marketplace](https://microacquire.com/)
+
+## Revision
+- 2022-05-22: created
+- 2022-08-11: added Hawstein in ZH
 
 
 [^1]: 本文列举的独立开发者都分享过自己的经历，这是对我来讲特别重要的一点，但并不是只有分享经历的独立开发者才值得关注。每个独立开发者都是人间宝藏。
