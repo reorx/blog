@@ -23,6 +23,7 @@
 <li>
 <p><a href="https://docs.gl-inet.com/en/4/tutorials/internet_repeater">Connect to the Internet via an existing Wi-Fi</a></p>
 <p>通过已有 Wi-Fi 连接互联网。这就是本文一开始所提到的在咖啡馆中的使用场景，将公共 Wi-Fi 扩展成为相对安全可控的局域网。</p>
+<p>一些公共 Wi-Fi 要求对手机号/身份证等进行验证方可连接互联网，使用无线便携路由器是否会影响验证流程呢？我初步判断是不会，这种验证发生在连接 Wi-Fi 时的密码验证之后，此时无线便携路由器已完成了连接已有 Wi-Fi 并创建新的局域网的工作，假设公共 Wi-Fi 的 IP 是 192.168.1.1，无线便携路由器是 192.168.50.1，我们访问互联网触发的对 192.168.1.1 验证界面的访问是完全没有问题的，类似在家庭双层 NAT 环境下访问光猫的管理界面，DHCP 会处理好不同网段 IP 的访问关系。</p>
 </li>
 <li>
 <p><a href="https://docs.gl-inet.com/en/4/tutorials/internet_tethering">Connect to the Internet via usb tethering</a></p>
@@ -59,12 +60,13 @@
 </figure>
 
 <blockquote>
-<p>不过这样使用也有局限，由于 R2S 只有一个 USB-A 口，当扩展为 Wi-Fi 天线后，就无法实现上文提到的 USB tethering/modem 模式了。</p>
+<p>Note 1: 不过这样使用也有局限，由于 R2S 只有一个 USB-A 口，当扩展为 Wi-Fi 天线后，就无法实现上文提到的 USB tethering/modem 模式了。</p>
+<p>Note 2: 据推友 <a href="https://twitter.com/q1ngyang">@q1ngyang</a> 告知 <sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>，R2S 网卡方案有点麻烦，固件大多用不了无线网卡或无法驱动 AC，因此 R2S 不见得是最好的选择，若要使用 SBC 进行 DIY，还请读者在多方考察后慎重行事。</p>
 </blockquote>
 <p>实际上树莓派等其他 <a href="https://en.wikipedia.org/wiki/Single-board_computer">SBC</a> 也可以用同样的思路配置实现，不过我更喜欢 NanoPi 的外形和亲民的价格（去年好像涨价了），感兴趣的读者可以在淘宝认准 FriendlyElec 官方店购买。</p>
 <p>固件方面，使用 OpenWrt 或其发行版即可，通过 Wi-Fi 连接互联网是 OpenWrt 的基础功能之一，官方文档对此有着非常详细的说明: <a href="https://openwrt.org/docs/guide-user/network/wifi/relay_configuration">Wi-Fi extender / repeater / bridge configuration</a>.</p>
 <h3 id="纯硬件产品">纯硬件产品</h3>
-<p><a href="https://www.gl-inet.com/products/gl-axt1800/">GL-AXT1800</a> 即属于此类，在硬件层面已经高度集成和完善，但固件、代理等还需用户自行配置。GL.iNet 系产品的优点之一是自带基于 OpenWrt 开发的固件 <sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>，功能足够强大，省去了自己刷的麻烦。</p>
+<p><a href="https://www.gl-inet.com/products/gl-axt1800/">GL-AXT1800</a> 即属于此类，在硬件层面已经高度集成和完善，但固件、代理等还需用户自行配置。GL.iNet 系产品的优点之一是自带基于 OpenWrt 开发的固件 <sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>，功能足够强大，省去了自己刷的麻烦。</p>
 <p>下面列举 GL.iNet 的其他几款 Travel Routers:</p>
 <ul>
 <li>
@@ -107,7 +109,7 @@
 
 </li>
 </ul>
-<p>其他品牌中，TP-Link 有一款 <a href="https://www.tp-link.com/us/home-networking/wifi-router/tl-wr902ac/">TL-WR902AC</a> 和 GL-MT300N-V2 类似，支持刷入 OpenWrt <sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>.</p>
+<p>其他品牌中，TP-Link 有一款 <a href="https://www.tp-link.com/us/home-networking/wifi-router/tl-wr902ac/">TL-WR902AC</a> 和 GL-MT300N-V2 类似，支持刷入 OpenWrt <sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup>.</p>
 
 <figure class="center align-center">
   <div class="image-size-control" style="max-width: 500px;">
@@ -118,7 +120,7 @@
 </figure>
 
 <h3 id="硬件--服务">硬件 + 服务</h3>
-<p>推友 <a href="https://twitter.com/BigEyeSmolMouth">@BigEyeSmolMouth</a>  向我分享了<a href="https://www.meihuavpn.com/">梅花VPN</a> <sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup>，使我得知有这类产品的存在。它们就像网易的 UU 加速盒，在硬件上内置了自己的网络代理服务，实现成软硬一体化的翻墙 Wi-Fi。</p>
+<p>推友 <a href="https://twitter.com/BigEyeSmolMouth">@BigEyeSmolMouth</a>  向我分享了<a href="https://www.meihuavpn.com/">梅花VPN</a> <sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup>，使我得知有这类产品的存在。它们就像网易的 UU 加速盒，在硬件上内置了自己的网络代理服务，实现成软硬一体化的翻墙 Wi-Fi。</p>
 <p>在我看来，这种产品优缺点都很明显。优点是开箱即用，省事不折腾；缺点是可控性差，无法更换代理提供商，且商品的溢价较高，其硬件性能不会有多少剩余空间。从安全的角度考虑，这样一个黑盒设备也无法让人信任。</p>
 
 <figure class="center align-center">
@@ -189,6 +191,8 @@
 <ul>
 <li>2022-06-30: created</li>
 <li>2022-07-02: add GL-E750</li>
+<li>2022-07-09: update R2S notes</li>
+<li>2022-07-10: 添加关于「使用无线便携路由器是否会影响公共 Wi-Fi 手机号验证流程」的描述</li>
 </ul>
 <section class="footnotes" role="doc-endnotes">
 <hr>
@@ -197,13 +201,16 @@
 <p>见推文 <a href="https://twitter.com/novoreorx/status/1412406192845033473">https://twitter.com/novoreorx/status/1412406192845033473</a>&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:2" role="doc-endnote">
-<p>见 GitHub 项目页 <a href="https://github.com/gl-inet/openwrt">https://github.com/gl-inet/openwrt</a>&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>见推文 <a href="https://twitter.com/q1ngyang/status/1543116478987190275">https://twitter.com/q1ngyang/status/1543116478987190275</a>&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:3" role="doc-endnote">
-<p>见 OpenWrt 官网的硬件支持页面: <a href="https://openwrt.org/toh/tp-link/tl-wr902ac_v3">https://openwrt.org/toh/tp-link/tl-wr902ac_v3</a>&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>见 GitHub 项目页 <a href="https://github.com/gl-inet/openwrt">https://github.com/gl-inet/openwrt</a>&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:4" role="doc-endnote">
-<p>见推文 <a href="https://twitter.com/BigEyeSmolMouth/status/1542379014970417153">https://twitter.com/BigEyeSmolMouth/status/1542379014970417153</a>&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>见 OpenWrt 官网的硬件支持页面: <a href="https://openwrt.org/toh/tp-link/tl-wr902ac_v3">https://openwrt.org/toh/tp-link/tl-wr902ac_v3</a>&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:5" role="doc-endnote">
+<p>见推文 <a href="https://twitter.com/BigEyeSmolMouth/status/1542379014970417153">https://twitter.com/BigEyeSmolMouth/status/1542379014970417153</a>&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
 </section>
@@ -811,6 +818,9 @@ docker context update harrogath --docker <span class="s2">&#34;host=tcp://harrog
 <blockquote>
 <p>方法来自 <a href="https://stackoverflow.com/a/61215414/596206">How to obtain Telegram chat_id for a specific user?</a></p>
 </blockquote>
+<ul>
+<li>2022-08-11 updated: 也可以通过将 <code>@getidsbot</code> 邀请到群组中来获得 chat id，这个方法更加简单便捷</li>
+</ul>
 </li>
 <li>
 <p>在 Sonarr 中添加 Telegram connection，勾选自己关心的通知类型，一般至少会选择 On Download，代表新剧集下载完成的时间。
@@ -869,9 +879,14 @@ Readarr 是电子书的追踪和下载器。我看书不多，偶尔需要看的
 </ul>
 <h3 id="lunasea">LunaSea</h3>
 <p><a href="https://www.lunasea.app/">LunaSea</a> 是一个 Sonarr 和 Usenet 生态圈的远程控制器，能让你在手机上查看 Sonarr / Radarr / Lidarr 的资源和放送时间表。</p>
-<div class="image-size-control" style="max-height: 600px;">
-  <img loading="lazy" src="/blog/track-and-download-shows-automatically-with-sonarr/images/lunasea.jpeg" type="" alt=""  />
-</div>
+
+<figure class="center align-center">
+  <div class="image-size-control" style="height: 600px;">
+    <img loading="lazy" src="/blog/track-and-download-shows-automatically-with-sonarr/images/lunasea.jpeg" type="" alt=""  />
+  </div>
+
+  <figcaption><p>LunaSea iOS app screenshot</p></figcaption>
+</figure>
 
 <h3 id="seedboxio">Seedbox.io</h3>
 <p>在得知我最近的折腾经过后，我的好朋友 <a href="https://wzyboy.im/">wzyboy</a> 向我科普了一种名为 <a href="https://en.wikipedia.org/wiki/Seedbox">Seedbox</a> 的 hosted service，提供开箱即用的 BT 下载和家庭媒体服务器，并能带来以下几点好处：</p>
@@ -895,5 +910,6 @@ Readarr 是电子书的追踪和下载器。我看书不多，偶尔需要看的
 <li>2022-04-19: created with &ldquo;使用 QNAP Download Station&rdquo;</li>
 <li>2022-05-02: added &ldquo;使用 Sonarr 和它的朋友们&rdquo;, finished &ldquo;部署说明&rdquo;</li>
 <li>2022-05-04: finished &ldquo;使用说明&rdquo; and the whole article</li>
+<li>2022-08-11: added using <code>@getidsbot</code> to find Chat ID in Telegram</li>
 </ul>
 ]]></content:encoded></item></channel></rss>

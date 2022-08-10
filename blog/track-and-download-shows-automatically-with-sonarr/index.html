@@ -26,7 +26,7 @@
 <meta property="article:published_time" content="2022-05-02T00:00:00+00:00">
 <meta property="article:modified_time" content="2022-05-02T00:00:00+00:00">
 <script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Blogs","item":"https://reorx.com/blog/"},{"@type":"ListItem","position":2,"name":"使用 Sonarr 搭建自动化追番系统","item":"https://reorx.com/blog/track-and-download-shows-automatically-with-sonarr/"}]}</script>
-<script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"使用 Sonarr 搭建自动化追番系统 | Reorx’s Forge","name":"使用 Sonarr 搭建自动化追番系统","description":"A complete guide to deploy and configure Sonarr + Jackett + FlareSolverr + qBittorrent to track and download anime shows automatically.","keywords":["digital-life","nas","sonarr"],"wordCount":"6348","inLanguage":"en","image":"https://reorx.com/blog/track-and-download-shows-automatically-with-sonarr/images/sonarr-diagram.png","datePublished":"2022-05-02T00:00:00Z","dateModified":"2022-05-02T00:00:00Z","author":{"@type":"Person","name":"Reorx"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://reorx.com/blog/track-and-download-shows-automatically-with-sonarr/"},"publisher":{"@type":"Organization","name":"Reorx’s Forge","logo":{"@type":"ImageObject","url":"https://reorx.com/favicon.ico"}}}</script>
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"使用 Sonarr 搭建自动化追番系统 | Reorx’s Forge","name":"使用 Sonarr 搭建自动化追番系统","description":"A complete guide to deploy and configure Sonarr + Jackett + FlareSolverr + qBittorrent to track and download anime shows automatically.","keywords":["digital-life","nas","sonarr"],"wordCount":"6394","inLanguage":"en","image":"https://reorx.com/blog/track-and-download-shows-automatically-with-sonarr/images/sonarr-diagram.png","datePublished":"2022-05-02T00:00:00Z","dateModified":"2022-05-02T00:00:00Z","author":{"@type":"Person","name":"Reorx"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://reorx.com/blog/track-and-download-shows-automatically-with-sonarr/"},"publisher":{"@type":"Organization","name":"Reorx’s Forge","logo":{"@type":"ImageObject","url":"https://reorx.com/favicon.ico"}}}</script>
 <noscript>
 <style>#theme-toggle,.top-link{display:none}</style>
 <style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary-bg:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51)}.list{background:var(--theme)}.list:not(.dark)::-webkit-scrollbar-track{background:0 0}.list:not(.dark)::-webkit-scrollbar-thumb{border-color:var(--theme)}}</style>
@@ -72,7 +72,7 @@ A complete guide to deploy and configure Sonarr + Jackett + FlareSolverr + qBitt
 <div class=post-meta><span class=meta-item><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar" style="user-select:text"><rect x="3" y="4" width="18" height="18" rx="2" ry="2" style="user-select:text"/><line x1="16" y1="2" x2="16" y2="6" style="user-select:text"/><line x1="8" y1="2" x2="8" y2="6" style="user-select:text"/><line x1="3" y1="10" x2="21" y2="10" style="user-select:text"/></svg>
 <span>2022-05-02</span></span><span class=meta-item><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon" style="user-select:text"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83.0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z" style="user-select:text"/><line x1="7" y1="7" x2="7" y2="7" style="user-select:text"/></svg>
 <span class=post-tags><a href=https://reorx.com/tags/digital-life/>digital-life</a><a href=https://reorx.com/tags/nas/>nas</a><a href=https://reorx.com/tags/sonarr/>sonarr</a></span></span><span class=meta-item><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text" style="user-select:text"><path d="M14 2H6A2 2 0 004 4v16a2 2 0 002 2h12a2 2 0 002-2V8z" style="user-select:text"/><polyline points="14 2 14 8 20 8" style="user-select:text"/><line x1="16" y1="13" x2="8" y2="13" style="user-select:text"/><line x1="16" y1="17" x2="8" y2="17" style="user-select:text"/><polyline points="10 9 9 9 8 9" style="user-select:text"/></svg>
-<span>6348 words</span></span><span class=meta-item><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke="currentcolor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
+<span>6394 words</span></span><span class=meta-item><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke="currentcolor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
 <span>13 min</span></span>
 </div>
 </header>
@@ -423,6 +423,9 @@ docker context update harrogath --docker <span class=s2>&#34;host=tcp://harrogat
 <blockquote>
 <p>方法来自 <a href=https://stackoverflow.com/a/61215414/596206>How to obtain Telegram chat_id for a specific user?</a></p>
 </blockquote>
+<ul>
+<li>2022-08-11 updated: 也可以通过将 <code>@getidsbot</code> 邀请到群组中来获得 chat id，这个方法更加简单便捷</li>
+</ul>
 </li>
 <li>
 <p>在 Sonarr 中添加 Telegram connection，勾选自己关心的通知类型，一般至少会选择 On Download，代表新剧集下载完成的时间。
@@ -481,9 +484,12 @@ Readarr 是电子书的追踪和下载器。我看书不多，偶尔需要看的
 </ul>
 <h3 id=lunasea>LunaSea<a hidden class=anchor aria-hidden=true href=#lunasea>¶</a></h3>
 <p><a href=https://www.lunasea.app/>LunaSea</a> 是一个 Sonarr 和 Usenet 生态圈的远程控制器，能让你在手机上查看 Sonarr / Radarr / Lidarr 的资源和放送时间表。</p>
-<div class=image-size-control style=max-height:600px>
+<figure class="center align-center">
+<div class=image-size-control style=height:600px>
 <img loading=lazy src=/blog/track-and-download-shows-automatically-with-sonarr/images/lunasea.jpeg type alt>
 </div>
+<figcaption><p>LunaSea iOS app screenshot</p></figcaption>
+</figure>
 <h3 id=seedboxio>Seedbox.io<a hidden class=anchor aria-hidden=true href=#seedboxio>¶</a></h3>
 <p>在得知我最近的折腾经过后，我的好朋友 <a href=https://wzyboy.im/>wzyboy</a> 向我科普了一种名为 <a href=https://en.wikipedia.org/wiki/Seedbox>Seedbox</a> 的 hosted service，提供开箱即用的 BT 下载和家庭媒体服务器，并能带来以下几点好处：</p>
 <ul>
@@ -506,6 +512,7 @@ Readarr 是电子书的追踪和下载器。我看书不多，偶尔需要看的
 <li>2022-04-19: created with &ldquo;使用 QNAP Download Station&rdquo;</li>
 <li>2022-05-02: added &ldquo;使用 Sonarr 和它的朋友们&rdquo;, finished &ldquo;部署说明&rdquo;</li>
 <li>2022-05-04: finished &ldquo;使用说明&rdquo; and the whole article</li>
+<li>2022-08-11: added using <code>@getidsbot</code> to find Chat ID in Telegram</li>
 </ul>
 </div>
 <footer class=post-footer><div class=social-links>
