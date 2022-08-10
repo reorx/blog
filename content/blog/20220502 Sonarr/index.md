@@ -384,9 +384,10 @@ docker compose up -d
 
 [LunaSea](https://www.lunasea.app/) 是一个 Sonarr 和 Usenet 生态圈的远程控制器，能让你在手机上查看 Sonarr / Radarr / Lidarr 的资源和放送时间表。
 
-{{<image-size-control height="600px" >}}
+{{<figure-img-size "LunaSea iOS app screenshot" "" "600px" >}}
 ![](images/lunasea.jpeg)
-{{</image-size-control>}}
+{{</figure-img-size>}}
+
 ### Seedbox.io
 
 在得知我最近的折腾经过后，我的好朋友 [wzyboy](https://wzyboy.im/) 向我科普了一种名为 [Seedbox](https://en.wikipedia.org/wiki/Seedbox) 的 hosted service，提供开箱即用的 BT 下载和家庭媒体服务器，并能带来以下几点好处：
