@@ -365,6 +365,11 @@ WEBHOOK_URL=http://harrogath-local.com:5678/
 <p>随后是 Twitter node，它通过 OAuth 连接了我的账户，使用 <code>from:novoreorx</code> 搜索语法来获取我最近的推文条目。</p>
 <p>IF reply to other 是一个 IF node，通过条目中的 <code>in_reply_to_screen_name</code> 字段判断推文是否是对别人的回复，只有否才可以走向下一步。意味着只有单独创建或回复自己的推文才会被转发。</p>
 <p>Set Retweeted node 根据条目中的 <code>retweeted_status</code> 字段，识别 retweet 条目，并将原推的 URL 拼凑出来，赋值给新的字段 <code>retweeted</code> 和 <code>retweetedUrl</code>，以便后续使用。</p>
+<blockquote>
+<p><strong>2022-08-12 updated:</strong></p>
+<p>Set Retweeted node 在后续的维护中打开了 &ldquo;Keep Only Set&rdquo; 选项，只保留其中所定义的字段，实际作用已经与名称不符，称为 &ldquo;Set properties&rdquo; 更准确一些。</p>
+<p>新增了 <code>proxyUrl</code> 字段，使用 <a href="https://github.com/dylanpdx/BetterTwitFix">vxTwitter</a> 服务的域名 <code>vxtwitter.com</code> 替代 <code>twitter.com</code>，以在 Telegram 中有更好的预览效果</p>
+</blockquote>
 <p>Function 是我写的一段 JavaScript 代码，它使用了 n8n runtime 内置的 <a href="https://docs.n8n.io/integrations/core-nodes/n8n-nodes-base.function/#method-getworkflowstaticdatatype">getWorkflowStaticData</a> 函数，记录每次更新的第一个条目 <code>lastItemId</code>，通过与上一次的记录进行对比，确保只有新的条目会被输送到下一个 node 执行。如果没有 <code>lastItemId</code>，则只返回第一个条目，避免冷启动时造成大量信息的无效转发。这段代码基本在每个 workflow 中都有用到，下面将不再赘述。</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="cm">/* only return new items */</span>
 <span class="kr">const</span> <span class="nx">staticData</span> <span class="o">=</span> <span class="nx">getWorkflowStaticData</span><span class="p">(</span><span class="s1">&#39;global&#39;</span><span class="p">);</span>
@@ -397,7 +402,7 @@ WEBHOOK_URL=http://harrogath-local.com:5678/
 <p>n8n 的表达式 (Expression) 有一个可以预览的编辑界面，左侧会展示当前 node 从上一个 node 获取到的输入数据 (Input Data)，点击即可将模板变量插入到 Expression 中。模板语法 <code>{{ }}</code> 中可以使用 JavaScript 语法，这里我通过 <code>$json[&quot;retweeted&quot;]</code> 来决定 tag 为 <code>#retweet</code> 还是 <code>#tweet</code>。推文 URL 放在了 <code>&lt;a&gt;</code> 标签中，既可以触发 Telegram 的 link preview 功能，也避免展示太长的 URL 影响可读性。</p>
 <blockquote>
 <p><strong>2022-08-12 updated:</strong></p>
-<p>Twitter 的 search API 默认会将长推文截断，只有加了 <code>tweet_mode=extended</code> 参数才能确保显示全文，不过推文内容字段会从 <code>tweet</code> 变为 <code>full_text</code>。按下图所示添加参数后，请在 &ldquo;Set Retweeted&rdquo; 节点中修改字段映射 <code>text</code> → <code>tweet</code> 为 <code>full_text</code> → <code>tweet</code>。
+<p>Twitter 的 search API 默认会将长推文截断，只有加了 <code>tweet_mode=extended</code> 参数才能确保显示全文，不过推文内容字段会从 <code>tweet</code> 变为 <code>full_text</code>。按下图所示添加参数后，请在 &ldquo;Set Retweeted&rdquo; node 中修改字段映射 <code>text</code> → <code>tweet</code> 为 <code>full_text</code> → <code>tweet</code>。
 <img loading="lazy" src="/blog/sharing-my-footprints-automation/images/tweet-mode-extended.png" type="" alt=""  /></p>
 </blockquote>
 <h4 id="blog-rss-to-telegram">Blog RSS to telegram</h4>
@@ -529,7 +534,12 @@ WEBHOOK_URL=http://harrogath-local.com:5678/
 <li>2022-05-26: created</li>
 <li>2022-05-27: published</li>
 <li>2022-05-28: fixed &ldquo;Function&rdquo; node script items order by adding <code>.reverse()</code> to return items</li>
-<li>2022-08-12: added notes about using <code>tweet_mode=extended</code> to avoid tweet text truncation</li>
+<li>2022-08-12:
+<ul>
+<li>added notes about using <code>tweet_mode=extended</code> to avoid tweet text truncation</li>
+<li>added notes about vxTwitter proxy url</li>
+</ul>
+</li>
 </ul>
 <section class="footnotes" role="doc-endnotes">
 <hr>
