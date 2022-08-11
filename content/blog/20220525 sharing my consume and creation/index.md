@@ -178,6 +178,12 @@ IF reply to other 是一个 IF node，通过条目中的 `in_reply_to_screen_nam
 
 Set Retweeted node 根据条目中的 `retweeted_status` 字段，识别 retweet 条目，并将原推的 URL 拼凑出来，赋值给新的字段 `retweeted` 和 `retweetedUrl`，以便后续使用。
 
+> **2022-08-12 updated:**
+> 
+> Set Retweeted node 在后续的维护中打开了 "Keep Only Set" 选项，只保留其中所定义的字段，实际作用已经与名称不符，称为 "Set properties" 更准确一些。
+> 
+> 新增了 `proxyUrl` 字段，使用 [vxTwitter](https://github.com/dylanpdx/BetterTwitFix) 服务的域名 `vxtwitter.com` 替代 `twitter.com`，以在 Telegram 中有更好的预览效果
+
 Function 是我写的一段 JavaScript 代码，它使用了 n8n runtime 内置的 [getWorkflowStaticData](https://docs.n8n.io/integrations/core-nodes/n8n-nodes-base.function/#method-getworkflowstaticdatatype) 函数，记录每次更新的第一个条目 `lastItemId`，通过与上一次的记录进行对比，确保只有新的条目会被输送到下一个 node 执行。如果没有 `lastItemId`，则只返回第一个条目，避免冷启动时造成大量信息的无效转发。这段代码基本在每个 workflow 中都有用到，下面将不再赘述。
 
 ```js
@@ -217,7 +223,7 @@ n8n 的表达式 (Expression) 有一个可以预览的编辑界面，左侧会�
 
 > **2022-08-12 updated:**
 > 
-> Twitter 的 search API 默认会将长推文截断，只有加了 `tweet_mode=extended` 参数才能确保显示全文，不过推文内容字段会从 `tweet` 变为 `full_text`。按下图所示添加参数后，请在 "Set Retweeted" 节点中修改字段映射 `text` → `tweet` 为 `full_text` → `tweet`。
+> Twitter 的 search API 默认会将长推文截断，只有加了 `tweet_mode=extended` 参数才能确保显示全文，不过推文内容字段会从 `tweet` 变为 `full_text`。按下图所示添加参数后，请在 "Set Retweeted" node 中修改字段映射 `text` → `tweet` 为 `full_text` → `tweet`。
 > ![](images/tweet-mode-extended.png)
 
 #### Blog RSS to telegram
@@ -397,7 +403,9 @@ n8n 支持通过 [Error Trigger](https://docs.n8n.io/integrations/core-nodes/n8n
 - 2022-05-26: created
 - 2022-05-27: published
 - 2022-05-28: fixed "Function" node script items order by adding `.reverse()` to return items
-- 2022-08-12: added notes about using `tweet_mode=extended` to avoid tweet text truncation
+- 2022-08-12:
+    - added notes about using `tweet_mode=extended` to avoid tweet text truncation
+    - added notes about vxTwitter proxy url
 
 [^1]: 我的知识库中有三个分类:「制品」、「技术」、「事实」。制品 (artifacts) 是人所创造的作品、产品，如一个开源项目、一个软件；技术 (techniques) 是完成一类事情的方法或经验，也可以叫做 know-how，比如做饭的菜谱、编程语言的技巧、健身动作说明；事实 (facts) 是对概念、词汇的客观解释，多数来源于维基百科的词条。这三个分类可以基本涵盖我摄入的各类信息。
 
