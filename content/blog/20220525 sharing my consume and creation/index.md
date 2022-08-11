@@ -215,6 +215,11 @@ return newItems.reverse()
 
 n8n 的表达式 (Expression) 有一个可以预览的编辑界面，左侧会展示当前 node 从上一个 node 获取到的输入数据 (Input Data)，点击即可将模板变量插入到 Expression 中。模板语法 `{{ }}` 中可以使用 JavaScript 语法，这里我通过 `$json["retweeted"]` 来决定 tag 为 `#retweet` 还是 `#tweet`。推文 URL 放在了 `<a>` 标签中，既可以触发 Telegram 的 link preview 功能，也避免展示太长的 URL 影响可读性。
 
+> **2022-08-12 updated:**
+> 
+> Twitter 的 search API 默认会将长推文截断，只有加了 `tweet_mode=extended` 参数才能确保显示全文，不过推文内容字段会从 `tweet` 变为 `full_text`。按下图所示添加参数后，请在 "Set Retweeted" 节点中修改字段映射 `text` → `tweet` 为 `full_text` → `tweet`。
+> ![](images/tweet-mode-extended.png)
+
 #### Blog RSS to telegram
 
 Link: [n8n-workflows/workflows/blog rss to tg.json](https://github.com/reorx/n8n-workflows/blob/master/workflows/blog%20rss%20to%20tg.json)
@@ -391,7 +396,8 @@ n8n 支持通过 [Error Trigger](https://docs.n8n.io/integrations/core-nodes/n8n
 ## Revision
 - 2022-05-26: created
 - 2022-05-27: published
-- 2022-05-28: fix "Function" node script items order by adding `.reverse()` to return items.
+- 2022-05-28: fixed "Function" node script items order by adding `.reverse()` to return items
+- 2022-08-12: added notes about using `tweet_mode=extended` to avoid tweet text truncation
 
 [^1]: 我的知识库中有三个分类:「制品」、「技术」、「事实」。制品 (artifacts) 是人所创造的作品、产品，如一个开源项目、一个软件；技术 (techniques) 是完成一类事情的方法或经验，也可以叫做 know-how，比如做饭的菜谱、编程语言的技巧、健身动作说明；事实 (facts) 是对概念、词汇的客观解释，多数来源于维基百科的词条。这三个分类可以基本涵盖我摄入的各类信息。
 
