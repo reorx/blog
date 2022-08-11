@@ -395,6 +395,11 @@ WEBHOOK_URL=http://harrogath-local.com:5678/
 </code></pre></div><p>经过 Function 的处理后，有效条目会被送往 Telegram node，进行 message 组装，最终发送到频道。</p>
 <p><img loading="lazy" src="/blog/sharing-my-footprints-automation/images/n8n-1.png" type="" alt=""  /></p>
 <p>n8n 的表达式 (Expression) 有一个可以预览的编辑界面，左侧会展示当前 node 从上一个 node 获取到的输入数据 (Input Data)，点击即可将模板变量插入到 Expression 中。模板语法 <code>{{ }}</code> 中可以使用 JavaScript 语法，这里我通过 <code>$json[&quot;retweeted&quot;]</code> 来决定 tag 为 <code>#retweet</code> 还是 <code>#tweet</code>。推文 URL 放在了 <code>&lt;a&gt;</code> 标签中，既可以触发 Telegram 的 link preview 功能，也避免展示太长的 URL 影响可读性。</p>
+<blockquote>
+<p><strong>2022-08-12 updated:</strong></p>
+<p>Twitter 的 search API 默认会将长推文截断，只有加了 <code>tweet_mode=extended</code> 参数才能确保显示全文，不过推文内容字段会从 <code>tweet</code> 变为 <code>full_text</code>。按下图所示添加参数后，请在 &ldquo;Set Retweeted&rdquo; 节点中修改字段映射 <code>text</code> → <code>tweet</code> 为 <code>full_text</code> → <code>tweet</code>。
+<img loading="lazy" src="/blog/sharing-my-footprints-automation/images/tweet-mode-extended.png" type="" alt=""  /></p>
+</blockquote>
 <h4 id="blog-rss-to-telegram">Blog RSS to telegram</h4>
 <p>Link: <a href="https://github.com/reorx/n8n-workflows/blob/master/workflows/blog%20rss%20to%20tg.json">n8n-workflows/workflows/blog rss to tg.json</a></p>
 <blockquote>
@@ -523,7 +528,8 @@ WEBHOOK_URL=http://harrogath-local.com:5678/
 <ul>
 <li>2022-05-26: created</li>
 <li>2022-05-27: published</li>
-<li>2022-05-28: fix &ldquo;Function&rdquo; node script items order by adding <code>.reverse()</code> to return items.</li>
+<li>2022-05-28: fixed &ldquo;Function&rdquo; node script items order by adding <code>.reverse()</code> to return items</li>
+<li>2022-08-12: added notes about using <code>tweet_mode=extended</code> to avoid tweet text truncation</li>
 </ul>
 <section class="footnotes" role="doc-endnotes">
 <hr>
