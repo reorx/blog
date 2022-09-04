@@ -93,11 +93,11 @@
 <p>我想到的折中方案是，首先提供尽可能多的 social auth 登录方式，比如 Twitter, Google, GitHub，这些 Remark42 都支持；再提供一种基于邮箱的认证方式，这是 Remark42 最大的亮点——Passwordless Authentication。评论者输入邮箱，点击 login，Remark42 会向其发送一个含有 token 的邮件，评论者使用这个 token 完成登入便可以进行评论。</p>
 <p>邮箱认证是我个人最喜欢的登录方式，因为社交账号登录总是会存在风险，服务会拿到可以访问用户数据的 access token，你不知道它会做些什么 <sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>。而邮箱不存在用户数据，唯一的担忧是被 spam 骚扰，但有很多匿名邮箱和邮件转发服务帮助我们解决这个问题。<del>使用邮箱登录进行的评论，在被回复后也会发送邮件提醒评论者，确保了双向沟通的流畅性</del><sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>。</p>
 <p><figure>
-    <video class="video-shortcode" preload="metadata" controls>
-      <source src="/blog/blog-commenting-systems/images/remark42-email-login.mov">
-      There should have been a video here but your browser does not seem to support it.
-    </video>
-    </figure></p>
+      <video class="video-shortcode" preload="metadata" controls>
+        <source src="/blog/blog-commenting-systems/images/remark42-email-login.mov">
+        There should have been a video here but your browser does not seem to support it.
+      </video>
+      </figure></p>
 <p>Remark42 还有一个特别的地方，它没有 Admin 界面，或者 Dashboard，这得益于其清晰的设计理念和完善的功能实现。一般对于评论系统来说，Admin 主要用于查看和审核评论，但 Remark42 不需要审核，而对评论和评论者的操作（隐藏、删除、屏蔽）都集成在评论控件中。加上 API 简单易用，去掉 Admin 不仅没有让人感到不便，反而成为一个值得一提的 feature 了。</p>
 <p>最后，Remark42 在设计上就支持 multi-site，只需要部署一个实例，便可以为多个不同域名的站点提供评论服务。</p>
 <h3 id="隐私层面">隐私层面</h3>
