@@ -246,7 +246,7 @@ socialLinks:
     看了B站稚晖君的视频 [【自制】我做了一把模块化机械键盘 !【软核】](https://www.bilibili.com/video/BV19V4y1J7Hx)，好生羡慕他的动手能力，而且设计非常硬核，比某何同学不知高到哪里去了。这个键盘最让我感兴趣的是它的可拆卸的智能交互模块，它使用 [无刷电机](https://zh.wikipedia.org/wiki/%E7%9B%B4%E6%B5%81%E7%84%A1%E5%88%B7%E9%9B%BB%E5%8B%95%E6%A9%9F) 实现了一个功能极其丰富的旋钮，不仅可以模拟不同程度的阻尼感，作为一个输入设备使用，还可以由软件控制其主动旋转，搭配侧边的屏幕作为仪表盘显示数据。
 
     说到无刷电机，就想到步进电机，之前在 B 站看过一位 up 主通过步进电机演奏音乐也给我留下了深刻的印象：[【电机】来吧，甜蜜的死亡 / come on, sweet death - EVA剧场版OST](https://www.bilibili.com/video/BV13y4y1W734)
-    
+
     DIY 硬件真的很有趣，希望以后我也能像稚晖君或 [DIY Perks](https://www.youtube.com/c/DIYPerks) 那样创造属于自己的电子设备。
 - [Nota](https://nota.md/) & [iBar](https://ibar.app/)
 
@@ -286,26 +286,26 @@ socialLinks:
 
 这篇文章断断续续写了3天，一共7小时50分钟。如果你能看到这里，真的很感谢你的阅读，希望我的这些琐事能给你带来一些有用的信息和启发。
 
-[^1]: https://twitter.com/novoreorx/status/1544207392002682880
-[^2]: https://twitter.com/novoreorx/status/1557237847211798528
-[^3]:https://twitter.com/novoreorx/status/1542889584388100096
-[^4]: https://twitter.com/novoreorx/status/885774936161357828
-[^5]: https://twitter.com/novoreorx/status/1552557062538022913
-[^6]: https://twitter.com/novoreorx/status/1564296139821555712
-[^7]: https://twitter.com/novoreorx/status/1538758661241470976
-[^8]: https://twitter.com/novoreorx/status/1546430597685727232
-[^9]: https://twitter.com/novoreorx/status/1563036228378800129
-[^10]: https://twitter.com/novoreorx/status/1560940880881917952
-[^11]: https://twitter.com/novoreorx/status/1561736754834866177
-[^12]: https://twitter.com/novoreorx/status/1546380424322363394
-[^13]: https://twitter.com/novoreorx/status/1546336180144570369
-[^14]: https://twitter.com/Kojima_Hideo/status/1551212854631878661
-[^15]: https://twitter.com/novoreorx/status/1546081640069595136
-[^16]: https://twitter.com/novoreorx/status/1551980629038092288
-[^17]: https://twitter.com/novoreorx/status/1543942298815176705
-[^18]: https://twitter.com/novoreorx/status/1544141872364666885
+[^1]: {{< tweet-ref "https://twitter.com/novoreorx/status/1544207392002682880" >}}
+[^2]: {{< tweet-ref "https://twitter.com/novoreorx/status/1557237847211798528" >}}
+[^3]: {{< tweet-ref "https://twitter.com/novoreorx/status/1542889584388100096" >}}
+[^4]: {{< tweet-ref "https://twitter.com/novoreorx/status/885774936161357828" >}}
+[^5]: {{< tweet-ref "https://twitter.com/novoreorx/status/1552557062538022913" >}}
+[^6]: {{< tweet-ref "https://twitter.com/novoreorx/status/1564296139821555712" >}}
+[^7]: {{< tweet-ref "https://twitter.com/novoreorx/status/1538758661241470976" >}}
+[^8]: {{< tweet-ref "https://twitter.com/novoreorx/status/1546430597685727232" >}}
+[^9]: {{< tweet-ref "https://twitter.com/novoreorx/status/1563036228378800129" >}}
+[^10]: {{< tweet-ref "https://twitter.com/novoreorx/status/1560940880881917952" >}}
+[^11]: {{< tweet-ref "https://twitter.com/novoreorx/status/1561736754834866177" >}}
+[^12]: {{< tweet-ref "https://twitter.com/novoreorx/status/1546380424322363394" >}}
+[^13]: {{< tweet-ref "https://twitter.com/novoreorx/status/1546336180144570369" >}}
+[^14]: {{< tweet-ref "https://twitter.com/Kojima_Hideo/status/1551212854631878661" >}}
+[^15]: {{< tweet-ref "https://twitter.com/novoreorx/status/1546081640069595136" >}}
+[^16]: {{< tweet-ref "https://twitter.com/novoreorx/status/1551980629038092288" >}}
+[^17]: {{< tweet-ref "https://twitter.com/novoreorx/status/1543942298815176705" >}}
+[^18]: {{< tweet-ref "https://twitter.com/novoreorx/status/1544141872364666885" >}}
 [^19]: [Top 10 Best Retro Handhelds Of 2021](https://www.youtube.com/watch?v=1Za-FU6Wbg4) 和 [Where did these AWESOME Retro Consoles come from??? - Anbernic, Retroid, ODROID](https://www.youtube.com/watch?v=LXj5A9ZhPSE)
-[^20]: https://twitter.com/novoreorx/status/1552162963561521152
-[^21]: https://twitter.com/novoreorx/status/1553324876739792896
+[^20]: {{< tweet-ref "https://twitter.com/novoreorx/status/1552162963561521152" >}}
+[^21]: {{< tweet-ref "https://twitter.com/novoreorx/status/1553324876739792896" >}}
 [^22]: 参考 [Google (web.dev) 的介绍](https://web.dev/learn/pwa/progressive-web-apps/) 和 [MDN 的介绍](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps)
-[^23]: https://twitter.com/novoreorx/status/1548366397528764416
+[^23]: {{< tweet-ref "https://twitter.com/novoreorx/status/1548366397528764416" >}}
