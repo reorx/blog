@@ -73,6 +73,10 @@ params:
       url: https://catcoding.me/
       favicon: https://catcoding.me//css/images/favicon.ico
 
+  socialAccounts:
+    twitter:
+      username: novoreorx
+
 
 # prefer feed.xml rather than index.xml
 outputFormats:
