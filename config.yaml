@@ -11,7 +11,7 @@ params:
     - forge-v2.png
   favicon: favicon.ico
   logo:
-    icon: forge-v2-compat.svg
+    icon: images/forge-v2-compat.svg
   DateFormat: "2006-01-02"
   useCustomAnalytics: true
 
