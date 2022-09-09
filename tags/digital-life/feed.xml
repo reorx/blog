@@ -1,4 +1,90 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>digital-life on Reorx’s Forge</title><link>https://reorx.com/tags/digital-life/</link><description>Recent content in digital-life on Reorx’s Forge</description><image><url>https://reorx.com/forge-v2-compat.svg</url><link>https://reorx.com/forge-v2-compat.svg</link></image><generator>Hugo -- gohugo.io</generator><lastBuildDate>Thu, 30 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://reorx.com/tags/digital-life/feed.xml" rel="self" type="application/rss+xml"/><item><title>种草无线便携路由器</title><link>https://reorx.com/blog/travel-routers/</link><pubDate>Thu, 30 Jun 2022 00:00:00 +0000</pubDate><guid>https://reorx.com/blog/travel-routers/</guid><description>介绍无线便携路由器 Travel Router 的功能和产品，并对比说明它与 Wi-Fi 信号放大器和随身 Wi-Fi 的差异。</description><content:encoded><![CDATA[<p>时间回到两个月前的某天，和好友 <a href="https://github.com/xwjdsh">@iwendellsun</a> 一起在咖啡馆工作时，他提出了一个问题：有没有一种路由器，它可以先连接一个已有的 Wi-Fi，再发射一个新的 Wi-Fi 供自己的设备连接？</p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>digital-life on Reorx’s Forge</title><link>https://reorx.com/tags/digital-life/</link><description>Recent content in digital-life on Reorx’s Forge</description><image><url>https://reorx.com/images/forge-v2-compat.svg</url><link>https://reorx.com/images/forge-v2-compat.svg</link></image><generator>Hugo -- gohugo.io</generator><lastBuildDate>Fri, 09 Sep 2022 00:00:00 +0800</lastBuildDate><atom:link href="https://reorx.com/tags/digital-life/feed.xml" rel="self" type="application/rss+xml"/><item><title>2022 年 9 月苹果发布会观后感</title><link>https://reorx.com/blog/apple-event/</link><pubDate>Fri, 09 Sep 2022 00:00:00 +0800</pubDate><guid>https://reorx.com/blog/apple-event/</guid><description>论 iPhone 重量变化与我的购买决策之间的关系</description><content:encoded><![CDATA[<p>刚过完 2022 年的科技春晚——苹果9月发布会，我也照例观看（指阅读 ifanr 的汇总文章）了一遍，大致总结如下：</p>
+<table>
+<thead>
+<tr>
+<th>产品</th>
+<th>买点</th>
+<th>售价</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>iPhone 14 Pro</td>
+<td>💊 灵动岛</td>
+<td>￥7999</td>
+</tr>
+<tr>
+<td>Apple Watch Ultra</td>
+<td>🔋 双倍续航</td>
+<td>￥6299</td>
+</tr>
+<tr>
+<td>Airpods Pro 2</td>
+<td>📡 如 AirTag 般方便寻找</td>
+<td>￥1899</td>
+</tr>
+</tbody>
+</table>
+<p>总价是￥16197，好贵！相当于一台中配 MacBook Pro。但这么一想，反而不觉得贵了，同样的价格可以得到三个不同产品的体验，简直太划算了不是吗 😏</p>
+<p>我对苹果产品的购买通常从三点进行考量，一是产品设计是否有颠覆式的变革，或者足够创新有趣，iPhone 14 Pro 的灵动岛显然满足这点，并且是业界独一无二的。许多人（如罗胖）说这是硬件落后倒逼软件妥协，有道理，但我不会因此否认它的人机交互设计价值。</p>
+<p>第二点则是目前的设备是否拖累了我的生产力，新的设备能否做出有效的提升。我手里的 iPhone 11 Pro 还挺顺畅，iPhone 14 Pro 也没有 life-saving 级的变化，就看库克啥时候按下降频按钮了。</p>
+<p>最后一点, 是手机的大小和重量，而且不容妥协。我非常爱惜自己的右手和手腕，手机太大握持不舒服，太重则手腕容易疲劳。在 iPhone X 发布时就对我产生了巨大的考验，好在 6.1 英寸我还能勉强接受，后续也都维持了这个大小。因此每次看新 iPhone 的 spec，我总是先关注重量。下面是我整理的 iPhone 从 X 到今年的 14，重量变化的表格（X 算作初代的 Pro）：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>iPhone Pro<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></th>
+<th>iPhone<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>X</td>
+<td>174g</td>
+<td>-</td>
+</tr>
+<tr>
+<td>11</td>
+<td>188g</td>
+<td>194g</td>
+</tr>
+<tr>
+<td>12</td>
+<td>189g</td>
+<td>164g</td>
+</tr>
+<tr>
+<td>13</td>
+<td>204g</td>
+<td>174g</td>
+</tr>
+<tr>
+<td>14</td>
+<td>206g</td>
+<td>172g</td>
+</tr>
+</tbody>
+</table>
+<p>画成图表看更加直观：</p>
+<div class="image-size-control" style="width: 100%;">
+  <img loading="lazy" src="/images/blog/iphone-weight-chart.svg" type="" alt=""  />
+</div>
+
+<p>你一定想不到，当时使我决定购买 iPhone 11 Pro 而不是 iPhone 11 的原因，是前者比后者轻了 6 克！可惜的是，Pro 系列的重量在之后逐年递增，不再是我的首选项了。希望明年不带 Pro 的 iPhone 也能拥有灵动岛，这样我就会乖乖掏钱啦（库克！）。</p>
+<p>再看看另外两个产品。Watch Ultra 的情况和 iPhone 14 Pro 差不多，不予考虑。Airpods Pro 2 则决定购买，已经在今晚抢到。现在我还在用着几年前买的 Airpods 2，有些旧了，正好换成最新产品。何况又有了可以像 AirTag 那样去寻找的便利性呢。</p>
+<p>关于苹果，从 iPhone 11 到 13 我一直都不觉得有什么值得称道的创新，今年终于让我有些刮目相看。但我不觉得这是什么值得吹捧的事情，作为地球上最有钱的科技公司之一，本就应以引领行业发展为己任，不然赚那么多钱是干什么吃的。有人会说，资本家本就是以最低成本创造最大收益为目标呀。但这个世界还是需要有理想的人存在，哪怕只有些许的人、些许的理想，这样人类文明才不会太过无趣不是吗。</p>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p>Specs: <a href="https://support.apple.com/kb/sp770?locale=en_US">iPhone X</a>, <a href="https://support.apple.com/kb/SP805?locale=en_US">iPhone 11 Pro</a>, <a href="https://support.apple.com/kb/SP831?locale=en_US">iPhone 12 Pro</a>, <a href="https://support.apple.com/kb/SP852?locale=en_US">iPhone 13 Pro</a>&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2" role="doc-endnote">
+<p>Specs: <a href="https://support.apple.com/kb/SP804?locale=en_US">iPhone 11</a>, <a href="https://support.apple.com/kb/SP830?locale=en_US">iPhone 12</a>, <a href="https://support.apple.com/kb/SP851?locale=en_US">iPhone 13</a>&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
+]]></content:encoded></item><item><title>种草无线便携路由器</title><link>https://reorx.com/blog/travel-routers/</link><pubDate>Thu, 30 Jun 2022 00:00:00 +0800</pubDate><guid>https://reorx.com/blog/travel-routers/</guid><description>介绍无线便携路由器 Travel Router 的功能和产品，并对比说明它与 Wi-Fi 信号放大器和随身 Wi-Fi 的差异。</description><content:encoded><![CDATA[<p>时间回到两个月前的某天，和好友 <a href="https://github.com/xwjdsh">@iwendellsun</a> 一起在咖啡馆工作时，他提出了一个问题：有没有一种路由器，它可以先连接一个已有的 Wi-Fi，再发射一个新的 Wi-Fi 供自己的设备连接？</p>
 <p>我立刻理解了这个诉求的来源。咖啡馆、图书馆等场所的公共 Wi-Fi 一般都有身份验证机制，连接超过一个设备就会感觉很不方便，更不用说每个设备都还要独立设置代理；如果多人在一起工作，联机调试很可能会遇到公共 Wi-Fi 的端口限制而无法成功。我们对这个需求讨论了一番，但两人都缺乏对这类产品的认识，便不了了之。</p>
 <p>最近在 Twitter 上看到 <a href="https://twitter.com/pengchujin">@酱紫表</a> 分享了一款产品，突然意识到这可能正是我们想要的东西:</p>
 <div class="tweet social-quote">
@@ -212,7 +298,7 @@
 </li>
 </ol>
 </section>
-]]></content:encoded></item><item><title>使用自动化工作流聚合信息摄入和输出</title><link>https://reorx.com/blog/sharing-my-footprints-automation/</link><pubDate>Wed, 25 May 2022 00:00:00 +0000</pubDate><guid>https://reorx.com/blog/sharing-my-footprints-automation/</guid><description>展示我是如何用 n8n 将 Twitter, YouTube, GitHub, Douban 等服务的动态同步到 Telegram Channel，实现个人数字生活的信息聚合。</description><content:encoded><![CDATA[<p>欢迎关注我的 Telegram 频道: <a href="https://t.me/reorx_share">Reorx’s Footprints</a>。这篇文章讲述我为什么创建这个频道，以及如何用 n8n 将 Twitter, YouTube, GitHub, Douban 等服务的动态同步过去，实现个人数字生活的信息聚合。</p>
+]]></content:encoded></item><item><title>使用自动化工作流聚合信息摄入和输出</title><link>https://reorx.com/blog/sharing-my-footprints-automation/</link><pubDate>Wed, 25 May 2022 00:00:00 +0800</pubDate><guid>https://reorx.com/blog/sharing-my-footprints-automation/</guid><description>展示我是如何用 n8n 将 Twitter, YouTube, GitHub, Douban 等服务的动态同步到 Telegram Channel，实现个人数字生活的信息聚合。</description><content:encoded><![CDATA[<p>欢迎关注我的 Telegram 频道: <a href="https://t.me/reorx_share">Reorx’s Footprints</a>。这篇文章讲述我为什么创建这个频道，以及如何用 n8n 将 Twitter, YouTube, GitHub, Douban 等服务的动态同步过去，实现个人数字生活的信息聚合。</p>
 <h2 id="前言">前言</h2>
 <p><a href="https://en.wikipedia.org/wiki/Cyberspace">赛博空间</a>构成了我的精神世界。</p>
 <p>我的大脑从苏醒的那一刻开始渴求信息，大量新鲜的信息，它们比饮用水更早地进入我的身体。每天睁开眼睛，我做的第一件事情是拿起手机，逐个查看昨夜的消息提醒。起床之后，我会在马桶上浏览 RSS 阅读器和 Telegram 频道中的新闻，让思维复苏的过程伴随新知识的冲击。我已经习惯了如此，一边加载昨日的进展并思考今日的安排，一边点开链接，使用不同的工具进行阅读、收藏和记录。</p>
@@ -556,7 +642,7 @@ WEBHOOK_URL=http://harrogath-local.com:5678/
 </li>
 </ol>
 </section>
-]]></content:encoded></item><item><title>使用 Sonarr 搭建自动化追番系统</title><link>https://reorx.com/blog/track-and-download-shows-automatically-with-sonarr/</link><pubDate>Mon, 02 May 2022 00:00:00 +0000</pubDate><guid>https://reorx.com/blog/track-and-download-shows-automatically-with-sonarr/</guid><description>A complete guide to deploy and configure Sonarr + Jackett + FlareSolverr + qBittorrent to track and download anime shows automatically.</description><content:encoded><![CDATA[<p>作为一个懒人，我很少折腾 self-hosted 服务，对于追番这种娱乐化的需求，更是有什么用什么将就度日。所以许多年来一直是用 Bilibili 观看新番，中途也尝试过 ebb.io 这类小众服务，但最后都因为连接不畅或数据滞后等原因放弃了。</p>
+]]></content:encoded></item><item><title>使用 Sonarr 搭建自动化追番系统</title><link>https://reorx.com/blog/track-and-download-shows-automatically-with-sonarr/</link><pubDate>Mon, 02 May 2022 00:00:00 +0800</pubDate><guid>https://reorx.com/blog/track-and-download-shows-automatically-with-sonarr/</guid><description>A complete guide to deploy and configure Sonarr + Jackett + FlareSolverr + qBittorrent to track and download anime shows automatically.</description><content:encoded><![CDATA[<p>作为一个懒人，我很少折腾 self-hosted 服务，对于追番这种娱乐化的需求，更是有什么用什么将就度日。所以许多年来一直是用 Bilibili 观看新番，中途也尝试过 ebb.io 这类小众服务，但最后都因为连接不畅或数据滞后等原因放弃了。</p>
 <p>去年为了实现 Home Assistant 家电自动化 (<a href="https://twitter.com/novoreorx/status/1450334462177263618">tweet</a>)，我购买了一台 QNAP NAS，使家里有了 24 小时常驻的 Linux server 和 Docker host。年初由于 Bilibili 迟迟不上架《鬼滅之刃遊郭篇》，我又在 NAS 上安装了 Plex，将从 <a href="https://share.dmhy.org/">dmhy</a> 手动下载的影片串流到电视上观看。最近又逢 4 月新番播出，想到家里的基础设施逐渐完备，便动起了搭建自动追番系统的心思。以下便是对这次尝试的记录和总结，希望能帮助有同样需求的人解决问题、节省时间。</p>
 <h2 id="使用-qnap-download-station">使用 QNAP Download Station</h2>
 <p>本着尽量不增加新的系统来解决问题的思想，我首先研究了 QNAP 的下载器 Download Station，发现它自带 RSS 订阅功能，在进行一些手动配置后，即可完成自动追番和下载。</p>

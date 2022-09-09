@@ -1,4 +1,90 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Blogs on Reorx’s Forge</title><link>https://reorx.com/blog/</link><description>Recent content in Blogs on Reorx’s Forge</description><image><url>https://reorx.com/forge-v2-compat.svg</url><link>https://reorx.com/forge-v2-compat.svg</link></image><generator>Hugo -- gohugo.io</generator><lastBuildDate>Sat, 03 Sep 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://reorx.com/blog/feed.xml" rel="self" type="application/rss+xml"/><item><title>2022年7月和8月总结</title><link>https://reorx.com/blog/2022-07-and-08-summary/</link><pubDate>Sat, 03 Sep 2022 00:00:00 +0000</pubDate><guid>https://reorx.com/blog/2022-07-and-08-summary/</guid><description>讲述过去两个月间我是如何生病和康复，并回顾这段时间的所见所思所得。</description><content:encoded><![CDATA[<p>似乎每年我都会生一场大病，今年也不例外。整个7月加上8月上旬基本在生病和修养中度过。由于这段时间过得太过荒废，使我首次产生写一篇月度总结的念头，想要梳理自己的所见所思所得，也希望能平复内心的压抑和焦虑，重拾生活节奏。</p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Blog on Reorx’s Forge</title><link>https://reorx.com/blog/</link><description>Recent content in Blog on Reorx’s Forge</description><image><url>https://reorx.com/images/forge-v2-compat.svg</url><link>https://reorx.com/images/forge-v2-compat.svg</link></image><generator>Hugo -- gohugo.io</generator><lastBuildDate>Fri, 09 Sep 2022 00:00:00 +0800</lastBuildDate><atom:link href="https://reorx.com/blog/feed.xml" rel="self" type="application/rss+xml"/><item><title>2022 年 9 月苹果发布会观后感</title><link>https://reorx.com/blog/apple-event/</link><pubDate>Fri, 09 Sep 2022 00:00:00 +0800</pubDate><guid>https://reorx.com/blog/apple-event/</guid><description>论 iPhone 重量变化与我的购买决策之间的关系</description><content:encoded><![CDATA[<p>刚过完 2022 年的科技春晚——苹果9月发布会，我也照例观看（指阅读 ifanr 的汇总文章）了一遍，大致总结如下：</p>
+<table>
+<thead>
+<tr>
+<th>产品</th>
+<th>买点</th>
+<th>售价</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>iPhone 14 Pro</td>
+<td>💊 灵动岛</td>
+<td>￥7999</td>
+</tr>
+<tr>
+<td>Apple Watch Ultra</td>
+<td>🔋 双倍续航</td>
+<td>￥6299</td>
+</tr>
+<tr>
+<td>Airpods Pro 2</td>
+<td>📡 如 AirTag 般方便寻找</td>
+<td>￥1899</td>
+</tr>
+</tbody>
+</table>
+<p>总价是￥16197，好贵！相当于一台中配 MacBook Pro。但这么一想，反而不觉得贵了，同样的价格可以得到三个不同产品的体验，简直太划算了不是吗 😏</p>
+<p>我对苹果产品的购买通常从三点进行考量，一是产品设计是否有颠覆式的变革，或者足够创新有趣，iPhone 14 Pro 的灵动岛显然满足这点，并且是业界独一无二的。许多人（如罗胖）说这是硬件落后倒逼软件妥协，有道理，但我不会因此否认它的人机交互设计价值。</p>
+<p>第二点则是目前的设备是否拖累了我的生产力，新的设备能否做出有效的提升。我手里的 iPhone 11 Pro 还挺顺畅，iPhone 14 Pro 也没有 life-saving 级的变化，就看库克啥时候按下降频按钮了。</p>
+<p>最后一点, 是手机的大小和重量，而且不容妥协。我非常爱惜自己的右手和手腕，手机太大握持不舒服，太重则手腕容易疲劳。在 iPhone X 发布时就对我产生了巨大的考验，好在 6.1 英寸我还能勉强接受，后续也都维持了这个大小。因此每次看新 iPhone 的 spec，我总是先关注重量。下面是我整理的 iPhone 从 X 到今年的 14，重量变化的表格（X 算作初代的 Pro）：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>iPhone Pro<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></th>
+<th>iPhone<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>X</td>
+<td>174g</td>
+<td>-</td>
+</tr>
+<tr>
+<td>11</td>
+<td>188g</td>
+<td>194g</td>
+</tr>
+<tr>
+<td>12</td>
+<td>189g</td>
+<td>164g</td>
+</tr>
+<tr>
+<td>13</td>
+<td>204g</td>
+<td>174g</td>
+</tr>
+<tr>
+<td>14</td>
+<td>206g</td>
+<td>172g</td>
+</tr>
+</tbody>
+</table>
+<p>画成图表看更加直观：</p>
+<div class="image-size-control" style="width: 100%;">
+  <img loading="lazy" src="/images/blog/iphone-weight-chart.svg" type="" alt=""  />
+</div>
+
+<p>你一定想不到，当时使我决定购买 iPhone 11 Pro 而不是 iPhone 11 的原因，是前者比后者轻了 6 克！可惜的是，Pro 系列的重量在之后逐年递增，不再是我的首选项了。希望明年不带 Pro 的 iPhone 也能拥有灵动岛，这样我就会乖乖掏钱啦（库克！）。</p>
+<p>再看看另外两个产品。Watch Ultra 的情况和 iPhone 14 Pro 差不多，不予考虑。Airpods Pro 2 则决定购买，已经在今晚抢到。现在我还在用着几年前买的 Airpods 2，有些旧了，正好换成最新产品。何况又有了可以像 AirTag 那样去寻找的便利性呢。</p>
+<p>关于苹果，从 iPhone 11 到 13 我一直都不觉得有什么值得称道的创新，今年终于让我有些刮目相看。但我不觉得这是什么值得吹捧的事情，作为地球上最有钱的科技公司之一，本就应以引领行业发展为己任，不然赚那么多钱是干什么吃的。有人会说，资本家本就是以最低成本创造最大收益为目标呀。但这个世界还是需要有理想的人存在，哪怕只有些许的人、些许的理想，这样人类文明才不会太过无趣不是吗。</p>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p>Specs: <a href="https://support.apple.com/kb/sp770?locale=en_US">iPhone X</a>, <a href="https://support.apple.com/kb/SP805?locale=en_US">iPhone 11 Pro</a>, <a href="https://support.apple.com/kb/SP831?locale=en_US">iPhone 12 Pro</a>, <a href="https://support.apple.com/kb/SP852?locale=en_US">iPhone 13 Pro</a>&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2" role="doc-endnote">
+<p>Specs: <a href="https://support.apple.com/kb/SP804?locale=en_US">iPhone 11</a>, <a href="https://support.apple.com/kb/SP830?locale=en_US">iPhone 12</a>, <a href="https://support.apple.com/kb/SP851?locale=en_US">iPhone 13</a>&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
+]]></content:encoded></item><item><title>2022年7月和8月总结</title><link>https://reorx.com/blog/2022-07-and-08-summary/</link><pubDate>Sat, 03 Sep 2022 00:00:00 +0800</pubDate><guid>https://reorx.com/blog/2022-07-and-08-summary/</guid><description>讲述过去两个月间我是如何生病和康复，并回顾这段时间的所见所思所得。</description><content:encoded><![CDATA[<p>似乎每年我都会生一场大病，今年也不例外。整个7月加上8月上旬基本在生病和修养中度过。由于这段时间过得太过荒废，使我首次产生写一篇月度总结的念头，想要梳理自己的所见所思所得，也希望能平复内心的压抑和焦虑，重拾生活节奏。</p>
 <h2 id="健康">健康</h2>
 <p>回顾一下过去十年我所经历的病痛：</p>
 <ul>
@@ -420,7 +506,7 @@
 </li>
 </ol>
 </section>
-]]></content:encoded></item><item><title>种草无线便携路由器</title><link>https://reorx.com/blog/travel-routers/</link><pubDate>Thu, 30 Jun 2022 00:00:00 +0000</pubDate><guid>https://reorx.com/blog/travel-routers/</guid><description>介绍无线便携路由器 Travel Router 的功能和产品，并对比说明它与 Wi-Fi 信号放大器和随身 Wi-Fi 的差异。</description><content:encoded><![CDATA[<p>时间回到两个月前的某天，和好友 <a href="https://github.com/xwjdsh">@iwendellsun</a> 一起在咖啡馆工作时，他提出了一个问题：有没有一种路由器，它可以先连接一个已有的 Wi-Fi，再发射一个新的 Wi-Fi 供自己的设备连接？</p>
+]]></content:encoded></item><item><title>种草无线便携路由器</title><link>https://reorx.com/blog/travel-routers/</link><pubDate>Thu, 30 Jun 2022 00:00:00 +0800</pubDate><guid>https://reorx.com/blog/travel-routers/</guid><description>介绍无线便携路由器 Travel Router 的功能和产品，并对比说明它与 Wi-Fi 信号放大器和随身 Wi-Fi 的差异。</description><content:encoded><![CDATA[<p>时间回到两个月前的某天，和好友 <a href="https://github.com/xwjdsh">@iwendellsun</a> 一起在咖啡馆工作时，他提出了一个问题：有没有一种路由器，它可以先连接一个已有的 Wi-Fi，再发射一个新的 Wi-Fi 供自己的设备连接？</p>
 <p>我立刻理解了这个诉求的来源。咖啡馆、图书馆等场所的公共 Wi-Fi 一般都有身份验证机制，连接超过一个设备就会感觉很不方便，更不用说每个设备都还要独立设置代理；如果多人在一起工作，联机调试很可能会遇到公共 Wi-Fi 的端口限制而无法成功。我们对这个需求讨论了一番，但两人都缺乏对这类产品的认识，便不了了之。</p>
 <p>最近在 Twitter 上看到 <a href="https://twitter.com/pengchujin">@酱紫表</a> 分享了一款产品，突然意识到这可能正是我们想要的东西:</p>
 <div class="tweet social-quote">
@@ -634,7 +720,7 @@
 </li>
 </ol>
 </section>
-]]></content:encoded></item><item><title>更换博客评论系统</title><link>https://reorx.com/blog/blog-commenting-systems/</link><pubDate>Sun, 29 May 2022 00:00:00 +0000</pubDate><guid>https://reorx.com/blog/blog-commenting-systems/</guid><description>整理了一份比较完整的评论系统评测列表，并详细介绍了最终选择的 Remark42。</description><content:encoded><![CDATA[<h2 id="告别-disqus">告别 Disqus</h2>
+]]></content:encoded></item><item><title>更换博客评论系统</title><link>https://reorx.com/blog/blog-commenting-systems/</link><pubDate>Sun, 29 May 2022 00:00:00 +0800</pubDate><guid>https://reorx.com/blog/blog-commenting-systems/</guid><description>整理了一份比较完整的评论系统评测列表，并详细介绍了最终选择的 Remark42。</description><content:encoded><![CDATA[<h2 id="告别-disqus">告别 Disqus</h2>
 <p>博客建成也有一段时日了，渐渐也会收到一些读者的评论，在和大家交流中学到了很多新的知识，我很喜欢这种感觉，把评论看做我和读者之间重要的交流渠道。有一天我收到了 <a href="https://twitter.com/geekdada">@geekdada</a> 在 <a href="/blog/deploy-umami-for-personal-website/">搭建 umami …</a> 下的留言:</p>
 <blockquote>
 <p>非常感谢推荐。不知道作者有没有想把 Disqus 换掉，又臃肿又收集数据。</p>
@@ -762,7 +848,7 @@
 </li>
 </ol>
 </section>
-]]></content:encoded></item><item><title>使用自动化工作流聚合信息摄入和输出</title><link>https://reorx.com/blog/sharing-my-footprints-automation/</link><pubDate>Wed, 25 May 2022 00:00:00 +0000</pubDate><guid>https://reorx.com/blog/sharing-my-footprints-automation/</guid><description>展示我是如何用 n8n 将 Twitter, YouTube, GitHub, Douban 等服务的动态同步到 Telegram Channel，实现个人数字生活的信息聚合。</description><content:encoded><![CDATA[<p>欢迎关注我的 Telegram 频道: <a href="https://t.me/reorx_share">Reorx’s Footprints</a>。这篇文章讲述我为什么创建这个频道，以及如何用 n8n 将 Twitter, YouTube, GitHub, Douban 等服务的动态同步过去，实现个人数字生活的信息聚合。</p>
+]]></content:encoded></item><item><title>使用自动化工作流聚合信息摄入和输出</title><link>https://reorx.com/blog/sharing-my-footprints-automation/</link><pubDate>Wed, 25 May 2022 00:00:00 +0800</pubDate><guid>https://reorx.com/blog/sharing-my-footprints-automation/</guid><description>展示我是如何用 n8n 将 Twitter, YouTube, GitHub, Douban 等服务的动态同步到 Telegram Channel，实现个人数字生活的信息聚合。</description><content:encoded><![CDATA[<p>欢迎关注我的 Telegram 频道: <a href="https://t.me/reorx_share">Reorx’s Footprints</a>。这篇文章讲述我为什么创建这个频道，以及如何用 n8n 将 Twitter, YouTube, GitHub, Douban 等服务的动态同步过去，实现个人数字生活的信息聚合。</p>
 <h2 id="前言">前言</h2>
 <p><a href="https://en.wikipedia.org/wiki/Cyberspace">赛博空间</a>构成了我的精神世界。</p>
 <p>我的大脑从苏醒的那一刻开始渴求信息，大量新鲜的信息，它们比饮用水更早地进入我的身体。每天睁开眼睛，我做的第一件事情是拿起手机，逐个查看昨夜的消息提醒。起床之后，我会在马桶上浏览 RSS 阅读器和 Telegram 频道中的新闻，让思维复苏的过程伴随新知识的冲击。我已经习惯了如此，一边加载昨日的进展并思考今日的安排，一边点开链接，使用不同的工具进行阅读、收藏和记录。</p>
@@ -1106,7 +1192,7 @@ WEBHOOK_URL=http://harrogath-local.com:5678/
 </li>
 </ol>
 </section>
-]]></content:encoded></item><item><title>我关注的独立开发者们</title><link>https://reorx.com/blog/indie-makers-im-following/</link><pubDate>Sun, 22 May 2022 00:00:00 +0000</pubDate><guid>https://reorx.com/blog/indie-makers-im-following/</guid><description>列举一些我所知的独立开发者们，让更多的人看到他们的经历和作品，获得启发。</description><content:encoded><![CDATA[<p>独立开发者，AKA indie makers, solo developers, or quite-my-job makers，是一群特别的人。他们或厌倦了大厂上班做重复性的工作，或不甘于只作为别人设计的实现者，或想要挑战自己的创造力、寻求被动收入甚至实现财务自由，初始的动机虽然各异，但却有一个共同点：不满足于一件事情已有的做法和存在方式，想用自己的手去改变和创造，实现心中那个理想的产品。</p>
+]]></content:encoded></item><item><title>我关注的独立开发者们</title><link>https://reorx.com/blog/indie-makers-im-following/</link><pubDate>Sun, 22 May 2022 00:00:00 +0800</pubDate><guid>https://reorx.com/blog/indie-makers-im-following/</guid><description>列举一些我所知的独立开发者们，让更多的人看到他们的经历和作品，获得启发。</description><content:encoded><![CDATA[<p>独立开发者，AKA indie makers, solo developers, or quite-my-job makers，是一群特别的人。他们或厌倦了大厂上班做重复性的工作，或不甘于只作为别人设计的实现者，或想要挑战自己的创造力、寻求被动收入甚至实现财务自由，初始的动机虽然各异，但却有一个共同点：不满足于一件事情已有的做法和存在方式，想用自己的手去改变和创造，实现心中那个理想的产品。</p>
 <blockquote>
 <p>An indie maker is an <strong>independent creator</strong>. They build projects with their own resources, often without funding, taking care of all aspects: development, design, marketing&hellip;</p>
 <p>by <a href="https://www.whatisanindiemaker.com/">What is an Indie Maker?</a></p>
@@ -1391,7 +1477,7 @@ WEBHOOK_URL=http://harrogath-local.com:5678/
 </li>
 </ol>
 </section>
-]]></content:encoded></item><item><title>我理想中的 Newsletter platform</title><link>https://reorx.com/blog/the-newsletter-platform-i-long-for/</link><pubDate>Fri, 20 May 2022 00:00:00 +0000</pubDate><guid>https://reorx.com/blog/the-newsletter-platform-i-long-for/</guid><description>一些我对 Newsletter platform 产品形态非常主观的探索和思考</description><content:encoded><![CDATA[<p>近年来 Newletter 这种发布形式越来越受到欢迎，我也在考虑是否要创建一个自己的邮件专栏。由于我的博客是由静态网站生成器构建的，因此我也希望通过同样的方式来撰写邮件通讯。</p>
+]]></content:encoded></item><item><title>我理想中的 Newsletter platform</title><link>https://reorx.com/blog/the-newsletter-platform-i-long-for/</link><pubDate>Fri, 20 May 2022 00:00:00 +0800</pubDate><guid>https://reorx.com/blog/the-newsletter-platform-i-long-for/</guid><description>一些我对 Newsletter platform 产品形态非常主观的探索和思考</description><content:encoded><![CDATA[<p>近年来 Newletter 这种发布形式越来越受到欢迎，我也在考虑是否要创建一个自己的邮件专栏。由于我的博客是由静态网站生成器构建的，因此我也希望通过同样的方式来撰写邮件通讯。</p>
 <p>我的设想是为博客创建一个新的路径 <code>/weekly</code>，当我在这个路径下发布文章，比如 <code>/weekly/2022W20/</code>，就触发 GitHub Actions 的 CI 任务，将文章的 HTML 通过 Newsletter 服务商的接口发送出去。</p>
 <p>带着这个目的，我调研了市面上的一些服务，选定了 4 家进行对比。</p>
 <table>
@@ -1518,7 +1604,7 @@ WEBHOOK_URL=http://harrogath-local.com:5678/
 </li>
 </ol>
 </section>
-]]></content:encoded></item><item><title>搭建 umami 收集个人网站统计数据</title><link>https://reorx.com/blog/deploy-umami-for-personal-website/</link><pubDate>Thu, 19 May 2022 00:00:00 +0000</pubDate><guid>https://reorx.com/blog/deploy-umami-for-personal-website/</guid><description>教你如何免费搭建和使用美丽的 umami 网站统计服务，和 Google Analytics 说再见。</description><content:encoded><![CDATA[<p>距离博客第一篇文章发布正好一个月，我想查看一下网站的统计数据，在 Google Analytics 上操作了一番，发觉自己已无法忍受这个复杂且迟缓的老旧产品，这让我开始思考有没有更好的解决方案。</p>
+]]></content:encoded></item><item><title>搭建 umami 收集个人网站统计数据</title><link>https://reorx.com/blog/deploy-umami-for-personal-website/</link><pubDate>Thu, 19 May 2022 00:00:00 +0800</pubDate><guid>https://reorx.com/blog/deploy-umami-for-personal-website/</guid><description>教你如何免费搭建和使用美丽的 umami 网站统计服务，和 Google Analytics 说再见。</description><content:encoded><![CDATA[<p>距离博客第一篇文章发布正好一个月，我想查看一下网站的统计数据，在 Google Analytics 上操作了一番，发觉自己已无法忍受这个复杂且迟缓的老旧产品，这让我开始思考有没有更好的解决方案。</p>
 <p>我首先想到的是切换到另一家 hosting 的网站统计服务，如果可以的话，最好能有免费额度。然而开公司并不是做慈善，Google 之所以开放 Analytics 免费使用，除了本身体量足够大、边际成本够低之外，也因为网站统计与其核心的广告业务是密不可分的，Google 乐于让尽可能多的网站使用 Analytics，以得到可以推动广告和搜索业务发展的数据。果不其然，目前风评比较好的服务如 <a href="https://usefathom.com/pricing">fathom</a> 都没有免费套餐，价格也不便宜；<a href="https://plausible.io/#pricing">plausible</a> 价格较低，并且提供开源可部署的版本，这让我开始考虑自建统计服务的可行性。</p>
 <p>要选择一个 self-hosted 网站统计服务，我有以下几个考量：</p>
 <ul>
@@ -1605,7 +1691,7 @@ PORT:                3000
 <p>复制代码并添加到自己个人网站的 <code>&lt;head&gt;</code> 标签下的任意位置，由于使用了 <code>defer</code> 属性，这个 script 不会对网页加载造成阻塞。</p>
 <p>网站更新完成后，呼朋唤友点击访问一番，就可以看到 umami 清晰、美观的统计数据了。</p>
 <p><img loading="lazy" src="/blog/deploy-umami-for-personal-website/images/umami-1.png" type="" alt=""  /></p>
-]]></content:encoded></item><item><title>Frontend Guide 01: Webpack babel-loader 使用指南</title><link>https://reorx.com/blog/migrate-from-ts-loader-to-babel-loader/</link><pubDate>Wed, 18 May 2022 00:00:00 +0000</pubDate><guid>https://reorx.com/blog/migrate-from-ts-loader-to-babel-loader/</guid><description>Frontend Guide 系列的第一篇文章，讲述我为何从 ts-loader 迁移到 babel-loader，以及我的 babel-loader 详细配置方案说明。</description><content:encoded><![CDATA[<h2 id="引子">引子</h2>
+]]></content:encoded></item><item><title>Frontend Guide 01: Webpack babel-loader 使用指南</title><link>https://reorx.com/blog/migrate-from-ts-loader-to-babel-loader/</link><pubDate>Wed, 18 May 2022 00:00:00 +0800</pubDate><guid>https://reorx.com/blog/migrate-from-ts-loader-to-babel-loader/</guid><description>Frontend Guide 系列的第一篇文章，讲述我为何从 ts-loader 迁移到 babel-loader，以及我的 babel-loader 详细配置方案说明。</description><content:encoded><![CDATA[<h2 id="引子">引子</h2>
 <p>大约在两个月前，为了做出一款属于自己的产品，我正式开始学习 TypeScript 和 React 开发<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>。虽然接触 JavaScript 时间不短了，但一直热衷于使用 Vanilla JS，也没有正式做过比较严肃的项目。因此，我把自己定位为一个前端新手，决定从 0 开始学习现代化前端开发。</p>
 <p>这两个月来，我在学习实践过程中累计了一些自己的心得和体会，算不上高深，但应该可以为同样在学习中的新手起到参考作用。从这篇文章开始，我会逐一将我认为有价值的部分写成博客，归类于 #frontend-guide 标签下，并在未来的学习中持续更新。作为一个非专业的前端学习者，这些文章中一定会出现错误和疏漏，请读者朋友们不吝指正，如果能从批评中学到什么，将会是我写作的最大收获。</p>
 <p>先大致列举一些可写的话题，以作备忘：</p>
@@ -1857,7 +1943,7 @@ PORT:                3000
 </li>
 </ol>
 </section>
-]]></content:encoded></item><item><title>Google I/O 2022 Web Platform 新特性展示观看笔记</title><link>https://reorx.com/blog/notes-on-google-io-2022-web-platform-presentation/</link><pubDate>Wed, 18 May 2022 00:00:00 +0000</pubDate><guid>https://reorx.com/blog/notes-on-google-io-2022-web-platform-presentation/</guid><description>了解 Web 新技术从未如此充满乐趣。</description><content:encoded><![CDATA[<p>几天前临睡时看了 2022 Google IO 的一个 presentation: <a href="https://www.youtube.com/watch?v=5b4YcLB4DVI">What&rsquo;s new for the web platform</a>, 两位 Google 员工的解说让了解 Web 新技术的过程变得充满乐趣，于是做了些笔记在 <a href="https://threadreaderapp.com/thread/1525875286096904192.html">Twitter thread</a> 中。这篇文章对笔记进行了整理，并为每个特性附加详细说明的链接。</p>
+]]></content:encoded></item><item><title>Google I/O 2022 Web Platform 新特性展示观看笔记</title><link>https://reorx.com/blog/notes-on-google-io-2022-web-platform-presentation/</link><pubDate>Wed, 18 May 2022 00:00:00 +0800</pubDate><guid>https://reorx.com/blog/notes-on-google-io-2022-web-platform-presentation/</guid><description>了解 Web 新技术从未如此充满乐趣。</description><content:encoded><![CDATA[<p>几天前临睡时看了 2022 Google IO 的一个 presentation: <a href="https://www.youtube.com/watch?v=5b4YcLB4DVI">What&rsquo;s new for the web platform</a>, 两位 Google 员工的解说让了解 Web 新技术的过程变得充满乐趣，于是做了些笔记在 <a href="https://threadreaderapp.com/thread/1525875286096904192.html">Twitter thread</a> 中。这篇文章对笔记进行了整理，并为每个特性附加详细说明的链接。</p>
 <div class="tweet social-quote">
   <div class="title">
     <svg role="img" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><title>Twitter</title><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg>
@@ -1931,7 +2017,7 @@ PORT:                3000
 <p><a href="https://web.dev/window-controls-overlay/">https://web.dev/window-controls-overlay/</a></p>
 <p>Window controls overlay 是一组 <a href="https://developer.mozilla.org/en-US/docs/Web/Manifest">Web app manifests</a>, CSS, JavaScript API 的集合，实现了定制 PWA 窗口在 window bar 部分区域的显示效果，用于获得更有沉浸感的使用体验。</p>
 <p><img loading="lazy" src="/blog/notes-on-google-io-2022-web-platform-presentation/images/google-io-2022-web-wco.png" type="" alt=""  /></p>
-]]></content:encoded></item><item><title>PyYAML 使用技巧</title><link>https://reorx.com/blog/python-yaml-tips-zh/</link><pubDate>Sun, 15 May 2022 00:00:00 +0000</pubDate><guid>https://reorx.com/blog/python-yaml-tips-zh/</guid><description>分享我在 Python 下使用 PyYAML 的技巧和代码片段，并介绍几个相关的库。</description><content:encoded><![CDATA[<blockquote>
+]]></content:encoded></item><item><title>PyYAML 使用技巧</title><link>https://reorx.com/blog/python-yaml-tips-zh/</link><pubDate>Sun, 15 May 2022 00:00:00 +0800</pubDate><guid>https://reorx.com/blog/python-yaml-tips-zh/</guid><description>分享我在 Python 下使用 PyYAML 的技巧和代码片段，并介绍几个相关的库。</description><content:encoded><![CDATA[<blockquote>
 <p>英文版: <a href="https://reorx.com/blog/python-yaml-tips/">Tips that may save you from the hell of PyYAML</a>
 </p>
 </blockquote>
@@ -2054,7 +2140,7 @@ PORT:                3000
 <p>YAML 有它好的地方和坏的地方。它易于阅读，初期的学习曲线非常平缓。
 但 YAML 的规范说明非常复杂，不仅造成了使用中的混乱，也使不同语言的实现在很多细微的地方难以保持一致。</p>
 <p>尽管有这些小毛病，YAML 仍然是我心中最好的配置语言。希望这篇文章所介绍的技巧能够帮助你避免问题，获得更好的开发和使用体验。</p>
-]]></content:encoded></item><item><title>Tips that may save you from the hell of PyYAML</title><link>https://reorx.com/blog/python-yaml-tips/</link><pubDate>Sun, 15 May 2022 00:00:00 +0000</pubDate><guid>https://reorx.com/blog/python-yaml-tips/</guid><description>Try to make our life with PyYAML easier.</description><content:encoded><![CDATA[<p>YAML is a data-serialization language that is widely used.
+]]></content:encoded></item><item><title>Tips that may save you from the hell of PyYAML</title><link>https://reorx.com/blog/python-yaml-tips/</link><pubDate>Sun, 15 May 2022 00:00:00 +0800</pubDate><guid>https://reorx.com/blog/python-yaml-tips/</guid><description>Try to make our life with PyYAML easier.</description><content:encoded><![CDATA[<p>YAML is a data-serialization language that is widely used.
 As a developer, I&rsquo;m always dealing with YAML from time to time.
 But processing YAML, especially using PyYAML in Python is painful and full of traps.
 Here I want to share some tips and snippets that can make your life with PyYAML easier.</p>
@@ -2196,7 +2282,7 @@ but the specification is complex, which not only causes chaos in practice, but a
 </li>
 </ol>
 </section>
-]]></content:encoded></item><item><title>重新开始使用 RSS 阅读器</title><link>https://reorx.com/blog/reinitiate-rss-reader/</link><pubDate>Thu, 12 May 2022 00:00:00 +0000</pubDate><guid>https://reorx.com/blog/reinitiate-rss-reader/</guid><description>简单明确的尝试，带来意想不到的收获</description><content:encoded><![CDATA[<h2 id="不算成功的开端">不算成功的开端</h2>
+]]></content:encoded></item><item><title>重新开始使用 RSS 阅读器</title><link>https://reorx.com/blog/reinitiate-rss-reader/</link><pubDate>Thu, 12 May 2022 00:00:00 +0800</pubDate><guid>https://reorx.com/blog/reinitiate-rss-reader/</guid><description>简单明确的尝试，带来意想不到的收获</description><content:encoded><![CDATA[<h2 id="不算成功的开端">不算成功的开端</h2>
 <p>我曾经是一个糟糕的 RSS 用户。</p>
 <p>早在 Google Reader 流行的时期，我就热衷于将我感兴趣的资讯网站和博客订阅到 Google Reader 中 <sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>，期盼着能从这些信息中获得有价值的东西，却总是因为懒或者忘了而不能及时查看。随着未读数的增多，焦虑感越来越强烈，最后索性不再打开阅读器，安慰自己以后总会去看的，只要订阅了就行，沉浸在虚假的满足感中。</p>
 <p>我就像一个喜欢屯书的人，在 RSS 阅读器这个书架上摆满了放上去就再也没动过的书<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>。</p>
@@ -2315,7 +2401,7 @@ but the specification is complex, which not only causes chaos in practice, but a
 </li>
 </ol>
 </section>
-]]></content:encoded></item><item><title>我的 Vim 自动补全配置变迁史</title><link>https://reorx.com/blog/the-history-of-my-vim-completion-config/</link><pubDate>Sat, 07 May 2022 00:00:00 +0000</pubDate><guid>https://reorx.com/blog/the-history-of-my-vim-completion-config/</guid><description>记录了从 2017 年至今，我的 Vim 自动补全配置的每次变更，从中窥见 Vim 生态发展的一角，也纪念这些曾经给我带来过便利，最终在技术发展中被轮替的插件</description><content:encoded><![CDATA[<p>Vim 是我系统学习的第一个终端编辑器，从学生时代至今，我几乎每天都会使用到它（长时间写前端代码时除外）。</p>
+]]></content:encoded></item><item><title>我的 Vim 自动补全配置变迁史</title><link>https://reorx.com/blog/the-history-of-my-vim-completion-config/</link><pubDate>Sat, 07 May 2022 00:00:00 +0800</pubDate><guid>https://reorx.com/blog/the-history-of-my-vim-completion-config/</guid><description>记录了从 2017 年至今，我的 Vim 自动补全配置的每次变更，从中窥见 Vim 生态发展的一角，也纪念这些曾经给我带来过便利，最终在技术发展中被轮替的插件</description><content:encoded><![CDATA[<p>Vim 是我系统学习的第一个终端编辑器，从学生时代至今，我几乎每天都会使用到它（长时间写前端代码时除外）。</p>
 <p>自动补全（auto completion）大概是每个 Vim 用户在掌握了基本用法后，第一个想要进阶配置的功能。这篇文章记录了从 2017 年至今，我的 Vim 自动补全配置的每次变更，从中窥见 Vim 生态发展的一角，也纪念这些曾经给我带来过便利，最终在技术发展中被轮替的插件。</p>
 <h2 id="before-2017">Before 2017</h2>
 <p>2017 年我从 Vim 切换到 <a href="https://neovim.io/">Neovim</a>（下文简称 nvim），除了增加 nvim 特殊的 <code>init.vim</code>，基本沿用了以往的配置和插件。</p>
@@ -2464,7 +2550,7 @@ but the specification is complex, which not only causes chaos in practice, but a
 </li>
 </ol>
 </section>
-]]></content:encoded></item><item><title>使用 Sonarr 搭建自动化追番系统</title><link>https://reorx.com/blog/track-and-download-shows-automatically-with-sonarr/</link><pubDate>Mon, 02 May 2022 00:00:00 +0000</pubDate><guid>https://reorx.com/blog/track-and-download-shows-automatically-with-sonarr/</guid><description>A complete guide to deploy and configure Sonarr + Jackett + FlareSolverr + qBittorrent to track and download anime shows automatically.</description><content:encoded><![CDATA[<p>作为一个懒人，我很少折腾 self-hosted 服务，对于追番这种娱乐化的需求，更是有什么用什么将就度日。所以许多年来一直是用 Bilibili 观看新番，中途也尝试过 ebb.io 这类小众服务，但最后都因为连接不畅或数据滞后等原因放弃了。</p>
+]]></content:encoded></item><item><title>使用 Sonarr 搭建自动化追番系统</title><link>https://reorx.com/blog/track-and-download-shows-automatically-with-sonarr/</link><pubDate>Mon, 02 May 2022 00:00:00 +0800</pubDate><guid>https://reorx.com/blog/track-and-download-shows-automatically-with-sonarr/</guid><description>A complete guide to deploy and configure Sonarr + Jackett + FlareSolverr + qBittorrent to track and download anime shows automatically.</description><content:encoded><![CDATA[<p>作为一个懒人，我很少折腾 self-hosted 服务，对于追番这种娱乐化的需求，更是有什么用什么将就度日。所以许多年来一直是用 Bilibili 观看新番，中途也尝试过 ebb.io 这类小众服务，但最后都因为连接不畅或数据滞后等原因放弃了。</p>
 <p>去年为了实现 Home Assistant 家电自动化 (<a href="https://twitter.com/novoreorx/status/1450334462177263618">tweet</a>)，我购买了一台 QNAP NAS，使家里有了 24 小时常驻的 Linux server 和 Docker host。年初由于 Bilibili 迟迟不上架《鬼滅之刃遊郭篇》，我又在 NAS 上安装了 Plex，将从 <a href="https://share.dmhy.org/">dmhy</a> 手动下载的影片串流到电视上观看。最近又逢 4 月新番播出，想到家里的基础设施逐渐完备，便动起了搭建自动追番系统的心思。以下便是对这次尝试的记录和总结，希望能帮助有同样需求的人解决问题、节省时间。</p>
 <h2 id="使用-qnap-download-station">使用 QNAP Download Station</h2>
 <p>本着尽量不增加新的系统来解决问题的思想，我首先研究了 QNAP 的下载器 Download Station，发现它自带 RSS 订阅功能，在进行一些手动配置后，即可完成自动追番和下载。</p>
@@ -2834,7 +2920,7 @@ Readarr 是电子书的追踪和下载器。我看书不多，偶尔需要看的
 <li>2022-05-04: finished &ldquo;使用说明&rdquo; and the whole article</li>
 <li>2022-08-11: added using <code>@getidsbot</code> to find Chat ID in Telegram</li>
 </ul>
-]]></content:encoded></item><item><title>Switch open files quickly in Obsidian</title><link>https://reorx.com/blog/obsidian-switching-open-files-quickly/</link><pubDate>Thu, 21 Apr 2022 00:00:00 +0000</pubDate><guid>https://reorx.com/blog/obsidian-switching-open-files-quickly/</guid><description>Imagine a quick switcher with open files at the top.</description><content:encoded><![CDATA[<h2 id="the-problem">The problem</h2>
+]]></content:encoded></item><item><title>Switch open files quickly in Obsidian</title><link>https://reorx.com/blog/obsidian-switching-open-files-quickly/</link><pubDate>Thu, 21 Apr 2022 00:00:00 +0800</pubDate><guid>https://reorx.com/blog/obsidian-switching-open-files-quickly/</guid><description>Imagine a quick switcher with open files at the top.</description><content:encoded><![CDATA[<h2 id="the-problem">The problem</h2>
 <p>since I use the “Sliding Panes” plugin, there’s always a bunch of files open in my Obsidian. Sometimes I switch to Obsidian with a very clear goal of opening a specific file, so I press Command+O and type in the file name to find it. Because I don’t want to check whether the file is open or not (rather say there’s no way to check open files quickly), I always press Command+Enter to open the file in a new pane. As this process repeats, some files will have redundant panes, the panes are bloated and the workspace ends up being a mess.</p>
 <p><a href="https://github.com/darlal/obsidian-switcher-plus">Quick Switcher++</a> is a very helpful tool, it allows me to search for open editors by typing a special prefix (<code>edt</code> by default) in the quick switcher. But after using it a while, I still feel it’s not very intuitive, I want the “search any file and open it” action and “search for existing open file and activate it” to be combined into one thing to use.</p>
 <h2 id="the-solution">The solution</h2>
@@ -2847,7 +2933,7 @@ Readarr 是电子书的追踪和下载器。我看书不多，偶尔需要看的
 </figure>
 
 <p>I’ll test this new feature in my workflow for a while to see if it’s actually useful. Meanwhile, I’d love to hear from the Obsidian community. What do you think about it? Do you have a better idea for my problem? Feel free to leave a message to me.</p>
-]]></content:encoded></item><item><title>A look into Heptabase's split writing experience</title><link>https://reorx.com/blog/heptabase-split-writing/</link><pubDate>Tue, 19 Apr 2022 00:00:00 +0000</pubDate><guid>https://reorx.com/blog/heptabase-split-writing/</guid><description>The amazing UX Heptabase creates to help reading, thinking, and writing with heavy context efficiently</description><content:encoded><![CDATA[<p>Yesterday I found Heptabase&rsquo;s new introduction video: <a href="https://www.youtube.com/watch?v=oVXQx9sz_Wk">The 3-step knowledge workflow in Heptabase</a>.</p>
+]]></content:encoded></item><item><title>A look into Heptabase's split writing experience</title><link>https://reorx.com/blog/heptabase-split-writing/</link><pubDate>Tue, 19 Apr 2022 00:00:00 +0800</pubDate><guid>https://reorx.com/blog/heptabase-split-writing/</guid><description>The amazing UX Heptabase creates to help reading, thinking, and writing with heavy context efficiently</description><content:encoded><![CDATA[<p>Yesterday I found Heptabase&rsquo;s new introduction video: <a href="https://www.youtube.com/watch?v=oVXQx9sz_Wk">The 3-step knowledge workflow in Heptabase</a>.</p>
 <p>Heptabase is the most promising note-taking app for me in recent years. The idea of combining bi-directional links, cards, and whiteboards together is mind-blowing. The word note-taking or knowledge base is not accurate to define it, in fact, it&rsquo;s more like a tool that aims for boosting the process of thinking.</p>
 <p>Traditional note-taking tools are keen on providing more than enough ways for dumping your thoughts into notes, but lack methodologies on how to retrieve and use notes. The way Heptabase organizes and interacts with the data is what really empowers the user to think and write more efficiently.</p>
 <p>Back to the video at the beginning, after watching it I noticed a very interesting feature. I can&rsquo;t stop thinking of it and really wish to have something similar in other note-taking or PMK tools like Obsidian (yeah, I&rsquo;m an Obsidian fan).</p>
