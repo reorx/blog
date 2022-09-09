@@ -3,6 +3,7 @@ baseURL: 'https://reorx.com/'
 theme: PaperModX
 hasCJKLanguage: true
 enableRobotsTXT: true
+timeZone: Asia/Shanghai
 params:
   # basic
   description: Reorx’s Forge
@@ -14,6 +15,10 @@ params:
     icon: images/forge-v2-compat.svg
   DateFormat: "2006-01-02"
   useCustomAnalytics: true
+  mainSections:
+    - blog
+    - essay
+    - makers-daily
 
   # theme params
   DisableLanguageSwitch: true
@@ -77,6 +82,8 @@ params:
     twitter:
       username: novoreorx
 
+permalinks:
+  essays: /:section/:year/:month/:slug
 
 # prefer feed.xml rather than index.xml
 outputFormats:
@@ -86,12 +93,15 @@ outputFormats:
 
 menu:
   main:
-    - name: Archives
-      url: /archives/
+    - name: Blog
+      url: /blog/
       weight: 1
-    - name: Tags
-      url: /tags/
+    - name: Essays
+      url: /essays/
       weight: 2
+    # - name: Newsletter
+    #   url: /makers-daily/
+    #   weight: 3
     - name: Links
       url: /links/
 
