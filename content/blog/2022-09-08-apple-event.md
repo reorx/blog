@@ -1,6 +1,6 @@
 ---
 title: 2022 年 9 月苹果发布会观后感
-slug: apple-event
+slug: 2022-09-apple-event
 date: 2022-09-09
 description: 论 iPhone 重量变化与我的购买决策之间的关系
 tags:
