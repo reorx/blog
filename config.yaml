@@ -83,7 +83,7 @@ params:
       username: novoreorx
 
 permalinks:
-  essays: /:section/:year/:month/:slug
+  essays: /:section/:year/:month/:slugorfilename
 
 # prefer feed.xml rather than index.xml
 outputFormats:
