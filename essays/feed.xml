@@ -1,4 +1,25 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Essays on Reorx’s Forge</title><link>https://reorx.com/essays/</link><description>Recent content in Essays on Reorx’s Forge</description><image><url>https://reorx.com/images/forge-v2-compat.svg</url><link>https://reorx.com/images/forge-v2-compat.svg</link></image><generator>Hugo -- gohugo.io</generator><lastBuildDate>Mon, 12 Sep 2022 00:00:00 +0800</lastBuildDate><atom:link href="https://reorx.com/essays/feed.xml" rel="self" type="application/rss+xml"/><item><title>要不要回互联网公司上班？</title><link>https://reorx.com/essays/2022/09/how-i-think-about-internet-companies/</link><pubDate>Mon, 12 Sep 2022 00:00:00 +0800</pubDate><guid>https://reorx.com/essays/2022/09/how-i-think-about-internet-companies/</guid><description>现在的工作状态虽然仍有我不满意的地方，但有时候问自己「要不要回互联网公司上班」这个问题，得到的答案仍然是否定的。 回到刚毕业的时候，为何当时的</description><content:encoded><![CDATA[<p>现在的工作状态虽然仍有我不满意的地方，但有时候问自己「要不要回互联网公司上班」这个问题，得到的答案仍然是否定的。</p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Essays on Reorx’s Forge</title><link>https://reorx.com/essays/</link><description>Recent content in Essays on Reorx’s Forge</description><image><url>https://reorx.com/images/forge-v2-compat.svg</url><link>https://reorx.com/images/forge-v2-compat.svg</link></image><generator>Hugo -- gohugo.io</generator><lastBuildDate>Mon, 12 Sep 2022 00:00:00 +0800</lastBuildDate><atom:link href="https://reorx.com/essays/feed.xml" rel="self" type="application/rss+xml"/><item><title>关于 Essays 的说明</title><link>https://reorx.com/essays/2022/09/about-essays/</link><pubDate>Mon, 12 Sep 2022 00:00:00 +0800</pubDate><guid>https://reorx.com/essays/2022/09/about-essays/</guid><description>Essays 板块已经正式加入我的个人网站——也就是你现在正在浏览的这个网站，正好用第二篇来说明下创建它的动机和它的设计。 开始写博客至今已有几个月了，但</description><content:encoded><![CDATA[<p>Essays 板块已经正式加入我的个人网站——也就是你现在正在浏览的这个网站，正好用第二篇来说明下创建它的动机和它的设计。</p>
+<p>开始写博客至今已有几个月了，但我每次写文章时仍然会有这几个问题：</p>
+<ol>
+<li>动笔难。哪怕有了想法，甚至有了笔记，也总是会因为惧怕组织文章结构而难以下笔。</li>
+<li>写字不够专注。一开始是经常被其他事情打断，久了竟然导致无法长时间专注写字，写一会就不由自主地去刷 Twitter / Telegram / RSS。</li>
+<li>博客文章变得过「重」了，潜意识里觉得是一件需要很多时间来去做的事情，而且由于是静态生成器架构，必须要在有 Markdown 编辑器和 Git 全套工具的电脑上进行。</li>
+</ol>
+<p>我逐渐发现若只写长文，博客的更新频率必然不高，不利于持续输出，因此最好的办法就是为自己的写作设定一个新的分类，这就是 Essays 的由来。</p>
+<p>Essays 专门用于发表片段化的想法，对文章结构和长度不做要求，并且我希望每篇都尽量在 20 分钟内写完，践行 Clear Communication。</p>
+<p>有了 Essays，原来的文章则属于 Blog 板块。Blog 的定位是内容丰富的长文，Essays 则适合记录在产品和技术创作之外，我对这个世界的感受和思考。</p>
+<p>我对网站结构也进行了一些改进，之后会出一篇专门的文章详细说明。这里着重说下 RSS 的变化，首页的 RSS 会包含全站所有文章，而 Essays / Blog 页面下的 RSS 则仅包含其所在板块的文章。如果读者有需求，可以考虑订阅不同的链接。</p>
+<p>我还为 Essays 增加了一个 n8n workflow <sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>，自动将最新的文章分享到 Twitter。如果你现在是在 Twitter 的图片中阅读本文，那么这条推文以及图片都是由 n8n 生成并发送的。</p>
+<p>我希望能越来越多地分享我的想法、知识、体验，Essays 就是这样一个尝试。下一个目标，是能够随时随地写作并分享，我已经有了一个<a href="https://t.me/reorx_share/2221">初步的想法</a>，看看我能创造些什么吧。</p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>参见我的另一篇文章 <a href="https://reorx.com/blog/sharing-my-footprints-automation/">使用自动化工作流聚合信息摄入和输出</a>&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+]]></content:encoded></item><item><title>要不要回互联网公司上班？</title><link>https://reorx.com/essays/2022/09/how-i-think-about-internet-companies/</link><pubDate>Mon, 12 Sep 2022 00:00:00 +0800</pubDate><guid>https://reorx.com/essays/2022/09/how-i-think-about-internet-companies/</guid><description>现在的工作状态虽然仍有我不满意的地方，但有时候问自己「要不要回互联网公司上班」这个问题，得到的答案仍然是否定的。 回到刚毕业的时候，为何当时的</description><content:encoded><![CDATA[<p>现在的工作状态虽然仍有我不满意的地方，但有时候问自己「要不要回互联网公司上班」这个问题，得到的答案仍然是否定的。</p>
 <p>回到刚毕业的时候，为何当时的互联网行业那么吸引我呢？</p>
 <ul>
 <li>我尝试过创造产品，却没有足够的能力，这件事情使我感到敬畏。</li>
