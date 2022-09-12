@@ -17,7 +17,7 @@ params:
   useCustomAnalytics: true
   mainSections:
     - blog
-    - essay
+    - essays
     - makers-daily
 
   # theme params
