@@ -13,80 +13,80 @@
 <p>为了确保应用程序的安全性，尽量在任何情况下使用 <code>yaml.safe_load</code> 和 <code>yaml.safe_dump</code>。</p>
 <h2 id="保留字段顺序">保留字段顺序</h2>
 <p>Python 3.7+ 中，<code>dict</code> keys 具备保留插入顺序的特性，所以通过 <code>yaml.safe_load</code> 得到的 <code>dict</code>，其 keys 顺序会与原始文件保持一致。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">yaml</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">text</span> <span class="o">=</span> <span class="s2">&#34;&#34;&#34;---
-</span><span class="s2">... c: 1
-</span><span class="s2">... b: 1
-</span><span class="s2">... d: 1
-</span><span class="s2">... a: 1
-</span><span class="s2">... &#34;&#34;&#34;</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span> <span class="o">=</span> <span class="n">yaml</span><span class="o">.</span><span class="n">safe_load</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span>
-<span class="p">{</span><span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="nb">list</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
-<span class="p">[</span><span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">]</span>
-</code></pre></div><p>当把 <code>dict</code> 导出为 YAML 字符串时，为 <code>yaml.safe_dump</code> 传递 <code>sort_keys=False</code> 来保留 keys 的顺序。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">yaml</span><span class="o">.</span><span class="n">safe_dump</span><span class="p">(</span><span class="n">d</span><span class="p">))</span>
-<span class="n">a</span><span class="p">:</span> <span class="mi">1</span>
-<span class="n">b</span><span class="p">:</span> <span class="mi">1</span>
-<span class="n">c</span><span class="p">:</span> <span class="mi">1</span>
-<span class="n">d</span><span class="p">:</span> <span class="mi">1</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;e&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">yaml</span><span class="o">.</span><span class="n">safe_dump</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">sort_keys</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
-<span class="n">c</span><span class="p">:</span> <span class="mi">1</span>
-<span class="n">b</span><span class="p">:</span> <span class="mi">1</span>
-<span class="n">d</span><span class="p">:</span> <span class="mi">1</span>
-<span class="n">a</span><span class="p">:</span> <span class="mi">1</span>
-<span class="n">e</span><span class="p">:</span> <span class="mi">1</span>
-</code></pre></div><p>如果 Python 版本较低，或者你想确保代码能在更广泛的环境下工作，你可以使用 <a href="https://github.com/wimglenn/oyaml">oyaml</a> 库来代替 PyYAML 的 <code>yaml</code> 包。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">oyaml</span> <span class="k">as</span> <span class="nn">yaml</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span> <span class="o">=</span> <span class="n">yaml</span><span class="o">.</span><span class="n">safe_load</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span>
-<span class="n">OrderedDict</span><span class="p">([(</span><span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)])</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;e&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">yaml</span><span class="o">.</span><span class="n">safe_dump</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">sort_keys</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
-<span class="n">c</span><span class="p">:</span> <span class="mi">1</span>
-<span class="n">b</span><span class="p">:</span> <span class="mi">1</span>
-<span class="n">d</span><span class="p">:</span> <span class="mi">1</span>
-<span class="n">a</span><span class="p">:</span> <span class="mi">1</span>
-<span class="n">e</span><span class="p">:</span> <span class="mi">1</span>
-</code></pre></div><h2 id="优化列表项的缩进">优化列表项的缩进</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">yaml</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="n">text</span> <span class="o">=</span> <span class="s2">&#34;&#34;&#34;---
+</span></span></span><span class="line"><span class="cl"><span class="s2">... c: 1
+</span></span></span><span class="line"><span class="cl"><span class="s2">... b: 1
+</span></span></span><span class="line"><span class="cl"><span class="s2">... d: 1
+</span></span></span><span class="line"><span class="cl"><span class="s2">... a: 1
+</span></span></span><span class="line"><span class="cl"><span class="s2">... &#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="n">d</span> <span class="o">=</span> <span class="n">yaml</span><span class="o">.</span><span class="n">safe_load</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="n">d</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span><span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="nb">list</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">]</span>
+</span></span></code></pre></div><p>当把 <code>dict</code> 导出为 YAML 字符串时，为 <code>yaml.safe_dump</code> 传递 <code>sort_keys=False</code> 来保留 keys 的顺序。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">yaml</span><span class="o">.</span><span class="n">safe_dump</span><span class="p">(</span><span class="n">d</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">a</span><span class="p">:</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl"><span class="n">b</span><span class="p">:</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl"><span class="n">c</span><span class="p">:</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl"><span class="n">d</span><span class="p">:</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;e&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">yaml</span><span class="o">.</span><span class="n">safe_dump</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">sort_keys</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">c</span><span class="p">:</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl"><span class="n">b</span><span class="p">:</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl"><span class="n">d</span><span class="p">:</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl"><span class="n">a</span><span class="p">:</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl"><span class="n">e</span><span class="p">:</span> <span class="mi">1</span>
+</span></span></code></pre></div><p>如果 Python 版本较低，或者你想确保代码能在更广泛的环境下工作，你可以使用 <a href="https://github.com/wimglenn/oyaml">oyaml</a> 库来代替 PyYAML 的 <code>yaml</code> 包。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">oyaml</span> <span class="k">as</span> <span class="nn">yaml</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="n">d</span> <span class="o">=</span> <span class="n">yaml</span><span class="o">.</span><span class="n">safe_load</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="n">d</span>
+</span></span><span class="line"><span class="cl"><span class="n">OrderedDict</span><span class="p">([(</span><span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)])</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;e&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">yaml</span><span class="o">.</span><span class="n">safe_dump</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">sort_keys</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">c</span><span class="p">:</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl"><span class="n">b</span><span class="p">:</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl"><span class="n">d</span><span class="p">:</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl"><span class="n">a</span><span class="p">:</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl"><span class="n">e</span><span class="p">:</span> <span class="mi">1</span>
+</span></span></code></pre></div><h2 id="优化列表项的缩进">优化列表项的缩进</h2>
 <p>默认情况下，PyYAML 输出的列表缩进与其父元素一致。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]}</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">yaml</span><span class="o">.</span><span class="n">safe_dump</span><span class="p">(</span><span class="n">d</span><span class="p">))</span>
-<span class="n">a</span><span class="p">:</span>
-<span class="o">-</span> <span class="mi">1</span>
-<span class="o">-</span> <span class="mi">2</span>
-<span class="o">-</span> <span class="mi">3</span>
-</code></pre></div><p>这并不是很好的格式，根据
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]}</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">yaml</span><span class="o">.</span><span class="n">safe_dump</span><span class="p">(</span><span class="n">d</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">a</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl"><span class="o">-</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl"><span class="o">-</span> <span class="mi">2</span>
+</span></span><span class="line"><span class="cl"><span class="o">-</span> <span class="mi">3</span>
+</span></span></code></pre></div><p>这并不是很好的格式，根据
 <a href="https://docs.ansible.com/ansible/latest/reference_appendices/YAMLSyntax.html">Ansible</a>
 和 <a href="https://developers.home-assistant.io/docs/documenting/yaml-style-guide/#block-style-sequences">HomeAssistant</a>
 等 YAML 书写规范，列表项应该缩进 2 空格。</p>
 <p>这种格式也会对导致列表项不会被如 VSCode 等编辑器识别，进而无法使用编辑器的折叠功能。</p>
 <p>要解决这个问题，使用如下代码片段，在代码中定义 <code>IndentDumper</code> class:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="k">class</span> <span class="nc">IndentDumper</span><span class="p">(</span><span class="n">yaml</span><span class="o">.</span><span class="n">Dumper</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">increase_indent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">flow</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">indentless</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-        <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">IndentDumper</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">increase_indent</span><span class="p">(</span><span class="n">flow</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
-</code></pre></div><p>然后将它传递给 <code>yaml.dump</code> 的 <code>Dumper</code> 关键字参数。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">yaml</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">Dumper</span><span class="o">=</span><span class="n">IndentDumper</span><span class="p">))</span>
-<span class="n">a</span><span class="p">:</span>
-  <span class="o">-</span> <span class="mi">1</span>
-  <span class="o">-</span> <span class="mi">2</span>
-  <span class="o">-</span> <span class="mi">3</span>
-</code></pre></div><blockquote>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">IndentDumper</span><span class="p">(</span><span class="n">yaml</span><span class="o">.</span><span class="n">Dumper</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">increase_indent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">flow</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">indentless</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">IndentDumper</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">increase_indent</span><span class="p">(</span><span class="n">flow</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+</span></span></code></pre></div><p>然后将它传递给 <code>yaml.dump</code> 的 <code>Dumper</code> 关键字参数。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">yaml</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">Dumper</span><span class="o">=</span><span class="n">IndentDumper</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">a</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">  <span class="o">-</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">  <span class="o">-</span> <span class="mi">2</span>
+</span></span><span class="line"><span class="cl">  <span class="o">-</span> <span class="mi">3</span>
+</span></span></code></pre></div><blockquote>
 <p>注意，<code>yaml.safe_dump</code> 由于有自己的 Dumper class，传递此参数会造成冲突。</p>
 </blockquote>
 <h2 id="输出可读的-utf-8-字符">输出可读的 UTF-8 字符</h2>
 <p>默认情况下，PyYAML 假设你希望输出的结果里只有 ASCII 字符。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="s1">&#39;你好&#39;</span><span class="p">}</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">yaml</span><span class="o">.</span><span class="n">safe_dump</span><span class="p">(</span><span class="n">d</span><span class="p">))</span>
-<span class="n">a</span><span class="p">:</span> <span class="s2">&#34;</span><span class="se">\u4F60\u597D</span><span class="s2">&#34;</span>
-</code></pre></div><p>这会让输出结果非常难以阅读。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="s1">&#39;你好&#39;</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">yaml</span><span class="o">.</span><span class="n">safe_dump</span><span class="p">(</span><span class="n">d</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">a</span><span class="p">:</span> <span class="s2">&#34;</span><span class="se">\u4F60\u597D</span><span class="s2">&#34;</span>
+</span></span></code></pre></div><p>这会让输出结果非常难以阅读。</p>
 <p>在 UTF-8 足够普及的今天，直接输出 UTF-8 字符是非常安全的。
 因此我们可以将 <code>allow_unicode=True</code> 传入 <code>yaml.safe_dump</code> 使 PyYAML 将 Unicode 转换成 UTF-8 字符串。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">yaml</span><span class="o">.</span><span class="n">safe_dump</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">allow_unicode</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
-<span class="n">a</span><span class="p">:</span> <span class="n">你好</span>
-</code></pre></div><h2 id="一些-yaml-相关的库">一些 YAML 相关的库</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">yaml</span><span class="o">.</span><span class="n">safe_dump</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">allow_unicode</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">a</span><span class="p">:</span> <span class="n">你好</span>
+</span></span></code></pre></div><h2 id="一些-yaml-相关的库">一些 YAML 相关的库</h2>
 <h3 id="oyaml">oyaml</h3>
 <p>Link: <a href="https://github.com/wimglenn/oyaml">https://github.com/wimglenn/oyaml</a></p>
 <p>正如上文中提到的，oyaml 是 <code>yaml</code> 包的替换品，使 <code>dict</code> keys 的顺序在 dump/load 的时候得以保留。</p>
@@ -138,80 +138,80 @@ It might be harmful to your application to simply <code>yaml.load</code> a docum
 <p>In short, you should always use <code>yaml.safe_load</code> and <code>yaml.safe_dump</code> as the standard I/O methods for YAML.</p>
 <h2 id="keep-keys-in-order-loaddump">Keep keys in order (load/dump)</h2>
 <p>In Python 3.7+, the order of dict keys is naturally preserved <sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>, thus the dict you get from <code>yaml.safe_load</code> has the same order of keys as the original file.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">yaml</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">text</span> <span class="o">=</span> <span class="s2">&#34;&#34;&#34;---
-</span><span class="s2">... c: 1
-</span><span class="s2">... b: 1
-</span><span class="s2">... d: 1
-</span><span class="s2">... a: 1
-</span><span class="s2">... &#34;&#34;&#34;</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span> <span class="o">=</span> <span class="n">yaml</span><span class="o">.</span><span class="n">safe_load</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span>
-<span class="p">{</span><span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="nb">list</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
-<span class="p">[</span><span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">]</span>
-</code></pre></div><p>When dumping dict into a YAML string, make sure to add keyword argument <code>sort_keys=False</code> to preserve the order of keys.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">yaml</span><span class="o">.</span><span class="n">safe_dump</span><span class="p">(</span><span class="n">d</span><span class="p">))</span>
-<span class="n">a</span><span class="p">:</span> <span class="mi">1</span>
-<span class="n">b</span><span class="p">:</span> <span class="mi">1</span>
-<span class="n">c</span><span class="p">:</span> <span class="mi">1</span>
-<span class="n">d</span><span class="p">:</span> <span class="mi">1</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;e&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">yaml</span><span class="o">.</span><span class="n">safe_dump</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">sort_keys</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
-<span class="n">c</span><span class="p">:</span> <span class="mi">1</span>
-<span class="n">b</span><span class="p">:</span> <span class="mi">1</span>
-<span class="n">d</span><span class="p">:</span> <span class="mi">1</span>
-<span class="n">a</span><span class="p">:</span> <span class="mi">1</span>
-<span class="n">e</span><span class="p">:</span> <span class="mi">1</span>
-</code></pre></div><p>If your Python version is lower, or you want to make sure the keys order preserving always works, you can use this library called <a href="https://github.com/wimglenn/oyaml">oyaml</a> as a drop-in replacement for <code>pyyaml</code>.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">oyaml</span> <span class="k">as</span> <span class="nn">yaml</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span> <span class="o">=</span> <span class="n">yaml</span><span class="o">.</span><span class="n">safe_load</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span>
-<span class="n">OrderedDict</span><span class="p">([(</span><span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)])</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;e&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">yaml</span><span class="o">.</span><span class="n">safe_dump</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">sort_keys</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
-<span class="n">c</span><span class="p">:</span> <span class="mi">1</span>
-<span class="n">b</span><span class="p">:</span> <span class="mi">1</span>
-<span class="n">d</span><span class="p">:</span> <span class="mi">1</span>
-<span class="n">a</span><span class="p">:</span> <span class="mi">1</span>
-<span class="n">e</span><span class="p">:</span> <span class="mi">1</span>
-</code></pre></div><h2 id="enhance-list-indentation-dump">Enhance list indentation (dump)</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">yaml</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="n">text</span> <span class="o">=</span> <span class="s2">&#34;&#34;&#34;---
+</span></span></span><span class="line"><span class="cl"><span class="s2">... c: 1
+</span></span></span><span class="line"><span class="cl"><span class="s2">... b: 1
+</span></span></span><span class="line"><span class="cl"><span class="s2">... d: 1
+</span></span></span><span class="line"><span class="cl"><span class="s2">... a: 1
+</span></span></span><span class="line"><span class="cl"><span class="s2">... &#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="n">d</span> <span class="o">=</span> <span class="n">yaml</span><span class="o">.</span><span class="n">safe_load</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="n">d</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span><span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="nb">list</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">]</span>
+</span></span></code></pre></div><p>When dumping dict into a YAML string, make sure to add keyword argument <code>sort_keys=False</code> to preserve the order of keys.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">yaml</span><span class="o">.</span><span class="n">safe_dump</span><span class="p">(</span><span class="n">d</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">a</span><span class="p">:</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl"><span class="n">b</span><span class="p">:</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl"><span class="n">c</span><span class="p">:</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl"><span class="n">d</span><span class="p">:</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;e&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">yaml</span><span class="o">.</span><span class="n">safe_dump</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">sort_keys</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">c</span><span class="p">:</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl"><span class="n">b</span><span class="p">:</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl"><span class="n">d</span><span class="p">:</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl"><span class="n">a</span><span class="p">:</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl"><span class="n">e</span><span class="p">:</span> <span class="mi">1</span>
+</span></span></code></pre></div><p>If your Python version is lower, or you want to make sure the keys order preserving always works, you can use this library called <a href="https://github.com/wimglenn/oyaml">oyaml</a> as a drop-in replacement for <code>pyyaml</code>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">oyaml</span> <span class="k">as</span> <span class="nn">yaml</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="n">d</span> <span class="o">=</span> <span class="n">yaml</span><span class="o">.</span><span class="n">safe_load</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="n">d</span>
+</span></span><span class="line"><span class="cl"><span class="n">OrderedDict</span><span class="p">([(</span><span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)])</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;e&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">yaml</span><span class="o">.</span><span class="n">safe_dump</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">sort_keys</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">c</span><span class="p">:</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl"><span class="n">b</span><span class="p">:</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl"><span class="n">d</span><span class="p">:</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl"><span class="n">a</span><span class="p">:</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl"><span class="n">e</span><span class="p">:</span> <span class="mi">1</span>
+</span></span></code></pre></div><h2 id="enhance-list-indentation-dump">Enhance list indentation (dump)</h2>
 <p>By default, PyYAML indent list items on the same level as their parent.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]}</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">yaml</span><span class="o">.</span><span class="n">safe_dump</span><span class="p">(</span><span class="n">d</span><span class="p">))</span>
-<span class="n">a</span><span class="p">:</span>
-<span class="o">-</span> <span class="mi">1</span>
-<span class="o">-</span> <span class="mi">2</span>
-<span class="o">-</span> <span class="mi">3</span>
-</code></pre></div><p>This is not a good format according to style guides like
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]}</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">yaml</span><span class="o">.</span><span class="n">safe_dump</span><span class="p">(</span><span class="n">d</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">a</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl"><span class="o">-</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl"><span class="o">-</span> <span class="mi">2</span>
+</span></span><span class="line"><span class="cl"><span class="o">-</span> <span class="mi">3</span>
+</span></span></code></pre></div><p>This is not a good format according to style guides like
 <a href="https://docs.ansible.com/ansible/latest/reference_appendices/YAMLSyntax.html">Ansible</a>
 and <a href="https://developers.home-assistant.io/docs/documenting/yaml-style-guide/#block-style-sequences">HomeAssistant</a>.
 It is also not recognized by code editors like VSCode, making the list items unfoldable in the editor.</p>
 <p>To solve this problem, you can use the snippet below to define an <code>IndentDumper</code> class:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="k">class</span> <span class="nc">IndentDumper</span><span class="p">(</span><span class="n">yaml</span><span class="o">.</span><span class="n">Dumper</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">increase_indent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">flow</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">indentless</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-        <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">IndentDumper</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">increase_indent</span><span class="p">(</span><span class="n">flow</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
-</code></pre></div><p>Then pass it to the <code>Dumper</code> keyword argument in <code>yaml.dump</code> function.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">yaml</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">Dumper</span><span class="o">=</span><span class="n">IndentDumper</span><span class="p">))</span>
-<span class="n">a</span><span class="p">:</span>
-  <span class="o">-</span> <span class="mi">1</span>
-  <span class="o">-</span> <span class="mi">2</span>
-  <span class="o">-</span> <span class="mi">3</span>
-</code></pre></div><blockquote>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">IndentDumper</span><span class="p">(</span><span class="n">yaml</span><span class="o">.</span><span class="n">Dumper</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">increase_indent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">flow</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">indentless</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">IndentDumper</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">increase_indent</span><span class="p">(</span><span class="n">flow</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+</span></span></code></pre></div><p>Then pass it to the <code>Dumper</code> keyword argument in <code>yaml.dump</code> function.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">yaml</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">Dumper</span><span class="o">=</span><span class="n">IndentDumper</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">a</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">  <span class="o">-</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">  <span class="o">-</span> <span class="mi">2</span>
+</span></span><span class="line"><span class="cl">  <span class="o">-</span> <span class="mi">3</span>
+</span></span></code></pre></div><blockquote>
 <p>Note that <code>Dumper</code> cannot be passed to <code>yaml.safe_dump</code> which has its owner dumper class defined.</p>
 </blockquote>
 <h2 id="output-readable-utf-8-dump">Output readable UTF-8 (dump)</h2>
 <p>By default, PyYAML assumes the user only wants ASCII code in the output,
 so it converts UTF-8 characters to Python&rsquo;s Unicode representation.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="s1">&#39;你好&#39;</span><span class="p">}</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">yaml</span><span class="o">.</span><span class="n">safe_dump</span><span class="p">(</span><span class="n">d</span><span class="p">))</span>
-<span class="n">a</span><span class="p">:</span> <span class="s2">&#34;</span><span class="se">\u4F60\u597D</span><span class="s2">&#34;</span>
-</code></pre></div><p>This makes the output hard to read for humans.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="s1">&#39;你好&#39;</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">yaml</span><span class="o">.</span><span class="n">safe_dump</span><span class="p">(</span><span class="n">d</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">a</span><span class="p">:</span> <span class="s2">&#34;</span><span class="se">\u4F60\u597D</span><span class="s2">&#34;</span>
+</span></span></code></pre></div><p>This makes the output hard to read for humans.</p>
 <p>In the modern world, UTF-8 is widely supported, it&rsquo;s safe to write UTF-8 in the output.
 Pass <code>allow_unicode=True</code> to <code>yaml.safe_dump</code> to enable that.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">yaml</span><span class="o">.</span><span class="n">safe_dump</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">allow_unicode</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
-<span class="n">a</span><span class="p">:</span> <span class="n">你好</span>
-</code></pre></div><h2 id="no-default_flow_style-needed-dump">No <code>default_flow_style</code> needed (dump)</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">yaml</span><span class="o">.</span><span class="n">safe_dump</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">allow_unicode</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">a</span><span class="p">:</span> <span class="n">你好</span>
+</span></span></code></pre></div><h2 id="no-default_flow_style-needed-dump">No <code>default_flow_style</code> needed (dump)</h2>
 <p>Most of the time we don&rsquo;t want <a href="https://yaml.org/spec/1.2.2/#chapter-7-flow-style-productions">flow style productions</a> in the output (i.e. no JSON in YAML).
 According to <a href="https://pyyaml.org/wiki/PyYAMLDocumentation#dictionaries-without-nested-collections-are-not-dumped-correctly">PyYAML documentation</a>, <code>default_flow_style=False</code> should be passed to <code>yaml.safe_dump</code> to achieve that.</p>
 <p>After digging into the source code of the latest PyYaml (6.0), I find it is not needed anymore.
@@ -255,12 +255,12 @@ If we restrict our usage to only a subset of its features, it will be as good as
 <p>YAML has its good and bad. It&rsquo;s easy to read, the learning curve is mild at the beginning,
 but the specification is complex, which not only causes chaos in practice, but also makes implementations in different languages inconsistent with each other in many trivial aspects.</p>
 <p>Despite these quirks, YAML is still the best configuration language for me, and as long as we can use it properly, problems will be avoided and the experience will be much better.</p>
-<section class="footnotes" role="doc-endnotes">
+<div class="footnotes" role="doc-endnotes">
 <hr>
 <ol>
-<li id="fn:1" role="doc-endnote">
+<li id="fn:1">
 <p>See <a href="https://docs.python.org/3/whatsnew/3.7.html#:~:text=the%20insertion%2Dorder%20preservation%20nature%20of%20dict%20objects%20has%20been%20declared%20to%20be%20an%20official%20part%20of%20the%20Python%20language%20spec.">What’s New In Python 3.7</a>&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
-</section>
+</div>
 ]]></content:encoded></item></channel></rss>

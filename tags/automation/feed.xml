@@ -112,7 +112,7 @@
 <p>正常情况下，参照 n8n 的 <a href="https://docs.n8n.io/hosting/installation/docker/">Docker Installation</a> 文档即可完成初步运行。但在使用中，我发现了 n8n Twitter 接入的 bug，在对代码进行了修改后，不得不在本地构建 Docker 镜像 (见 <a href="https://github.com/n8n-io/n8n/tree/master/docker/images/n8n-custom">n8n - Custom Image</a>)。如果你需要使用 Twitter 接入，在这个 <a href="https://github.com/n8n-io/n8n/pull/3354">PR</a> 合并之前，建议使用我构建好的镜像 <a href="https://hub.docker.com/r/reorx/n8n-custom">reorx/n8n-custom</a>。</p>
 <p><details >
   <summary markdown="span">附上我的 docker-compose.yml 文件作为参考</summary>
-  <pre tabindex="0"><code>version: '3'
+  <pre tabindex="0"><code>version: &#39;3&#39;
 services:
   n8n:
     #image: n8nio/n8n
@@ -131,7 +131,6 @@ services:
       - TZ=Asia/Shanghai
       - N8N_LOG_LEVEL=verbose
     restart: unless-stopped
-
 </code></pre>
 </details></p>
 
@@ -155,33 +154,33 @@ WEBHOOK_URL=http://harrogath-local.com:5678/
 <p>新增了 <code>proxyUrl</code> 字段，使用 <a href="https://github.com/dylanpdx/BetterTwitFix">vxTwitter</a> 服务的域名 <code>vxtwitter.com</code> 替代 <code>twitter.com</code>，以在 Telegram 中有更好的预览效果</p>
 </blockquote>
 <p>Function 是我写的一段 JavaScript 代码，它使用了 n8n runtime 内置的 <a href="https://docs.n8n.io/integrations/core-nodes/n8n-nodes-base.function/#method-getworkflowstaticdatatype">getWorkflowStaticData</a> 函数，记录每次更新的第一个条目 <code>lastItemId</code>，通过与上一次的记录进行对比，确保只有新的条目会被输送到下一个 node 执行。如果没有 <code>lastItemId</code>，则只返回第一个条目，避免冷启动时造成大量信息的无效转发。这段代码基本在每个 workflow 中都有用到，下面将不再赘述。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="cm">/* only return new items */</span>
-<span class="kr">const</span> <span class="nx">staticData</span> <span class="o">=</span> <span class="nx">getWorkflowStaticData</span><span class="p">(</span><span class="s1">&#39;global&#39;</span><span class="p">);</span>
-<span class="kr">const</span> <span class="nx">lastItemId</span> <span class="o">=</span> <span class="nx">staticData</span><span class="p">.</span><span class="nx">lastItemId</span><span class="p">;</span>
-
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;lastItemId&#39;</span><span class="p">,</span> <span class="nx">lastItemId</span><span class="p">);</span>
-<span class="kr">const</span> <span class="nx">firstItem</span> <span class="o">=</span> <span class="nx">items</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
-<span class="kd">let</span> <span class="nx">newItems</span> <span class="o">=</span> <span class="p">[];</span>
-
-<span class="kd">function</span> <span class="nx">getId</span><span class="p">(</span><span class="nx">item</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="nx">item</span><span class="p">.</span><span class="nx">json</span><span class="p">.</span><span class="nx">id</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="k">if</span> <span class="p">(</span><span class="nx">lastItemId</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">for</span> <span class="p">(</span><span class="kr">const</span> <span class="nx">item</span> <span class="k">of</span> <span class="nx">items</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">getId</span><span class="p">(</span><span class="nx">item</span><span class="p">)</span> <span class="o">===</span> <span class="nx">lastItemId</span><span class="p">)</span> <span class="p">{</span>
-      <span class="k">break</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="nx">newItems</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">item</span><span class="p">)</span>
-  <span class="p">}</span>
-<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-  <span class="nx">newItems</span> <span class="o">=</span> <span class="p">[</span><span class="nx">firstItem</span><span class="p">]</span>
-<span class="p">}</span>
-
-<span class="nx">staticData</span><span class="p">.</span><span class="nx">lastItemId</span> <span class="o">=</span> <span class="nx">getId</span><span class="p">(</span><span class="nx">firstItem</span><span class="p">)</span>
-<span class="c1">// Reverse the order so that items are sent from old to new
-</span><span class="c1"></span><span class="k">return</span> <span class="nx">newItems</span><span class="p">.</span><span class="nx">reverse</span><span class="p">()</span>
-</code></pre></div><p>经过 Function 的处理后，有效条目会被送往 Telegram node，进行 message 组装，最终发送到频道。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="cm">/* only return new items */</span>
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">staticData</span> <span class="o">=</span> <span class="nx">getWorkflowStaticData</span><span class="p">(</span><span class="s1">&#39;global&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">lastItemId</span> <span class="o">=</span> <span class="nx">staticData</span><span class="p">.</span><span class="nx">lastItemId</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;lastItemId&#39;</span><span class="p">,</span> <span class="nx">lastItemId</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">firstItem</span> <span class="o">=</span> <span class="nx">items</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl"><span class="kd">let</span> <span class="nx">newItems</span> <span class="o">=</span> <span class="p">[];</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">getId</span><span class="p">(</span><span class="nx">item</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="nx">item</span><span class="p">.</span><span class="nx">json</span><span class="p">.</span><span class="nx">id</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="p">(</span><span class="nx">lastItemId</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">for</span> <span class="p">(</span><span class="kr">const</span> <span class="nx">item</span> <span class="k">of</span> <span class="nx">items</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="nx">getId</span><span class="p">(</span><span class="nx">item</span><span class="p">)</span> <span class="o">===</span> <span class="nx">lastItemId</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">newItems</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">item</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">newItems</span> <span class="o">=</span> <span class="p">[</span><span class="nx">firstItem</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">staticData</span><span class="p">.</span><span class="nx">lastItemId</span> <span class="o">=</span> <span class="nx">getId</span><span class="p">(</span><span class="nx">firstItem</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// Reverse the order so that items are sent from old to new
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">return</span> <span class="nx">newItems</span><span class="p">.</span><span class="nx">reverse</span><span class="p">()</span>
+</span></span></code></pre></div><p>经过 Function 的处理后，有效条目会被送往 Telegram node，进行 message 组装，最终发送到频道。</p>
 <p><img loading="lazy" src="/blog/sharing-my-footprints-automation/images/n8n-1.png" type="" alt=""  /></p>
 <p>n8n 的表达式 (Expression) 有一个可以预览的编辑界面，左侧会展示当前 node 从上一个 node 获取到的输入数据 (Input Data)，点击即可将模板变量插入到 Expression 中。模板语法 <code>{{ }}</code> 中可以使用 JavaScript 语法，这里我通过 <code>$json[&quot;retweeted&quot;]</code> 来决定 tag 为 <code>#retweet</code> 还是 <code>#tweet</code>。推文 URL 放在了 <code>&lt;a&gt;</code> 标签中，既可以触发 Telegram 的 link preview 功能，也避免展示太长的 URL 影响可读性。</p>
 <blockquote>
@@ -218,40 +217,40 @@ WEBHOOK_URL=http://harrogath-local.com:5678/
 <p><img loading="lazy" src="/blog/sharing-my-footprints-automation/images/n8n-6.png" type="" alt=""  /></p>
 <p>GitHub 可以通过 <code>https://github.com/$username.atom</code> 获取用户公开的动态信息，因此不需要复杂的 API 接入，直接使用 RSS Feed Read 即可获取到我们所需要的数据。</p>
 <p>在 Function filter 中，我用正则为动态进行了分类，并组成最终所需的消息格式，代码如下:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="cm">/* filter items */</span>
-<span class="kr">const</span> <span class="nx">newItems</span> <span class="o">=</span> <span class="p">[];</span>
-
-<span class="kr">const</span> <span class="nx">regexes</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s1">&#39;star&#39;</span><span class="o">:</span> <span class="sr">/^reorx starred/</span><span class="p">,</span>
-  <span class="s1">&#39;pull-request&#39;</span><span class="o">:</span> <span class="sr">/^reorx opened a pull request/</span><span class="p">,</span>
-  <span class="s1">&#39;issue&#39;</span><span class="o">:</span> <span class="sr">/^reorx opened an issue/</span><span class="p">,</span>
-<span class="p">}</span>
-<span class="kr">const</span> <span class="nx">tagSymbols</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s1">&#39;star&#39;</span><span class="o">:</span> <span class="s1">&#39;🌟&#39;</span><span class="p">,</span>
-  <span class="s1">&#39;pull-request&#39;</span><span class="o">:</span> <span class="s1">&#39;⤴️&#39;</span><span class="p">,</span>
-  <span class="s1">&#39;issue&#39;</span><span class="o">:</span> <span class="s1">&#39;⚡️&#39;</span>
-<span class="p">}</span>
-
-<span class="k">for</span> <span class="p">(</span><span class="kr">const</span> <span class="nx">item</span> <span class="k">of</span> <span class="nx">items</span><span class="p">)</span> <span class="p">{</span>
-  <span class="kr">const</span> <span class="nx">title</span> <span class="o">=</span> <span class="nx">item</span><span class="p">.</span><span class="nx">json</span><span class="p">.</span><span class="nx">title</span>
-  <span class="kd">let</span> <span class="nx">tag</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
-
-  <span class="k">for</span> <span class="p">(</span><span class="kr">const</span> <span class="nx">key</span> <span class="k">in</span> <span class="nx">regexes</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kr">const</span> <span class="nx">regex</span> <span class="o">=</span> <span class="nx">regexes</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">regex</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="nx">title</span><span class="p">))</span> <span class="p">{</span>
-      <span class="nx">tag</span> <span class="o">=</span> <span class="nx">key</span>
-      <span class="k">break</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nx">tag</span> <span class="o">!==</span> <span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">item</span><span class="p">.</span><span class="nx">json</span><span class="p">.</span><span class="nx">tag</span> <span class="o">=</span> <span class="nx">tag</span>
-    <span class="nx">item</span><span class="p">.</span><span class="nx">json</span><span class="p">.</span><span class="nx">tgTitle</span> <span class="o">=</span> <span class="sb">`</span><span class="si">${</span><span class="nx">tagSymbols</span><span class="p">[</span><span class="nx">tag</span><span class="p">]</span><span class="si">}</span><span class="sb"> </span><span class="si">${</span><span class="nx">title</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/^reorx /</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span><span class="si">}</span><span class="sb"> #github #</span><span class="si">${</span><span class="nx">tag</span><span class="si">}</span><span class="sb">`</span>
-    <span class="nx">item</span><span class="p">.</span><span class="nx">json</span><span class="p">.</span><span class="nx">guid</span> <span class="o">=</span> <span class="nx">item</span><span class="p">.</span><span class="nx">json</span><span class="p">.</span><span class="nx">id</span>
-    <span class="nx">newItems</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">item</span><span class="p">)</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-<span class="k">return</span> <span class="nx">newItems</span>
-</code></pre></div><blockquote>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="cm">/* filter items */</span>
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">newItems</span> <span class="o">=</span> <span class="p">[];</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">regexes</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="s1">&#39;star&#39;</span><span class="o">:</span> <span class="sr">/^reorx starred/</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="s1">&#39;pull-request&#39;</span><span class="o">:</span> <span class="sr">/^reorx opened a pull request/</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="s1">&#39;issue&#39;</span><span class="o">:</span> <span class="sr">/^reorx opened an issue/</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">tagSymbols</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="s1">&#39;star&#39;</span><span class="o">:</span> <span class="s1">&#39;🌟&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="s1">&#39;pull-request&#39;</span><span class="o">:</span> <span class="s1">&#39;⤴️&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="s1">&#39;issue&#39;</span><span class="o">:</span> <span class="s1">&#39;⚡️&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="p">(</span><span class="kr">const</span> <span class="nx">item</span> <span class="k">of</span> <span class="nx">items</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="nx">title</span> <span class="o">=</span> <span class="nx">item</span><span class="p">.</span><span class="nx">json</span><span class="p">.</span><span class="nx">title</span>
+</span></span><span class="line"><span class="cl">  <span class="kd">let</span> <span class="nx">tag</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">for</span> <span class="p">(</span><span class="kr">const</span> <span class="nx">key</span> <span class="k">in</span> <span class="nx">regexes</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kr">const</span> <span class="nx">regex</span> <span class="o">=</span> <span class="nx">regexes</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="nx">regex</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="nx">title</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">tag</span> <span class="o">=</span> <span class="nx">key</span>
+</span></span><span class="line"><span class="cl">      <span class="k">break</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="nx">tag</span> <span class="o">!==</span> <span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">item</span><span class="p">.</span><span class="nx">json</span><span class="p">.</span><span class="nx">tag</span> <span class="o">=</span> <span class="nx">tag</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">item</span><span class="p">.</span><span class="nx">json</span><span class="p">.</span><span class="nx">tgTitle</span> <span class="o">=</span> <span class="sb">`</span><span class="si">${</span><span class="nx">tagSymbols</span><span class="p">[</span><span class="nx">tag</span><span class="p">]</span><span class="si">}</span><span class="sb"> </span><span class="si">${</span><span class="nx">title</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/^reorx /</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span><span class="si">}</span><span class="sb"> #github #</span><span class="si">${</span><span class="nx">tag</span><span class="si">}</span><span class="sb">`</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">item</span><span class="p">.</span><span class="nx">json</span><span class="p">.</span><span class="nx">guid</span> <span class="o">=</span> <span class="nx">item</span><span class="p">.</span><span class="nx">json</span><span class="p">.</span><span class="nx">id</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">newItems</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">item</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">return</span> <span class="nx">newItems</span>
+</span></span></code></pre></div><blockquote>
 <p>这个 workflow 还有一个使用 GitHub API 的版本，但 RSS 可以获得所有动态，更加方便，最终胜出。</p>
 <p>Link: <a href="https://github.com/reorx/n8n-workflows/blob/master/workflows/github%20issues%20to%20tg.json">n8n-workflows/workflows/github issues to tg.json</a></p>
 </blockquote>
@@ -261,16 +260,16 @@ WEBHOOK_URL=http://harrogath-local.com:5678/
 <p><img loading="lazy" src="/blog/sharing-my-footprints-automation/images/n8n-7.png" type="" alt=""  /></p>
 <p>Douban 也有一个隐藏的 RSS 订阅源 <code>https://www.douban.com/feed/people/$username/interests</code>，包含书影音的所有动态。</p>
 <p>Function filter 与上一个 workflow 类似，这里做了一些优化，将正则和符号定义在一个 object 中。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="kr">const</span> <span class="nx">SYMBOL_MOVIE</span> <span class="o">=</span> <span class="s1">&#39;📺&#39;</span>
-<span class="kr">const</span> <span class="nx">SYMBOL_BOOK</span> <span class="o">=</span> <span class="s1">&#39;📖&#39;</span>
-
-<span class="kr">const</span> <span class="nx">tagInfoMap</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="nx">watched</span><span class="o">:</span> <span class="p">{</span> <span class="nx">re</span><span class="o">:</span> <span class="sr">/看过/</span><span class="p">,</span> <span class="nx">symbol</span><span class="o">:</span> <span class="nx">SYMBOL_MOVIE</span> <span class="p">},</span>
-  <span class="nx">watching</span><span class="o">:</span> <span class="p">{</span> <span class="nx">re</span><span class="o">:</span> <span class="sr">/在看/</span><span class="p">,</span> <span class="nx">symbol</span><span class="o">:</span> <span class="nx">SYMBOL_MOVIE</span> <span class="p">},</span>
-  <span class="nx">read</span><span class="o">:</span> <span class="p">{</span> <span class="nx">re</span><span class="o">:</span> <span class="sr">/读过/</span><span class="p">,</span> <span class="nx">symbol</span><span class="o">:</span> <span class="nx">SYMBOL_BOOK</span> <span class="p">},</span>
-  <span class="nx">reading</span><span class="o">:</span> <span class="p">{</span> <span class="nx">re</span><span class="o">:</span> <span class="sr">/在读/</span><span class="p">,</span> <span class="nx">symbol</span><span class="o">:</span> <span class="nx">SYMBOL_BOOK</span> <span class="p">},</span>
-<span class="p">}</span>
-</code></pre></div><h3 id="异常通知">异常通知</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">SYMBOL_MOVIE</span> <span class="o">=</span> <span class="s1">&#39;📺&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">SYMBOL_BOOK</span> <span class="o">=</span> <span class="s1">&#39;📖&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">tagInfoMap</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">watched</span><span class="o">:</span> <span class="p">{</span> <span class="nx">re</span><span class="o">:</span> <span class="sr">/看过/</span><span class="p">,</span> <span class="nx">symbol</span><span class="o">:</span> <span class="nx">SYMBOL_MOVIE</span> <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">watching</span><span class="o">:</span> <span class="p">{</span> <span class="nx">re</span><span class="o">:</span> <span class="sr">/在看/</span><span class="p">,</span> <span class="nx">symbol</span><span class="o">:</span> <span class="nx">SYMBOL_MOVIE</span> <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">read</span><span class="o">:</span> <span class="p">{</span> <span class="nx">re</span><span class="o">:</span> <span class="sr">/读过/</span><span class="p">,</span> <span class="nx">symbol</span><span class="o">:</span> <span class="nx">SYMBOL_BOOK</span> <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">reading</span><span class="o">:</span> <span class="p">{</span> <span class="nx">re</span><span class="o">:</span> <span class="sr">/在读/</span><span class="p">,</span> <span class="nx">symbol</span><span class="o">:</span> <span class="nx">SYMBOL_BOOK</span> <span class="p">},</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h3 id="异常通知">异常通知</h3>
 <p>n8n 作为一个自动化服务，在配置完成后，一般我们不会去主动查看系统的运行情况，因此需要有监控手段得知异常的发生，以便及时维护。</p>
 <p>n8n 支持通过 <a href="https://docs.n8n.io/integrations/core-nodes/n8n-nodes-base.errortrigger/">Error Trigger</a> 创建 Error Workflow，用于接收其他 workflow 的错误信息。这一步虽然不是必须，但我强烈建议创建一个全局的 Error Workflow，并在每个 workflow 的 Settings 中设置错误处理指向它。</p>
 <p><img loading="lazy" src="/blog/sharing-my-footprints-automation/images/n8n-8.png" type="" alt=""  /></p>
@@ -325,21 +324,21 @@ WEBHOOK_URL=http://harrogath-local.com:5678/
 </ul>
 </li>
 </ul>
-<section class="footnotes" role="doc-endnotes">
+<div class="footnotes" role="doc-endnotes">
 <hr>
 <ol>
-<li id="fn:1" role="doc-endnote">
+<li id="fn:1">
 <p>我的知识库中有三个分类:「制品」、「技术」、「事实」。制品 (artifacts) 是人所创造的作品、产品，如一个开源项目、一个软件；技术 (techniques) 是完成一类事情的方法或经验，也可以叫做 know-how，比如做饭的菜谱、编程语言的技巧、健身动作说明；事实 (facts) 是对概念、词汇的客观解释，多数来源于维基百科的词条。这三个分类可以基本涵盖我摄入的各类信息。&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
-<li id="fn:2" role="doc-endnote">
+<li id="fn:2">
 <p>预计微信还需要 100 年才能赶上&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
-<li id="fn:3" role="doc-endnote">
+<li id="fn:3">
 <p>self-hosted workflow automation 的另一个选择是 <a href="https://github.com/huginn/huginn">Huginn</a>, 我没有尝试和对比，在看过它的项目页面，感觉 UI 非常简陋就放弃了。&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
-<li id="fn:4" role="doc-endnote">
+<li id="fn:4">
 <p>见我在 Twitter 的吐槽: <a href="https://twitter.com/novoreorx/status/1528985317847736320">make.com 大概是我 10 年来用过最糟糕的服务</a>&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
-</section>
+</div>
 ]]></content:encoded></item></channel></rss>

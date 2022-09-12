@@ -30,19 +30,19 @@
 <h3 id="安装依赖">安装依赖</h3>
 <p>在等待 umami 的镜像构建和部署的过程中，我们可以在命令行进行一些其他工作。</p>
 <p>打开命令行，使用以下命令安装 Railway CLI 和 pgsql 两个软件依赖。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">brew install railwayapp/railway/railway
-brew install libpg
-</code></pre></div><p>完成后，将 libpg 的 bin 路径添加到 PATH 中，在 <code>.zshrc</code> 或 <code>.bashrc</code> 中添加一行:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="s2">&#34;</span><span class="nv">$PATH</span><span class="s2">:/opt/homebrew/opt/libpq/bin&#34;</span>
-</code></pre></div><p>你可以通过执行 <code>type pgsql</code> 确认 <code>pgsql</code> 是否存在。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">brew install railwayapp/railway/railway
+</span></span><span class="line"><span class="cl">brew install libpg
+</span></span></code></pre></div><p>完成后，将 libpg 的 bin 路径添加到 PATH 中，在 <code>.zshrc</code> 或 <code>.bashrc</code> 中添加一行:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="s2">&#34;</span><span class="nv">$PATH</span><span class="s2">:/opt/homebrew/opt/libpq/bin&#34;</span>
+</span></span></code></pre></div><p>你可以通过执行 <code>type pgsql</code> 确认 <code>pgsql</code> 是否存在。</p>
 <h3 id="更新数据库">更新数据库</h3>
 <p>Railway 在创建 Project 时，会将 umami 的代码复制到在你的 GitHub 账户所创建的名为 <code>umami</code> 的仓库中，我们需要先将此仓库 clone 下来:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">git clone git@github.com:username/umami.git
-</code></pre></div><p>进入 umami 目录，执行以下命令，登录 Railway CLI 并完成链接:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">cd</span> umami
-railway login
-railway link
-</code></pre></div><p>这一步完成后，可以通过 <code>railway variables</code> 看到 umami 服务的环境变量，确认 CLI 可以访问到线上数据。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git clone git@github.com:username/umami.git
+</span></span></code></pre></div><p>进入 umami 目录，执行以下命令，登录 Railway CLI 并完成链接:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">cd</span> umami
+</span></span><span class="line"><span class="cl">railway login
+</span></span><span class="line"><span class="cl">railway link
+</span></span></code></pre></div><p>这一步完成后，可以通过 <code>railway variables</code> 看到 umami 服务的环境变量，确认 CLI 可以访问到线上数据。</p>
 <pre tabindex="0"><code>DATABASE_URL:        postgresql://postgres:xxxxxxxxx@containers-us-west.railway.app:6595/railway
 DISABLE_TELEMETRY:   1
 HASH_SALT:           xxXXxxXXxxXXxx
@@ -54,8 +54,8 @@ PGPORT:              6595
 PGUSER:              postgres
 PORT:                3000
 </code></pre><p>执行以下命令，为 umami 创建表格、添加初始数据。注意要将 bash variable 替换为上文中的数据:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">railway run psql -h <span class="nv">$PGHOST</span> -U <span class="nv">$PGUSER</span> -d <span class="nv">$PGDATABASE</span> -f sql/schema.postgresql.sql
-</code></pre></div><h3 id="配置服务">配置服务</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">railway run psql -h <span class="nv">$PGHOST</span> -U <span class="nv">$PGUSER</span> -d <span class="nv">$PGDATABASE</span> -f sql/schema.postgresql.sql
+</span></span></code></pre></div><h3 id="配置服务">配置服务</h3>
 <p>数据库初始化完毕后，回到 Project 管理界面，确认 umami 部署完毕，即可打开服务的主页。</p>
 <h4 id="更换密码">更换密码</h4>
 <p>使用初始用户名密码 <code>admin:umami</code> 登录进去，然后立刻到 Settings &gt; Accounts 界面更换一个强密码。</p>
@@ -70,11 +70,11 @@ PORT:                3000
 <p>再次进入 Railway，打开 umami 的 Variables 选项卡，按下图所示添加环境变量，我使用的名称为 <code>oishii</code>，可以更换为任意非 tracker 特征词汇。</p>
 <p><img loading="lazy" src="/blog/deploy-umami-for-personal-website/images/railway-2.png" type="" alt=""  /></p>
 <p>完成这一步后，需要重新构建 umami 的镜像，目前我还没有找到触发 rebuild 的简单方法，只能通过修改 Dockerfile 实现:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-diff" data-lang="diff">RUN yarn next telemetry disable
-<span class="gi">+# Ensures `yarn build` will always run when BUILD_TIME is different
-</span><span class="gi">+ARG BUILD_TIME
-</span><span class="gi"></span>RUN yarn build
-</code></pre></div><p>在 <code>yarn build</code> 之前增加一行 <code>ARG BUILD_TIME</code>，这样当此参数不同时，就会触发 <code>yarn build</code> 及之后的命令重新执行。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-diff" data-lang="diff"><span class="line"><span class="cl">RUN yarn next telemetry disable
+</span></span><span class="line"><span class="cl"><span class="gi">+# Ensures `yarn build` will always run when BUILD_TIME is different
+</span></span></span><span class="line"><span class="cl"><span class="gi">+ARG BUILD_TIME
+</span></span></span><span class="line"><span class="cl"><span class="gi"></span>RUN yarn build
+</span></span></code></pre></div><p>在 <code>yarn build</code> 之前增加一行 <code>ARG BUILD_TIME</code>，这样当此参数不同时，就会触发 <code>yarn build</code> 及之后的命令重新执行。</p>
 <p>保存修改，然后执行 <code>railway up</code>，等待镜像构建和部署完成。</p>
 <h2 id="接入个人网站">接入个人网站</h2>
 <p>一切准备就绪，我们重新使用自定义域名和修改后的密码登录 umami。</p>

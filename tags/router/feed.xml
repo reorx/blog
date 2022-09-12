@@ -192,24 +192,24 @@
 <li>2022-07-09: update R2S notes</li>
 <li>2022-07-10: 添加关于「使用无线便携路由器是否会影响公共 Wi-Fi 手机号验证流程」的描述</li>
 </ul>
-<section class="footnotes" role="doc-endnotes">
+<div class="footnotes" role="doc-endnotes">
 <hr>
 <ol>
-<li id="fn:1" role="doc-endnote">
+<li id="fn:1">
 <p>见推文 <a href="https://twitter.com/novoreorx/status/1412406192845033473">https://twitter.com/novoreorx/status/1412406192845033473</a>&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
-<li id="fn:2" role="doc-endnote">
+<li id="fn:2">
 <p>见推文 <a href="https://twitter.com/q1ngyang/status/1543116478987190275">https://twitter.com/q1ngyang/status/1543116478987190275</a>&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
-<li id="fn:3" role="doc-endnote">
+<li id="fn:3">
 <p>见 GitHub 项目页 <a href="https://github.com/gl-inet/openwrt">https://github.com/gl-inet/openwrt</a>&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
-<li id="fn:4" role="doc-endnote">
+<li id="fn:4">
 <p>见 OpenWrt 官网的硬件支持页面: <a href="https://openwrt.org/toh/tp-link/tl-wr902ac_v3">https://openwrt.org/toh/tp-link/tl-wr902ac_v3</a>&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
-<li id="fn:5" role="doc-endnote">
+<li id="fn:5">
 <p>见推文 <a href="https://twitter.com/BigEyeSmolMouth/status/1542379014970417153">https://twitter.com/BigEyeSmolMouth/status/1542379014970417153</a>&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
-</section>
+</div>
 ]]></content:encoded></item></channel></rss>

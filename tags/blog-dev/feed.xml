@@ -112,18 +112,18 @@
 <p>用户可以通过 &ldquo;deleteme&rdquo; 请求将所有与自己相关的数据全部清除，类似近年来用户呼吁各大网站去支持的 opt-out <sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>。</p>
 <h2 id="小结">小结</h2>
 <p>Remark42 还有许多功能，比如评论的 RSS 输出、Telegram 通知接入、Webhook 等等，限于本文篇幅，就不做展开了。下一篇博客我会对如何在 <a href="https://fly.io/">Fly.io</a> 部署 Remark42、自定义 UI、接入 CDN 等内容进行详细的讲解，让读者也可以快速搭建自己的 Remark42 实例，敬请期待。</p>
-<section class="footnotes" role="doc-endnotes">
+<div class="footnotes" role="doc-endnotes">
 <hr>
 <ol>
-<li id="fn:1" role="doc-endnote">
+<li id="fn:1">
 <p>虽然一个优秀的服务应尽可能少的申请用户权限（减少 scope），但遇到糟糕的服务申请过多权限，我们一个不留神点了 Allow 的风险依然存在。&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
-<li id="fn:2" role="doc-endnote">
+<li id="fn:2">
 <p>经过尝试和搜索，发现 Remark42 的用户提醒是一项单独的功能（Subscribe），与是否用邮箱登录无关。我打算为邮箱登录实现一个「subscribe to notification」的勾选框，实现登录后即可自动订阅邮件提醒，见此 issue 下的<a href="https://github.com/umputun/remark42/issues/745#issuecomment-1144526472">评论</a>。&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
-<li id="fn:3" role="doc-endnote">
+<li id="fn:3">
 <p><a href="https://justdeleteme.xyz/">JustDeleteMe</a> 列出了各大网站对删除账户数据的支持情况，并提供直达链接。&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
-</section>
+</div>
 ]]></content:encoded></item></channel></rss>

@@ -114,15 +114,15 @@
 <p>Proselog 的界面相比竹白更加简洁清晰，界面上处处体现出 EGOIST 特有的克制而明快设计审美，这让基于网页编辑器的创作流程变得舒适而愉悦。</p>
 <p>Proselog 不仅仅是一个 Substack/竹白 alternative，它还是一个<a href="https://github.com/proselog/proselog">开源项目</a>，意味着创作者的数据和隐私将完全由自己掌控，这与 Fediverse 系的发布平台如 <a href="https://github.com/writefreely/writefreely">Writefreely</a> 的理念不谋而合。</p>
 <p>和 EGOIST 讨论后，他表示 Proselog 的确有 headless CMS 的开发计划，这让我异常期待 Proselog 后续的发展。也许这次，我找到了那个理想中的 Newsletter 发布平台。</p>
-<section class="footnotes" role="doc-endnotes">
+<div class="footnotes" role="doc-endnotes">
 <hr>
 <ol>
-<li id="fn:1" role="doc-endnote">
+<li id="fn:1">
 <p>Cloudflare 在<a href="https://blog.cloudflare.com/r2-open-beta/">一篇文章</a>中提到: “One of our main goals has been to serve the developers who can’t negotiate large discounts with cloud vendors”&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
-<li id="fn:2" role="doc-endnote">
+<li id="fn:2">
 <p>这里不讨论 Ghost 的 self-hosted 版本，我更希望使用 hosting 的 Newsletter 服务，因为网站已经需要自己去维护，不想再增加维护一个复杂系统的负担&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
-</section>
+</div>
 ]]></content:encoded></item></channel></rss>

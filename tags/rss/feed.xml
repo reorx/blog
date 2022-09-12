@@ -86,7 +86,7 @@
 <p>RSS 的用法因人而异，这篇文章主要目的是分享我个人的探索过程，希望带给读者一些借鉴。选择适合自己的，不要盲目追求别人看起来「高效」「强大」的工作流。</p>
 <p>前几天 <a href="https://taoshu.in/">涛叔</a> 向我推荐了他的 <a href="https://taoshu.in/webfeed/web-feed.html">WebFeed</a> 插件 (for Firefox)，它把浏览器变成 RSS 阅读器，并能自动发现网站的 RSS 源。</p>
 <p><img loading="lazy" src="/blog/reinitiate-rss-reader/images/webfeed.png" type="" alt=""  /></p>
-<p>我很喜欢它的 Web 与 RSS 一体的使用体验，这让我开始思考一个问题，为何近些年来 RSS 逐渐式微，主流浏览器厂商没有做任何相关的支持<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>，只有少部分开源爱好者还在坚持使用并为 RSS 社区做出贡献。</p>
+<p>我很喜欢它的 Web 与 RSS 一体的使用体验，这让我开始思考一个问题，为何近些年来 RSS 逐渐式微，主流浏览器厂商没有做任何相关的支持<sup id="fnref1:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>，只有少部分开源爱好者还在坚持使用并为 RSS 社区做出贡献。</p>
 <p>我能想到的答案之一是，商业公司在控制和引导互联网生态，将公开流量变成自己的私域流量。而主流浏览器背后正好也都是商业公司。想象一下，如果所有内容都来自于独立博客的 RSS，作者可以直达受众，那内容分发市场的商业价值就没他们什么事了，更不用说将用户绑定在自己的平台上。</p>
 <p>另一个原因可能是内容农场的肆虐，独立创作者很难靠自己将原创内容推广，内容农场却通过 SEO 技术将自己洗稿后的文章顶在了搜索结果的前面。关于这个问题，少数派有一篇文章值得一读： <a href="https://sspai.com/post/71637">少数派思考 007：关于 RSS</a>。</p>
 <p>这是一场没有硝烟的战争，商业巨头们就像<a href="https://zh.wikipedia.org/wiki/%E5%9C%B0%E7%90%86%E5%A4%A7%E5%8F%91%E7%8E%B0">地理大发现</a>时期的西方文明，在开放互联网的蒙昧之地大肆开拓殖民地。国外近些年来还有 Medium、Newsletter 等多种形式的内容分发模式百花齐放，国内已经被头条、微信、微博、百度完成瓜分和镇压，沦为没有生机的焦土。</p>
@@ -98,23 +98,23 @@
 
 <p>最后推荐一篇文章 <a href="https://kevincox.ca/2022/05/06/rss-feed-best-practices/">RSS Feed Best Practises</a>， 如果你也是一名维护自己博客的 webmaster，可以了解下如何优化自己网站输出的 RSS。</p>
 <p>比如加上 <code>&lt;link&gt;</code> tag 使 RSS URL 可以被主流工具自动发现:</p>
-<pre tabindex="0"><code>&lt;link rel=alternate title=&quot;Blog Posts&quot; type=application/atom+xml href=&quot;/feed.atom&quot;&gt;
+<pre tabindex="0"><code>&lt;link rel=alternate title=&#34;Blog Posts&#34; type=application/atom+xml href=&#34;https://reorx.com/feed.atom&#34;&gt;
 </code></pre><p>比如最好在 RSS 中附带全文：</p>
 <blockquote>
 <p>It is generally recommended to provide the full content of your posts in the feed. This is what most readers prefer. Atom has both <code>&lt;summary&gt;</code> element for readers that prefer it. For RSS and the Atom <code>&lt;content&gt;</code> element the full article should be included.</p>
 </blockquote>
-<section class="footnotes" role="doc-endnotes">
+<div class="footnotes" role="doc-endnotes">
 <hr>
 <ol>
-<li id="fn:1" role="doc-endnote">
+<li id="fn:1">
 <p>当时使用了一款 Chrome 插件，会自动检测当前网页可用的 RSS 源，如果有的话，会在地址栏里显示 RSS 图标，点击图标就能看见 Google Reader 中的目录分类，勾选即是将 RSS 订阅到指定分类中。我非常喜欢这个插件，可惜后来 Chrome 去掉了地址栏图标的 API，再也无法实现相似的功能了。&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
-<li id="fn:2" role="doc-endnote">
+<li id="fn:2">
 <p>亦像一个喜欢在 Steam 屯游戏的人，买了上千个游戏，但每天玩的还是 Dota 2, CS GO, GTA 5&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
-<li id="fn:3" role="doc-endnote">
-<p>Chrome 背后的 Google，在手机 app 上实现了自己的 <a href="https://support.google.com/websearch/answer/2819496?hl=en&amp;co=GENIE.Platform%3DAndroid">Discover Feed</a> ; Edge 有一个叫 <a href="https://support.microsoft.com/en-us/microsoft-edge/organize-your-ideas-with-collections-in-microsoft-edge-60fd7bba-6cfd-00b9-3787-b197231b507e">Collections</a> 的功能，可以 “Follow” 一个网站的更新。那为什么我要说没有支持呢？因为这些都不是真正的 RSS，它们背后的技术可能还是 RSS ，但在产品上都刻意忽略 RSS、强调自己的名词。他们各造轮子实现自己的私有功能，仍是为了将用户关在自己的信息茧房中。&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<li id="fn:3">
+<p>Chrome 背后的 Google，在手机 app 上实现了自己的 <a href="https://support.google.com/websearch/answer/2819496?hl=en&amp;co=GENIE.Platform%3DAndroid">Discover Feed</a> ; Edge 有一个叫 <a href="https://support.microsoft.com/en-us/microsoft-edge/organize-your-ideas-with-collections-in-microsoft-edge-60fd7bba-6cfd-00b9-3787-b197231b507e">Collections</a> 的功能，可以 “Follow” 一个网站的更新。那为什么我要说没有支持呢？因为这些都不是真正的 RSS，它们背后的技术可能还是 RSS ，但在产品上都刻意忽略 RSS、强调自己的名词。他们各造轮子实现自己的私有功能，仍是为了将用户关在自己的信息茧房中。&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
-</section>
+</div>
 ]]></content:encoded></item></channel></rss>
