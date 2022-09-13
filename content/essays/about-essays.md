@@ -26,4 +26,4 @@ Essays 专门用于发表片段化的想法，对文章结构和长度不做要�
 
 我希望能越来越多地分享我的想法、知识、体验，Essays 就是这样一个尝试。下一个目标，是能够随时随地写作并分享，我已经有了一个[初步的想法](https://t.me/reorx_share/2221)，看看我能创造些什么吧。
 
-[^1]: 参见我的另一篇文章 [使用自动化工作流聚合信息摄入和输出](https://reorx.com/blog/sharing-my-footprints-automation/)
+[^1]: 参见我的另一篇文章 [使用自动化工作流聚合信息摄入和输出]({{< relref "/blog/20220525 sharing my consume and creation" >}})

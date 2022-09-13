@@ -3,7 +3,7 @@ title: 分体式键盘
 slug: split-keyboards
 date: 2022-09-13
 description: 介绍分体式键盘的优点、相关产品和购买建议
-draft: true
+draft: false
 writeTime: "00:40"
 tags:
   - accessory
