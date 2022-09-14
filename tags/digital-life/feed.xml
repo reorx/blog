@@ -1,4 +1,179 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>digital-life on Reorx’s Forge</title><link>https://reorx.com/tags/digital-life/</link><description>Recent content in digital-life on Reorx’s Forge</description><image><url>https://reorx.com/images/forge-v2-compat.svg</url><link>https://reorx.com/images/forge-v2-compat.svg</link></image><generator>Hugo -- gohugo.io</generator><lastBuildDate>Fri, 09 Sep 2022 00:00:00 +0800</lastBuildDate><atom:link href="https://reorx.com/tags/digital-life/feed.xml" rel="self" type="application/rss+xml"/><item><title>2022 年 9 月苹果发布会观后感</title><link>https://reorx.com/blog/2022-09-apple-event/</link><pubDate>Fri, 09 Sep 2022 00:00:00 +0800</pubDate><guid>https://reorx.com/blog/2022-09-apple-event/</guid><description>论 iPhone 重量变化与我的购买决策之间的关系</description><content:encoded><![CDATA[<p>刚过完 2022 年的科技春晚——苹果9月发布会，我也照例观看（指阅读 ifanr 的汇总文章）了一遍，大致总结如下：</p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>digital-life on Reorx’s Forge</title><link>https://reorx.com/tags/digital-life/</link><description>Recent content in digital-life on Reorx’s Forge</description><image><url>https://reorx.com/images/forge-v2-compat.svg</url><link>https://reorx.com/images/forge-v2-compat.svg</link></image><generator>Hugo -- gohugo.io</generator><lastBuildDate>Wed, 14 Sep 2022 00:00:00 +0800</lastBuildDate><atom:link href="https://reorx.com/tags/digital-life/feed.xml" rel="self" type="application/rss+xml"/><item><title>使用 Railway 和 Supabase 零成本搭建 n8n 自动化平台</title><link>https://reorx.com/blog/0-cost-self-hosted-n8n-with-railway-and-supabase/</link><pubDate>Wed, 14 Sep 2022 00:00:00 +0800</pubDate><guid>https://reorx.com/blog/0-cost-self-hosted-n8n-with-railway-and-supabase/</guid><description>我的 n8n 「白嫖」部署新方案。</description><content:encoded><![CDATA[<p>在前文 <a href="/blog/sharing-my-footprints-automation/">使用自动化工作流聚合信息摄入和输出</a> 中，我介绍了如何在 NAS 提供的 Docker 环境安装 n8n，以及 n8n workflow 的使用方式。经过 3 个月的使用，我有了一些新的体会和尝试，重新设计了 n8n 的部署方案。本文将对这套新的方案进行说明，并分享数据迁移和第三方服务接入的实践。</p>
+<h2 id="系统架构">系统架构</h2>
+<figure class="center align-center">
+  <img loading="lazy" src="/blog/0-cost-self-hosted-n8n-with-railway-and-supabase/images/system.svg" type="" alt=""  />
+
+  <figcaption><p>系统架构图</p></figcaption>
+</figure>
+
+<p>我们所要搭建的这套服务有着如图所示的系统关系。</p>
+<ul>
+<li>Cloudflare: CDN 和 Proxy，用于加速网站访问，可选组件</li>
+<li>Railway: PaaS 平台，提供 Docker 环境运行 n8n 的后端进程</li>
+<li>Supabase: 作为数据库供 n8n 使用</li>
+</ul>
+<h2 id="完整部署流程">完整部署流程</h2>
+<h3 id="supabase-创建数据库">Supabase: 创建数据库</h3>
+<p>首先我们要在 <a href="https://supabase.com/">Supabase</a> 上注册一个账号，登入之后，点击 New project 创建新的数据库，命名为 n8n，注意要记住创建流程中输入的密码。</p>
+<p>定位到 Project settings / Database / Connection info，将图中的信息记录下来即可进入下一步。
+<figure class="center align-center">
+  <img loading="lazy" src="/blog/0-cost-self-hosted-n8n-with-railway-and-supabase/images/database-info.png" type="" alt=""  />
+
+  <figcaption><p>Supabase Connection info</p></figcaption>
+</figure>
+</p>
+<h3 id="github-创建-repo">GitHub: 创建 Repo</h3>
+<p>在 Railway 上部署服务最便捷的方式就是关联一个 GitHub repo，你可以 fork 我准备好的: <a href="https://github.com/reorx/n8n-on-railway">reorx/n8n-on-railway</a></p>
+<p>这个 repo 的内容非常简单，其中最核心的就是 <code>Dockerfile</code>，只有一行代码：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-dockerfile" data-lang="dockerfile"><span class="line"><span class="cl"><span class="k">FROM</span><span class="s"> reorx/n8n-custom</span><span class="err">
+</span></span></span></code></pre></div><p>它的作用是基于 <a href="https://hub.docker.com/repository/docker/reorx/n8n-custom/">reorx/n8n-custom</a> 定义新的镜像。Railway 会使用这个 <code>Dockerfile</code> 来自动构建和部署服务。</p>
+<p><a href="https://hub.docker.com/repository/docker/reorx/n8n-custom/">reorx/n8n-custom</a> 是我个人维护的镜像，基于版本 <a href="https://github.com/n8n-io/n8n/tree/n8n%400.193.5">0.193.5</a> 构建 <sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>，目的是提前使用 <a href="https://github.com/n8n-io/n8n/pull/3354">PR</a> 的代码，以解决无法接入 Twitter 的问题。如果你对安全性有所担忧，也可以使用官方镜像 <a href="https://hub.docker.com/r/n8nio/n8n">n8nio/n8n</a>。</p>
+<p>Repo 中还有 <code>example.env</code> 和 <code>export_workflow.sh</code> 两个文件，稍后我们会用到。</p>
+<h3 id="railway-创建-project">Railway: 创建 Project</h3>
+<p>注册或登入 <a href="https://railway.app/">Railway</a>，点击 New Project，选择 Deploy from GitHub repo，找到上一步创建的 repo 名字（n8n-on-railway）并选择，在下一个界面点击 Deploy now 开始部署。</p>
+<h4 id="修改域名">修改域名</h4>
+<p>不需要等待部署完成，我们直接进入 Project，点击代表 service 的卡片，打开 Settings。</p>
+<figure class="center align-center">
+  <img loading="lazy" src="/blog/0-cost-self-hosted-n8n-with-railway-and-supabase/images/railway-domains.png" type="" alt=""  />
+
+  <figcaption><p>Railway Settings Domains</p></figcaption>
+</figure>
+
+<p>可以看到 Railway 已经为我们的服务分配了一个 <code>.up.railway.app</code> 的四级域名，这将是你访问 n8n Web UI 的入口。如果你对域名没有要求，可以保持不变，将这个域名记录下来；如果你希望使用自己的域名，请参考 <a href="https://docs.railway.app/deploy/exposing-your-app#custom-domains">Exposing Your App</a> 文档中的 Custom Domains 章节进行设置。</p>
+<p>下图是我的域名 <code>n8n.reorx.com</code> 在 Cloudflare 的配置信息。由于 n8n 是一个重前端交互的网站，需要加载很多庞大的 JavaScript 文件，直接通过 Railway 访问效率很低。使用 Cloudflare 的 Proxy 功能，可以让这些静态资源走 Cloudflare CDN，加速网站访问。因此我非常推荐用 Cloudflare 来托管 n8n 自定义域名。</p>
+<figure class="center align-center">
+  <img loading="lazy" src="/blog/0-cost-self-hosted-n8n-with-railway-and-supabase/images/1663094576.png" type="" alt=""  />
+
+  <figcaption><p>Cloudflare DNS config for n8n.reorx.com</p></figcaption>
+</figure>
+
+<h4 id="设置环境变量">设置环境变量</h4>
+<p>确认域名后，我们要切换到 Variables 页面对环境变量进行设置。</p>
+<figure class="center align-center">
+  <img loading="lazy" src="/blog/0-cost-self-hosted-n8n-with-railway-and-supabase/images/railway-variables-editor.png" type="" alt=""  />
+
+  <figcaption><p>Railway Variables Raw Editor</p></figcaption>
+</figure>
+
+<p>点击 Raw Editor 按钮，在弹出的输入框中粘贴 GitHub repo 中的 <code>example.env</code> 文件的内容，并调整各变量的值。其中：</p>
+<ul>
+<li><code>DB_</code> 开头的部分要根据 Supabase 的 Connection info 对号入座</li>
+<li><code>VUE_APP_URL_BASE_API</code> 和 <code>WEBHOOK_URL</code> 填写上一步中所使用的域名。</li>
+<li><code>N8N_ENCRYPTION_KEY</code> 是 n8n 加密 credentials 所使用的 key，请务必使用自己生成的随机字符串。如果没有这个变量，n8n 会随机生成一个并保存到文件系统中，在 Railway 的运行环境下重启后就会丢失，导致已保存的 credentials 无法解密 <sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>。</li>
+</ul>
+<p>以上这些变量均可在官方文档 <a href="https://docs.n8n.io/hosting/configuration/">Configuration</a> 中找到详细说明。</p>
+<p>编辑完成后，点击 Update Variables，Railway 会开始新的部署任务。至此，我们就完成了 n8n 在 Railway 上使用 Supabase 数据库的部署流程。</p>
+<h2 id="初始化和数据迁移">初始化和数据迁移</h2>
+<p>如果一切正常，等 Railway 的部署任务完成后，即可通过 <a href="#%E4%BF%AE%E6%94%B9%E5%9F%9F%E5%90%8D">修改域名</a> 环节所确定的域名打开 n8n 网站。第一次访问时，n8n 会引导用户创建管理员账号，安全起见，请尽快完成这一步骤。</p>
+<h3 id="workflow-导入">Workflow 导入</h3>
+<p>如果你有已经备份好的 workflow，此时就可以进行导入了。先创建一个空的 workflow，然后在左侧菜单点击 &ldquo;Import from File&rdquo;，选择已有 workflow 的 json 文件即可完成导入。导入后，原 workflow 所使用的 credentials 会失效，需要手动选择或创建新的 credentials 才可以正常使用。</p>
+<p><a href="https://github.com/reorx/n8n-workflows">reorx/n8n-workflows</a> 是我自己使用的一些 workflow，供读者参考。</p>
+<h3 id="workflow-导出">Workflow 导出</h3>
+<p>出于备份或分享的目的，我们可以导出 n8n 的 workflows。下面讲解如何将运行在 Railway 中的 n8n 的 workflows 进行导出。</p>
+<ol>
+<li>
+<p>准备一个 Docker 环境，包含一个 Docker host 以及命令行工具 <code>docker</code></p>
+</li>
+<li>
+<p>安装 Railway 的命令行工具 <code>railway</code> <sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup></p>
+</li>
+<li>
+<p>进入 GitHub Repo 所在的目录，执行 <code>railway link</code>，选择 n8n 对应的 project</p>
+</li>
+<li>
+<p>执行如下命令</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">EXPORT_ROOT</span><span class="o">=</span>/path/to/volume railway run bash export_workflows.sh
+</span></span></code></pre></div><p>其中 <code>EXPORT_ROOT</code> 是文件输出路径，将作为 volume 挂载到所要执行的 Docker 容器中。</p>
+<p><code>railway run</code> 会将线上 project 的环境变量注入到当前 shell 中，使最终执行的脚本 <code>export_workflows.sh</code> 使用与线上一致的环境。</p>
+<p>执行完毕后，即可在 <code>EXPORT_ROOT</code> 下找到当前日期命名的目录，其中的 json 文件即为导出的 workflows。这些文件是以 workflow 的 id 命名，你还可以使用我的 <a href="https://github.com/reorx/n8n-workflows/blob/master/get_workflows.py">get_workflows.py</a> 脚本修改文件名为实际的可读名称，并清理其中的无用数据:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">python get_workflows.py <span class="nv">$EXPORT_ROOT</span>/n8n-<span class="k">$(</span>date +%Y%m%d<span class="k">)</span> workflows/
+</span></span></code></pre></div></li>
+</ol>
+<p>这个导出方法同样适用于 NAS Docker 中部署的 n8n，只需要去掉 Railway 相关的步骤即可。</p>
+<h2 id="接入第三方服务">接入第三方服务</h2>
+<p>n8n 的强大在于它内置了很多线上服务的 Integrations，仅需简单的配置即可完成接入。虽然官方有文档说明，但仍然有一些不大不小的坑，这里记录下我的一些配置技巧，希望能帮助你节省一些时间。</p>
+<h3 id="google">Google</h3>
+<p>Google 的接入相对比较复杂，请跟随文档 <a href="https://docs.n8n.io/integrations/builtin/credentials/google/">Integrations: Google</a> 的详细说明进行操作。这里只说下文档中没有提到的一个细节：在创建 OAuth consent screen 后，要将 Publishing status 设为 Testing，否则 Google 的 OAuth 页面会显示应用未通过审核的警告。还要将想要接入的 Google 账号邮箱加入 Test users 列表，否则无法再 Testing 模式下通过 OAuth 验证。</p>
+<figure class="center align-center">
+  <img loading="lazy" src="/blog/0-cost-self-hosted-n8n-with-railway-and-supabase/images/1662887129.png" type="" alt=""  />
+
+  <figcaption><p>Oauth consent screen: Publishing status</p></figcaption>
+</figure>
+
+<figure class="center align-center">
+  <img loading="lazy" src="/blog/0-cost-self-hosted-n8n-with-railway-and-supabase/images/1662887149.png" type="" alt=""  />
+
+  <figcaption><p>OAuth consent screen: Test users</p></figcaption>
+</figure>
+
+<h3 id="twitter">Twitter</h3>
+<p>Twitter 由于这两年来 Developer Portal 的大幅改造，实际操作中可能与文档 <a href="https://docs.n8n.io/integrations/builtin/credentials/twitter/">Integrations: Twitter</a> 有许多不一致，但只要确保以下几点，应该可以避免大部分问题。</p>
+<ol>
+<li>确保创建的 App 在 &ldquo;Standalone app&rdquo; 这个分类下</li>
+<li>确保 &ldquo;User authentication settings&rdquo; 按下图所示配置</li>
+</ol>
+<p>
+<figure class="center align-center">
+  <div class="image-size-control" style="height: 500px;">
+    <img loading="lazy" src="/blog/0-cost-self-hosted-n8n-with-railway-and-supabase/images/1662887928.png" type="" alt=""  />
+  </div>
+
+  <figcaption><p>User authentication settings</p></figcaption>
+</figure>
+
+3. 确保向 n8n 填入的 Consumer Key 和 Consumer Secret 来自下图中红框所在的位置</p>
+
+<figure class="center align-center">
+  <div class="image-size-control" style="height: 500px;">
+    <img loading="lazy" src="/blog/0-cost-self-hosted-n8n-with-railway-and-supabase/images/1662887896.png" type="" alt=""  />
+  </div>
+
+  <figcaption><p>Consumer Keys</p></figcaption>
+</figure>
+
+<h3 id="pinboard">Pinboard</h3>
+<p>n8n 没有内置 Pinboard 接入，不过 <a href="https://www.pinboard.in/api/">Pinboard API</a> 设计非常简洁，我们可以手动实现接入。</p>
+<p>创建 credential 时选择 &ldquo;Query Auth&rdquo;，向 &ldquo;Name&rdquo; 填入 <code>auth_token</code>，向 &ldquo;Value&rdquo; 填入从 <a href="https://pinboard.in/settings/password">Pinboard password</a> 页面得到的 API Token。完成后，即可在 HTTP Request node 中使用。</p>
+<figure class="center align-center">
+  <img loading="lazy" src="/blog/0-cost-self-hosted-n8n-with-railway-and-supabase/images/1663144028.png" type="" alt=""  />
+
+  <figcaption><p>HTTP Request node with pinboard Query Auth</p></figcaption>
+</figure>
+
+<h3 id="github">GitHub</h3>
+<p>n8n 虽然有内置的 GitHub 接入，但并非所有 API 都被支持，因此我建议使用 HTTP Request 手动配置验证。</p>
+<p>GitHub 提供 PAT (Personal Access Token)，与 Pinboard 的 API Token 类似，相比 OAuth 更容易配置。</p>
+<p>GitHub API 支持在 HTTP Header 中通过 <code>Authorization</code> 字段进行验证，其值为 <code>Bearer</code> + PAT <sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup>。</p>
+<p>首先打开 <a href="https://github.com/settings/tokens">https://github.com/settings/tokens</a>, 点击 Generate new token，勾选所需权限。具体根据所要请求的 API 来决定，一般来说至少要勾上 <code>repo</code> 和 <code>user</code>。创建完成后复制结果即为 <code>$PAT</code>。</p>
+<p>然后在 n8n 中创建 Header Auth，&ldquo;Name&rdquo; 填写 <code>Authorization</code>，Value 填写 <code>Bearer $PAT</code>（将 <code>$PAT</code> 替换为上一步的结果）。完成后，即可在 HTTP Request node 中使用。</p>
+<figure class="center align-center">
+  <img loading="lazy" src="/blog/0-cost-self-hosted-n8n-with-railway-and-supabase/images/1663145536.png" type="" alt=""  />
+
+  <figcaption><p>HTTP Request node with GitHub Header Auth</p></figcaption>
+</figure>
+
+<h2 id="总结">总结</h2>
+<p>随着 PaaS 和 Serverless 平台的兴起，在很多场景下它们都能够代替 NAS 成为自托管服务的最佳选择。个人使用免费额度一般都绰绰有余，无论对于想要快速试验新产品的开发者，还是喜欢体验 SaaS 服务的业余爱好者，现在都是一个非常好的时代。</p>
+<p>之前将 n8n 部署在 NAS 上平均每天会有几十条错误报警，一部分是 SQLite 在机械硬盘上频繁读写触发事务锁竞争，一部分则是代理不稳定造成网络访问失败。在迁移到 Railway + Supabase 的方案后，两个问题都得到了解决。PostgreSQL 有着更好的连接和并发性能；而 Railway 的运行环境本身就处于外网，自然也不会遇到代理失效的问题。</p>
+<p>Railway 也可以提供包含 PostgreSQL 的全托管方案，但独立运行 PostgreSQL 不仅资源消耗大，显著占用免费额度，而且不如 Supabase 这种专业的 DaaS 稳定和安全。Cloudflare 的免费 CDN 服务，补充了 Railway 分发能力的不足，也降低了出口带宽的成本。几个平台相互搭配，取长补短，使新的方案可以用最低的成本实现最佳的性能和体验。</p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>代码见 <a href="https://github.com/reorx/n8n/tree/self-use">https://github.com/reorx/n8n/tree/self-use</a>&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p>论坛里有人遇到过同样的问题: <a href="https://community.n8n.io/t/credentials-error/181">https://community.n8n.io/t/credentials-error/181</a>&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3">
+<p>参考官方文档 <a href="https://docs.railway.app/develop/cli">CLI</a>&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:4">
+<p>见 GitHub 文档 <a href="https://docs.github.com/en/rest/guides/getting-started-with-the-rest-api#authenticating">Getting started with the REST API - Authenticating</a>&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+]]></content:encoded></item><item><title>2022 年 9 月苹果发布会观后感</title><link>https://reorx.com/blog/2022-09-apple-event/</link><pubDate>Fri, 09 Sep 2022 00:00:00 +0800</pubDate><guid>https://reorx.com/blog/2022-09-apple-event/</guid><description>论 iPhone 重量变化与我的购买决策之间的关系</description><content:encoded><![CDATA[<p>刚过完 2022 年的科技春晚——苹果9月发布会，我也照例观看（指阅读 ifanr 的汇总文章）了一遍，大致总结如下：</p>
 <table>
 <thead>
 <tr>
