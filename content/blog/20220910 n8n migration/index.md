@@ -39,6 +39,7 @@ socialLinks:
 首先我们要在 [Supabase](https://supabase.com/) 上注册一个账号，登入之后，点击 New project 创建新的数据库，命名为 n8n，注意要记住创建流程中输入的密码。
 
 定位到 Project settings / Database / Connection info，将图中的信息记录下来即可进入下一步。
+
 {{<figure-img "Supabase Connection info" >}}
 ![](images/database-info.png)
 {{</figure-img>}}
@@ -153,16 +154,8 @@ Google 的接入相对比较复杂，请跟随文档 [Integrations: Google](http
 Twitter 由于这两年来 Developer Portal 的大幅改造，实际操作中可能与文档 [Integrations: Twitter](https://docs.n8n.io/integrations/builtin/credentials/twitter/) 有许多不一致，但只要确保以下几点，应该可以避免大部分问题。
 
 1. 确保创建的 App 在 "Standalone app" 这个分类下
-2. 确保 "User authentication settings" 按下图所示配置
-
-  {{<figure-img-size "User authentication settings" "" "500px">}}
-  ![](images/1662887928.png)
-  {{</figure-img>}}
-3. 确保向 n8n 填入的 Consumer Key 和 Consumer Secret 来自下图中红框所在的位置
-    
-  {{<figure-img-size "Consumer Keys" "" "500px">}}
-  ![](images/1662887896.png)
-  {{</figure-img-size>}}
+2. 确保 "User authentication settings" 按下图所示配置 {{<figure-img-size "User authentication settings" "" "500px">}}![](images/1662887928.png){{</figure-img>}}
+3. 确保向 n8n 填入的 Consumer Key 和 Consumer Secret 来自下图中红框所在的位置 {{<figure-img-size "Consumer Keys" "" "500px">}}![](images/1662887896.png){{</figure-img-size>}}
 
 
 ### Pinboard
@@ -174,7 +167,6 @@ n8n 没有内置 Pinboard 接入，不过 [Pinboard API](https://www.pinboard.in
 {{<figure-img "HTTP Request node with pinboard Query Auth" >}}
 ![](images/1663144028.png)
 {{</figure-img>}}
-
 
 ### GitHub
 
