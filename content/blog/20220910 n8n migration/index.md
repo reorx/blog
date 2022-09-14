@@ -2,7 +2,7 @@
 title: 使用 Railway 和 Supabase 零成本搭建 n8n 自动化平台
 slug: 0-cost-self-hosted-n8n-with-railway-and-supabase
 date: 2022-09-14
-description: 我的 n8n 「白嫖」部署新方案。
+description: 我的 n8n 「白嫖」托管新方案。
 draft: false
 tags:
   - digital-life
