@@ -1,4 +1,60 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Reorx’s Forge</title><link>https://reorx.com/</link><description>Recent content on Reorx’s Forge</description><image><url>https://reorx.com/images/forge-v2-compat.svg</url><link>https://reorx.com/images/forge-v2-compat.svg</link></image><generator>Hugo -- gohugo.io</generator><lastBuildDate>Wed, 14 Sep 2022 00:00:00 +0800</lastBuildDate><atom:link href="https://reorx.com/feed.xml" rel="self" type="application/rss+xml"/><item><title>使用 Railway 和 Supabase 零成本搭建 n8n 自动化平台</title><link>https://reorx.com/blog/0-cost-self-hosted-n8n-with-railway-and-supabase/</link><pubDate>Wed, 14 Sep 2022 00:00:00 +0800</pubDate><guid>https://reorx.com/blog/0-cost-self-hosted-n8n-with-railway-and-supabase/</guid><description>我的 n8n 「白嫖」托管新方案。</description><content:encoded><![CDATA[<p>在前文 <a href="/blog/sharing-my-footprints-automation/">使用自动化工作流聚合信息摄入和输出</a> 中，我介绍了如何在 NAS 提供的 Docker 环境安装 n8n，以及 n8n workflow 的使用方式。经过 3 个月的使用，我有了一些新的体会和尝试，重新设计了 n8n 的部署方案。本文将对这套新的方案进行说明，并分享数据迁移和第三方服务接入的实践。</p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Reorx’s Forge</title><link>https://reorx.com/</link><description>Recent content on Reorx’s Forge</description><image><url>https://reorx.com/images/forge-v2-compat.svg</url><link>https://reorx.com/images/forge-v2-compat.svg</link></image><generator>Hugo -- gohugo.io</generator><lastBuildDate>Wed, 14 Sep 2022 22:00:00 +0800</lastBuildDate><atom:link href="https://reorx.com/feed.xml" rel="self" type="application/rss+xml"/><item><title>我的 10 月新番表</title><link>https://reorx.com/essays/2022/09/2022-10-new-animes/</link><pubDate>Wed, 14 Sep 2022 22:00:00 +0800</pubDate><guid>https://reorx.com/essays/2022/09/2022-10-new-animes/</guid><description>10 月将近，新番列表已经公布，一些如 Netflix 出品的甚至已经可以观看。正好昨天 YuC 更新了 2022年10月新番表，于是也整理了一份自己的待看列表，按 S, A, B</description><content:encoded><![CDATA[<p>10 月将近，新番列表已经公布，一些如 Netflix 出品的甚至已经可以观看。正好昨天 YuC 更新了 <a href="https://yuc.wiki/202210/">2022年10月新番表</a>，于是也整理了一份自己的待看列表，按 S, A, B  三个级别表示关注程度。</p>
+<h2 id="rank-s">Rank S</h2>
+<ul>
+<li>
+<p><strong>灵能百分百 3</strong></p>
+<p>Bones 近几年最好的动画，前两季我都有追。真的很喜欢它的人物刻画，虽然都是 One 老师的作品，但对我来远比一拳超人要好看。</p>
+<p>其实在我心中，这部番就是一位有着最好三观的小男孩，在一位有着最好三观的社畜老师的带领下，学会如何爱自己，消除成长中的迷惘和懵懂的故事。</p>
+<p>虽然超能力满天飞，但我最喜欢看的一直都是师傅灵幻如何用自己的社畜必杀技服务客户的桥段。</p>
+</li>
+<li>
+<p><strong>JOJO 石之海 Part 2</strong></p>
+<p>我发觉 Netflix 这种一次性放出所有剧集的播法不大适合长篇动画。年初看 Part 1 时，半天刷完 12 集真的很爽，可是爽过头了，等待的过程犹如戒断反应般难受。看到 Part 2 放出的时候，理性告诉我这是值得高兴的消息，感性却不为所动——已经忘了前面在讲什么。</p>
+</li>
+<li>
+<p><strong>pop子与pipi美的日常 2</strong></p>
+<p>被誉为「人类神经」的 neta 之王，只要出了就没有不看的道理。由于中毒太深，这两天我随时都会突然对女友进行「<a href="https://zh.moegirl.org.cn/index.php?title=%E7%94%9F%E6%B0%94%E4%BA%86%E5%90%97">怒った</a>」攻击。</p>
+</li>
+<li>
+<p><strong>新 福星小子</strong></p>
+<p>童年遗憾，小时候看过一点，长大了想补番却一直没记得，这次出重置版简直是最佳的入坑时机。</p>
+</li>
+<li>
+<p><strong>电锯人</strong></p>
+<p>虽然没看过漫画，但以我的嗅觉，能预感到这是一部不逊于《东京喰种》的现象级霸权番。</p>
+</li>
+</ul>
+<h2 id="rank-a">Rank A</h2>
+<ul>
+<li>
+<p><strong>黄金神威 4</strong></p>
+<p>7月刷完了 2、3 两季，正好无缝衔接，从剧情发展来看，这一部应该会结尾。</p>
+</li>
+<li>
+<p><strong>赛博朋克 边缘行者</strong></p>
+<p>今石洋之导演的作品对我来说是必看的，但赛博朋克的主题和基于游戏的世界观，这些容易受外部干扰的因素让我降低了预期。</p>
+</li>
+<li>
+<p><strong>剑风传奇 黄金时代篇</strong></p>
+<p>黄金时代篇的剧场版 10 年前上大学时就看过了，这部番是剧场版重编而成，追加了新曲和新镜头。剑风是我最喜欢的漫画，我的 Twitter banner 。</p>
+</li>
+</ul>
+<h2 id="rank-b">Rank B</h2>
+<ul>
+<li>
+<p><strong>名侦探柯南 犯人犯泽先生</strong></p>
+<p>很有趣的视角，从反派「小黑」的视角看柯南周围发生的事情。这个题材让我想起《赌博默示录》的利根川和班长篇，甚至比正传还要好看。但我柯南看的不多，因此这部番的优先级不高。</p>
+</li>
+<li>
+<p><strong>高达 水星的魔女</strong></p>
+<p>似乎是第一部以女性为主角的高达作品，PV 里女主站在机甲前的画面让我这个高达路人粉也有了追番的冲动。</p>
+</li>
+<li>
+<p><strong>间谍过家家 2</strong></p>
+<p>上一季中规中矩，有好玩的梗也有烂制作的剧集，本季稍微期待下，用来下饭应该还是够的。</p>
+</li>
+</ul>
+]]></content:encoded></item><item><title>使用 Railway 和 Supabase 零成本搭建 n8n 自动化平台</title><link>https://reorx.com/blog/0-cost-self-hosted-n8n-with-railway-and-supabase/</link><pubDate>Wed, 14 Sep 2022 00:00:00 +0800</pubDate><guid>https://reorx.com/blog/0-cost-self-hosted-n8n-with-railway-and-supabase/</guid><description>我的 n8n 「白嫖」托管新方案。</description><content:encoded><![CDATA[<p>在前文 <a href="/blog/sharing-my-footprints-automation/">使用自动化工作流聚合信息摄入和输出</a> 中，我介绍了如何在 NAS 提供的 Docker 环境安装 n8n，以及 n8n workflow 的使用方式。经过 3 个月的使用，我有了一些新的体会和尝试，重新设计了 n8n 的部署方案。本文将对这套新的方案进行说明，并分享数据迁移和第三方服务接入的实践。</p>
 <h2 id="系统架构">系统架构</h2>
 <figure class="center align-center">
   <img loading="lazy" src="/blog/0-cost-self-hosted-n8n-with-railway-and-supabase/images/system.svg" type="" alt=""  />
