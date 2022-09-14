@@ -99,6 +99,9 @@ menu:
     - name: Essays
       url: /essays/
       weight: 2
+    - name: Archives
+      url: /archives/
+      weight: 3
     # - name: Newsletter
     #   url: /makers-daily/
     #   weight: 3
