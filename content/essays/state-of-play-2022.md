@@ -1,12 +1,12 @@
 ---
-title: State of Play 2022
+title: State of Play September 2022
 date: 2022-09-17T15:08:13+08:00
 draft: false
 tags:
   - game
 ---
 
-看完 PlayStation State of Play，种草了几个新游戏：
+看完 State of Play September 2022，种草了几个新游戏：
 
 - **God of War Ragnarok**
 
@@ -35,3 +35,7 @@ tags:
 > Japan must be having a serious issue with their **farming economy**, so Nintendo is taking it upon themselves to push young people into that career path.
 > 
 > —a comment from [Nintendo Direct vs Sony Direct](https://www.youtube.com/watch?v=nlLT2SHL_lg)
+
+
+---
+补充下 State of Play June 2022，最期待的当属 [Final Fantasy XVI](https://www.youtube.com/watch?v=gV5rIW1Qums)。
