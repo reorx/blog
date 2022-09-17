@@ -24,7 +24,7 @@ params:
   DisableLanguageSwitch: true
   TocOpen: true
   TocSide: right
-  EnableInstantClick: true
+  EnableInstantClick: false
   EnableImageZoom: true
   ShowShareButtons: true
   ShareButtons:
