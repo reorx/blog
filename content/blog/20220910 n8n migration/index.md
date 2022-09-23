@@ -139,14 +139,20 @@ n8n 的强大在于它内置了很多线上服务的 Integrations，仅需简单
 
 ### Google
 
-Google 的接入相对比较复杂，请跟随文档 [Integrations: Google](https://docs.n8n.io/integrations/builtin/credentials/google/) 的详细说明进行操作。这里只说下文档中没有提到的一个细节：在创建 OAuth consent screen 后，要将 Publishing status 设为 Testing，否则 Google 的 OAuth 页面会显示应用未通过审核的警告。还要将想要接入的 Google 账号邮箱加入 Test users 列表，否则无法再 Testing 模式下通过 OAuth 验证。
+Google 的接入相对比较复杂，请跟随文档 [Integrations: Google](https://docs.n8n.io/integrations/builtin/credentials/google/) 的详细说明进行操作。这里只说下文档中没有提到的一个注意事项。
 
-{{<figure-img "Oauth consent screen: Publishing status" >}}
-![](images/1662887129.png)
+~~在创建 OAuth consent screen 后，要将 Publishing status 设为 Testing，否则 Google 的 OAuth 页面会显示应用未通过审核的警告。还要将想要接入的 Google 账号邮箱加入 Test users 列表，否则无法再 Testing 模式下通过 OAuth 验证。~~
+
+> 以下内容为 2022-09-24 更新
+
+在创建 OAuth consent screen 后，要将 Publishing status 设为 **Production**，否则一周后 OAuth token 就会过期 [^4]。虽然这种方式会导致 OAuth 认证页面显示应用未通过审核的警告（点击左下角 "Go to …" 可以绕过），但总好过每周重新连接一次的麻烦。
+
+{{<figure-img "OAuth consent screen: Publishing status" >}}
+![](images/1663950818.png)
 {{</figure-img>}}
 
-{{<figure-img "OAuth consent screen: Test users" >}}
-![](images/1662887149.png)
+{{<figure-img "OAuth warning for Production app without verification" >}}
+![](images/1663950640.png)
 {{</figure-img>}}
 
 ### Twitter
@@ -156,7 +162,6 @@ Twitter 由于这两年来 Developer Portal 的大幅改造，实际操作中可
 1. 确保创建的 App 在 "Standalone app" 这个分类下
 2. 确保 "User authentication settings" 按下图所示配置 {{<figure-img-size "User authentication settings" "" "500px">}}![](images/1662887928.png){{</figure-img>}}
 3. 确保向 n8n 填入的 Consumer Key 和 Consumer Secret 来自下图中红框所在的位置 {{<figure-img-size "Consumer Keys" "" "500px">}}![](images/1662887896.png){{</figure-img-size>}}
-
 
 ### Pinboard
 
@@ -174,7 +179,7 @@ n8n 虽然有内置的 GitHub 接入，但并非所有 API 都被支持，因此
 
 GitHub 提供 PAT (Personal Access Token)，与 Pinboard 的 API Token 类似，相比 OAuth 更容易配置。
 
-GitHub API 支持在 HTTP Header 中通过 `Authorization` 字段进行验证，其值为 `Bearer` + PAT [^4]。
+GitHub API 支持在 HTTP Header 中通过 `Authorization` 字段进行验证，其值为 `Bearer` + PAT [^5]。
 
 首先打开 https://github.com/settings/tokens, 点击 Generate new token，勾选所需权限。具体根据所要请求的 API 来决定，一般来说至少要勾上 `repo` 和 `user`。创建完成后复制结果即为 `$PAT`。
 
@@ -196,4 +201,6 @@ Railway 也可以提供包含 PostgreSQL 的全托管方案，但独立运行 Po
 [^1]: 代码见 https://github.com/reorx/n8n/tree/self-use
 [^2]: 论坛里有人遇到过同样的问题: https://community.n8n.io/t/credentials-error/181
 [^3]: 参考官方文档 [CLI](https://docs.railway.app/develop/cli)
-[^4]: 见 GitHub 文档 [Getting started with the REST API - Authenticating](https://docs.github.com/en/rest/guides/getting-started-with-the-rest-api#authenticating)
+[^4]: [YouTube Refresh Token Expired? - Questions - n8n](https://community.n8n.io/t/youtube-refresh-token-expired/5319)
+[^5]: 见 GitHub 文档 [Getting started with the REST API - Authenticating](https://docs.github.com/en/rest/guides/getting-started-with-the-rest-api#authenticating)
+
