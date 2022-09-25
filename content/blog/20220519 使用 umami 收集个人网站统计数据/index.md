@@ -132,18 +132,11 @@ railway run psql -h $PGHOST -U $PGUSER -d $PGDATABASE -f sql/schema.postgresql.s
 
 ![](images/railway-2.png)
 
-完成这一步后，需要重新构建 umami 的镜像，目前我还没有找到触发 rebuild 的简单方法，只能通过修改 Dockerfile 实现:
+~~完成这一步后，需要重新构建 umami 的镜像，目前我还没有找到触发 rebuild 的简单方法，只能通过修改 Dockerfile 实现~~
 
-```diff
-RUN yarn next telemetry disable
-+# Ensures `yarn build` will always run when BUILD_TIME is different
-+ARG BUILD_TIME
-RUN yarn build
-```
+> 2022-09-25  更新
 
-在 `yarn build` 之前增加一行 `ARG BUILD_TIME`，这样当此参数不同时，就会触发 `yarn build` 及之后的命令重新执行。
-
-保存修改，然后执行 `railway up`，等待镜像构建和部署完成。
+保存 Variables 后，等待新的部署完成，即可生效。
 
 ## 接入个人网站
 
