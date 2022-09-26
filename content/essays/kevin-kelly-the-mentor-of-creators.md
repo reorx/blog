@@ -12,9 +12,9 @@ tags:
 >
 > —[68 Bits of Unsolicited Advice](https://kk.org/thetechnium/68-bits-of-unsolicited-advice/)
 
-放在作为软件工程师的自己身上，creation 就是 building applications，improving 就是 refactoring and algorithms。我们常常讲不要过度优化，那是在宏观的设计层面。而在具体的实现过程中，也不该太在意代码的优化，否则会妨碍自己的创作者思想，拖累从 0 到 1 这个最重要的里程碑的进度。
+放在作为软件工程师的自己身上，creation 就是 building applications，improving 就是 refactoring and algorithms。我们常常讲不要过度优化，那是在宏观的设计层面。而在具体的实现过程中，也不该太在意代码的优化，否则会妨碍自己的创作者思维，拖累从 0 到 1 这个最重要的里程碑的进度。
 
-这并不是说要刻意写出丑陋和低效的代码，而是顺应自身当前的代码素养，不额外付出抛光打磨的精力。维持创造者思维的惯性，专注在<mark>将脑中的想法转变为可工作的最小实现</mark>的过程中。
+这并不是说要刻意写出丑陋和低效的代码，而是顺应自身当前的代码素养，不额外付出抛光打磨的精力。维持创造者思维的惯性，专注在<mark>将脑中的想法转变为可工作的最小实现</mark>的过程中。完成实现后，我们再切换到评审者思维，去重构和优化代码，提升工程能力。这样两件事情都可以做得足够专注、高效。
 
 ---
 
