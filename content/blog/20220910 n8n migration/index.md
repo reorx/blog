@@ -93,6 +93,7 @@ Repo 中还有 `example.env` 和 `export_workflow.sh` 两个文件，稍后我�
 - `DB_` 开头的部分要根据 Supabase 的 Connection info 对号入座
 - `VUE_APP_URL_BASE_API` 和 `WEBHOOK_URL` 填写上一步中所使用的域名。
 - `N8N_ENCRYPTION_KEY` 是 n8n 加密 credentials 所使用的 key，请务必使用自己生成的随机字符串。如果没有这个变量，n8n 会随机生成一个并保存到文件系统中，在 Railway 的运行环境下重启后就会丢失，导致已保存的 credentials 无法解密 [^2]。
+- `EXECUTIONS_DATA_PRUNE`: 打开 n8n 的自动化数据清理功能，使 n8n 定期清理在 `EXECUTIONS_DATA_MAX_AGE` 小时以前的执行记录，确保数据库体积不会上升过快 [^6]。（Supabase 的免费额度只有 500M）
 
 以上这些变量均可在官方文档 [Configuration](https://docs.n8n.io/hosting/configuration/) 中找到详细说明。
 
@@ -203,4 +204,5 @@ Railway 也可以提供包含 PostgreSQL 的全托管方案，但独立运行 Po
 [^3]: 参考官方文档 [CLI](https://docs.railway.app/develop/cli)
 [^4]: [YouTube Refresh Token Expired? - Questions - n8n](https://community.n8n.io/t/youtube-refresh-token-expired/5319)
 [^5]: 见 GitHub 文档 [Getting started with the REST API - Authenticating](https://docs.github.com/en/rest/guides/getting-started-with-the-rest-api#authenticating)
+[^6]: 参考官方文档 [Execution data - Enable data pruning](https://docs.n8n.io/hosting/scaling/execution-data/#enable-data-pruning)
 
