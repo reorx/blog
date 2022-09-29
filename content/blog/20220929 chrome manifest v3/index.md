@@ -27,15 +27,15 @@ socialLinks:
 简而言之，Manifest V3 对 AdGuard 造成了如下影响：
 
 - **规则数量限制**
-    - 每个扩展的规则被限制在了 30000 以下，所有扩展的规则之和不能超过 330000 个。
+    - 每个扩展的静态规则数量被限制在了 30000 个以下，所有扩展的静态规则之和不能超过 330000 个。
 
         > For static rules, Chrome set a minimum guaranteed limit of 30,000 rules per extension and a total limit of 330,000 rules for all extensions installed by a single user (this also takes into account the limit of 1,000 regexp rules per extension).
-    - 预制的过滤器最多 50 个，用户自定义规则不得超过 5000 个。
+    - 预设的过滤器最多 50 个，用户自定义过滤器和规则之和不得超过 5000 个。
 
         > blockers must use pre-set filters (no more than 50), and we have to be very selective about which filters will be available to users. Of course, you can still set your own filter manually. But don't forget the 5000 rule limit **on all** custom filters and user rules.
 - **API 变更**: `onBeforeRequest` → `declarativeNetRequest`
-    - `onBeforeRequest` 是 Chrome Extension 中的事件回调函数，广告屏蔽插件的工作原理就是在这个函数中使用自己的一套规则逻辑来判断是否要中断当前的连接。从 Manifest V3 开始，这个函数就被废除了，取而代之的是 `declarativeNetRequest`，因此 AdGuard 必须将原来的私有规则转换成使用 [declarative rules](https://developer.chrome.com/docs/extensions/reference/declarativeNetRequest/#rules) 所描述的新规则。
-    - 而受 declarative rules 的语法所限，一些 AdGuard 原有规则的功能将无法被实现
+    - `onBeforeRequest` 是 Chrome Extension 中的事件回调函数，广告屏蔽插件的工作原理就是在这个函数中使用自己的一套逻辑来判断是否要中断当前的连接。从 Manifest V3 开始，这个函数就被废除了，取而代之的是 `declarativeNetRequest`，因此 AdGuard 必须将原来的私有动态规则转换成使用 [declarative rules](https://developer.chrome.com/docs/extensions/reference/declarativeNetRequest/#rules) 所描述的新规则。
+    - 而受 declarative rules 的语法所限，一些 AdGuard 原有动态规则的功能将无法被实现
     - rulesets（一组 declarative rules）只能在扩展安装和更新时加载，导致 AdGuard 失去了动态更新规则的能力
 
         > declarative rules must be combined into rulesets
@@ -43,7 +43,7 @@ socialLinks:
         > Rulesets are specified in the `manifest.json` file and are loaded only when the extension is installed or updated.
 - **无法获得统计信息**
 
-    - 由于 Chrome 自己实现了一套拦截机制，Manifest V3 不会将请求的统计信息开放给生产环境下的扩展，仅能在开发模式下使用。这意味着 AdGuard 将无法真正确认到规则的执行情况，只能通过模拟运行来猜测规则是否可能被应用了，对于规则的维护者来说是灾难性的打击。
+    - 由于 Chrome 自己实现了一套拦截机制，Manifest V3 不会将请求的统计信息开放给生产环境下的扩展，仅能在开发模式下使用。这意味着 AdGuard 将无法真正确认到动态规则的执行情况，只能通过模拟运行来猜测规则是否可能被应用了，对于规则的维护者来说是灾难性的打击。
     
         > Chrome itself now blocks requests and shares statistics only with extensions unzipped and installed in Developer Mode
         > 
@@ -58,14 +58,14 @@ socialLinks:
 在我看来，其实 Manifest V3 的核心非常明确，就是<mark>限制扩展对系统资源的使用</mark>。一直以来高资源占用都是 Chrome 为人诟病的痛点。相信每个用户都遇到过 CPU 或内存飙升的情景，许多人甚至说 Mac 没有 16G 以上的内存不要用 Chrome。而扩展由于在后台运行，如果出现问题，更是难以定位和管理，我想这就是 Google 的工程师想要做出改变的原因。
 
 虽然增加了诸多限制，但我确实感受到 Manifest V3 的一些有益之处：
-- Service Worker 使得扩展不再能常驻后台，让扩展所占用的资源可以回收，降低了扩展很多的时候整体的资源消耗
-- 限制规则的数量，相当控制了单一扩展所能占用的最大资源
-- 以无法在运行时更新为代价，declarative ruleset 提供了更高效动态规则实现
-- 不再提供请求底层的统计信息，缩短了请求生命周期中的调用链，自然也降低了开销
+- Service Worker 使得扩展不再能常驻后台，让扩展所占用的资源可以被回收，降低了浏览器整体的开销
+- 限制规则的数量，相当于控制了单一扩展在规则计算方面的资源使用上限
+- 以无法在运行时更新为代价，declarative rules 实现了更高效的动态规则
+- 不再提供请求底层的统计信息，缩短了请求生命周期中的调用链，提升了处理效率
 
 这些变化可以让 Chrome 变得更加流畅，对于 99% 的用户来说都是好事。
 
-未来的方向，也许 Chrome 可以提供一个 IPC 或者其他更有效率的通信方式，让另一个进程参与到请求的处理流程中，这样 ad blocker 插件的最大开销——规则匹配——就不再是效率和资源的瓶颈了。就像是 LSP 的工作模式，把复杂的事情独立出来让独立的组件来做，说不定会诞生一个用 Rust 开发的新一代 rule filter engine 呢。
+未来的方向，也许 Chrome 可以提供一个 IPC 或者其他更有效率的通信方式，让另一个进程参与到请求的处理流程中，这样 ad blocker 插件的最大开销——规则匹配——就不再是效率和资源的瓶颈了。就像 LSP 的工作模式，把复杂的事情分离出来让独立的组件来做，说不定会诞生一个用 Rust 开发的新一代 rule filter engine 呢。
 
 希望这篇文章能够帮助你理解 Chrome Manifest V3 的变化，辩证地看待它。
 
