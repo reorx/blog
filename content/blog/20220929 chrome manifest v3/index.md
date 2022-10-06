@@ -71,6 +71,10 @@ socialLinks:
 
 ## 后记
 
+补充一些本文完成后，与 Manifest V3 有关的趣闻
+
+### 2022-09-29
+
 昨天 Chrome 官方博客发布了一个声明 ([More details on the transition to Manifest V3](https://developer.chrome.com/en/blog/more-mv2-transition/))，将 Manifest V2 的废除时间从 2023 年 1 月向后推迟了一年:
 
 > Starting in June in **Chrome 115**, Chrome **may** run experiments to turn off support for Manifest V2 extensions in all channels, including stable channel.
@@ -82,5 +86,24 @@ socialLinks:
 > **January 2023**: The Chrome browser will no longer run Manifest V2 extensions. Developers may no longer push updates to existing Manifest V2 extensions.
 
 从原本的斩钉截铁，变成现在的含糊和留有余地，看来强如 Google，想要执行一个影响全世界 65% [^1] 互联网用户的 breaking change，也不是那么容易呀。
+
+### 2022-10-03
+
+著名单文件网页存档插件 [SingleFile](https://github.com/gildas-lormeau/SingleFile) 作者依照 Manifest V3 标准重构了原版插件，命名为 [SingleFile Lite](https://github.com/gildas-lormeau/SingleFile-Lite)，并用宣传产品升级的语气描述了新插件的 “features” 和 “benefits”，非常讽刺，可以说是一场代码行为艺术了。
+
+> Feel the power of the Manifest V3. The future, right now!
+>
+> **Notable features of SingleFile Lite**
+> - unreliable auto-updates
+> - no auto-save
+> - save time limited to 5 minutes max.
+> - no "Referrer" header injection
+> - limited support for fonts dynamically loaded with the FontFace API
+> - and more to come!
+>
+> **Benefits of the Manifest V3**
+> - none
+
+Hacker news: [Feel the power of the Manifest v3 | Hacker News](https://news.ycombinator.com/item?id=33063619)
 
 [^1]: https://en.wikipedia.org/wiki/Usage_share_of_web_browsers#cite_ref-14
