@@ -37,13 +37,13 @@ jobs:
           branch: main
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: n8n webhook for essay
-        uses: fjogeleit/http-request-action@v1
-        with:
-          url: https://n8n.reorx.com/webhook/94ef0293-22d5-4d4d-84ec-e668e24999dd
-          method: 'GET'
-      - name: n8n webhook for blog
-        uses: fjogeleit/http-request-action@v1
-        with:
-          url: https://n8n.reorx.com/webhook/9a883425-69e8-4add-b061-9371d85003b3
-          method: 'GET'
+      # - name: n8n webhook for essay
+      #   uses: fjogeleit/http-request-action@v1
+      #   with:
+      #     url: https://n8n.reorx.com/webhook/94ef0293-22d5-4d4d-84ec-e668e24999dd
+      #     method: 'GET'
+      # - name: n8n webhook for blog
+      #   uses: fjogeleit/http-request-action@v1
+      #   with:
+      #     url: https://n8n.reorx.com/webhook/9a883425-69e8-4add-b061-9371d85003b3
+      #     method: 'GET'
