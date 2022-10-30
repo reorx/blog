@@ -7,7 +7,7 @@ tags:
   - china
 ---
 
-昨天看到 @dingyi 的[推文](https://twitter.com/dingyi/status/1585879130020593665)，他说:
+昨天看到 @dingyi 的[推文](https://twitter.com/dingyi/status/1585879130020593665)说:
 
 > 国产软件真的没必要轻易尝试了……
 
