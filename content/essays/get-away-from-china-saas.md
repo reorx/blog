@@ -23,12 +23,11 @@ tags:
 
 |Category|Service|Migration|Alternatives|
 |---|---|---|---|
-|网页保存| [Cubox](https://cubox.pro/) | [Cubox 国际版](https://cubox.cc/) | • [Pinboard Bookmark Archiving](https://pinboard.in/upgrade/)<br>• [Mem.ai](https://get.mem.ai/)<br>• [HamsterBase (self-hosted)](https://hamsterbase.com/) |
+|网页保存| [Cubox](https://cubox.pro/) | [Cubox 国际版](https://cubox.cc/) | • [Pinboard Upgrade](https://pinboard.in/upgrade/)<br>• [Mem.ai](https://get.mem.ai/)<br>• [Raindrop.io](https://raindrop.io/)<br>• [wallabag](https://github.com/wallabag/wallabag)<br>• [HamsterBase](https://hamsterbase.com/) |
 |待办清单| [滴答清单](https://dida365.com/) | 国际版: [TickTick](https://ticktick.com/) | [Todoist](https://todoist.com/) |
 |书影音记录| Douban | [豆伴：豆瓣账号备份工具](https://blog.doufen.org/posts/tofu-user-guide/) | [NeoDB](https://about.neodb.social/doc/howto/) |
-|生词本| Eudic | Eudic 的数据同时存在于本地和云端，导出也非常方便[^3]，因此无需担心 | 目前还没见过其他<br>有云同步功能的字典软件 |
+|生词本| Eudic | 生词本同时存在于本地和云端，<br>导出也非常方便[^3]，因此无需担心 | 目前还没见过其他<br>有云同步功能的字典软件 |
 |笔记| 石墨/语雀/wolai等 | 我在这些服务上的文档很少，手动下载即可 | Notion, Obsidian |
-
 
 [^1]: [蜘蛛笔记将停止运营](https://mp.weixin.qq.com/s/8dL0iOuzOm2_5s0JcTJzag)
 [^2]: [关于最近情况的说明](https://mp.weixin.qq.com/s/CZt2-UYSQ18NYPy5zSuMUA)
