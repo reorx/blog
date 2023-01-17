@@ -17,7 +17,7 @@ Its only feature is to extract and download Wikipedia articles to markdown files
 To put it simply, the goal of the product is to be an alternative to [MarkDownload](https://github.com/deathau/markdownload)
 with more extensibility.
 MarkDownload has been an excellent help for archiving content from the web,
-but it does always work well on every website.
+but it does not always work well on every website.
 Every now and then, I found it gives bad results for some websites such as Wikipedia
 (that’s why I take it as an example to work on at the very beginning).
 
