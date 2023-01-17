@@ -148,6 +148,10 @@ Google 的接入相对比较复杂，请跟随文档 [Integrations: Google](http
 
 在创建 OAuth consent screen 后，要将 Publishing status 设为 **Production**，否则一周后 OAuth token 就会过期 [^4]。虽然这种方式会导致 OAuth 认证页面显示应用未通过审核的警告（点击左下角 "Go to …" 可以绕过），但总好过每周重新连接一次的麻烦。
 
+> 以下内容为 2022-12-01 更新
+
+只有当服务的域名为自定义域名且为 authorized domain 时才可以将 Publishing status 设为 Production，否则一段时间后 OAuth 将不可用，[Verification Status](https://support.google.com/cloud/answer/10311615#verification-status) 异常。关于如何将自己的域名在 Google 进行验证，请参考 [Verify your domain (host-specific steps) - Google Workspace Admin Help](https://support.google.com/a/topic/1409901).
+
 {{<figure-img "OAuth consent screen: Publishing status" >}}
 ![](images/1663950818.png)
 {{</figure-img>}}
