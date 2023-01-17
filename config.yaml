@@ -99,12 +99,14 @@ menu:
     - name: Essays
       url: /essays/
       weight: 2
+    - name: Newsletter
+      url: /makers-daily/
+      weight: 3
     - name: Archives
       url: /archives/
-      weight: 3
-    # - name: Newsletter
-    #   url: /makers-daily/
-    #   weight: 3
+      weight: 4
+    # - name: Sponsors
+    #   url: /sponsors/
     - name: Links
       url: /links/
 

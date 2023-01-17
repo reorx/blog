@@ -2,7 +2,7 @@
 title: Maker's Daily
 subtitle: A newsletter about what I make and how I make it.
 description: |
-  **Maker's Daily** 是一个面向创造者和开发者的通讯，每 1-3 日更新一篇，内容包含<mark>我对产品的思考、技术的探索、工具的使用，以及我作为一个 Maker 的成长和反思</mark>。
+  **Maker's Daily** 是一个面向创造者和开发者的通讯，每 1-3 日更新一篇，内容包含<mark>我对产品的思考、技术的探索、工具的使用，以及创造新产品的过程记录</mark>。通过写作的方式输出自己作为一个 Maker 的成长和反思。
 
   在我心中 Maker 是一个很宽泛的概念，不需要「独立」或「产品」这些词作为前缀，而是看有没有根据自己的想法，动手去改变和创造。
 

@@ -54,3 +54,9 @@ content
 ```
 {{<social-quote-tweet id="1525875286096904192" user="novoreorx" />}}
 ```
+
+### Standout
+
+{{<standout>}}
+https://reorx.com/feed.xml
+{{</standout>}}
