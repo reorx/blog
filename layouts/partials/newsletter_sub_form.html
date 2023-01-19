@@ -1,5 +1,5 @@
 
-<div class="sub-form">
+<div class="subscribe-form">
   <form
     action="
       https://buttondown.email/api/emails/embed-subscribe/reorx
@@ -8,8 +8,21 @@
     target="popupwindow"
     class="embeddable-buttondown-form"
   >
-    <input type="hidden" value="1" name="embed" />
-    <input type="text" name="email" placeholder="Your email address">
-    <button type="submit">Subscribe | 订阅</button>
+    <div class="input-group">
+      <input type="hidden" value="1" name="embed" />
+      <input type="text" name="email" placeholder="Your email address">
+
+      <button type="submit">Subscribe<span class="hide-for-sm"> | 订阅</span></button>
+    </div>
+
+    <div class="input-group subscribe-option">
+      <span class="label">Choose your language:</span>
+      <input type="radio" id="tag-lang-all" name="tag" value="" checked>
+      <label for="tag-lang-all">All</label>
+      <input type="radio" id="tag-lang-en" name="tag" value="lang-en">
+      <label for="tag-lang-en">English only</label>
+      <input type="radio" id="tag-lang-zh" name="tag" value="lang-zh">
+      <label for="tag-lang-zh">仅中文</label>
+    </div>
   </form>
 </div>
