@@ -6,3 +6,6 @@ serve-prod:
 
 build:
 	rm -rf public && hugo --environment production --ignoreCache
+
+new-makers-daily:
+	hugo new --kind newsletter content/makers-daily/$(name)
