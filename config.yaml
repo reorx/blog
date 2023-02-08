@@ -49,6 +49,10 @@ params:
   defaultCommentSystems:
     remark42: true
 
+  newsletter:
+    notice:
+      usePartial: true
+
   socialIcons:
     - name: github-simple
       url: "https://github.com/reorx"
