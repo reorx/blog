@@ -1,7 +1,7 @@
 ---
-title: Some random thoughts about Generative AI
+title: Some random thoughts on Generative AI
 issueno: "002"
-slug: 002-thoughts-about-generative-ai
+slug: 002-thoughts-on-generative-ai
 date: 2023-02-08T21:40:37+08:00
 description: ChatGPT 带来的震动一次又一次出圈，生成式 AI 领域的大型科技与商业竞争正在白热化。在这个人人都在谈论 AI 的时刻，我也有几个观点想要分享一下。
 draft: false
