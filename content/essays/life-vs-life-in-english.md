@@ -19,7 +19,7 @@ tags:
 - 生活：强调的是一个日常的、持续的状态。当我们谈及生活，大多有着较为具体的感受。
 - 生命：是一种对自身存在意义和价值在精神层面的评判，相较「生活」更加抽象。
 
-一些可能的改进：
+我将这个问题发到了 Twitter 上[^1]，并询问了身边的人，陆续收到了一些改进的建议：
 - 推友 `@Sunset16094839` 提出生活可以翻译为 “my days”:
     > Being in control of time not only makes <u>my days</u> better, but also gives my life more value.
 - 表妹（英语老师）的建议：
@@ -32,7 +32,7 @@ tags:
         > Being in control of time not only makes my <u>daily life</u> better…
     - 根据 ["Life" - 生活 vs 生命 vs 人生 | Ci Shifu Vocabulary Mastery Course - YouTube](https://www.youtube.com/watch?v=oB7rZcgfH4g) 视频里的讲解，「生活」可以用 to live 来表达:
         > Being in control of time not only makes me <u>live</u> better, but also gives my life more value.
-- 推友 `@7id` 同样认为生活可以用 living 来替代，并且给了很多深入而专业的解读，让我大呼过瘾:
+- 推友 `@7id` 同样认为生活可以用 living 来替代，并且给了很多深入而专业的解读，让我大呼过瘾[^2]:
     > 关于“掌控时间”的说法，可能你想强调的是时间管理或自律这个概念吧，单说字面翻译 DeepL 更好一些，master 更接近 manipulate 的含义。二是“生活”如果是指物质层面，英语一般习惯用 <mark>standard of living</mark> 描述，精神层面 <mark>quality of life</mark> 用得多。
     > 
     > 再就是“生命价值”这个概念，中文里可以说价值多还是少，而英文里 life value 更偏重价值观，对应的是忠诚、正义这样的词，所以这个翻译不是很恰当。然而 value of life 也不行，这个词是形容一条命值多少钱的。我觉得 <mark>self actualization</mark> 更符合这个语境。
@@ -46,3 +46,6 @@ tags:
 > Being in control of my time not only improves my productivity at work, leading to a better life, but also enables me to reach higher levels of self-actualization.
 
 也许还有一些错误，但翻译的结果其实已经不重要了，由这一句话延伸出的学习过程才是最有价值的。
+
+[^1]: {{< tweet-ref "https://twitter.com/novoreorx/status/1623978507327127553" >}}
+[^2]: {{< tweet-ref "https://twitter.com/7id/status/1623989480062599169" >}}

@@ -55,6 +55,12 @@ content
 {{<social-quote-tweet id="1525875286096904192" user="novoreorx" />}}
 ```
 
+### Tweet ref (works in footnotes)
+
+```
+{{< tweet-ref "https://twitter.com/novoreorx/status/1623978507327127553" >}}
+```
+
 ### Standout
 
 {{<standout>}}
