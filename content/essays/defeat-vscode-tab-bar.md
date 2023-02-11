@@ -3,7 +3,6 @@ title: Defeat VSCode Tab Bar
 date: 2022-10-18T21:39:21+08:00
 draft: false
 tags:
-  - english
   - development
   - tools
 ---

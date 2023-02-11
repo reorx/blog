@@ -3,7 +3,6 @@ title: “Moving away from UUIDs”, Really?
 date: 2022-11-23T16:20:31+08:00
 draft: false
 tags:
-  - english
   - programming
 ---
 
