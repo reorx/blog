@@ -54,16 +54,18 @@ params:
       usePartial: true
 
   socialIcons:
-    - name: github-simple
+    - name: mdi-github
       url: "https://github.com/reorx"
-    - name: twitter-simple
+    - name: mdi-twitter
       url: "https://twitter.com/novoreorx"
-    - name: telegram-simple
+    - name: mdi-resume
+      url: "https://cv.reorx.com"
+    - name: icon-park-telegram
       url: "https://t.me/reorx_share"
-    - name: rss-simple
-      url: "feed.xml"
-    - name: gmail
+    - name: mdi-email
       url: email
+    - name: mdi-rss
+      url: "feed.xml"
 
   links:
     - name: wzyboy’s blog
