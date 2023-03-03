@@ -60,6 +60,8 @@ params:
       url: "https://twitter.com/novoreorx"
     - name: mdi-resume
       url: "https://cv.reorx.com"
+    - name: mdi-calendar-month
+      url: "https://cal.com/reorx"
     - name: icon-park-telegram
       url: "https://t.me/reorx_share"
     - name: mdi-email
