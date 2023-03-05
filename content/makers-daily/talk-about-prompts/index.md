@@ -43,7 +43,7 @@ tags:
 可选项 3，来自 [OpenAI Polisher Bob Plugin](https://github.com/yetone/bob-plugin-openai-polisher)，括号部分可以去掉
 > user: Revise the following sentences to make them more clear, concise, and coherent (Please note that you need to list the changes and briefly explain why)
 
-## The "Open Prompt" project
+## Other people's thoughts
 
 其实除了 prompt, ChatGPT API 的其他参数 (parameters) 也影响最终结果的产生，因此在公布 prompt 的同时，也应该将这些参数囊括进来。推友 @mr_easonyang 甚至认为参数应该成为自定义选项，我认为这是很好的提议:
 
@@ -53,12 +53,20 @@ tags:
 
 {{<social-quote-tweet id="1632230590362816513" user="daydayuuup" />}}
 
-在写这篇文章的时候，我产生了一个想法，想要发起一个开源项目，名为 Open Prompt，由社区参与者共同收集和维护各种 AI 产品的 prompt，附带详细的说明，供用户和开发者审阅和参考。与 [Awesome ChatGPT Prompts](https://github.com/f/awesome-chatgpt-prompts) 不同的是，每个产品的 prompt 都会有一个单独的页面，大家可以在这里看到 prompt 版本的变化，提交反馈和参与讨论，使这里成为 AI 爱好者们学习和交流的平台。如果读者们对此项目感兴趣，或有不同的想法，欢迎与我联系和讨论。
+推友 @xxm459259 说 ChatGPT 类产品很容易被下游开发者复刻，我深以为然。一开始大家可能都会想把 prompt 作为壁垒，但对想要破解的人来讲，看一眼可能就猜个七七八八，自己调试下说不定效果还更好了…所以我觉得 prompt 还是公开的好，更快推动 Prompt Engineering 的发展，作为开发者也一定能在更好的环境中获利。 
+
+{{<social-quote-tweet id="1632381501970194433" user="xxm459259" />}}
+
+推友 yeaphgel [说到](https://twitter.com/yeaphgel/status/1632410458799095809)，**细分行业融入工作流组织化才能形成真正的壁垒**，我很认可这个观点，这样的市场环境是我希望看到的。一个有追求的产品应该在工具的深度上做竞争，而不是急功近利地圈地抢人，如果你做的东西不够好，用户最终还是会流失掉。
+
+## The "Open Prompt" project
+
+在写这篇文章的时候，我产生了一个想法——发起一个名为 Open Prompt 的开源项目，由社区参与者共同收集和维护各种 AI 产品的 prompt，附带详细的说明，供用户和开发者审阅和参考。与 [Awesome ChatGPT Prompts](https://github.com/f/awesome-chatgpt-prompts) 不同的是，每个产品的 prompt 都会有一个单独的页面，大家可以在这里看到 prompt 版本的变化，提交反馈和参与讨论，使这里成为 AI 爱好者们学习和交流的平台。如果读者们对此项目感兴趣，或有不同的想法，欢迎与我联系和讨论。
 
 ## The market value of AI prompt
 
 上文中提到的，未来或许 prompt 可以直接成为应用，今天就看到了 [PromptBase](https://promptbase.com/) 这个网站，看来 “Prompt as a Service“ 已经指日可待。这个网站可以搜索和买卖各类 AI 产品的 prompts，除了 ChatGPT 和 GPT-3，还有之前备受关注的 text-to-image 领域的 Stable Diffusion, DALL-E, Midjourney 等等。我随便查看了几个 ChatGPT 的，有教你如何赚钱的 "Eary Money Now", "The Business Genie"，也有自媒体博主非常需要的 "Never Run Out Of Instagram Ideas", "Social Media Weekly Content"，价格大都在 $1.99 到 $4.99 之间，卖得好的已经有上千次出售。
 
-看来 prompts 真的有很大的商业价值，或许我关于 prompts 与参数透明化的想法太天真了，但我仍然相信开放才是进步的源动力，就像 OpenAI 完全可以给出更高的定价，完全可以不将 API 开放，继续让更多的人购买 ChatGPT Plus，但他们却把 AI 技术下放，使人人都可低价使用和获利。这种做法的背后即便是为了更大更长远的商业利益，也是我所欣赏和赞扬的，并在事实上推动了文明的进步。
+看来 prompts 真的有很大的商业价值，或许我关于 prompts 与参数透明化的想法太简单了，但我仍然相信开放才是进步的源动力，就像 OpenAI 完全可以给出更高的定价，完全可以不将 API 开放，继续让更多的人购买 ChatGPT Plus，但他们却把 AI 技术下放，使人人都可低价使用和获利。这种做法的背后即便是为了更大更长远的商业利益，也是我所欣赏和赞扬的，并在事实上推动了文明的进步。
 
 [^1]: https://platform.openai.com/docs/guides/chat/instructing-chat-models
