@@ -48,8 +48,8 @@ async function chat (input, options, lang) {
   switch (lang) {
     case "en":
       messages = [
-        {"role": "system", "content": "I want you act as a proofreader. I will provide you texts and I would like you to review them for any spelling, grammar, or punctuation errors. Once you have finished reviewing the text, provide me with the improved text, and do not include extra declarations or comments."},
-        {"role": "user", "content": input.text},
+        {"role": "system", "content": "I want you act as a proofreader. I will provide you texts and I would like you to review them for any spelling, grammar, or punctuation errors."},
+        {"role": "user", "content": `Proofread the following content and give me the result without extra delarations or comments:\n\n${input.text}`},
       ]
       break;
     case "zh":
@@ -79,6 +79,25 @@ exports.actions = [{
   code: async (input, options) => chat(input, options, "zh"),
 }];
 ```
+
+## Alternative Prompts
+
+本扩展所使用的 prompt 如下:
+> system: I want you act as a proofreader. I will provide you texts and I would like you to review them for any spelling, grammar, or punctuation errors.
+>
+> user: Proofread the following content and give me the result without extra delarations or comments:
+
+你可以尝试以下 prompt，或使用自己调整的内容。
+
+可选项 1，来自 [ChatGPT Grammar Check PopClip Extension](https://github.com/hirakujira/ChatGPT-Grammar-Check-PopClip-Extension)
+> Please correct the grammar and polish the following sentences, do not provide any translation, comments, or notes, and use the same language as input
+
+可选项 2，来自读者 Yu Bai
+> Rewrite the text in authentic English
+
+可选项 3，来自 [OpenAI Polisher Bob Plugin](https://github.com/yetone/bob-plugin-openai-polisher)，括号部分可以去掉
+> Revise the following sentences to make them more clear, concise, and coherent (Please note that you need to list the changes and briefly explain why)
+
 
 ## ChatGPT API 的优点
 
