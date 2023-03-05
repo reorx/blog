@@ -5,7 +5,7 @@ slug: 004-prompts-and-parameters-transparancy
 date: 2023-03-05T23:08:00+08:00
 description: Prompt 是一个 ChatGPT 应用的灵魂，希望所有基于 ChatGPT API 的产品都能向用户公开其 prompt，保持透明，尊重用户隐私。或许我们可以发起一个由社区共同维护的 Open Prompt 开源项目？
 draft: false
-ShowToc: false
+ShowToc: true
 tags:
   - chatgpt
   - prompt
