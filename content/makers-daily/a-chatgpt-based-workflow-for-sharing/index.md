@@ -1,7 +1,7 @@
 ---
 title: 用 AI 工具快速撰写分享型推文
 issueno: "006"
-slug: 005-a-gpt-ai-based-workflow-for-content-creation
+slug: 006-a-gpt-ai-based-workflow-for-content-creation
 date: 2023-03-11T11:44:35+08:00
 description: 一次将 AI 用于内容创作的简单尝试
 draft: false
