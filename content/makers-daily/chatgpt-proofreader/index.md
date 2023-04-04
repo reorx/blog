@@ -38,7 +38,16 @@ ChatGPT Proofreader 提供了中英文两种语言的润色功能，用法如下
 //   identifier: apikey, label: API Key, type: string,
 //   description: 'Obtain API key from https://platform.openai.com/account/api-keys'
 // }]
-async function chat (input, options, lang) {
+
+const prefixes = {
+    "native": "Paraphrase the following sentences to make it more native:\n",
+    "revise": "Revise the following sentences to make them more clear concise and coherent:\n",
+    "standard": "Correct this to standard English:\n",
+    "polish": "Please correct the grammar and polish the following sentences, do not provide any translation, comments, or notes, and use the same language as input:\n",
+    "authentic": "Rewrite the text in authentic English:\n",
+    "ielts": "Rewrite the text using IELTS standard:\n",
+}
+async function chat (input, options, lang, prefixName) {
   const openai = require("axios").create({
     baseURL: "https://api.openai.com/v1",
     headers: { Authorization: `Bearer ${options.apikey}` },
@@ -59,6 +68,9 @@ async function chat (input, options, lang) {
       ]
       break;
   }
+  if (prefixName) {
+      messages = [{"role": "user", "content": `${prefixes[prefixName]}${input.text}`}]
+  }
 
   const { data } = await openai.post("/chat/completions", {
     model: "gpt-3.5-turbo",
@@ -68,16 +80,37 @@ async function chat (input, options, lang) {
   return input.text.trimEnd() + "\n\n" + result.content.trim();
 };
 
-exports.actions = [{
+exports.actions = [
+{
   title: "ChatGPT: proofreader en",
   after: "paste-result",
   code: async (input, options) => chat(input, options, "en"),
-},{
+},
+{
+  title: "native",
+  icon: "text native",
+  after: "paste-result",
+  code: async (input, options) => chat(input, options, "", "native"),
+},
+{
+  title: "revise",
+  icon: "circle revise",
+  after: "paste-result",
+  code: async (input, options) => chat(input, options, "", "revise"),
+},
+{
+  title: "polish",
+  icon: "square filled polish",
+  after: "paste-result",
+  code: async (input, options) => chat(input, options, "", "polish"),
+},
+{
   title: "ChatGPT: proofreader zh",
   icon: "square filled 润",
   after: "paste-result",
   code: async (input, options) => chat(input, options, "zh"),
-}];
+},
+];
 ```
 
 ## Alternative Prompts
@@ -96,8 +129,16 @@ exports.actions = [{
 > Rewrite the text in authentic English
 
 可选项 3，来自 [OpenAI Polisher Bob Plugin](https://github.com/yetone/bob-plugin-openai-polisher)，括号部分可以去掉
-> Revise the following sentences to make them more clear, concise, and coherent (Please note that you need to list the changes and briefly explain why)
+> Revise the following sentences to make them more clear, concise and coherent (Please note that you need to list the changes and briefly explain why)
 
+其他:
+> **Native**
+>
+> Paraphrase the following sentences to make it more native:
+>
+> **Standard**
+>
+> Correct this to standard English:
 
 ## ChatGPT API 的优点
 
