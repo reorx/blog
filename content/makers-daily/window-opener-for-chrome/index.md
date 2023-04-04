@@ -12,6 +12,11 @@ tags:
 
 最近又做了一个新的扩展——[Window Opener](https://github.com/reorx/window-opener)，这篇文章介绍它的动机、开发过程和用法说明。
 
+{{<standout>}}
+[Window Opener - Chrome Web Store](https://chrome.google.com/webstore/detail/window-opener/iiliegedaegmcdoflhojnpgagjekkhbl)
+{{</standout>}}
+
+
 ## 动机
 
 我平时主屏的窗口布局一般是 Chrome 占 3/5 靠左，VSCode 占 1/2 靠右，交叠的部分一般不会影响两边的浏览。
