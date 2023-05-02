@@ -79,8 +79,8 @@ params:
     - name: Shyrism
       url: https://shyrz.me/
       description: Smile in cry, write in bytes.
-    - name: My Life @wsdjeg
-      url: https://wsdjeg.spacevim.org/
+    - name: Eric’s Blog
+      url: https://wsdjeg.net/
     - name: 程序员的喵
       description: Coding and writing, don't Panic
       url: https://catcoding.me/
