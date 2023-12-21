@@ -13,7 +13,7 @@ cover:
 socialLinks:
   twitter:
     user: novoreorx
-    id: 
+    id: 1737818729520693705
 ---
 
 ## 概念
