@@ -29,3 +29,8 @@ tags:
     出自国内开发者之手，最大的特点是把省电这件事研究到了极致，果然优秀的创作者自己才是真正的用户。经过简短的试用，我确定这是目前最好的同类产品。
 
     不过一生足迹虽然可以导入照片中的位置信息，却没法将其连成轨迹，我只能继续寻觅其他 app，或者想办法自己实现了。
+- [Rond](https://apps.apple.com/cn/app/rond-%E8%AE%B0%E5%BD%95%E7%94%9F%E6%B4%BB%E8%BD%A8%E8%BF%B9/id1669903815)
+
+    2023-06-08 发现，官网 [rond.azurewebsites.net](https://rond.azurewebsites.net/)
+
+    Location-based life records, 不仅记录轨迹，还有丰富的统计功能，可视化查看时间花费的位置分布
