@@ -9,7 +9,7 @@ app.get('/', (c) => {
 
 const DOMAIN = 'reorx.com'
 
-const hostMetaXML = `
+const hostMetaXML = `\
 <?xml version="1.0" encoding="UTF-8"?>
 <XRD xmlns="http://docs.oasis-open.org/ns/xri/xrd-1.0">
   <Link rel="lrdd" template="https://${DOMAIN}/.well-known/webfinger?resource={uri}" type="application/xrd+xml" />
@@ -18,7 +18,7 @@ const hostMetaXML = `
 
 app.get('/.well-known/host-meta', (c) => {
   c.header('Content-Type', 'application/xrd+xml; charset=utf-8')
-  c.body(hostMetaXML)
+  return c.body(hostMetaXML)
 })
 
 
