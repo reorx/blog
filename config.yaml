@@ -1,6 +1,8 @@
 title: Reorx’s Forge
 baseURL: 'https://reorx.com/'
 theme: PaperModX
+ignoreErrors:
+  - error-remote-getjson
 hasCJKLanguage: true
 enableRobotsTXT: true
 timeZone: Asia/Shanghai
