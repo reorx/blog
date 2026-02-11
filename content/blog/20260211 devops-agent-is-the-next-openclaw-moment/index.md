@@ -10,7 +10,7 @@ tags:
 ShowToc: false
 ---
 
-A few days ago I shared how OpenClaw has been helping me — it can truly take over the programmer role, freeing me from the grind of development tasks so I can think about project decisions, product design, and where the company is heading. I can finally act like a CEO of a one-person company, doing more of what a manager should do. That's been a huge level-up for me.
+A few days ago I shared [how OpenClaw has been helping me](https://reorx.com/blog/openclaw-is-changing-my-life/) — it can truly take over the programmer role, freeing me from the grind of development tasks so I can think about project decisions, product design, and where the company is heading. I can finally act like a CEO of a one-person company, doing more of what a manager should do. That's been a huge level-up for me.
 
 But when I was about to ship a project the other day, I realized it still can't replace me when it comes to DevOps:
 
